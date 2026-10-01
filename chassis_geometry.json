@@ -1,0 +1,715 @@
+{
+  "metadata": {
+    "version": "0.2.1",
+    "last_updated": "2026-09-28",
+    "doc_role": "Per-chassis geometric data for the SVG wheel-well visualization. WHEEL-RELATIVE measurements: factory clearance from each side of the OEM tire to its nearest constraint (fender, strut/suspension, driveshaft, brake caliper).",
+    "schema_change_v0_2": "Switched from chassis-centerline-relative coordinates to wheel-relative clearances. v0.1 was unrenderable because absolute chassis positions don't translate cleanly to a single-wheel cross-section view.",
+    "verification": "v0.2 — approximations from factory specs and observed flush-vs-poke aftermarket fitments. Refine per-chassis as actual measurements gathered.",
+    "product_note": "Working Product geometry; ingest phase1 archive until Chair sync."
+  },
+  "templates": {
+    "BMW_M_sedan_default": {
+      "comment": "Generic baseline. Each chassis overrides specific fields.",
+      "front": {
+        "oem_outer_clearance_mm": 8,
+        "oem_inner_clearance_mm": 35,
+        "brake_caliper_outer_radius_mm": 175,
+        "has_xdrive_driveshaft": false,
+        "driveshaft_inboard_of_inner_tire_mm": null,
+        "driveshaft_radius_mm": 28
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 165,
+        "has_xdrive_driveshaft": false
+      }
+    }
+  },
+  "chassis": {
+    "F87 M2": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 6,
+        "oem_inner_clearance_mm": 28,
+        "brake_caliper_outer_radius_mm": 170
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 8,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 160
+      },
+      "oem_front": {
+        "diameter_in": 19,
+        "width_in": 9.0,
+        "offset_mm": 29,
+        "tire": "245/35R19"
+      },
+      "oem_rear": {
+        "diameter_in": 19,
+        "width_in": 10.0,
+        "offset_mm": 40,
+        "tire": "265/35R19"
+      },
+      "notes": "Tight front clearance — OEM ET29 leaves limited inboard room."
+    },
+    "G87 M2": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 38,
+        "brake_caliper_outer_radius_mm": 195
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 12,
+        "oem_inner_clearance_mm": 35,
+        "brake_caliper_outer_radius_mm": 185
+      },
+      "oem_front": {
+        "diameter_in": 19,
+        "width_in": 9.5,
+        "offset_mm": 25,
+        "tire": "275/35ZR19"
+      },
+      "oem_rear": {
+        "diameter_in": 20,
+        "width_in": 10.5,
+        "offset_mm": 27,
+        "tire": "285/30ZR20"
+      },
+      "notes": "Wide-stance G-chassis. Big M Comp brakes."
+    },
+    "E36 M3": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 5,
+        "oem_inner_clearance_mm": 22,
+        "brake_caliper_outer_radius_mm": 155
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 8,
+        "oem_inner_clearance_mm": 28,
+        "brake_caliper_outer_radius_mm": 150
+      },
+      "oem_front": {
+        "diameter_in": 17,
+        "width_in": 7.5,
+        "offset_mm": 41,
+        "tire": "235/40ZR17"
+      },
+      "oem_rear": {
+        "diameter_in": 17,
+        "width_in": 8.5,
+        "offset_mm": 41,
+        "tire": "245/40ZR17"
+      }
+    },
+    "E46 M3": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 8,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 165
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 32,
+        "brake_caliper_outer_radius_mm": 160
+      },
+      "oem_front": {
+        "diameter_in": 19,
+        "width_in": 8.0,
+        "offset_mm": 47,
+        "tire": "225/40ZR19"
+      },
+      "oem_rear": {
+        "diameter_in": 19,
+        "width_in": 9.5,
+        "offset_mm": 27,
+        "tire": "255/35ZR19"
+      }
+    },
+    "E9X M3": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 32,
+        "brake_caliper_outer_radius_mm": 170
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 12,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 160
+      },
+      "oem_front": {
+        "diameter_in": 18,
+        "width_in": 8.5,
+        "offset_mm": 29,
+        "tire": "245/40ZR18"
+      },
+      "oem_rear": {
+        "diameter_in": 18,
+        "width_in": 9.5,
+        "offset_mm": 23,
+        "tire": "265/40ZR18"
+      }
+    },
+    "F80 M3": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 8,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 185
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 28,
+        "brake_caliper_outer_radius_mm": 175
+      },
+      "oem_front": {
+        "diameter_in": 19,
+        "width_in": 9.0,
+        "offset_mm": 29,
+        "tire": "255/35ZR19"
+      },
+      "oem_rear": {
+        "diameter_in": 19,
+        "width_in": 10.0,
+        "offset_mm": 40,
+        "tire": "275/35ZR19"
+      },
+      "notes": "Verified Wheel-Size.com 2026-04-30 — Style 437M baseline."
+    },
+    "F82/F83 M4": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 9,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 185
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 11,
+        "oem_inner_clearance_mm": 28,
+        "brake_caliper_outer_radius_mm": 175
+      },
+      "oem_front": {
+        "diameter_in": 19,
+        "width_in": 9.0,
+        "offset_mm": 29,
+        "tire": "255/35R19"
+      },
+      "oem_rear": {
+        "diameter_in": 19,
+        "width_in": 10.0,
+        "offset_mm": 40,
+        "tire": "275/35R19"
+      },
+      "notes": "Slightly more flared than F80."
+    },
+    "G80 M3": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 35,
+        "brake_caliper_outer_radius_mm": 200,
+        "has_xdrive_driveshaft_variant": true,
+        "driveshaft_inboard_of_inner_tire_mm": 60,
+        "driveshaft_radius_mm": 30
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 12,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 185
+      },
+      "oem_front": {
+        "diameter_in": 19,
+        "width_in": 9.5,
+        "offset_mm": 20,
+        "tire": "275/35ZR19"
+      },
+      "oem_rear": {
+        "diameter_in": 20,
+        "width_in": 10.5,
+        "offset_mm": 20,
+        "tire": "285/30ZR20"
+      },
+      "notes": "Verified Wheel-Size.com 2026-04-30. ALL OEM offsets ET20 across base/Comp/CS. xDrive variant has front driveshaft."
+    },
+    "G82/G83 M4": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 35,
+        "brake_caliper_outer_radius_mm": 200,
+        "has_xdrive_driveshaft_variant": true,
+        "driveshaft_inboard_of_inner_tire_mm": 60,
+        "driveshaft_radius_mm": 30
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 12,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 185
+      },
+      "oem_front": {
+        "diameter_in": 19,
+        "width_in": 9.5,
+        "offset_mm": 20,
+        "tire": "275/35ZR19"
+      },
+      "oem_rear": {
+        "diameter_in": 20,
+        "width_in": 10.5,
+        "offset_mm": 20,
+        "tire": "285/30ZR20"
+      }
+    },
+    "E39 M5": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 32,
+        "brake_caliper_outer_radius_mm": 162
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 12,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 158
+      },
+      "oem_front": {
+        "diameter_in": 18,
+        "width_in": 8.0,
+        "offset_mm": 20,
+        "tire": "245/40R18"
+      },
+      "oem_rear": {
+        "diameter_in": 18,
+        "width_in": 9.5,
+        "offset_mm": 22,
+        "tire": "275/35R18"
+      },
+      "notes": "74.1mm hub bore unique to E39. Verified BIMMERtips 2026-04-30 — Style 65."
+    },
+    "E60 M5": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 7,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 195
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 28,
+        "brake_caliper_outer_radius_mm": 190
+      },
+      "oem_front": {
+        "diameter_in": 19,
+        "width_in": 8.5,
+        "offset_mm": 12,
+        "tire": "255/40ZR19"
+      },
+      "oem_rear": {
+        "diameter_in": 19,
+        "width_in": 9.5,
+        "offset_mm": 17,
+        "tire": "285/35ZR19"
+      }
+    },
+    "F10 M5": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 9,
+        "oem_inner_clearance_mm": 32,
+        "brake_caliper_outer_radius_mm": 205
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 11,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 195
+      },
+      "oem_front": {
+        "diameter_in": 20,
+        "width_in": 9.0,
+        "offset_mm": 32,
+        "tire": "265/40ZR20"
+      },
+      "oem_rear": {
+        "diameter_in": 20,
+        "width_in": 10.0,
+        "offset_mm": 34,
+        "tire": "295/35ZR20"
+      }
+    },
+    "F90 M5": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 38,
+        "brake_caliper_outer_radius_mm": 215,
+        "has_xdrive_driveshaft": true,
+        "driveshaft_inboard_of_inner_tire_mm": 65,
+        "driveshaft_radius_mm": 32
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 12,
+        "oem_inner_clearance_mm": 32,
+        "brake_caliper_outer_radius_mm": 200
+      },
+      "oem_front": {
+        "diameter_in": 20,
+        "width_in": 9.5,
+        "offset_mm": 27,
+        "tire": "275/35ZR20"
+      },
+      "oem_rear": {
+        "diameter_in": 20,
+        "width_in": 10.5,
+        "offset_mm": 27,
+        "tire": "285/35ZR20"
+      },
+      "notes": "All F90 M5 are xDrive. Big M Comp brakes — 20\" generally minimum. PILOT CHASSIS for v0 visualization."
+    },
+    "G90 M5": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 38,
+        "brake_caliper_outer_radius_mm": 215,
+        "has_xdrive_driveshaft": true,
+        "driveshaft_inboard_of_inner_tire_mm": 65,
+        "driveshaft_radius_mm": 32
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 14,
+        "oem_inner_clearance_mm": 35,
+        "brake_caliper_outer_radius_mm": 200
+      },
+      "oem_front": {
+        "diameter_in": 20,
+        "width_in": 9.5,
+        "offset_mm": 27,
+        "tire": "275/35ZR20"
+      },
+      "oem_rear": {
+        "diameter_in": 21,
+        "width_in": 10.5,
+        "offset_mm": 30,
+        "tire": "295/30ZR21"
+      },
+      "notes": "STUB — geometry approximated from F90."
+    },
+    "E63/E64 M6": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 8,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 190
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 28,
+        "brake_caliper_outer_radius_mm": 185
+      },
+      "oem_front": {
+        "diameter_in": 19,
+        "width_in": 8.5,
+        "offset_mm": 12,
+        "tire": "255/40ZR19"
+      },
+      "oem_rear": {
+        "diameter_in": 19,
+        "width_in": 9.5,
+        "offset_mm": 17,
+        "tire": "285/35ZR19"
+      }
+    },
+    "F97 X3 M": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 12,
+        "oem_inner_clearance_mm": 40,
+        "brake_caliper_outer_radius_mm": 200,
+        "has_xdrive_driveshaft": true,
+        "driveshaft_inboard_of_inner_tire_mm": 70,
+        "driveshaft_radius_mm": 32
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 14,
+        "oem_inner_clearance_mm": 38,
+        "brake_caliper_outer_radius_mm": 190
+      },
+      "oem_front": {
+        "diameter_in": 20,
+        "width_in": 9.0,
+        "offset_mm": 28,
+        "tire": "255/45ZR20"
+      },
+      "oem_rear": {
+        "diameter_in": 20,
+        "width_in": 10.0,
+        "offset_mm": 39,
+        "tire": "265/45ZR20"
+      },
+      "notes": "STUB 2026-09-27 — outer/inner clearance estimated (unverified). OEM sizes researched."
+    },
+    "F98 X4 M": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 12,
+        "oem_inner_clearance_mm": 40,
+        "brake_caliper_outer_radius_mm": 200,
+        "has_xdrive_driveshaft": true,
+        "driveshaft_inboard_of_inner_tire_mm": 70,
+        "driveshaft_radius_mm": 32
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 14,
+        "oem_inner_clearance_mm": 38,
+        "brake_caliper_outer_radius_mm": 190
+      },
+      "oem_front": {
+        "diameter_in": 20,
+        "width_in": 9.0,
+        "offset_mm": 28,
+        "tire": "255/45ZR20"
+      },
+      "oem_rear": {
+        "diameter_in": 20,
+        "width_in": 10.0,
+        "offset_mm": 39,
+        "tire": "265/45ZR20"
+      },
+      "notes": "STUB 2026-09-27 — mirrors F97 until measured separately."
+    },
+    "F95 X5 M": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 14,
+        "oem_inner_clearance_mm": 45,
+        "brake_caliper_outer_radius_mm": 215,
+        "has_xdrive_driveshaft": true,
+        "driveshaft_inboard_of_inner_tire_mm": 75,
+        "driveshaft_radius_mm": 34
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 16,
+        "oem_inner_clearance_mm": 42,
+        "brake_caliper_outer_radius_mm": 205
+      },
+      "oem_front": {
+        "diameter_in": 21,
+        "width_in": 10.5,
+        "offset_mm": 31,
+        "tire": "295/35ZR21"
+      },
+      "oem_rear": {
+        "diameter_in": 22,
+        "width_in": 11.5,
+        "offset_mm": 43,
+        "tire": "315/30ZR22"
+      },
+      "notes": "STUB 2026-09-27 — clearance estimated (unverified). OEM sizes researched."
+    },
+    "F96 X6 M": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 14,
+        "oem_inner_clearance_mm": 45,
+        "brake_caliper_outer_radius_mm": 215,
+        "has_xdrive_driveshaft": true,
+        "driveshaft_inboard_of_inner_tire_mm": 75,
+        "driveshaft_radius_mm": 34
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 16,
+        "oem_inner_clearance_mm": 42,
+        "brake_caliper_outer_radius_mm": 205
+      },
+      "oem_front": {
+        "diameter_in": 21,
+        "width_in": 10.5,
+        "offset_mm": 31,
+        "tire": "295/35ZR21"
+      },
+      "oem_rear": {
+        "diameter_in": 22,
+        "width_in": 11.5,
+        "offset_mm": 43,
+        "tire": "315/30ZR22"
+      },
+      "notes": "STUB 2026-09-27 — mirrors F95 until measured."
+    },
+    "G81 M3 Touring": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 35,
+        "brake_caliper_outer_radius_mm": 200,
+        "has_xdrive_driveshaft_variant": true,
+        "driveshaft_inboard_of_inner_tire_mm": 60,
+        "driveshaft_radius_mm": 30
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 12,
+        "oem_inner_clearance_mm": 30,
+        "brake_caliper_outer_radius_mm": 185
+      },
+      "oem_front": {
+        "diameter_in": 19,
+        "width_in": 9.5,
+        "offset_mm": 20,
+        "tire": "275/35ZR19"
+      },
+      "oem_rear": {
+        "diameter_in": 20,
+        "width_in": 10.5,
+        "offset_mm": 20,
+        "tire": "285/30ZR20"
+      },
+      "notes": "STUB 2026-09-27 — inherits G80 Comp OEM; Touring rear outer clearance unverified (may differ from sedan)."
+    },
+    "E85/E86 Z4 M": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 8,
+        "oem_inner_clearance_mm": 28,
+        "brake_caliper_outer_radius_mm": 170
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 26,
+        "brake_caliper_outer_radius_mm": 160
+      },
+      "oem_front": {
+        "diameter_in": 18,
+        "width_in": 8.0,
+        "offset_mm": 42,
+        "tire": "225/45R18"
+      },
+      "oem_rear": {
+        "diameter_in": 18,
+        "width_in": 9.0,
+        "offset_mm": 30,
+        "tire": "255/40R18"
+      },
+      "notes": "STUB 2026-09-27 — clearance estimated; semi-trailing arm rear camber change not modeled numerically."
+    },
+    "G09 XM": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "oem_outer_clearance_mm": 14,
+        "oem_inner_clearance_mm": 48,
+        "brake_caliper_outer_radius_mm": 220,
+        "has_xdrive_driveshaft": true
+      },
+      "rear": {
+        "oem_outer_clearance_mm": 16,
+        "oem_inner_clearance_mm": 45,
+        "brake_caliper_outer_radius_mm": 210
+      },
+      "oem_front": {
+        "diameter_in": 23,
+        "width_in": 10.0,
+        "offset_mm": 19,
+        "tire": "UNVERIFIED"
+      },
+      "oem_rear": {
+        "diameter_in": 23,
+        "width_in": 11.0,
+        "offset_mm": 42,
+        "tire": "UNVERIFIED"
+      },
+      "notes": "STUB 2026-09-27 — ET front~19 / rear~42 from community tables; diameters/widths UNVERIFIED pointer only."
+    },
+    "E36/7 Z3 M": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "brake_caliper_outer_radius_mm": 165,
+        "oem_outer_clearance_mm": 8,
+        "oem_inner_clearance_mm": 28
+      },
+      "rear": {
+        "brake_caliper_outer_radius_mm": 155,
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 24
+      },
+      "oem_front": {
+        "tire": "225/45ZR17",
+        "offset_mm": 41,
+        "diameter_in": 17,
+        "width_in": 7.5
+      },
+      "oem_rear": {
+        "tire": "245/40ZR17",
+        "offset_mm": 8,
+        "diameter_in": 17,
+        "width_in": 9
+      },
+      "notes": "STUB 2026-09-28 — clearance estimated; semi-trailing arm rear camber change not modeled."
+    },
+    "E82 1M": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "brake_caliper_outer_radius_mm": 180,
+        "oem_outer_clearance_mm": 10,
+        "oem_inner_clearance_mm": 30
+      },
+      "rear": {
+        "brake_caliper_outer_radius_mm": 170,
+        "oem_outer_clearance_mm": 12,
+        "oem_inner_clearance_mm": 28
+      },
+      "oem_front": {
+        "tire": "245/35R19",
+        "offset_mm": 31,
+        "diameter_in": 19,
+        "width_in": 9
+      },
+      "oem_rear": {
+        "tire": "265/35R19",
+        "offset_mm": 25,
+        "diameter_in": 19,
+        "width_in": 10
+      },
+      "notes": "STUB 2026-09-28 — widebody 1M arches; clearance estimated from F8X/F87 class."
+    },
+    "E26 M1": {
+      "extends": "BMW_M_sedan_default",
+      "front": {
+        "brake_caliper_outer_radius_mm": 150,
+        "oem_outer_clearance_mm": 8,
+        "oem_inner_clearance_mm": 26
+      },
+      "rear": {
+        "brake_caliper_outer_radius_mm": 150,
+        "oem_outer_clearance_mm": 8,
+        "oem_inner_clearance_mm": 26
+      },
+      "oem_front": {
+        "tire": "205/55VR16",
+        "offset_mm": 47,
+        "diameter_in": 16,
+        "width_in": 7
+      },
+      "oem_rear": {
+        "tire": "225/50VR16",
+        "offset_mm": null,
+        "diameter_in": 16,
+        "width_in": 8
+      },
+      "notes": "STUB 2026-09-28 — mid-engine classic; rear OE ET UNVERIFIED; clearances guessed. Do not trust for YES_DIRECT."
+    }
+  },
+  "rendering_notes": {
+    "default_view": "front-cross-section-wheel-relative",
+    "default_axle": "front",
+    "color_zones": {
+      "ok_green": "#4ade80",
+      "tight_yellow": "#facc15",
+      "contact_red": "#E22718"
+    },
+    "thresholds_mm": {
+      "ok_min_clearance": 8,
+      "tight_min_clearance": 3
+    }
+  }
+}

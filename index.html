@@ -1,0 +1,901 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MSpec Wheels — BMW M Wheel Fitment Intelligence + Curated Marketplace</title>
+<meta name="description" content="Verified fitment, curated wheels, no guesswork. Free AI fitment tool and curated BMW M wheel listings sourced from the enthusiast community." />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:    '#0A0E14',
+          carbon: '#14181F',
+          slate2: '#1A2030',
+          steel:  '#2A3142',
+          bone:   '#F0F0EC',
+          silver: '#C8CCD0',
+          muted:  '#6B7280',
+          mblue:  '#0066B1',
+          mviolet:'#6E5DA5',
+          mred:   '#E22718',
+        },
+        fontFamily: {
+          display: ['Anton', 'Bebas Neue', 'sans-serif'],
+          sans:    ['Inter', 'system-ui', 'sans-serif'],
+          mono:    ['"JetBrains Mono"', '"IBM Plex Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel placeholder (replace ID before deploy) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+// fbq('init', 'YOUR_PIXEL_ID'); // <-- uncomment + paste ID
+// fbq('track', 'PageView');
+</script>
+
+<style>
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0A0E14;
+    color: #F0F0EC;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-display { font-family: 'Anton', 'Bebas Neue', sans-serif; letter-spacing: 0.01em; }
+  .font-mono { font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace; }
+  .tricolor-stripe {
+    background: linear-gradient(90deg, #0066B1 0%, #6E5DA5 50%, #E22718 100%);
+    height: 3px;
+  }
+  .tricolor-bg {
+    background: linear-gradient(90deg, #0066B1 0%, #6E5DA5 50%, #E22718 100%);
+  }
+  .glow-blue { box-shadow: 0 0 24px rgba(0, 102, 177, 0.25); }
+  .glow-violet { box-shadow: 0 0 24px rgba(110, 93, 165, 0.3); }
+  .dot-grid {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .border-stripe-left {
+    border-left: 3px solid;
+    border-image: linear-gradient(180deg, #0066B1 0%, #6E5DA5 50%, #E22718 100%) 1;
+  }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  .nav-scrolled {
+    background-color: rgba(10, 14, 20, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #2A3142;
+  }
+  /* fitment verdict accent colors */
+  .verdict-yes { color: #4ade80; }
+  .verdict-with-mods { color: #facc15; }
+  .verdict-maybe { color: #fb923c; }
+  .verdict-no { color: #E22718; }
+</style>
+</head>
+<body>
+  <!-- STATIC PREVIEW BANNER - Claude/Netlify fitment API disabled -->
+  <div id="static-preview-banner" style="background:#1a1a2e;border-bottom:2px solid #7c3aed;color:#e8e6e3;font-family:JetBrains Mono,monospace;font-size:12px;padding:10px 16px;text-align:center;letter-spacing:0.05em;">
+    STATIC PREVIEW — Fitment Guide UI shell · Claude / Netlify serverless DISABLED · Geometry viz still loads client-side · Not a live fitment API
+  </div>
+
+<!-- =============================== NAV =============================== -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <img src="assets/logo.png" alt="MSpec Wheels" class="h-10 w-10 rounded" />
+      <span class="font-display text-2xl tracking-tight">MSPEC WHEELS</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-silver">
+      <a href="#fitment" class="hover:text-bone transition">Fitment Tool</a>
+      <a href="#listings" class="hover:text-bone transition">Listings</a>
+      <a href="#submit" class="hover:text-bone transition">Submit</a>
+      <a href="#about" class="hover:text-bone transition">About</a>
+      <a href="https://www.instagram.com/mspecwheels/" target="_blank" rel="noopener" class="hover:text-mblue transition" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+      </a>
+    </div>
+    <button id="mobile-menu-btn" class="md:hidden text-bone" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden bg-carbon border-t border-steel">
+    <div class="px-6 py-4 space-y-3 text-silver">
+      <a href="#fitment" class="block hover:text-bone">Fitment Tool</a>
+      <a href="#listings" class="block hover:text-bone">Listings</a>
+      <a href="#submit" class="block hover:text-bone">Submit</a>
+      <a href="#about" class="block hover:text-bone">About</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =============================== HERO =============================== -->
+<section id="top" class="relative min-h-screen flex items-center pt-24 pb-12 dot-grid overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 mb-6">
+        <div class="w-2 h-2 bg-mblue"></div>
+        <span class="font-mono text-xs text-mblue uppercase tracking-widest">BMW M Wheel Fitment Intelligence</span>
+      </div>
+      <h1 class="font-display text-6xl md:text-7xl lg:text-8xl leading-[0.95] uppercase">
+        Verified Fitment.<br/>
+        Curated Wheels.<br/>
+        <span style="color:#0066B1">No Guesswork.</span>
+      </h1>
+      <p class="mt-8 text-silver text-lg max-w-xl leading-relaxed">
+        Type your wheel specs. Pick your chassis. Get an instant fitment verdict — backed by AI trained on every BMW M generation from E30 to G87. Then browse hand-picked listings sourced from the enthusiast community.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="#fitment" class="tricolor-bg text-white font-mono text-sm uppercase tracking-widest px-8 py-4 hover:opacity-90 transition glow-violet">
+          Verify Fitment →
+        </a>
+        <a href="#listings" class="border border-bone text-bone font-mono text-sm uppercase tracking-widest px-8 py-4 hover:bg-bone hover:text-ink transition">
+          Browse Listings
+        </a>
+      </div>
+      <div class="mt-12 grid grid-cols-4 gap-4 max-w-lg">
+        <div>
+          <div class="font-display text-3xl text-mblue">7</div>
+          <div class="font-mono text-xs text-muted uppercase">Chassis families</div>
+        </div>
+        <div>
+          <div class="font-display text-3xl text-mblue">22+</div>
+          <div class="font-mono text-xs text-muted uppercase">M variants</div>
+        </div>
+        <div>
+          <div class="font-display text-3xl text-mblue">4</div>
+          <div class="font-mono text-xs text-muted uppercase">Verdict tiers</div>
+        </div>
+        <div>
+          <div class="font-display text-3xl text-mblue">$0</div>
+          <div class="font-mono text-xs text-muted uppercase">Free forever</div>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:flex justify-center items-center">
+      <div class="relative">
+        <div class="absolute inset-0 tricolor-bg blur-3xl opacity-20 rounded-full"></div>
+        <img src="assets/logo.png" alt="MSpec Wheels" class="relative w-80 h-80 object-contain" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tricolor-stripe"></div>
+
+<!-- =============================== FITMENT TOOL =============================== -->
+<section id="fitment" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="font-mono text-xs text-mblue uppercase tracking-widest mb-3">— FITMENT CHECKER —</div>
+      <h2 class="font-display text-5xl md:text-6xl uppercase">Try It Now</h2>
+      <p class="mt-4 text-silver">No login. No email. Just a verdict in seconds.</p>
+    </div>
+
+    <div class="bg-carbon border border-steel relative overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 tricolor-stripe"></div>
+      <div class="p-8 md:p-12">
+
+        <form id="fitment-form" class="space-y-6">
+          <div>
+            <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Wheel specs</label>
+            <input type="text" id="specs" name="specs" placeholder="e.g., 19x10 ET25 5x112"
+                   class="w-full bg-ink border border-steel px-4 py-3 font-mono text-bone focus:outline-none focus:border-mblue transition" />
+            <p class="mt-1 font-mono text-xs text-muted">Format: diameter × width offset bolt-pattern. Square setups accepted.</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Your chassis</label>
+              <select id="chassis" name="chassis" class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition">
+                <option value="">Pick your BMW M…</option>
+                <optgroup label="M2">
+                  <option value="F87 M2">F87 M2 (2016–2018)</option>
+                  <option value="F87 M2 Competition">F87 M2 Competition (2019–2021)</option>
+                  <option value="F87 M2 CS">F87 M2 CS (2020)</option>
+                  <option value="G87 M2">G87 M2 (2023–present)</option>
+                </optgroup>
+                <optgroup label="M3">
+                  <option value="E30 M3">E30 M3 (1986–1991)</option>
+                  <option value="E36 M3">E36 M3 (1992–1999)</option>
+                  <option value="E46 M3">E46 M3 (2001–2006)</option>
+                  <option value="E9X M3">E90/E92/E93 M3 (2008–2013)</option>
+                  <option value="E92 M3 GTS">E92 M3 GTS (2010)</option>
+                  <option value="F80 M3">F80 M3 (2015–2018)</option>
+                  <option value="G80 M3">G80 M3 (2021–present)</option>
+                </optgroup>
+                <optgroup label="M4">
+                  <option value="F82/F83 M4">F82/F83 M4 (2015–2020)</option>
+                  <option value="G82/G83 M4">G82/G83 M4 (2021–present)</option>
+                </optgroup>
+                <optgroup label="M5">
+                  <option value="E28 M5">E28 M5 (1985–1988)</option>
+                  <option value="E34 M5">E34 M5 (1989–1995)</option>
+                  <option value="E39 M5">E39 M5 (1998–2003)</option>
+                  <option value="E60 M5">E60 M5 (2005–2010)</option>
+                  <option value="F10 M5">F10 M5 (2011–2016)</option>
+                  <option value="F90 M5">F90 M5 (2018–2023)</option>
+                  <option value="G90 M5">G90 M5 (2025–present) — limited data</option>
+                </optgroup>
+                <optgroup label="M6">
+                  <option value="E24 M6">E24 M635CSi/M6 (1984–1989)</option>
+                  <option value="E63/E64 M6">E63/E64 M6 (2006–2010)</option>
+                  <option value="F06/F12/F13 M6">F06/F12/F13 M6 (2012–2018)</option>
+                </optgroup>
+                <optgroup label="M8">
+                  <option value="F92 M8">F91/F92/F93 M8 (2019–present) — limited data</option>
+                </optgroup>
+              </select>
+            </div>
+            <div>
+              <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Optional context</label>
+              <input type="text" id="context" placeholder="e.g., lowered 20mm, -2° camber, CCB brakes"
+                     class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition" />
+            </div>
+          </div>
+
+          <button type="submit" id="submit-btn"
+                  class="w-full md:w-auto tricolor-bg text-white font-mono text-sm uppercase tracking-widest px-10 py-4 hover:opacity-90 transition glow-violet">
+            Run Fitment Check →
+          </button>
+        </form>
+
+        <!-- Loading state -->
+        <div id="loading" class="hidden mt-8 text-center text-silver">
+          <div class="inline-flex items-center gap-3 font-mono text-sm uppercase tracking-widest">
+            <svg class="animate-spin h-4 w-4 text-mblue" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+            <span>Running fitment check…</span>
+          </div>
+        </div>
+
+        <!-- Verdict output -->
+        <div id="verdict" class="hidden mt-8 border-t border-steel pt-8">
+          <div class="border-stripe-left pl-6 mb-6">
+            <div id="verdict-tier" class="font-display text-3xl uppercase mb-2"></div>
+            <p id="verdict-why" class="text-silver"></p>
+          </div>
+
+          <!-- Wheel-well visualization (Phase 1.5 v0.4 — dual-image overlay) -->
+          <div id="verdict-svg-container" class="hidden mb-6 bg-ink border border-steel overflow-hidden">
+            <div class="px-4 py-2 border-b border-steel font-mono text-xs uppercase tracking-widest text-muted flex items-center justify-between">
+              <span>— Clearance Diagram —</span>
+              <span id="verdict-svg-axle-toggle" class="text-mblue cursor-pointer hover:text-bone transition">Switch to Rear ↗</span>
+            </div>
+            <div id="verdict-svg-mount" class="w-full"></div>
+          </div>
+
+          <div id="verdict-breakdown" class="bg-ink border border-steel p-6 font-mono text-sm space-y-2"></div>
+
+          <div id="ask-seller-block" class="hidden mt-6 bg-ink border border-mblue p-6">
+            <div class="font-mono text-xs uppercase tracking-widest text-mblue mb-3">Ask the seller:</div>
+            <ul id="ask-seller-list" class="text-silver space-y-2 list-disc list-inside"></ul>
+          </div>
+
+          <p id="data-caveats" class="hidden mt-4 text-xs text-muted italic"></p>
+
+          <p class="mt-6 text-xs text-muted">
+            Buyer is responsible for final fitment verification. Fitment results may vary; always test-fit wheels before final mounting due to variations in camber, tire brand, ride height, and manufacturing tolerances.
+          </p>
+        </div>
+
+        <!-- Error state -->
+        <div id="error" class="hidden mt-8 border-l-4 border-mred bg-carbon p-4 text-mred font-mono text-sm"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== LISTINGS =============================== -->
+<section id="listings" class="py-24 px-6 bg-carbon">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="font-mono text-xs text-mblue uppercase tracking-widest mb-3">— CURATED MARKETPLACE —</div>
+      <h2 class="font-display text-5xl md:text-6xl uppercase">Curated From The Community</h2>
+      <p class="mt-4 text-silver max-w-2xl mx-auto">
+        Hand-picked BMW M wheel listings sourced from Facebook Marketplace, Instagram, and direct seller submissions. Verified specs, clean photography, direct seller contact.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <article class="bg-slate2 border border-steel hover:border-mblue transition group">
+        <div class="aspect-[4/3] bg-ink border-b border-steel flex items-center justify-center">
+          <div class="font-display text-3xl text-muted opacity-60">STYLE 437M</div>
+        </div>
+        <div class="p-5 space-y-2">
+          <div class="font-display text-xl uppercase">BMW Style 437M</div>
+          <div class="font-mono text-xs text-mblue">FITS F80 M3 / F82 M4 / F87 M2</div>
+          <div class="font-mono text-xs text-silver">19×9 ET29 F / 19×10 ET40 R</div>
+          <div class="flex justify-between items-end pt-3">
+            <div class="font-display text-2xl">$2,400</div>
+            <div class="font-mono text-xs text-muted">AUSTIN, TX</div>
+          </div>
+          <div class="font-mono text-xs text-muted pt-2 border-t border-steel">STRUCTURAL: A · COSMETIC: B+</div>
+        </div>
+      </article>
+
+      <article class="bg-slate2 border border-steel hover:border-mblue transition group">
+        <div class="aspect-[4/3] bg-ink border-b border-steel flex items-center justify-center">
+          <div class="font-display text-3xl text-muted opacity-60">STYLE 666M</div>
+        </div>
+        <div class="p-5 space-y-2">
+          <div class="font-display text-xl uppercase">BMW Style 666M</div>
+          <div class="font-mono text-xs text-mblue">FITS F80 M3 / F82 M4 COMP</div>
+          <div class="font-mono text-xs text-silver">20×9 ET29 F / 20×10 ET40 R</div>
+          <div class="flex justify-between items-end pt-3">
+            <div class="font-display text-2xl">$3,200</div>
+            <div class="font-mono text-xs text-muted">DALLAS, TX</div>
+          </div>
+          <div class="font-mono text-xs text-muted pt-2 border-t border-steel">STRUCTURAL: A · COSMETIC: A−</div>
+        </div>
+      </article>
+
+      <article class="bg-slate2 border border-steel hover:border-mblue transition group">
+        <div class="aspect-[4/3] bg-ink border-b border-steel flex items-center justify-center">
+          <div class="font-display text-3xl text-muted opacity-60">APEX EC-7</div>
+        </div>
+        <div class="p-5 space-y-2">
+          <div class="font-display text-xl uppercase">Apex EC-7</div>
+          <div class="font-mono text-xs text-mblue">FITS E46 M3 / E9X M3 / F8X M3</div>
+          <div class="font-mono text-xs text-silver">18×9.5 ET22 SQUARE</div>
+          <div class="flex justify-between items-end pt-3">
+            <div class="font-display text-2xl">$1,800</div>
+            <div class="font-mono text-xs text-muted">HOUSTON, TX</div>
+          </div>
+          <div class="font-mono text-xs text-muted pt-2 border-t border-steel">STRUCTURAL: A · COSMETIC: B</div>
+        </div>
+      </article>
+
+      <article class="bg-slate2 border border-steel hover:border-mblue transition group">
+        <div class="aspect-[4/3] bg-ink border-b border-steel flex items-center justify-center">
+          <div class="font-display text-3xl text-muted opacity-60">STYLE 359M</div>
+        </div>
+        <div class="p-5 space-y-2">
+          <div class="font-display text-xl uppercase">BMW Style 359M</div>
+          <div class="font-mono text-xs text-mblue">FITS E9X M3 ZCP / GTS</div>
+          <div class="font-mono text-xs text-silver">19×9 ET31 F / 19×10 ET25 R</div>
+          <div class="flex justify-between items-end pt-3">
+            <div class="font-display text-2xl">$2,100</div>
+            <div class="font-mono text-xs text-muted">AUSTIN, TX</div>
+          </div>
+          <div class="font-mono text-xs text-muted pt-2 border-t border-steel">STRUCTURAL: A · COSMETIC: A</div>
+        </div>
+      </article>
+
+      <article class="bg-slate2 border border-steel hover:border-mblue transition group">
+        <div class="aspect-[4/3] bg-ink border-b border-steel flex items-center justify-center">
+          <div class="font-display text-3xl text-muted opacity-60">STYLE 826M</div>
+        </div>
+        <div class="p-5 space-y-2">
+          <div class="font-display text-xl uppercase">BMW Style 826M</div>
+          <div class="font-mono text-xs text-mblue">FITS G80 M3 / G82 M4 COMP</div>
+          <div class="font-mono text-xs text-silver">19×9.5 ET20 F / 20×10.5 ET20 R</div>
+          <div class="flex justify-between items-end pt-3">
+            <div class="font-display text-2xl">$3,800</div>
+            <div class="font-mono text-xs text-muted">SAN ANTONIO, TX</div>
+          </div>
+          <div class="font-mono text-xs text-muted pt-2 border-t border-steel">STRUCTURAL: A · COSMETIC: A</div>
+        </div>
+      </article>
+
+      <article class="bg-slate2 border border-steel hover:border-mblue transition group">
+        <div class="aspect-[4/3] bg-ink border-b border-steel flex items-center justify-center">
+          <div class="font-display text-3xl text-muted opacity-60">STYLE 65</div>
+        </div>
+        <div class="p-5 space-y-2">
+          <div class="font-display text-xl uppercase">BMW Style 65</div>
+          <div class="font-mono text-xs text-mblue">FITS E39 M5 (74.1mm BORE)</div>
+          <div class="font-mono text-xs text-silver">18×8 ET20 F / 18×9.5 ET22 R</div>
+          <div class="flex justify-between items-end pt-3">
+            <div class="font-display text-2xl">$1,400</div>
+            <div class="font-mono text-xs text-muted">FORT WORTH, TX</div>
+          </div>
+          <div class="font-mono text-xs text-muted pt-2 border-t border-steel">STRUCTURAL: A · COSMETIC: B</div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="https://www.instagram.com/mspecwheels/" target="_blank" rel="noopener"
+         class="inline-block border border-bone text-bone font-mono text-sm uppercase tracking-widest px-8 py-4 hover:bg-bone hover:text-ink transition">
+        View All Listings on Instagram →
+      </a>
+      <p class="mt-4 text-xs text-muted font-mono">PLACEHOLDER LISTINGS · LIVE FEED COMING IN PHASE 2</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== HOW IT WORKS =============================== -->
+<section class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="font-mono text-xs text-mblue uppercase tracking-widest mb-3">— THREE STEPS —</div>
+      <h2 class="font-display text-5xl md:text-6xl uppercase">How It Works</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="border-stripe-left pl-6">
+        <div class="font-mono text-xs text-mblue mb-4">01 / FIND</div>
+        <h3 class="font-display text-2xl uppercase mb-3">Browse Curated Listings</h3>
+        <p class="text-silver leading-relaxed">
+          We source from Facebook Marketplace, Instagram, BimmerPost, and direct seller submissions. Every listing arrives with verified specs, real photos, and a fitment summary.
+        </p>
+      </div>
+
+      <div class="border-stripe-left pl-6">
+        <div class="font-mono text-xs text-mviolet mb-4">02 / VERIFY</div>
+        <h3 class="font-display text-2xl uppercase mb-3">Run The AI Fitment Check</h3>
+        <p class="text-silver leading-relaxed">
+          Our AI is trained on every BMW M chassis from E30 to G87. Type the specs, pick your chassis, get a verdict in seconds — covering bolt pattern, hub bore, brake clearance, fender geometry, and tire compatibility.
+        </p>
+      </div>
+
+      <div class="border-stripe-left pl-6">
+        <div class="font-mono text-xs text-mred mb-4">03 / CONNECT</div>
+        <h3 class="font-display text-2xl uppercase mb-3">Talk To The Seller</h3>
+        <p class="text-silver leading-relaxed">
+          We tag sellers in every post and link directly to their listings. No middleman fees, no hidden commissions. Just a clean introduction between buyer and seller.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================== SUBMIT FORM =============================== -->
+<section id="submit" class="py-24 px-6 bg-carbon">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="font-mono text-xs text-mblue uppercase tracking-widest mb-3">— SELLER INTAKE —</div>
+      <h2 class="font-display text-5xl md:text-6xl uppercase">Selling Wheels?</h2>
+      <p class="mt-4 text-silver">Submit your set. We feature curated listings on @mspecwheels every week. Free.</p>
+    </div>
+
+    <form action="https://formspree.io/f/mzzrldnj" method="POST" class="space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Your name</label>
+          <input type="text" name="name" required class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition" />
+        </div>
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Contact (IG handle / email)</label>
+          <input type="text" name="contact" required class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition" />
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Vehicle wheels came off</label>
+          <input type="text" name="vehicle" placeholder="e.g., F80 M3 Comp" required class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition" />
+        </div>
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Wheel brand / model</label>
+          <input type="text" name="wheels" placeholder="e.g., BMW Style 666M" required class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition" />
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Diameter</label>
+          <select name="diameter" class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition">
+            <option>17"</option><option>18"</option><option>19"</option><option>20"</option><option>21"</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Width F / R</label>
+          <input type="text" name="widths" placeholder="9 / 10" class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition" />
+        </div>
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Offset F / R (ET)</label>
+          <input type="text" name="offsets" placeholder="29 / 40" class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition" />
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Asking price</label>
+          <input type="text" name="price" placeholder="$2,400 OBO" required class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition" />
+        </div>
+        <div>
+          <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Location</label>
+          <input type="text" name="location" placeholder="Austin, TX" required class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition" />
+        </div>
+      </div>
+
+      <div>
+        <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Condition + description</label>
+        <textarea name="description" rows="4" required class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition"></textarea>
+      </div>
+
+      <div>
+        <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Image links</label>
+        <textarea name="images" rows="2" placeholder="Paste Dropbox / Imgur / Google Drive links — we'll repost on Instagram with your tag" class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition"></textarea>
+      </div>
+
+      <button type="submit" class="w-full md:w-auto tricolor-bg text-white font-mono text-sm uppercase tracking-widest px-10 py-4 hover:opacity-90 transition glow-violet">
+        Submit For Feature →
+      </button>
+
+      <p class="text-xs text-muted">We'll DM you on Instagram if we feature your listing. Typical response: 24–48 hours.</p>
+    </form>
+  </div>
+</section>
+
+<!-- =============================== ABOUT =============================== -->
+<section id="about" class="py-24 px-6">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <div class="aspect-square bg-carbon border border-steel flex items-center justify-center">
+      <div class="text-center">
+        <div class="font-display text-2xl text-muted">BMW G80 M3</div>
+        <div class="font-mono text-xs text-muted mt-2">— PLACEHOLDER —</div>
+      </div>
+    </div>
+    <div>
+      <div class="font-mono text-xs text-mblue uppercase tracking-widest mb-3">— THE FOUNDER —</div>
+      <h2 class="font-display text-4xl md:text-5xl uppercase mb-6">Built By An Enthusiast.<br/>Powered By AI.</h2>
+      <p class="text-silver leading-relaxed mb-4">
+        MSpec Wheels exists because Facebook Marketplace is broken for BMW wheel buyers. Listings lack specs. Sellers don't respond. Buyers can't tell whether a 19×10 ET20 will fit their G80 without spending an hour on BimmerPost.
+      </p>
+      <p class="text-silver leading-relaxed mb-4">
+        We built a tool that answers the question in seconds — and a curated feed that surfaces only the wheels worth your time. No commissions. No middleman fees. Just a free service for the community we belong to.
+      </p>
+      <p class="text-silver italic font-mono text-sm">— Lee, founder. Killeen, TX. Drives an M car.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== FAQ =============================== -->
+<section class="py-24 px-6 bg-carbon">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="font-mono text-xs text-mblue uppercase tracking-widest mb-3">— ANSWERS —</div>
+      <h2 class="font-display text-5xl md:text-6xl uppercase">FAQ</h2>
+    </div>
+
+    <div class="space-y-4">
+      <details class="bg-slate2 border border-steel p-6 group">
+        <summary class="flex justify-between items-center font-display text-xl uppercase">
+          Is the fitment tool actually free?
+          <span class="text-mblue group-open:rotate-180 transition">↓</span>
+        </summary>
+        <p class="mt-4 text-silver leading-relaxed">Yes. Forever. No login required, no email gate, no credit card. Buy us a coffee on Instagram if you want.</p>
+      </details>
+
+      <details class="bg-slate2 border border-steel p-6 group">
+        <summary class="flex justify-between items-center font-display text-xl uppercase">
+          Do you take a commission on sales?
+          <span class="text-mblue group-open:rotate-180 transition">↓</span>
+        </summary>
+        <p class="mt-4 text-silver leading-relaxed">No. Sellers keep 100%. We tag the seller in every post and the buyer contacts them directly.</p>
+      </details>
+
+      <details class="bg-slate2 border border-steel p-6 group">
+        <summary class="flex justify-between items-center font-display text-xl uppercase">
+          What chassis do you cover?
+          <span class="text-mblue group-open:rotate-180 transition">↓</span>
+        </summary>
+        <p class="mt-4 text-silver leading-relaxed">Every BMW M model from the E30 M3 (1986) through the G87 M2, G80 M3, G82 M4, G90 M5, and F92 M8. M-SUVs and the XM are coming in Phase 2.</p>
+      </details>
+
+      <details class="bg-slate2 border border-steel p-6 group">
+        <summary class="flex justify-between items-center font-display text-xl uppercase">
+          How accurate is the fitment AI?
+          <span class="text-mblue group-open:rotate-180 transition">↓</span>
+        </summary>
+        <p class="mt-4 text-silver leading-relaxed">It's trained on a database compiled from Apex Wheels, BimmerTips, Fitment Industries, Wheel-Size, and BimmerPost — the sources every serious BMW enthusiast already trusts. Always test-fit before final mounting; tire brand and ride height matter.</p>
+      </details>
+
+      <details class="bg-slate2 border border-steel p-6 group">
+        <summary class="flex justify-between items-center font-display text-xl uppercase">
+          Can I sell wheels here that aren't BMW?
+          <span class="text-mblue group-open:rotate-180 transition">↓</span>
+        </summary>
+        <p class="mt-4 text-silver leading-relaxed">Right now we're BMW M only — that's the niche. If we expand, you'll hear about it on @mspecwheels first.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== EMAIL CAPTURE =============================== -->
+<section class="py-16 px-6 bg-ink relative">
+  <div class="absolute top-0 left-0 right-0 tricolor-stripe"></div>
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="font-display text-3xl md:text-4xl uppercase mb-4">Get Notified When Wheels Match Your Fitment</h2>
+    <form action="https://formspree.io/f/mzzrldnj" method="POST" class="flex flex-col md:flex-row gap-3 max-w-2xl mx-auto">
+      <input type="email" name="email" placeholder="you@example.com" required class="flex-1 bg-carbon border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition" />
+      <input type="hidden" name="form-source" value="email-capture" />
+      <select name="chassis-interest" class="bg-carbon border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition">
+        <option value="">Pick your chassis</option>
+        <option>F80 M3</option><option>G80 M3</option><option>G87 M2</option><option>F90 M5</option><option>Other</option>
+      </select>
+      <button type="submit" class="tricolor-bg text-white font-mono text-sm uppercase tracking-widest px-8 py-3 hover:opacity-90 transition">Notify Me</button>
+    </form>
+    <p class="mt-4 text-xs text-muted">Maybe one email a week. Never spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- =============================== FOOTER =============================== -->
+<footer class="py-16 px-6 border-t border-steel bg-carbon">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="assets/logo.png" alt="MSpec Wheels" class="h-10 w-10 rounded" />
+          <span class="font-display text-xl">MSPEC WHEELS</span>
+        </div>
+        <p class="text-silver text-sm leading-relaxed mb-4">
+          BMW M wheel fitment intelligence + curated marketplace.
+        </p>
+        <div class="flex gap-4">
+          <a href="https://www.instagram.com/mspecwheels/" target="_blank" rel="noopener" class="text-muted hover:text-mblue transition">Instagram</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="font-mono text-xs uppercase tracking-widest text-muted mb-4">Navigate</div>
+        <ul class="space-y-2 text-silver text-sm">
+          <li><a href="#fitment" class="hover:text-bone transition">Fitment Tool</a></li>
+          <li><a href="#listings" class="hover:text-bone transition">Listings</a></li>
+          <li><a href="#submit" class="hover:text-bone transition">Submit Wheels</a></li>
+          <li><a href="#about" class="hover:text-bone transition">About</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="font-mono text-xs uppercase tracking-widest text-muted mb-4">Trust</div>
+        <ul class="space-y-2 text-silver text-sm">
+          <li><a href="#" class="hover:text-bone transition">Privacy Policy (TBD)</a></li>
+          <li><a href="#" class="hover:text-bone transition">Terms of Service (TBD)</a></li>
+          <li><a href="mailto:hello@mspecwheels.com" class="hover:text-bone transition">hello@mspecwheels.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-steel text-xs text-muted text-center">
+      © 2026 MSpec Wheels. Independent enthusiast project. Not affiliated with BMW AG. BMW, M, and chassis names are trademarks of BMW AG.
+    </div>
+  </div>
+</footer>
+
+<!-- =============================== Wheel-Well SVG Renderer =============================== -->
+<script src="wheel_well_render.js"></script>
+
+<!-- =============================== JAVASCRIPT =============================== -->
+<script>
+  // Load chassis geometry once at page load
+  let chassisGeometryDB = null;
+  fetch('chassis_geometry.json')
+    .then(r => r.json())
+    .then(data => { chassisGeometryDB = data; })
+    .catch(err => { console.warn('Could not load chassis_geometry.json — visualization will be unavailable.', err); });
+
+  // Parse a wheel-spec string like "19x10 ET25 5x112" or "19x10 +25 5x112"
+  function parseWheelSpec(s) {
+    if (!s) return null;
+    const cleaned = String(s).trim().replace(/\s+/g, ' ');
+    const m = cleaned.match(/(\d+(?:\.\d+)?)\s*[xX×]\s*(\d+(?:\.\d+)?)\s*(?:J\s*)?(?:ET\s*([+-]?\d+)|([+-]?\d+))?/i);
+    if (!m) return null;
+    return {
+      diameter_in: parseFloat(m[1]),
+      width_in: parseFloat(m[2]),
+      offset_mm: m[3] ? parseInt(m[3], 10) : (m[4] ? parseInt(m[4], 10) : null),
+    };
+  }
+
+  // Track current viz state so the axle toggle can re-render
+  let currentVizState = null;
+
+  function renderViz(axle) {
+    if (!chassisGeometryDB || !currentVizState) return;
+    const { chassis, parsed, xdrive } = currentVizState;
+    const svg = window.renderWheelWell({
+      chassis: chassis,
+      geometryDB: chassisGeometryDB,
+      diameter_in: parsed.diameter_in,
+      width_in: parsed.width_in,
+      offset_mm: parsed.offset_mm,
+      axle: axle || 'front',
+      xdrive: xdrive,
+    });
+    const mount = document.getElementById('verdict-svg-mount');
+    if (mount) mount.innerHTML = svg;
+    currentVizState.axle = axle || 'front';
+    const toggle = document.getElementById('verdict-svg-axle-toggle');
+    if (toggle) toggle.textContent = (axle === 'rear') ? 'Switch to Front ↗' : 'Switch to Rear ↗';
+  }
+
+  // Wire axle toggle
+  document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'verdict-svg-axle-toggle') {
+      const next = (currentVizState && currentVizState.axle === 'rear') ? 'front' : 'rear';
+      renderViz(next);
+    }
+  });
+
+  // Nav background on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) nav.classList.add('nav-scrolled');
+    else nav.classList.remove('nav-scrolled');
+  });
+
+  // Mobile menu toggle
+  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  // Fitment form
+  const form = document.getElementById('fitment-form');
+  const loadingEl = document.getElementById('loading');
+  const verdictEl = document.getElementById('verdict');
+  const errorEl = document.getElementById('error');
+  const submitBtn = document.getElementById('submit-btn');
+
+  const verdictColorMap = {
+    'YES_DIRECT_FIT': 'verdict-yes',
+    'YES_WITH_MODS': 'verdict-with-mods',
+    'MAYBE_HEAVY_MODS': 'verdict-maybe',
+    'NO_NOT_RECOMMENDED': 'verdict-no',
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const specs = document.getElementById('specs').value.trim();
+    const chassis = document.getElementById('chassis').value;
+    const context = document.getElementById('context').value.trim();
+    if (!specs || !chassis) {
+      errorEl.textContent = 'Please enter wheel specs and select a chassis.';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+    errorEl.classList.add('hidden');
+    verdictEl.classList.add('hidden');
+    loadingEl.classList.remove('hidden');
+    submitBtn.disabled = true;
+
+    try {
+            // STATIC CUT: Claude Netlify function removed. No serverless call.
+      // Mechanical client-side engine not wired in this preview snapshot yet.
+      loadingEl.classList.add('hidden');
+      submitBtn.disabled = false;
+      errorEl.textContent = 'Static preview: fitment API disabled (Claude/Netlify removed). UI + chassis geometry viz still load. Mechanical engine ships separately under Product/engine/.';
+      errorEl.classList.remove('hidden');
+      return;
+
+      /* DISABLED_SERVERLESS_FETCH
+      const res = await fetch('/.netlify/functions/fitment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ specs, chassis, context }),
+      });
+      const data = await res.json();
+      loadingEl.classList.add('hidden');
+      submitBtn.disabled = false;
+
+      if (!res.ok || data.error) {
+        errorEl.textContent = data.error || 'Something went wrong. Try again.';
+        errorEl.classList.remove('hidden');
+        return;
+      }
+      DISABLED_SERVERLESS_FETCH */
+
+      // Render verdict
+      const tierEl = document.getElementById('verdict-tier');
+      tierEl.textContent = data.verdict_short || data.verdict;
+      tierEl.className = 'font-display text-3xl uppercase mb-2 ' + (verdictColorMap[data.verdict] || '');
+
+      document.getElementById('verdict-why').textContent = data.why || '';
+
+      // Breakdown
+      const bd = document.getElementById('verdict-breakdown');
+      bd.innerHTML = '';
+      const fields = [
+        ['BOLT PATTERN', data.breakdown?.bolt_pattern],
+        ['CENTER BORE', data.breakdown?.center_bore],
+        ['BRAKE CLEARANCE', data.breakdown?.brake_clearance],
+        ['FRONT FITMENT', data.breakdown?.front_fitment],
+        ['REAR FITMENT', data.breakdown?.rear_fitment],
+        ['TIRE NOTE', data.breakdown?.tire_concerns],
+      ];
+      fields.forEach(([label, val]) => {
+        if (val) {
+          const row = document.createElement('div');
+          row.innerHTML = '<span class="text-muted">' + label.padEnd(18, ' ') + '</span> <span>' + val + '</span>';
+          bd.appendChild(row);
+        }
+      });
+      if (data.breakdown?.required_mods?.length) {
+        const row = document.createElement('div');
+        row.innerHTML = '<span class="text-muted">REQUIRED MODS&nbsp;&nbsp;&nbsp;&nbsp;</span><br/><span class="ml-4 text-bone">• ' + data.breakdown.required_mods.join('<br/>• ') + '</span>';
+        bd.appendChild(row);
+      }
+      if (data.buyer_recommendation) {
+        const row = document.createElement('div');
+        row.className = 'pt-3 mt-3 border-t border-steel';
+        row.innerHTML = '<span class="text-mblue">BOTTOM LINE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="text-bone">' + data.buyer_recommendation + '</span>';
+        bd.appendChild(row);
+      }
+
+      // Ask seller
+      const askBlock = document.getElementById('ask-seller-block');
+      const askList = document.getElementById('ask-seller-list');
+      if (data.ask_seller && data.ask_seller.length) {
+        askList.innerHTML = '';
+        data.ask_seller.forEach(q => {
+          const li = document.createElement('li');
+          li.textContent = q;
+          askList.appendChild(li);
+        });
+        askBlock.classList.remove('hidden');
+      } else {
+        askBlock.classList.add('hidden');
+      }
+
+      // Caveats
+      const caveatsEl = document.getElementById('data-caveats');
+      if (data.data_caveats) {
+        caveatsEl.textContent = data.data_caveats;
+        caveatsEl.classList.remove('hidden');
+      } else {
+        caveatsEl.classList.add('hidden');
+      }
+
+      // Phase 1.5 — render wheel-well SVG visualization if we have geometry data
+      try {
+        const parsed = parseWheelSpec(specs);
+        if (parsed && parsed.offset_mm != null && chassisGeometryDB) {
+          const xdrive = /xdrive/i.test(context);
+          currentVizState = { chassis, parsed, axle: 'front', xdrive };
+          renderViz('front');
+          document.getElementById('verdict-svg-container').classList.remove('hidden');
+        } else {
+          document.getElementById('verdict-svg-container').classList.add('hidden');
+        }
+      } catch (vizErr) {
+        console.warn('Visualization render failed:', vizErr);
+        document.getElementById('verdict-svg-container').classList.add('hidden');
+      }
+
+      verdictEl.classList.remove('hidden');
+      verdictEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Pixel event
+      if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'fitment_query', chassis: chassis });
+
+    } catch (err) {
+      loadingEl.classList.add('hidden');
+      submitBtn.disabled = false;
+      errorEl.textContent = 'Network error. Try again.';
+      errorEl.classList.remove('hidden');
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,897 @@
+{
+  "metadata": {
+    "version": "1.3-product-engine",
+    "last_updated": "2026-09-28",
+    "doc_role": "Working Product mechanical-first chassis DB (copied from phase1; expanded 2026-09-27 SUV/Z4M/G81; 2026-09-28 Z3M/1M/M1). Ingest phase1 remains archive until Chair clears sync. No Claude Netlify.",
+    "verification_status": "AI-assembled. Round 1 spot-check complete: F80 ✓ VERIFIED, G80 ⚠ PARTIAL (corrected), E39 ✓ VERIFIED. Rounds 2-5 pending.",
+    "sources": [
+      "apexwheels.com",
+      "bimmertips.com",
+      "fitmentindustries.com",
+      "wheel-size.com",
+      "g87.bimmerpost.com",
+      "bmwmregistry.com",
+      "limitlesstire.com"
+    ],
+    "product_note": "Live working copies: Product/engine/ and Product/site-preview/. Prefer these over mutating ingest.",
+    "card_count": 35
+  },
+  "shared_logic": {
+    "verdict_tiers": {
+      "YES_DIRECT_FIT": "Wheel/tire setup bolts on with stock suspension, stock brakes, stock bodywork, normal alignment.",
+      "YES_WITH_MODS": "Realistic and commonly achievable with minor/moderate supporting changes (hub-centric rings, small spacers, mild negative camber, rear fender lip roll, minor liner trim, tire-size adjustment).",
+      "MAYBE_HEAVY_MODS": "Possible only with aggressive fitment work (significant negative camber, fender roll/pull, liner trim/delete, coilovers, over-fenders/widebody, aggressive tire stretch, custom spacers).",
+      "NO_NOT_RECOMMENDED": "Major mismatch: wrong bolt pattern, center bore too small, wheel diameter too small for brakes, offset too aggressive, wheel too wide for stock body, or would require unsafe adapters/bodywork."
+    },
+    "bolt_pattern_5x120_chassis": [
+      "E30 M3",
+      "E36 M3",
+      "E46 M3",
+      "E9X M3",
+      "F80 M3",
+      "F82/F83 M4",
+      "F87 M2 (all variants)",
+      "E28 M5",
+      "E34 M5",
+      "E39 M5 (74.1mm bore)",
+      "E60/E61 M5",
+      "F10 M5",
+      "E24 M6",
+      "E63/E64 M6",
+      "F06/F12/F13 M6",
+      "E85/E86 Z4 M",
+      "E36/7 / E36/8 Z3 M",
+      "E82 1M Coupe",
+      "E26 M1"
+    ],
+    "bolt_pattern_5x112_chassis": [
+      "G87 M2",
+      "G80/G81 M3",
+      "G82/G83 M4",
+      "F90 M5",
+      "G90 M5",
+      "G99 M5 Touring",
+      "F91/F92/F93 M8",
+      "F97 X3 M",
+      "F98 X4 M",
+      "F95 X5 M",
+      "F96 X6 M",
+      "G09 XM"
+    ],
+    "center_bore_72_56mm": "Most older 5×120 M cars (E36, E46, E9X, F8X, F87, E28, E34, E60, F10, E24, E63, F06–F13)",
+    "center_bore_74_1mm_unique": "E39 M5 only — unique among BMW M cars",
+    "center_bore_66_6mm": "All 5×112 M cars (G87, G8X, F90, G90, F9X M8, M-SUVs, XM)",
+    "clearance_budget_mm": {
+      "E30 M3": {
+        "safe_extra": 6,
+        "aggressive_street": 12,
+        "heavy_mod_track": 18
+      },
+      "E36 M3": {
+        "safe_extra": 8,
+        "aggressive_street": 16,
+        "heavy_mod_track": 24
+      },
+      "E46 M3": {
+        "safe_extra": 10,
+        "aggressive_street": 20,
+        "heavy_mod_track": 28
+      },
+      "E9X M3": {
+        "safe_extra": 12,
+        "aggressive_street": 22,
+        "heavy_mod_track": 30
+      },
+      "F8X M3/M4": {
+        "safe_extra": 10,
+        "aggressive_street": 18,
+        "heavy_mod_track": 25
+      },
+      "G8X M3/M4": {
+        "safe_extra": 14,
+        "aggressive_street": 20,
+        "heavy_mod_track": 30
+      },
+      "G87 M2": {
+        "safe_extra": 14,
+        "aggressive_street": 20,
+        "heavy_mod_track": 30
+      },
+      "F87 M2": {
+        "safe_extra": 8,
+        "aggressive_street": 16,
+        "heavy_mod_track": 24
+      },
+      "E28 M5 / E24 M6": {
+        "safe_extra": 6,
+        "aggressive_street": 12,
+        "heavy_mod_track": 18
+      },
+      "E34 M5": {
+        "safe_extra": 10,
+        "aggressive_street": 18,
+        "heavy_mod_track": 25
+      },
+      "E39 M5": {
+        "safe_extra": 10,
+        "aggressive_street": 18,
+        "heavy_mod_track": 25
+      },
+      "E60 M5 / E63 M6": {
+        "safe_extra": 6,
+        "aggressive_street": 12,
+        "heavy_mod_track": 18
+      },
+      "F10 M5 / F1X M6": {
+        "safe_extra": 8,
+        "aggressive_street": 15,
+        "heavy_mod_track": 22
+      },
+      "F90 M5 / F9X M8": {
+        "safe_extra": 10,
+        "aggressive_street": 18,
+        "heavy_mod_track": 25
+      },
+      "F97/F98 X3M/X4M": {
+        "safe_extra": 10,
+        "aggressive_street": 16,
+        "heavy_mod_track": 22
+      },
+      "F95/F96 X5M/X6M": {
+        "safe_extra": 8,
+        "aggressive_street": 14,
+        "heavy_mod_track": 20
+      },
+      "G09 XM": {
+        "safe_extra": 8,
+        "aggressive_street": 12,
+        "heavy_mod_track": 18
+      },
+      "E85/E86 Z4 M": {
+        "safe_extra": 8,
+        "aggressive_street": 14,
+        "heavy_mod_track": 20
+      },
+      "E36/7 Z3 M": {
+        "safe_extra": 8,
+        "aggressive_street": 14,
+        "heavy_mod_track": 20
+      },
+      "E82 1M": {
+        "safe_extra": 10,
+        "aggressive_street": 18,
+        "heavy_mod_track": 25
+      },
+      "E26 M1": {
+        "safe_extra": 6,
+        "aggressive_street": 12,
+        "heavy_mod_track": 18
+      }
+    },
+    "brake_clearance_by_wheel_diameter": {
+      "17_inch": "Usually OK for E36 M3, E34 M5, E39 M5 depending on barrel design. Generally too small for modern M5/M6/M8 and big-brake cars.",
+      "18_inch": "Often works on E46 M3, E9X M3, F8X M3/M4, some G8X track wheels designed for brake clearance. May not clear large M5/M6/M8 brakes.",
+      "19_inch": "Generally safe for most M3/M4 applications. Often the minimum for E60 M5, F10 M5, and large-brake cars.",
+      "20_inch": "Often required or preferred for F90 M5, M8, carbon ceramic brakes, and big modern M cars."
+    },
+    "offset_poke_math": {
+      "outer_poke_mm": "((new_width_inches - oem_width_inches) / 2 * 25.4) + (oem_offset_mm - new_offset_mm)",
+      "inner_clearance_mm": "((new_width_inches - oem_width_inches) / 2 * 25.4) - (oem_offset_mm - new_offset_mm)",
+      "note": "Maintain at least ~5mm inner clearance when possible. Positive outer poke = wheel sits further outward. Positive inner clearance change = wheel moves closer to strut."
+    },
+    "tire_caveats": [
+      "Same tire size varies by brand. Michelin Pilot Sport, Yokohama A052, Cup 2, Toyo R888R run wide.",
+      "Tire diameter affects vertical fender clearance.",
+      "Tire section width affects fender and strut clearance.",
+      "On xDrive BMWs, front/rear rolling diameter must stay close."
+    ],
+    "spacer_rules": [
+      "Useful when inner clearance is tight and outer fender budget allows it.",
+      "Should be hub-centric.",
+      "Require proper extended bolts or studs.",
+      "Thin spacers may not have a hub lip — verify safety."
+    ],
+    "adapter_rules": [
+      "Change bolt pattern but typically add 15-25mm thickness.",
+      "Effective offset = original offset - adapter thickness.",
+      "Example: ET35 wheel with 20mm adapter -> effective ET15.",
+      "If adapters push the wheel beyond the chassis clearance budget, verdict should be NO or MAYBE with heavy mods."
+    ],
+    "conservative_tier_bias": "When uncertain between two tiers, push verdict ONE tier toward NO. Brand-killing reviews come from over-promising fit, not from being conservative.",
+    "mandatory_disclaimer": "Buyer is responsible for final fitment verification. Fitment results may vary; always test-fit wheels before final mounting due to variations in camber, tire brand, ride height, and manufacturing tolerances."
+  },
+  "chassis": [
+    {
+      "family": "M2",
+      "header": "F87 M2 (2016–2018, “Base”)",
+      "chassis_codes": [
+        "F87"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2016–2018, “Base”",
+      "oem_wheels_text": "19×9.0J ET29 front, 19×10.0J ET40 rear (Style 437M); OEM tires 245/35ZR19 front and 265/35ZR19 rear. (These wheels are shared with the F80 M3/F82 M4.)",
+      "aftermarket_range_text": "Front wheels up to ~9.5″ wide (e.g. 19×9.5″ ET22) can be used for a flush fit; 19×9.5 ET22 avoids inner strut interference while pushing the wheel out ~7 mm vs. stock. In the rear, widths up to 10.5″ (e.g. 19×10.5″ ET45) are tested on stock body. These wider setups typically run 265–275 front and 285–295 rear tires.",
+      "clearance_notes_text": "The F87 has tight front clearance – a 5Â mm spacer may be needed if using coilovers or tires that run wide, to avoid strut/spring contact. Additional negative camber up front is recommended if running maximum tire widths to prevent outer fender rub. Rear fenders can accommodate a 10.5″ wheel without rolling when using moderate tire sizes (â‰¤295). The optional M2 “2NH” larger front brakes can interfere with certain wheel designs; high-offset wheels or spacers ensure caliper clearance.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120 PCD, 72.56 mm center bore"
+    },
+    {
+      "family": "M2",
+      "header": "F87 M2 Competition (2019–2021)",
+      "chassis_codes": [
+        "F87"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2019–2021",
+      "oem_wheels_text": "19×9.0J ET29 front, 19×10.0J ET40 rear (Style 788M); tire sizing remained 245/35R19 front and 265/35R19 rear. (Same dimensions as base M2; wheels are a Y-spoke design.)",
+      "aftermarket_range_text": "Similar to base M2 – front fitments ~9.5″ wide ET20–25 have been used with 265/35R19 tires, requiring mild negative camber to avoid rubbing. Rear can accommodate 10–11″ wide wheels in the ET35–45 range on stock suspension; e.g. owners have fitted 19×11 ET44 with 295/30R19 without fender modification (aggressive flush).",
+      "clearance_notes_text": "The Competition model’s larger brakes (400 mm front rotors) may necessitate wheels with sufficient spoke clearance. Many 18″ track wheels clear the steel brakes, but if running 18″ a spacer might be required up front for certain wheel designs. No additional fender rolling is needed for the fitments above on stock ride height; however, running 285+ front tires will almost certainly contact the fender liner without added camber.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm (same as base F87). Lug hardware upgraded to M14x1.25 studs in F87 Comp."
+    },
+    {
+      "family": "M2",
+      "header": "F87 M2 CS (2020)",
+      "chassis_codes": [
+        "F87"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2020",
+      "oem_wheels_text": "19×9.0J ET29 front, 19×10.0J ET40 rear (Style 763M lightweight); OE tires up-sized to 255/35ZR19 front and 275/35ZR19 rear for the CS. The 763M forged wheels are notably lighter (≈20.7 lb front).",
+      "aftermarket_range_text": "The M2 CS shares fitment limits with the base/Comp. In fact, the CS comes stock with the more aggressive 255 mm front tire, which pushes the envelope of the stock front fender. Aftermarket 9.5″ fronts with 265/35 tires will work (CS has factory camber plates allowing more neg. camber), but a 275 front tire may rub without additional camber beyond CS factory spec. Rear can utilize 10.5″ width (the CS’s own 10″ wheels are easily handled; some owners run 11″ rear with 295/30R19 track tires and report only minor inner clearance checks).",
+      "clearance_notes_text": "CS-specific front adaptive suspension doesn’t significantly alter clearance. The front fender arch is essentially at its limit with 255/35R19 – any taller or wider and you risk contacting the fender lip on big compressions. BMW equipped the CS with slightly more negative camber from the factory, which aids clearance. Brake clearance: the CS’s standard wheel (763M) was designed to clear the optional carbon ceramic rotors; most 18″ aftermarket wheels will also clear steel brakes, but confirm clearance for carbon ceramics if equipped.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm (last of the 5×120 M2s)."
+    },
+    {
+      "family": "M2",
+      "header": "G87 M2 (2023–present)",
+      "chassis_codes": [
+        "G87"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2023–present",
+      "oem_wheels_text": "Staggered 19\"/20\" setup – 19×9.5J front and 20×10.5J rear are standard on the G87 M2 (mirroring the M3/M4 Competition wheel package). Factory tire sizes are 275/35ZR19 front and 285/30ZR20 rear (Michelin Pilot Sport 4S in most markets). Note: Some regions may offer a winter setup (e.g. 275/35R19 square on 19″ wheels).",
+      "aftermarket_range_text": "Early tests indicate the G87 can accommodate 20×10 ET15 front, 20×11 ET15 rear on stock suspension with performance tires – this is an aggressive fit used by aftermarket wheel companies to sit flush. For 19″ setups, owners have fitted 19×10.5″ ET15 with 295/30R19 rear, and 19×9.5″ ET20 with 275/35R19 front on stock ride height without rubbing (these specs are similar to the G80 M3). The conservative range for direct fitment is roughly ET15–25 front (9.5–10″ width) and ET20–35 rear (10.5–11″ width) based on current G87/G8X data.",
+      "clearance_notes_text": "The G87 M2 comes from the factory very close to its clearance limits – front 275 tires may rub the liners at full lock on certain tire models (minor trimming or an increase in ride height may be needed if going wider than OEM). A 5–8 mm spacer up front can be used for a more aggressive flush stance, but pushing the front out may cause slight rubbing on the fender liner or arch trim on big bumps. The G87 uses the big G-series brakes (6-piston front calipers), so wheel barrel clearance is critical – most 18″ wheels designed for the G80 M3 will also fit the M2. Overall, if maintaining stock camber, it’s advised to stay near OEM wheel widths to avoid fender contact. (As of 2024, data on G87 fitments is still evolving – always test fit when approaching the extremes.)",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×112 PCD, 66.5–66.6 mm center bore (BMW switched to the newer hub spec for G-chassis). Lug hardware is M14x1.25 bolts."
+    },
+    {
+      "family": "M3",
+      "header": "E30 M3 (1986–1991)",
+      "chassis_codes": [
+        "E30"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "1986–1991",
+      "oem_wheels_text": "Standard: 15×7.0J ET30 cross-spoke alloys with 205/55VR15 tires. Evolution models: 16×7.5J ET27 BBS cross-spoke wheels with 225/45ZR16 tires (this larger 16″ package was standard on Evo II, Sport Evo and special editions, and optional on regular M3s). The E30 M3’s stock offsets (~30 mm) and box-flared fenders give it a wider stance than a normal E30.",
+      "aftermarket_range_text": "Popular upgrades are 17″ wheels to accommodate modern tires. A direct-fit street/track setup is 17×8.0″ ET20 square with 215/40R17 or 235/40R17 tires. With -2Â° or more front camber, 235/40R17 can be used (may require a mild roll of the rear fender depending on tire model). For a flush “stance” look, enthusiasts run 17×8.5″ ET20 square with 235/40 or 245/35 tires – this typically demands rolled fenders and dialed-in camber up front to avoid rubbing.",
+      "clearance_notes_text": "The E30 M3’s front strut design can collide with overly wide wheels if the offset is too high. Keeping front offset ~ET20 (as in the examples above) ensures inner clearance to the strut. At ET20, an 8.5″ wheel sits very flush with the fender – any lower offset or wider width will poke past the fender lip. Big brake kits: Many 17″ wheels will clear common BBKs, but the deepest concave designs (Profile 3 in Apex ARC-8) do not clear BBKs without spacers. Staggered setups are uncommon (square provides neutral handling and easy tire rotation). Overall, the E30 M3 can go up to ~8.5″ wide wheels with careful planning; fitting 9″ or wider typically requires significant fender work or camber beyond stock.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120 PCD, 72.56 mm center bore (unique 5-lug hubs on the E30 M3 versus 4-lug on standard E30s)."
+    },
+    {
+      "family": "M3",
+      "header": "E36 M3 (1992–1999)",
+      "chassis_codes": [
+        "E36"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "1992–1999",
+      "oem_wheels_text": "All E36 M3s came with 17″ wheels. Early (’94–’95) models used 17×7.5J ET41 all around with 235/45R17 tires. Later models (3.2L euro and ’96–’99 NA) had staggered 17×7.5J ET41 front and 17×8.5J ET41 rear, on 225/45R17 front and 245/40R17 rear tires. (Common OEM styles were 22, 23, 24 – all with +41 offset. The E36 M3 maintained relatively high offsets compared to older Ms.)",
+      "aftermarket_range_text": "The E36 M3 can easily run a square 17×8.5″ setup to improve balance. A direct bolt-on example is 17×8.5″ ET40 square with 235/40R17 or 245/40R17 tires. This fits on stock suspension; however, tires that run wide may require a thin (~5 mm) front spacer to clear the strut at full lock. Moving up to 18″, a common street setup is 18×8.5″ ET35–40 square with 225/40R18 or 235/40R18 tires – also typically a direct fit. For staggered fitments, one proven combo is 17×8.5″ ET40 front with 235/40R17 and 17×9.0″ ET42 rear with 245/40R17 – this mirrors the factory stagger but with more width; it bolts on without issues. Aggressive track setups can push beyond 9″: with camber plates and fender rolling, some run 17×9.5″ or even 17×10″ ET25 square on an E36 (wrapped in 255–275 mm tires), but significant modifications are needed (as an example, 17×10″ ET25 with 275/40R17 requires pulling fenders and lots of negative camber).",
+      "clearance_notes_text": "The E36’s front suspension (MacPherson strut) is the primary limiting factor – with stock spring perches, anything wider than ~8.5″ at ET40 may hit the strut or inner wheel well. This is why a 5 mm spacer up front is recommended if running 245-section tires on ET40 wheels. Aftermarket coilovers can actually reduce inner clearance further (due to thicker spring collars), sometimes necessitating a 10–12 mm spacer for 9″ wide fronts. The rear suspension uses inboard springs, leaving ample room on the inside; rear fitment is usually about the fender – ET20 is about flush with the fender on an 8.5″ wheel. In practice, a 17×9″ ET35 fits the rear easily inside the fender. Brake clearance: All OEM E36 M3 wheels clear the stock 315 mm rotors; most 17″ aftermarket wheels do as well. If upgrading to larger brakes (e.g., E46 M3 front brakes), 17″ ARC-8 or EC-7 wheels in ET40 have known clearance with a small spacer if needed. In summary, the E36 M3 handles up to ~9″ wide wheels on stock body, with minor tweaks (spacers, camber) to make it work.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm. (All E36 M3s worldwide use 5-lug hubs.)"
+    },
+    {
+      "family": "M3",
+      "header": "E46 M3 (2001–2006)",
+      "chassis_codes": [
+        "E46"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2001–2006",
+      "oem_wheels_text": "Multiple 18″ and 19″ options: Standard (Style 67M) was 18×8.0J ET47 front and 18×9.0J ET26 rear, with 225/45R18 front and 255/40R18 rear tires. An optional upgrade (and later standard in some markets) was 19″ Style 67: 19×8.0J ET47 front, 19×9.5J ET27 rear, on 225/40R19 and 255/35R19 tires. Competition Package (ZCP, 2005–06) used 19″ Style 163M wheels, which are actually the same size/offset as the 19″ Style 67 (19×8.0 ET47 front, 19×9.5 ET27 rear with 225/40R19 and 255/35R19). The limited M3 CSL (2003, EU) featured unique wheels: 19×8.5J ET44 front and 19×9.5J ET27 rear, with Michelin Pilot Sport Cup 235/35ZR19 front and 265/30ZR19 rear. (These CSL wheels were lightweight style 163M as well, but wider in front and a slightly lower offset to fill out the front fenders.)",
+      "aftermarket_range_text": "The E46 M3’s generous fenders and common 5×120 spec make it popular for wider setups. Street/track (no fender mods): A very common setup is 18×9.5″ ET35 front, 18×10.5″ ET27 rear on stock suspension, running 265/35R18 front and 285/35R18 rear tires. This fits with negative camber up front (~-2°) and maybe a rear fender lip roll if the car is heavily loaded. Many track enthusiasts run 18×10″ ET25 square with 275/35R18 – this is possible but requires significant negative camber (≥ -3° front) and rolling or shaving the front and rear fender lips. For a plug-and-play fit, 18×9.0″ ET30 front with 245/40R18 and 18×10.0″ ET25 rear with 275/35R18 is a safe combo that stays inside the stock fender without rubbing (this was essentially the setup on the CSL, minus 1″ diameter). Flush stance setups: E46 owners often push to 19×10″ ET20 front and 19×11″ ET25 rear on coilovers – which can sit extremely flush but will rub without fender rolling and camber adjustments. In summary, on stock ride height you can go up to ~9.5″ front / 10.5″ rear if offsets are chosen carefully and you’re willing to add camber. Staying around 8.5–9.0″ front & 9.5–10″ rear ensures an easier fit.",
+      "clearance_notes_text": "The front fenders on the E46 M3, while wide, can still contact tire shoulder on big compression if you exceed stock tire diameter or width. The OEM 19″ setup (especially CSL’s 235 front) is about the limit without alignment changes – BMW dialed in extra camber on the CSL to fit 235 mm rubber. For aftermarket coilovers, the E46 front strut area is actually less intrusive than E36 (since the stock offset is already relatively low at 47 mm). However, very wide wheels (â‰¥10″) on the front will almost certainly hit the inner strut without spacers – example: 18×10″ ET25 front needed for track will require a thin spacer plus lots of camber. Rear clearance is usually about the fender lip; the E46 M3 rear quarter can accommodate ~10″ ET25 (CSL ran 9.5 ET27 with no roll). If running 285 or wider tires, rolling the rear lip is prudent to avoid slicing the tire on big bumps. Brake clearance: All factory 18″ wheels clear the stock 355Â mm front brakes. Many 18″ aftermarket wheels (Apex ARC-8, EC-7, etc.) were designed to clear popular BBKs (e.g. StopTech 355 mm) – usually no spacer needed unless using older deep-concave designs. In summary, the E46 M3 is very friendly to upsizing wheels, but pushing to the extreme (10″+ wide fronts or 285+ tires) moves you out of “stock-friendly” territory into the realm of rolled fenders and aggressive alignments.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm. Lug bolts are M12x1.5 (as with earlier M3s)."
+    },
+    {
+      "family": "M3",
+      "header": "E90/E92/E93 M3 (2008–2013)",
+      "chassis_codes": [
+        "E90/E92/E93"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2008–2013",
+      "oem_wheels_text": "18″ wheels (standard) – Style 219M (and later 260M) – 18×8.5J ET29 front and 18×9.5J ET23 rear, with 245/40ZR18 front and 265/40ZR18 rear tires. 19″ wheels (option) – Style 220M – 19×8.5J ET29 front, 19×9.5J ET23 rear, on 245/35ZR19 front and 265/35ZR19 rear. Competition Package (ZCP, 2010+) – Style 359M (Y-spoke) – 19×9.0J ET31 front, 19×10.0J ET25 rear; tires 245/35ZR19 front and 265/35ZR19 rear on standard ZCP, while the rare M3 GTS used the same wheels with 255/35 front, 285/30 rear Cup tires. (The ZCP/GTS wheels sit ~2 mm further in up front and ~2 mm further out in rear compared to base 19s, and are one inch wider in rear.)",
+      "aftermarket_range_text": "The E9X M3’s stock offsets are relatively low, meaning the wheels sit flush from factory. There is ample inner clearance for wider wheels, and the limiting factor becomes the fender lips. A very popular aggressive setup is 18×10″ ET25 square with 275/35-18 tires all around – this yields a rotatable setup for track use. On stock suspension, running 275 fronts will require additional negative camber (~ -2.5°) to avoid outer fender rub. With a mild camber adjustment, 18×10 ET25 and 275s fit front and rear (many track M3s run this). If one prefers staggered, a common street setup is 19×9.5″ ET22 front with 265/35-19 and 19×11″ ET25 rear with 295/30-19 – this typically needs front camber plates and a rolled rear fender (the rear 11″ will poke slightly past the stock fender without a roll). For a conservative upgrade, 19×9.0 ET20 front and 19×10.0 ET20 rear with 255/35 and 275/35 tires will fit easily – this basically pushes each wheel ~9 mm outward from stock, giving a flush look with no rubbing. Note: The E90 sedan and E92 coupe share the same track and fender width, so fitment is identical; the E93 convertible has slightly heavier suspension but similar clearances. Some extremely aggressive fitments seen include 18×10.5 ET20 front with 285/30-18 and 18×11 ET18 rear with 315/30-18 (on heavily modified track cars – not feasible on a stock suspension without major fender work). Overall, a safe maximum on stock body is ~10″ wide front (with camber) and ~11″ rear (with fender roll).",
+      "clearance_notes_text": "The E9X M3’s front fenders are aluminum and fairly stiff, but the fender liner will rub if the tire is too tall or car too low. 275/35R18 front tires, for example, may contact the liner at full steering lock or over big bumps if the ride height is stock – adding camber or going to 275/30 can alleviate this. The inner clearance up front is excellent; even 10″ ET25 wheels don’t hit the strut (stock front offset is ET29 on 8.5″, so a 10″ ET25 only sits ~8Â mm closer inside, which is fine). In fact, many run 15Â mm spacers on the OEM 18s (making them effectively ET14 front, ET8 rear) to flush them out – showing how much inward gap there is from factory. So, inner clearance is not the issue; outer fender is. The rear fenders on E9X can accommodate about an ET20 on a 10″ wheel without roll – the stock 9.5″ ET23 is well inside the lip. Going to ET15–20 on an 11″ wide rear definitely needs a fender roll and possibly a small negative camber increase to tuck the top of the tire. xDrive note: (Not applicable; all E9X M3 are RWD.) Brake clearance: E9X M3 came with 360Â mm front brakes. Most 18″ wheels clear these, but some older designs or those with lots of positive offset might clip the caliper. Apex 18×10 ET25, for instance, is known to clear the OEM brakes without spacers, as do Volk TE37 in similar sizing (these are widely used in the community). In summary, the E9X M3 can accommodate very wide wheels for those chasing performance, but going beyond the “recommended” sizes will require rolling fenders and dialing in aggressive camber to avoid rubbing.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm. (This was the last M3 generation with 5×120; subsequent G80 moved to 5×112.)"
+    },
+    {
+      "family": "M3",
+      "header": "E92 M3 GTS (2010, EU) / E90 M3 CRT (2011, EU)",
+      "chassis_codes": [
+        "E92",
+        "E90"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2010, EU",
+      "oem_wheels_text": "Both the M3 GTS and CRT used the Style 359M competition wheels but with unique tire sizes. The GTS ran the 19×9.0 ET31 front and 19×10.0 ET25 rear wheels with 255/35ZR19 front and 285/30ZR19 rear Michelin Pilot Sport Cup tires. The CRT (M3 Sedan) used the same wheel sizes but with standard 245/35 and 265/35 tires (essentially a 4-door comp pack with weight reduction).",
+      "aftermarket_range_text": "",
+      "clearance_notes_text": "",
+      "fitment_notes_text": "If replicating these setups on a standard M3, note that the GTS 255/35 front tire is taller and wider than the usual 245/35 – this will rub slightly on a non-GTS suspension unless extra camber is added. The GTS had a more track-focused alignment and slightly higher front ride height to account for this. The 285/30R19 rear is actually shorter in diameter than the regular 265/35R19, so rear clearance is fine (it actually gives a bit more fender gap). Essentially, the GTS/CRT push the stock fender limits by using the comp wheels with one size up in tire. Aftermarket fitment for these models is the same as the standard E9X M3 – they do not have additional wheel well room beyond alignment tweaks. One particular clearance item: the GTS’s front auxiliary oil cooler ducts (in the lower bumper) can be hit by thrown tire rubber if very wide front tires (≥275) are used – but on stock ride height this is rarely an issue.",
+      "verification_status": "unverified",
+      "subheader_descriptors": [
+        "(Limited production high-performance variants of the E9X generation)"
+      ],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm (same as standard E9X M3)."
+    },
+    {
+      "family": "M3",
+      "header": "F80 M3 (2015–2018)",
+      "chassis_codes": [
+        "F80"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2015–2018",
+      "oem_wheels_text": "18″ Style 513M (base) – 18×9.0J ET29 front, 18×10.0J ET40 rear; tires 255/40ZR18 front, 275/40ZR18 rear. 19″ Style 437M (option, widely equipped) – 19×9.0J ET29 front, 19×10.0J ET40 rear; tires 255/35ZR19 front, 275/35ZR19 rear. (Note: these 19″ 437M were shared with F82 M4 and even F87 M2, all having +29/+40 offsets). Competition Package (2016+): 20″ Style 666M – 20×9.0J ET29 front, 20×10.0J ET40 rear; tires 265/30ZR20 front, 285/30ZR20 rear. M3 CS (2018): 19″/20″ Style 763M forged – 19×9.0J ET29 front, 20×10.0J ET40 rear; Michelin Pilot Sport Cup 2 tires 265/35ZR19 front, 285/30ZR20 rear. (Interestingly, the CS uses the same offsets as base/comp, just differing diameters and wider tires.)",
+      "aftermarket_range_text": "The F80 shares its chassis with the F82 coupe, so fitment is identical (the 4-door’s rear arches are virtually as wide as the coupe’s). As such, refer also to F82 M4 below. In summary, popular setups include 18×9.5″ ET22 front, 18×11″ ET37 rear with 275/35-18 and 305/35-18 tires for an aggressive street/track build – this typically requires about -2.5° front camber and maybe slight rolling of the rear fender inner lip, but it does fit on stock suspension (many F8x owners run 305 rear on 11″) without rubbing. A more conservative choice is 19×10″ ET25 front, 19×11″ ET40 rear on 265/35-19 and 295/35-19 – this fills the arches nicely and only under extreme compression might the rear tire kiss the fender (rolling is cheap insurance). If aiming for a square setup, 18×10″ ET25 all around with 275/35 tires is a bolt-on track setup (similar to E9X M3 practice). Overall, the F80 can handle very wide rubber: front widths of 275 or even 285 mm are achievable with camber plates, and rear up to 305 mm on stock body. Owners report that a 305/30ZR19 on 19×11 ET40 will fit the rear with stock ride height (the tire sits just inside the fender) – this is essentially what the M4 GTS had, and many have replicated it.",
+      "clearance_notes_text": "The F8x M3/M4 have carbon fiber driveshafts and sturdy subframes, so unlike earlier Ms there’s no “give” in the rear if a tire rubs – ensure proper clearance. The stock offsets (+29 front, +40 rear) leave a significant gap inside (particularly in front). It’s common to use spacers 12–15Â mm front and 5–12Â mm rear with OEM wheels for a flush look. In other words, the chassis can take much lower offsets: front effective ET~15 and rear ~ET28 on stock widths pose no issues, which is why aftermarket wheels often come in more aggressive offsets. For inner clearance, coilover spring perches can interfere if you drastically widen the wheel inboard – but since most people widen outward on F80, inner clearance is seldom the limiting factor. Example: The M3 CS’s 265/35R19 front tire on ET29 9″ wheel is already aggressive (wider than base); going to a 10″ ET25 with 275 will push ~12Â mm further out and ~12Â mm further in – requiring about -2Â° camber to clear the fender but still clearing inside. Rear fenders can accommodate about ET35 on an 11″ without roll; any lower offset or wider will likely need a gentle roll or extra camber. Brakes: Standard steel brakes (380Â mm front) and optional carbon ceramics (400Â mm front) both fit behind 18″ track wheels (Apex 18″ wheels clear even the 400Â mm rotors in most designs). However, some 18×10 ET25 designs just brush the CCB caliper – always test fit; a 5Â mm spacer can solve it if needed. In short, the F80 M3 is very modification-friendly; you can significantly alter offset and width to maximize grip, with alignment tuning being the main tool to avoid rubbing on the front fenders.",
+      "fitment_notes_text": "",
+      "verification_status": "verified-2026-04-30",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm. (F8x M3/M4 were the final M cars on 5×120; subsequent G8x went 5×112.)",
+      "verified_oem_wheels": {
+        "style_513m_18": "18×9.0J ET29 front, 18×10.0J ET40 rear; 255/40ZR18 + 275/40ZR18",
+        "style_437m_19": "19×9.0J ET29 front, 19×10.0J ET40 rear; 255/35ZR19 + 275/35ZR19",
+        "style_666m_20_competition": "20×9.0J ET29 front, 20×10.0J ET40 rear; 265/30ZR20 + 285/30ZR20",
+        "style_763m_cs_19_20": "19×9.0J ET29 front, 20×10.0J ET40 rear; Cup 2 265/35R19 + 285/30R20",
+        "wheel_size_alt_configs": "8.5Jx18 ET27 + 9Jx18 ET29 (mixed); 8.5Jx19 ET27 + 9Jx19 ET29 (mixed) — non-Comp variants per Wheel-Size.com",
+        "note": "All confirmed Wheel-Size.com 2026-04-30"
+      }
+    },
+    {
+      "family": "M3",
+      "header": "F82/F83 M4 (2015–2020)",
+      "chassis_codes": [
+        "F82/F83"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2015–2020",
+      "oem_wheels_text": "18″ Style 513M – 18×9.0J ET29 (front), 18×10.0J ET40 (rear); 255/40R18 & 275/40R18 tires. 19″ Style 437M – 19×9.0J ET29, 19×10.0J ET40; 255/35R19 & 275/35R19 tires. (Base M4s in many markets came standard with the 19″ 437M.) 20″ Style 666M (Competition) – 20×9.0J ET29, 20×10.0J ET40; 265/30R20 & 285/30R20 tires. M4 GTS (2016) – 19″/20″ Style 666M (Acid Orange trim) – front: 19×9.5J ET29, rear: 20×10.5J ET42; Michelin Pilot Sport Cup 2 in 265/35R19 front, 285/30R20 rear. (Note: the GTS front wheels are half-inch wider than comp with same offset, and rear are 0.5″ wider with offset +42 vs +40, to fit 10 mm wider tires). M4 CS (2018) – 19″/20″ Style 763M – 19×9.0J ET29, 20×10.0J ET40; 265/35R19 front, 285/30R20 rear (same tire setup as GTS).",
+      "aftermarket_range_text": "Being the coupe version of F80, the F82 can run effectively the same wheel/tire combos. One widely used aggressive fitment is 19×10″ ET25 (front) with 275/35R19, and 19×11″ ET37 (rear) with 305/30R19 for a track-oriented setup – with about -3° camber front and -2° rear, this fits under stock fenders (several M4 owners have reported success with 305 rear on 11″ after a fender lip roll). For street use on stock suspension, a very flush setup is 20×10″ ET15 front, 20×11″ ET15 rear on 285/30R20 and 295/30R20 tires – one example is fifteen52’s show M4 which runs that spec; it sits aggressive and may rub slightly on the front liner during hard cornering. More moderately, the M4 can easily handle 18×9.5 ET22 front, 18×10.5 ET35 rear with 265/35-18 and 295/35-18 – no fender mods needed, just a touch of added camber up front to clear at full compression. In essence, any setup that works on F80 M3 works on F82 M4: up to 10.5″ wide front and 11.5″ rear have been fitted with the right offsets and alignment, though those extremes require significant camber and possibly trimming fender liners. A safe range for stock ride: Front: 9″–10″ wide, ET15–25; Rear: 10″–11″ wide, ET25–40.",
+      "clearance_notes_text": "The F82’s front fenders are slightly more flared than the F80’s by design, but the difference is minor – practically, clearance is the same. The M4 GTS’s stock setup (9.5″ ET29 with 265/35 front) is a good reference for the max front tire on stock body: it uses -2.5° camber from factory to make that work. If you attempt a 275/35 on a 10″ ET25 without adding camber, expect outer shoulder rubbing. The rear fender on the M4 (and M3) has an internal felt liner; when running 295+ tires, that liner can show scuff marks – rolling or shaving the metal lip behind it is advised for aggressive setups. One important note for F83 (convertible): The M4 convertible’s rear suspension may squat more under load due to extra weight – if you have an F83, err on the side of slightly higher offset or narrower tire to prevent rubbing when the suspension compresses fully. But generally, F83 owners run the same wheel specs as coupes successfully. M4 GTS/CS specifics: These models came with mixed diameter wheels to optimize performance; when using their wheel setups on a regular M4, no additional clearance issues arise beyond what’s stated (they were essentially factory-engineered max fit). Brakes: Base M4 steel brakes (380 mm) and even the optional carbon ceramics (400 mm) are cleared by many 18″ wheels. The Style 513M 18″ clears the steel brakes by design. Aftermarket 18s like Apex EC-7 and forged Volk 18s clear CCBs in most cases – any wheel known to fit an F8x is usually OK, but double-check barrel design for 400 mm rotors. All 19″+ wheels easily clear the brakes. In summary: the F82 is very accommodating – it can handle wider wheels/tires than the previous M3/M4 generation, but pushing to the limits will require dialing in negative camber much like a true track car.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm (identical to F80)."
+    },
+    {
+      "family": "M3",
+      "header": "G80 M3 (2021–present)",
+      "chassis_codes": [
+        "G80"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2021–present",
+      "oem_wheels_text": "The G80/82 came with mixed wheel sizes depending on model: Base M3 (6MT, RWD) – 18″ front / 19″ rear setup (Style 826M might be base offering) – approximately 18×9.5J front and 19×10.5J rear (exact offsets not officially published, but expected ~ET20–25 range front, ~ET40 rear based on wheel supplier info). Tires would be 275/40ZR18 front, 285/35ZR19 rear (the diameters are staggered but within 1%). M3 Competition (RWD and xDrive) – 19″ front / 20″ rear (Style 825M/826M) – likely 19×9.5J ET20± front, 20×10.5J ET20± rear; OEM tires 275/35ZR19 front, 285/30ZR20 rear. (xDrive models use the same sizes but all four tires must stay within rolling diameter limits). M3 CS (2023) – 19″/20″ (Style 827M in gold) – uses same size wheels/tires as Comp, but with track-focused Michelin Cup 2 Connect tires (275/35R19 and 285/30R20). Note: Precise OEM wheel offsets for G80 are not readily published; however aftermarket measurements indicate the stock 19×9.5 front is around ET20 and stock 20×10.5 rear around ET30. The effective stance is similar to the F80 with spacers – G80 fills its arches more from factory.",
+      "aftermarket_range_text": "Early adopters have pushed the G80 platform even further. One proven aggressive setup on a G80 Competition xDrive is 20×10″ ET15 front and 20×11″ ET10 rear with 285/30R20 front, 305/30R20 rear – this was achieved with minimal rubbing by some builders, but it’s extremely aggressive and not recommended without modifications (rear fenders require significant negative camber or slight pull). A more practical setup for stock suspension: 19×10.5″ ET15 front, 19×11″ ET15 rear on 275/35R19 and 295/35R19 – this has been done on the G80 with only minor front liner rub at full lock. Essentially, the G80 has wider stock fenders than F80, allowing lower offsets. Square setups are also popular: 18×10.5″ ET20 with 295/35R18 on all four corners can fit over the big brakes (with camber ~ -2° front, -1.5° rear) – giving neutral handling and rotation capability (this was observed on a G82 running Forgeline 19×10.5 square with 275/35 Cup 2s on xDrive). For a safe range: Front wheels 9.5–10.5″ wide do well with offsets ~ET15–20; Rear wheels 10.5–11.5″ wide with offsets ~ET10–25 depending on tire. The G80’s stock body can accommodate a 305-mm rear tire with proper offset and camber, as evidenced by aftermarket tests. Keep in mind xDrive models need equal diameter front/rear – generally stick to OEM stagger or a square setup for those.",
+      "clearance_notes_text": "Fenders: The G80 has very aggressive factory fender flares, especially in front (to cover the wide track). This means you can push wheels outwards more than on prior M3s. However, the front wheel arch liner has a protruding area around the bumper/fender junction – tires wider than 285 mm or very low offsets can catch there during steering input. Mild trimming of the liner or additional negative camber resolves this if running 285+ front tires on stock height. The rear fenders on G80 are less of an issue than F80; BMW effectively “pre-rolled” them by design – but the extreme concave of the rear quarter means low-offset wheels can still poke. We have seen that around ET15–20 is flush on an 11″ rear; going to ET10 with 11″ (as in some show builds) will poke past the fender – requiring either stretched tires or fender modifications to avoid contact. Suspension: G80 uses a control-arm front (no MacPherson strut), so inner clearance to suspension is generally ample – you usually hit the liner or fender before anything else. Coilover conversions for G80 (if using a coil-spring over shock in rear) might reduce inner clearance at the back, but most are running stock or HAS (height-adjustable springs) which maintain OEM clearance. Brakes: The standard steel brakes (G80 Comp) and optional carbon ceramics are both quite large; 18″ wheels can fit but must be designed for big brakes. Many 18″ forgings (e.g., BBS FI-R, Apex forged line) explicitly support the G80 brakes. A known issue is that some 18″ barrels may not clear the massive front caliper without a spacer – always confirm with the wheel manufacturer. 19″ and up have no problems with brake clearance on G80. Finally, xDrive considerations: Staggered tires are fine as long as overall diameters are within ~1%. The OEM 19/20 stagger is engineered so the front 275/35R19 and rear 285/30R20 have virtually identical rolling radii. If upsizing, keep the rolling circumference of front vs rear within a few mm to avoid upsetting the AWD system. In conclusion, the G80 M3 offers the ability to run wider, lower-offset wheels than any previous M3 from the factory, but to truly maximize it (e.g., 305 rear tires, 285+ front), you will need to dial in more aggressive alignment and accept very tight tolerances near the fender edges.",
+      "fitment_notes_text": "",
+      "verification_status": "partial-corrected-2026-04-30",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×112, 66.6 mm. (BMW moved to the new 5×112 hub standard; all G8x have 66.6 mm hubs.)",
+      "verified_oem_wheels": {
+        "base_rwd_6mt": "18×9.5J ET20 front, 19×10.5J ET20 rear; 275/40ZR18 + 285/35ZR19",
+        "competition": "19×9.5J ET20 front, 20×10.5J ET20 rear; 275/35ZR19 + 285/30ZR20",
+        "cs_2023": "19×9.5J ET20 front, 20×10.5J ET20 rear; Michelin Pilot Sport Cup 2 R Connect",
+        "note": "All G80 M3 OEM offsets are ET20 across the board — verified Wheel-Size.com 2026-04-30"
+      }
+    },
+    {
+      "family": "M3",
+      "header": "G81 M3 Touring (2022–present)",
+      "chassis_codes": [
+        "G81"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2022–present",
+      "oem_wheels_text": "Shares G80 Comp wheel program: typically 19x9.5J ET20 front + 20x10.5J ET20 rear; tires 275/35ZR19 front, 285/30ZR20 rear (Competition). CS Touring variants use similar diameters with Style 930M notes on RealOEM (rear 20x10.5 ET20 cited). Lug bolts M14x1.25. Sources: G80 verified offsets + Autosport TW G81 guide / RealOEM (researched 2026-09-27).",
+      "aftermarket_range_text": "Wagon body — rear cargo area / C-pillar clearance can differ from G80 sedan on extreme poke. Hub/PCD/OEM sizes match G80 Comp; prefer G80 mechanical evaluate() then flag Touring rear for reasoned review.",
+      "clearance_notes_text": "xDrive and RWD markets vary by region. Geometry stub extends G80 until Touring-specific outer clearance measured.",
+      "fitment_notes_text": "New card 2026-09-27 (was absent; shared_logic already listed G80/G81).",
+      "subheader_descriptors": [
+        "M3 Touring",
+        "M3 Competition Touring",
+        "M3 CS Touring"
+      ],
+      "verification_status": "researched-unverified-2026-09-27",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x112, 66.6 mm. M14x1.25 conical.",
+      "verified_oem_wheels": {
+        "competition": "19x9.5J ET20 front, 20x10.5J ET20 rear; 275/35ZR19 + 285/30ZR20 (inherits G80 Comp verified offsets)",
+        "note": "Offsets inherited from G80 Wheel-Size verification; Touring body clearance NOT separately verified."
+      }
+    },
+    {
+      "family": "M3",
+      "header": "G82/G83 M4 (2021–present)",
+      "chassis_codes": [
+        "G82/G83"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2021–present",
+      "oem_wheels_text": "Identical fitments to G80 M3. Base M4 (RWD, manual) likely had the 18\"/19\" stagger (though in many markets, most M4 are Competition trim). M4 Competition – 19″ front / 20″ rear (same sizes/tires as M3 Comp). M4 xDrive Comp – also 19\"/20\". M4 CSL (2022) – came with exclusive forged wheels in a square 20″ setup (20×9.5J front and 20×10.5J rear, all around in Frozen Gunmetal) with Michelin Cup2 R tires, 275/35ZR20 front and 285/30ZR20 rear – notably, the CSL runs a slightly wider front tire than rear aspect-wise, to bias grip forward. The CSL wheels are ET20 front and ET20 rear offset (with 9.5 and 10.5 widths respectively), effectively very flush with the body.",
+      "aftermarket_range_text": "Given the M4 coupe shares everything with G80 aside from body style, it can run the same aggressive setups. Owners often push the M4 a bit more since it’s typically the track choice: for example, an M4 xDrive on 18×10.5 ET15 square with 295/30R18 Hoosier slicks has been used in time attack (requiring -4° camber and fender liner modifications). For street, a popular aggressive fit is 21×10.5 ET15 front, 21×11.5 ET20 rear on 285/30-21 and 305/25-21 – this is seen in show builds and is near the limit of fender clearance (mostly for aesthetics; not recommended for performance, and it may rub over bumps). Practically, the M4 can easily handle 19×10 ET20 & 19×11 ET35 with 275/35 and 305/30 tires – a very stout setup that generally only requires a rear fender lip trim. The M4 CSL’s own wheel spec (20×9.5 ET20, 20×10.5 ET20 square) indicates how far BMW went: those are extremely aggressive offsets from the factory. If you install CSL wheels on a regular M4, they will sit roughly 20 mm further out per side in the rear compared to the usual comp wheels – filling the arches completely. Some aftermarket CSL-style wheels for M4 use slightly higher offset (ET25 rear) to ensure no rub on non-CSL cars. Bottom line: The G82 can run anything the G80 can; the two-door body doesn’t inherently change clearance, except the rear quarter on the coupe might allow a hair more room at the top of the tire due to its shape (no door frame intrusion). That said, any extremely wide/low setup that rubs on G80 will also rub on G82.",
+      "clearance_notes_text": "The M4 CSL’s example is telling: BMW gave it -3° front camber and specific spring rates to make 275 fronts work with ET20 wheels. Without those alignments, a standard M4 might rub the front fenders with that setup. So if you emulate CSL spec, consider adding camber plates. The G83 convertible, similar to the F83, is heavier and might compress more on bumps – slight increases in ride height or stiffer springs could be needed if you load it up with passengers and have aggressive wheels. One notable clearance difference: the M4’s longer coupe doors mean the front fender extends a bit further back than on the M3 – in rare cases, wide front tires (like 295 on full lock) might contact the rear of the fender liner near the door hinge on the M4. This is only if running extreme steering angle (drift setups) – not an issue for normal driving or track. Brakes & misc.: All notes from G80 apply; the carbon ceramic brake package is identical. The M4’s slightly different weight distribution doesn’t impact wheel fit. The M4 CSL deleting the rear seats doesn’t affect wheel clearance, but note it comes with no rear tire well liners (for weight) – that actually increases clearance marginally on the inside. Regular M4s have liners; if you track and get rubber marbles behind them, occasionally check for abrasion if running wide slicks. In summary, treat the G82 as the G80 for fitment – they are effectively the same chassis with interchangeable wheels, so the broad fitment envelope (9″–11″+ widths, low offsets) and associated caveats (alignment, fender lips) are shared.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×112, 66.6 mm (shared with G80)."
+    },
+    {
+      "family": "M5",
+      "header": "E28 M5 (1985–1988)",
+      "chassis_codes": [
+        "E28"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "1985–1988",
+      "oem_wheels_text": "16×7.5J alloy cross-spoke wheels (Style 5 TRX in some markets) with 225/50VR16 tires were standard on the E28 M5 in most regions. North American E28 M5s typically got 16″ BBS wheels (7.5″ width) instead of the metric TRX. Offset was in the ~ET20 range (E28 non-M5 used ET22 on similar wheels). There was no staggered setup from factory – square fitment front/rear.",
+      "aftermarket_range_text": "The E28 chassis, including M5, has relatively narrow fender clearance. A common plus-up is 17×8″ ET20 with 235/45R17 tires at all four corners – this fits without rubbing on stock suspension and aligns with the period “M-system” wheel specs (see E34 M5 below, which also used ET20). For a staggered look, some fit 17×8″ front and 17×9″ rear (ET22) from later 5-series, with 255/40R17 on the rear – minor fender rolling may be needed with 255s on E28. The absolute max without custom bodywork is roughly a 17×9″ ET15 rear (pokes close to flush) and 17×8″ ET10 front (which pokes slightly). However, most keep within OEM+ sizes: 16″ or 17″ diameter, 7–8″ width, ET15–22.",
+      "clearance_notes_text": "The E28 M5, unlike newer Ms, doesn’t have significantly flared arches. The rear fenders in particular are flat; rolling the lip can gain a small amount of clearance. The front has McPherson struts, limiting inner space – ET20 on a 7.5″ is fine, but if you try ET20 on a 9″ wide front, the inner edge will hit the strut. This is why any wide front wheel for E28 usually needs a lower offset (e.g., 9″ wide should be ~ET0 to ET10, which will stick out past the fender). Thus, realistically, front width should stay ≤8″ unless you’re prepared for a fender flare project. Suspension & brakes: E28 M5 has similar brakes to E28 535i – any wheel that fits an E28 will clear the M5 brakes (they are relatively small by modern standards). The front strut does angle inward as it goes up, so lowering the car can reduce tire-strut clearance (compressed suspension brings tire closer to strut). So a moderately lowered E28 M5 with 235 tires might need a 5 mm spacer up front if using an ET20 wheel to avoid rubbing the strut. The E28’s steering and suspension geometry were not designed for very low offsets or very wide rubber, so if one goes extreme, expect heavier steering and potential tramlining. But within the ranges above, the E28 M5 can be equipped with attractive BBS, Alpina, or throwing-star style wheels from that era with no drama.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm (first-gen M5 shared hubs with E28 5-series)."
+    },
+    {
+      "family": "M5",
+      "header": "E34 M5 (1989–1995)",
+      "chassis_codes": [
+        "E34"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "1989–1995",
+      "oem_wheels_text": "Multiple styles over its life: Early 3.6L M5 (’89–’92): 17×8.0J ET20 all around (Style 20 “M-System I Turbine” covers) with 235/45ZR17 tires square. A factory option in some markets allowed 17×9.0J ET20 rear wheels with 255/40ZR17 tires – this wider rear was included in the Nürburgring Package and on all Touring wagons. Later 3.8L M5 (’92–’94): 17×8.0J ET20 square (Style 21 “M-System II Throwing Stars”), same 235/45ZR17 tires, with optional 17×9 rears for 255s as above. Final ’95 M5 (Euro 3.8 after 5/94): 18″ M Parallel wheels – 18×8.0J ET20 front, 18×9.0J ET22 rear; tires 245/40ZR18 front & rear (yes, same size on staggered widths). The M Parallel (Style 37) was unique to late E34 M5 with slightly different offsets than E38/E39 versions. Essentially, all E34 M5 wheels had offsets around +20 mm.",
+      "aftermarket_range_text": "The E34 has generous arches, especially in front (designed for those turbine covers). It can accommodate wider wheels than E28. Direct upgrades: Many E34 M5 owners fit 18×8.0/18×9.0 M Parallels from later cars – the E39-spec M Parallels (ET20 front, ET24 rear) are a common swap, which on an E34 sit ~2 mm further in rear than the ’95 M5 wheel – still fine. With those, 245/40R18 all around or a slight stagger (245 front, 265/35R18 rear) works without rubbing. Another popular setup is 18×9.5″ ET22 square (APEX makes E34-specific ARC-8 in 18×9.5 ET22) – with 265/35R18 tires all around, this is essentially a flush square fitment for aggressive street/track use. It typically requires a small front spacer (3–5 mm) if the coilovers or certain tires run wide, but otherwise fits stock body. For maximum stagger, enthusiasts have put 18×10″ ET20 rear with 275/35R18 and 18×8.5″ ET13 front with 255/35R18 – this pushes the front outward more and fills the rear. That setup may need front fender lip rolling (ET13 pushes pretty far out). Generally, 9.5″ ET22 square is about the limit without fender mods – and even then, front 9.5’s with 265 may graze the fender liner at full lock or big compression (rolling front fender and adding -1.5° camber helps). The E34 can also adopt 19″ wheels, but 19s start to encroach on fender space when turning or during compression. If going 19″, keep widths to 8.5″ front (ET15–20) and 9.5″ rear (ET20–25) with 245/35F and 275/30R19 tires to minimize issues.",
+      "clearance_notes_text": "Inner clearance: The E34 M5’s front suspension is a double-wishbone (unique vs E34 normal strut setup) – this provides more inner room and negates the typical strut clearance problem. That’s why the M5 could have an ET20 offset (instead of ~ET40 like an E36). So inner clearance is pretty good; you’re more likely to hit sway bar or frame at extreme steering angles than the suspension arm. Outer clearance: The front fenders are rolled by BMW (to accommodate 17×8 ET20 with 235 at full lock from factory). With 9.5″ wide fronts, you must ensure the tire doesn’t catch the arch – adding camber or a tiny increase in ride height can prevent contact. The rear fenders have a generous lip that can be rolled flat if needed – with a roll, people have fitted 10″ ET20 with 275s without rubbing. Without rolling, 265 on ET22 is typically fine (the ’95 M5 ran 245 on 9″ ET22 with no issue, and 265 is only ~10 mm wider on each side). Center bore note: Standard E34 (72.56 mm). But recall E39 wheels (74.1 mm) need hub-centric rings to be vibration-free on E34 hubs. For instance, if fitting style 37 parallelograms from an E39, use a 74.1→72.56 ring. Brake clearance: E34 M5 front brakes are 315 mm and not particularly bulky; almost any wheel 16″+ clears them. The later 345 mm Nurburgring brakes (if retrofitted) still fit under 17″. No special concerns with wheel barrel clearance on E34 M5. In summary, the E34 M5, with its ET20 baseline, can readily take modern wheels in ET20-ish offsets. A square 9.5″ setup (like ARC-8s) with 265s is a known optimal performance setup, requiring only minor tweaks (e.g. a small spacer with certain suspensions). The car’s structure can definitely handle wider rubber, making it a favorite for restomod M5 builds.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm center bore."
+    },
+    {
+      "family": "M5",
+      "header": "E39 M5 (1998–2003)",
+      "chassis_codes": [
+        "E39"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 74.1,
+      "years": "1998–2003",
+      "oem_wheels_text": "Single factory setup: 18″ Style 65 (shadow chrome) – 18×8.0J ET20 front, 18×9.5J ET22 rear. Tires were 245/40ZR18 front and 275/35ZR18 rear. This is the only wheel the E39 M5 was offered with (no optional designs), and it set the tone with a low-offset, deep-dish look. Note the center bore is 74.1 mm on these wheels.",
+      "aftermarket_range_text": "The E39 M5’s wheel wells are quite accommodating (more so than E34). Many owners run 19″ upgrades – e.g., OEM style 166 (E60 M5 wheels) or style 65 replicas in 19″. A common plus-one is 19×9.5 ET20 front, 19×10.5 ET25 rear with 275/30R19 and 285/30R19 tires; this usually fits with no fender rolling – the front might rub the wheel liner at full lock due to the very low ET20 and wide 9.5″ width, so some stick to 255/35R19 front to be safe. For performance, Apex and others make 18×9.5J ET22 square wheels specifically for E39 (with the correct bore) – running 265/35-18 square is a bolt-on solution that greatly improves balance. With -1 to -1.5° camber front, 265s won’t rub and the car can rotate tires front/rear. A wider alternative: some track E39s go 18×10″ ET20 square with 275/35-18 – this will need front spacers (~5 mm) and added camber, as the inner clearance to suspension is reduced and outer to fender is tight. The rear on E39 M5 can even take 285 or 295 on 10″ wide around ET20–25 if the fender lip is rolled flat. Overall, recommended street setups tend to be in the 9.5″ width, ET20–22 range. Example: 18×9.5 ET22 on 275/35R18 all around is a known good setup (maybe a tiny spacer up front depending on tire). If staggered: 18×9.5 front with 265, 18×10.5 rear with 285–295 is very doable – just ensure the rear offset is around ET25 (ET22 on 10.5″ might hit the fender with a 295). Many E39 M5 owners have also adopted 20″ wheels (e.g., Alpina or aftermarket). 20s can fit but leave little tire sidewall; a safe max would be ~20×9 ET15 front (255/35R20) and 20×10 ET20 rear (285/30R20) without fender mods – beyond that, rubbing is likely.",
+      "clearance_notes_text": "The E39 M5’s biggest quirk is the center bore: any non-E39-specific wheel must be either custom machined or use a hub-centric ring to adapt 72.56→74.1 mm. Without rings, wheels will be lug-centric and can cause vibration. APEX addressed this by producing E39-specific ARC-8 wheels with 74.1 mm bore. If using spacers, note you also need spacers with 74.1 mm center (they are available from Turner, ECS etc.). In terms of fenders: The E39’s front fenders are relatively generous and come rolled from factory (no sharp lip). With stock ride height and 9.5″ ET22 + 265, there is typically no rubbing unless the tire brand runs wide, in which case a 3 mm spacer fixes any inner strut contact. The rear fenders have a moderate lip that can be rolled flush if needed; with a roll, 10.5″ ET22 and 295 tire can be made to work (some run that for drag setups). Without rolling, 285 on ET22 is usually the upper bound (and even that might kiss the fender liner over big bumps). The E39’s multi-link suspension means the wheel moves up and inward on compression – which helps avoid fender contact if offsets are on point. Suspension clearance: A few coilover kits (Bilstein PSS, KW HAS) slightly reduce inner clearance up front, hence Apex notes that a 5 mm spacer may be required with certain aftermarket suspensions when running wide front wheels. On stock struts, 9.5″ ET22 with 265 tire is typically fine, but on a coilover with a large spring perch, a spacer might be needed. Brakes: The E39 M5’s brakes (324 mm front) are smaller than later M5s, so clearance is easy – even 17″ wheels fit (the base 540i sport 17″ Style 32 was often used for winters). Most aftermarket 18″+ have no issues. Summing up: the E39 M5 can handle wider wheels than its predecessors thanks to stock low offsets and big wells. A square 9.5″ or staggered 9.5/10.5 setup covers most needs, just mind the unique hub bore and the front spacer advice for coilovers.",
+      "fitment_notes_text": "",
+      "verification_status": "verified-2026-04-30",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 74.1 mm center bore – unique among M5s: the E39 hub is larger than the standard 72.56 mm. (Adapters or bore-specific wheels are needed for non-E39 rims to fit properly.)",
+      "verified_oem_wheels": {
+        "style_65_only": "18×8.0J ET20 front (245/40R18), 18×9.5J ET22 rear (275/35R18)",
+        "finish": "Satin chrome / chrome shadow paint",
+        "part_numbers": {
+          "front": "36112228950",
+          "rear": "36112228960"
+        },
+        "note": "Style 65 was the ONLY factory wheel offered on E39 M5 — verified BIMMERtips 2026-04-30"
+      }
+    },
+    {
+      "family": "M5",
+      "header": "E60 M5 (2005–2010)",
+      "chassis_codes": [
+        "E60"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2005–2010",
+      "oem_wheels_text": "19″ Style 166M (forged) – 19×8.5J (front) and 19×9.5J (rear). The offsets on E60 M5 wheels are unusually low: approximately ET12–15 front and ET28–32 rear (BMW did not publish these, but forum sources note 19×8.5 ET12 front, 19×9.5 ET28 rear for style 166). Tires were 255/40ZR19 front, 285/35ZR19 rear from factory. Some late E60 M5 (e.g., 2010) offered optional 20″ Performance wheels (Style 167M, similar to M6 wheels) – 20×8.5 and 20×9.5, likely around ET12/ET17 offsets with 255/35R20 and 285/30R20 tires. (If that option existed, it was rare; many owners retrofit M6 wheels which are similar spec.)",
+      "aftermarket_range_text": "The E60 M5 has wide track and flared arches to match – it requires low offset wheels (the stock front ET12 is very aggressive). Aftermarket options often include 20×9 ET12 front, 20×10 ET20 rear (for example, many E60 M5 run 20″ HRE or BBS with those specs) on 255/35R20 and 295/30R20 tires – this fills the arches nicely and is usually rub-free. For 19″ track setups, folks have run 19×10″ ET20 square with 275/35R19 all around – the front will poke a bit compared to stock ET12 (ET20 is 8 mm more inward, but with 10″ width and 275 tire it ends up about flush). A more conservative square is 19×9.5 ET20 with 275/35 – that will sit ~8 mm inboard relative to stock front wheel, so some may add a small spacer to push it out. In rear, 19×10.5 ET25 with 295/35R19 is doable with a rolled fender. On stock suspension, the E60 can accept up to ~10.5″ width rear at ET20–25 without rubbing (the fenders are quite accommodating). Some owners also downsize to 18″ for drag or winter – 18″ clears the brakes if design is right; common winter set is 18×8 ET20 style 124 with 245/45R18. For aggressive stance, a known fitment is 21×9.5 ET0 front, 21×10.5 ET15 rear with stretched tires – but that’s purely show (front sticks way out). The practical limit front is around ET0 for an 8.5″ (which was stock) – any wider and you risk the tire protruding past the fender at the top. In summary, wheels in the ET10–20 range front and ET20–30 range rear work best. The E60 M5’s stock setup is already very aggressive outward, so most aftermarket wheels for it are made in similar offsets (which are notably different from a regular E60 5-series that uses ~ET20+ higher offsets).",
+      "clearance_notes_text": "Front fenders: are plastic on the E60, with an integrated flare – they can’t be rolled, only trimmed. Fortunately, the stock design (8.5″ ET12 with 255) nearly maximizes the space. You have room to go to 265 tires if offset is slightly higher (e.g., 19×9.5 ET22 with 265/35 might tuck in). If you push outward (like ET0 with 255), you’ll likely poke beyond the fender plane. Thus, maintain similar poke as OEM (an 8.5″ ET12 and 9.5″ ET20 have about same outer position). Rear fenders: have a decent lip that can be rolled. The stock 9.5 ET28 with 285 is comfy – you can push to ET20 on 10″ with 295 and roll the lip flat to avoid contact on big dips. The E60’s dynamic camber gain means the top of the tire leans in on compression, which helps avoid rub, but if you’re at ET15 with a wide wheel it could still catch. Suspension clearance: The E60’s front strut is positioned such that ET12 on 8.5 is fine; if you run a much higher offset (ET30+), the wheel would hit the strut. Conversely, coilovers with bulky perches might conflict if you try something like 10″ ET20 inside – but since E60 M5 doesn’t usually go high offset, inner clearance is rarely an issue. Brakes: E60 M5 has 374 mm front rotors. Most 18″ wheels do NOT clear these, which is why stock is 19″. A few track-oriented 18″ might clear (with slim barrel and maybe spacers), but generally 19″ is minimum. All 19″ OEM and typical aftermarket clear fine. Center bore: back to 72.56 mm, so standard BMW wheels fit (some people put E60 M5 wheels on E39 with rings, but opposite (E39 wheels on E60) would not center without rings). Summary: The E60 M5’s aggressive OEM stance means you should be careful using wheels from other BMWs – for instance, if you put E39 M5 Style 65s (18×8 ET20, 18×9.5 ET22) on an E60 M5, the front ET20 is 8 mm more inboard than stock ET12, which may rub the strut or at least look sunken; people often add a 10 mm spacer to those, effectively ET10, to sit right. Always compare to the baseline: ~ET12 front, ~ET28 rear on 8.5/9.5. Keep close to that outer position for best results.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm (BMW returned to the standard center bore after E39)."
+    },
+    {
+      "family": "M5",
+      "header": "F10 M5 (2011–2016)",
+      "chassis_codes": [
+        "F10"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2011–2016",
+      "oem_wheels_text": "19″ Style 345M (standard) – 19×9.0J front, 19×10.0J rear (exact offsets not officially given, but estimated ~ET32 front, ~ET34 rear based on F10 fitments). Tires 265/40ZR19 front, 295/35ZR19 rear. 20″ Style 343M (optional and Comp pack) – 20×9.0J ET32 front, 20×10.0J ET34 rear; tires 265/35ZR20 front, 295/30ZR20 rear (these were the common 5-double-spoke wheels). Competition Package didn’t change wheel sizes, but often included the 20″ wheels by default and slightly lower suspension. The F10 M5’s wheel offsets are much higher (more tucked in) than the E60’s, because the F10 chassis uses a different suspension design and doesn’t have the same wide-flare look. For reference, a non-M F10 5-series uses ~ET30–ET40 wheels; the M5 is similar.",
+      "aftermarket_range_text": "Unlike E60, the F10 M5 can use a lot of existing BMW-fit wheels. A common aggressive setup is 21×9.5″ ET20 front, 21×11″ ET30 rear on 265/30R21 and 305/25R21 tires – this pokes the fronts out ~12 mm more than stock and rears ~4 mm more, giving a flush stance. On stock suspension, that fits without rubbing (some run this with lowering springs and report only minor rub at full compression). For 20″ track setups, owners have run 20×10″ ET25 square with 285/35R20 all around – requiring front negative camber (~-2.0) and possibly a very slight fender lip roll in front (the F10 front fender has a lip inside) to avoid light contact on big dips. A practical street/track combo is 19×10″ ET25 front, 19×11″ ET25 rear on 275/40R19 and 305/35R19 – this is nearly the limit: the rear 305/35/19 at ET25 will sit very flush (a roll or trim of rear lip may be needed) and the front 275 at ET25 is about 7 mm further out than the stock 265 on ET32, but the taller 275/40 might hit the fender liner – a slightly shorter 275/35R19 would be safer. For a no-mod fit, many do 20×9.5 ET28 front, 20×10.5 ET28 rear with 275/35R20 & 295/30R20 – basically adding half an inch and ~6 mm poke over stock, which fills the wells nicely and doesn’t rub. In summary, the F10’s fenders can take a little poke, but not as much as E60: front can handle maybe ET20 with a 9″ or ET25 with a 10″; rear can handle ET25 with a 10″ or ET30 with an 11″.",
+      "clearance_notes_text": "Front: The F10 M5’s front fenders, while wide, are plastic (like F10 5-series) and have a flat inner liner. Pushing wheels out too far can result in the tire catching the edge of the bumper or inner liner at steering lock or compression. Keeping front offset above ~ET20 is wise if running a wide wheel. Additionally, the F10’s front suspension (double wishbone) doesn’t intrude much, so inner clearance is generally fine until very high offsets. Many aftermarket wheels for F10 M5 stick around ET28–30 for front to be safe. Rear: The rear fenders are metal and can be rolled modestly. Stock 295 on ET34 is fairly tucked; you can push out ~8–10Â mm without issue (ET24 on same wheel). Pushing 305 tires out to ET25 basically uses all the space – a light roll will ensure no rub on big compressions. Also note, the F10 M5’s fuel filler hose bulge in the right rear inner fender can rub on an oversized tire if very wide – but with 305 on 11″ ET30 it’s generally okay (just worth noting if going beyond 305). Suspension/Brakes: The F10 M5 has 400Â mm front rotors (first M5 with standard carbon ceramics as option). 19″ wheels DO clear – the stock 19s fit over the steel brakes, and many 19″ aftermarket clear the CCB (though some 19s might need a spacer for CCB caliper shape). 18″ wheels will not clear the brakes, period. Coilover clearance is similar to base F10 – not usually an issue since people don’t run extreme high offsets. Center bore: remains 72.56 mm. This means F10 M5 can actually use some E60/E63 wheels if desired (with hubrings if from E60). However, E60 offsets are very low, so something like an E60 M5 wheel (19×8.5 ET12) would stick way out on an F10 – likely unusable without stretched tire and camber. Generally, you wouldn’t use E60 wheels on F10 for that reason (opposite of E60 which couldn’t use F10 wheels because they’d be too tucked). In summary, the F10 M5, with its higher offsets, is more “forgiving” in fitment in that adding a little width/low offset can flush it nicely without needing the wild ET12 fronts of E60. But it also means it doesn’t have tons of extra space – you can’t go super aggressive like E60 could stock. Most owners find that filling it out to flush (within ~5–10 mm of fender) greatly improves appearance with no downsides.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm. Lug threads M14x1.25 (first M5 with larger lugs)."
+    },
+    {
+      "family": "M5",
+      "header": "F90 M5 (2018–2023)",
+      "chassis_codes": [
+        "F90"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2018–2023",
+      "oem_wheels_text": "19″ (standard in some markets) – 19×9.5J front, 19×10.5J rear (approx offsets ET28–ET30 range). Tires 275/40ZR19 front, 285/40ZR19 rear (xDrive requires near-equal rolling diameter, hence tall rear tire). 20″ (Competition and common option) – 20×9.5J ET28 front, 20×10.5J ET28 rear are the known specs for the forged Style 789M and 811M wheels; tires 275/35ZR20 front, 285/35ZR20 rear. (Yes, the F90 runs a very mild stagger in tire width, likely due to xDrive – only 10 mm difference, and same aspect ratio, so diameters are identical.) M5 CS (2021) – used the same wheel size as Comp but in Gold Bronze color, with Pirelli P Zero Corsa tires 275/35R20 and 285/35R20. Notably, some regions got F90 base on 275/35R20 square from factory (with same 20×9.5 wheels all around) – this was done in markets where stagger might conflict with AWD calibration. Generally, though, staggered wheels were delivered.",
+      "aftermarket_range_text": "The F90 M5 has ample room and benefits from wider tires. A popular upgrade is 21×10.5J ET20 front, 21×11.5J ET20 rear on 295/30R21 and 305/30R21 tires – this gives the car a very aggressive stance (front pokes ~8 mm past stock, rear ~17 mm past stock) and usually requires a slight negative camber increase front and rear to avoid rub. Many F90 owners report that 305 rear on 11.5″ can rub the inner liner on big dips unless camber is around -1.5°. A more conservative but effective setup: 20×10″ ET22 front, 20×11″ ET30 rear on 285/35R20 and 295/35R20 – this is essentially the M8 Competition fitment applied to M5 (M8 runs 285/35 square on 20×10, but here we do slight stagger). That setup is nearly flush and maintains AWD-friendly diameters. For track use, one could run 19×10.5 ET25 square with 295/40R19 all around – on stock suspension this fits (similar diameter front/rear, within 0.1%), though front may need -2° camber to clear fenders. Very aggressive fitments like 20×11 ET20 front, 20×11 ET20 rear with 305 square have been attempted on lowered F90s – front fenders need significant work for that. In general, a safe upper bound: Front – 10.5″ wide, offset ~ET20–25, tire ~295; Rear – 11.5″ wide, offset ~ET20–28, tire ~305. That should work with minor alignment tweaks and maybe rear fender lip smoothing (the F90 has a small lip). If one wants to run a square tire setup (for xDrive rotation or winter), 275/35R20 or 285/35R20 square on the OEM 20s is fine (some M5 owners do 285 square winter setup on 20×9.5 all around).",
+      "clearance_notes_text": "The F90’s front fenders are aluminum with a decent lip that can be rolled flat if necessary. The stock 275 on ET28 is conservative – there’s room to go outward (many add spacers to stock wheels: ~5 mm front, ~3 mm rear for flush look). So adding width and lower offset is feasible. However, the front fender design on F90 has an internal bracket near 12 o’clock that can snag the tire if it’s very close – adding more than ~15 mm poke beyond stock can risk contact on full compression. That’s why even aggressive setups stick around ET20 front (only ~8 mm more poke than stock ET28 on a similar width). The rear fenders can be rolled; from factory they can accept the mild stagger easily. Pushing rear wheels out ~10 mm (to ET18 on a 10.5, for example) will bring the tire near flush – but if the car is heavily loaded or lowered, the outer shoulder could graze the fender. Rolling the rear lip flat cures this. AWD considerations: Because the F90 is AWD (xDrive), maintaining front/rear rolling radius is crucial. Most fitters keep the tire aspect ratios equal (e.g., 285/35 & 295/35, or 295/30 & 295/30 square). A square setup is easiest for AWD, but the car’s staggered power bias can still handle a slight stagger as BMW did stock (1 cm difference). Generally keep diameters within 1%. Suspension clearance: The F90’s double-wishbone front and multi-link rear mean inner clearance is not usually the issue – you’ll hit the fender before the suspension. One thing to note: the M5 CS has slightly more negative camber from factory (-1.5° front) which helps it run the same 275 on wider wheels with absolutely no rub – regular F90 might need camber plates to achieve that if running similarly wide front tires. Brakes: Standard steel rotors are 395 mm front – require ≥20″ wheel. Some 19″ may clear steel brakes (with careful design and maybe spacers), but carbon ceramic rotors (400 mm front) practically mandate 20″. All the OEM wheel options are 20″ in most markets, with 19″ only as base in some. If downsizing for winter, check templates; a few 19″ wheels (like BBS CI-R) claim to clear F90 steel brakes, but it’s tight. For track, most will stick with 20s or get custom 19s that clear. In summary, the F90 M5 can handle a bit more tire than stock – especially up front where BMW played it safe with 275 – but going too wild will necessitate fender modifications or significant camber. A moderate widening yields big traction benefits and a better flush look, all while staying within the constraints of the xDrive system.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [
+        "(Note: The upcoming 2025 G90 M5 will introduce new specs – e.g., rumor is 5×112 with larger 5×132 rear bolt pattern for strength – but that is beyond this scope as we focus on existing generations.)"
+      ],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×112, 66.6Â mm. (The F90, despite being called “F”, rides on the G30 chassis platform, so it uses the new 5×112 hubs.)"
+    },
+    {
+      "family": "M6",
+      "header": "E24 M635CSi/M6 (1984–1989)",
+      "chassis_codes": [
+        "E24"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "1984–1989",
+      "oem_wheels_text": "Early models (M635 CSi in Europe) often came with metric TRX wheels (415 mm diameter, ~16.34″) requiring TRX tires 240/45VR415. However, later and US-spec M6 (’87–’89) got conventional 15″ BBS cross-spoke alloys: 15×7.0J or 15×7.5J ET20 with 225/50VR15 tires. Some markets also offered a 415 mm and 390 mm TRX option. Generally, the safe assumption is stock spec ~ET20, 7–7.5″ width, 220–240 mm tire.",
+      "aftermarket_range_text": "The E24, being based on E28 suspension, has similar limitations. It can accept 16″ or 17″ upgrades in the ET15–20 range. A common plus-size is 16×8″ ET11 Alpina wheels with 225/50R16 – these sit a bit outward (ET11) but the E24’s long body can visually handle it; slight fender lip rolling may be needed on a hard bump. For a modern look, 17×8″ ET20 front and 17×9″ ET22 rear (from an E34 M5, for example) on 235/45R17 and 255/40R17 has been done – rear fender rolling required for the 255 tire. The E24’s rear arches are not as generous as E34’s, so 255 is pushing it. Many owners stick to square setups: e.g., 17×8” ET20 with 235/45R17 all around – no rubbing issues and improved grip. Another option: 18″ wheels from later BMWs can fit if offsets are corrected: for instance, style 37 M Parallels 18×8 ET13 / 18×9 ET22 have been fitted to E24 with 235/40R18 and 265/35R18 – the front ET13 is very aggressive (will likely require a fender roll and maybe camber) and the 265 rear definitely needs rolled fenders. A safer 18″ setup is 18×8.5 ET15 all around with 245/40R18 – this would likely require front fender lip trim and a roll rear. Realistically, E24’s sweet spot is 16–17″ wheels, 8″ wide, ET15–20.",
+      "clearance_notes_text": "E24 front fenders have a metal lip that can be rolled. The rear quarter on E24 has a fairly flat side and a lip that must be rolled or trimmed if running anything wider than 235 tire at low offset. The E24 M6’s stock suspension is also quite soft (grand tourer style), so heavy compression can make the car bottom out on the bumpstops – if running larger wheels/tires, stiffening the springs or using sport shocks is advised to avoid the tires contacting the body. Suspension: Same story as E28 – front strut clearance is a concern if offset is too high; ET20 on a 7″ is fine, but ET20 on a 9″ wide front will likely hit the strut. That’s why aggressive front wheels for E24 are typically low offset (like Alpina ET12). But low offset + wide means outer clearance needs attention. Many Alpina E24s had rolled front fenders from the factory to accommodate their wheel spec. Brakes: The E24 M6 had 300 mm front discs – not large by today’s standards; 15″ wheels clear easily. If upgrading to bigger brakes (some retrofit E31 4-pots or similar), at least 16″ or 17″ may be needed. But stock M6 brakes are modest, so wheel choice is more about offset/width than barrel clearance. Center bore: Standard 72.56 mm. Notably, the E24 (like E28) uses wheel bolts, not nuts (like all BMW cars of that era). Just ensure any aftermarket wheel is hub-centric on 72.56 mm to avoid vibrations. Summarily, the E24 M6 can be treated like an E28 in terms of fitment: ~ET20 baseline, not too wide without mods. It looks fantastic with period correct 16/17″ wheels and those generally pose no problems if kept around 8″ width.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm. Essentially same hub as E28 M5 (the M635CSi was based on E28 platform)."
+    },
+    {
+      "family": "M6",
+      "header": "E63/E64 M6 (2006–2010)",
+      "chassis_codes": [
+        "E63/E64"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2006–2010",
+      "oem_wheels_text": "19″ Style 167M (standard) – 19×8.5J front, 19×9.5J rear. Offsets roughly ET12 front, ET17 rear (these are the same design as E60 M5 but slightly different offset due to different hub geometry). Tires 255/40ZR19 front, 285/35ZR19 rear (identical sizes to E60 M5). 20″ Style 166M/individual (optional) – Not commonly seen, but there were some 20″ offered via BMW Individual or later Competition Kit: often 20×8.5 and 20×10, likely ET14 front, ET20 rear, with 255/35R20 and 285/30R20. In general, the E63 M6 had a similar stance to the E60 M5 (wide front track).",
+      "aftermarket_range_text": "The E63 M6, being a coupe, has slightly more forgiving rear fenders than the E60 sedan (the coke-bottle shape of the 6-series allows a bit more tuck in the rear). People often ran 21×9.5 ET15 front, 21×11 ET20 rear on M6 with 255/30R21 and 295/25R21 – showy, but fits with maybe a fender lip roll in rear. For performance, a square 19×9.5 ET22 with 275/35R19 all around has been successful – likely needs -2Â° camber up front and maybe slight front fender trim (because stock front ET12 on 8.5 vs ET22 on 9.5 moves the wheel 10 mm inward and 24 mm outward; the outward poke definitely needs camber). A known “safe” aggressive setup: 20×9.5 ET15 front, 20×10.5 ET15 rear on 275/35R20 & 305/30R20 – front will poke ~7 mm more than stock, rear ~12 mm more, which on the E63’s curves looks very flush. Minor negative camber adjustments and rear fender roll are recommended here (especially for the 305 tire). More moderately, 20×9 ET20 front, 20×10 ET20 rear with 265/35R20 & 295/30R20 is a bolt-on fit – that’s essentially the profile of the later F12 M6 wheels which some retrofit onto E63. In summary, E63 M6 can fit similar wheels to E60 M5 because the chassis underpinnings are similar. The stock ET12/ET17 are very low offsets, so most aftermarket will be in that realm. Just be cautious that the E63’s fiberglas front fenders can’t be rolled – you only adjust via camber or trimming.",
+      "clearance_notes_text": "The front fenders on E63 are composite and already flared for the M – with stock 255 on ET12, they’re at the limit. Pushing further out (like some do with ET0 deep concaves) will have the tire outside the fender – not acceptable without widebody. If anything, adding width should be accompanied by higher offset to keep the outer position similar. The often used ET15–20 range front is a balance between inner clearance (to strut) and outer (to fender). More than ET20 and you’ll hit suspension; less than ET10 and you’ll poke out. Rear fenders on E63 have a significant lip that can be rolled fairly flat (it’s metal). The rear quarter is wide, so from factory the 285 ET17 sits nicely. You can go to ET10 on same width (9.5) and probably be fine after a roll. On an 11″ rear, ET20 is flush; ET15 might poke a hair – that’s where that 305 on 11″ ET15 could touch the lip on big compression, hence roll needed. Suspension/brakes: E63 M6 shares the E60’s brakes (374 mm front). 19″ required, though some 18″ drift setups have been done with grinding calipers (not recommended normally). Most stick to 19–21″ wheels. Inner clearance is similar to E60 – coilovers might reduce inner room at front requiring a small spacer if running high offset, but since we usually are low offset, inner side is fine. Conclusion: The E63 M6, like the E60 M5, enjoys low offsets. Many aftermarket wheels for it are listed as “E60/E63 fitment” meaning ~ET15 front, ~ET20 rear. As long as you stay close to those and don’t go too wild on width without camber, you’ll be safe. It’s a big coupe with room for some seriously wide wheels once properly setup.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm."
+    },
+    {
+      "family": "M6",
+      "header": "F06/F12/F13 M6 (2012–2018) – Coupe, Convertible, Gran Coupe",
+      "chassis_codes": [
+        "F06/F12/F13"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2012–2018",
+      "oem_wheels_text": "Standard M8 (non-Comp) often shipped with 20″ wheels – e.g., Style 813M – 20×9.5J front, 20×10.5J rear, offsets ~ET28 front, ET28 rear (BMW literature suggests 813M are ET26 front / ET28 rear for M850i, M8 could be similar). Tires 275/35ZR20 front, 285/35ZR20 rear (AWD xDrive). M8 Competition usually comes with 20″ forged Style 813M or 811M; some markets have Optional 20″ 829M (lightweight design) – still 20×9.5 and 20×10.5, but could allow 275/35 & 285/35 Pirelli PZ4 as delivered. The stagger is very slight (like M5) to keep diameters equal for AWD. There was also an optional summer track tire package with Michelin Pilot Sport Cup2: same sizes, just stickier compound. Essentially, all M8s use 275/285 on 9.5/10.5 20″. Note: No official 21″ from factory on M8, but dealers often upfit 21″ aftermarket.",
+      "aftermarket_range_text": "The M8, being large and AWD, often sees owners upsize to 21″ or even 22″ for show. A safe aggressive street setup is 21×10.5 ET20 front, 21×11.5 ET20 rear on 285/30R21 & 305/25R21 – this has been used on M8 GCs and coupes; front will poke ~8 mm more than stock, rear ~12 mm more, requiring about -1.5° camber and rolled rear lips to avoid rub. For a more functional approach, one can run 20×10 ET22 front, 20×11 ET28 rear with 285/35R20 and 295/35R20 – this keeps diameters balanced and fills the arches moderately (front nearly flush, rear flush). Early tests have shown the M8 can accommodate 305/35R20 rear on stock suspension (for drag racing setups) on the OEM 10.5″ wheel – it fits in the wheel well but is very close to the arm and fender; usually slight rub on inner liner at compression, but acceptable for straight-line use. If tracking, some may do a square 19″ setup (for more tire sidewall): e.g., 19×10.5 ET22 square with 305/30R19 all around – but that would require careful checking of front clearance (likely needs camber and maybe a spacer to clear inner suspension, given 305 is huge up front). Haven’t seen it commonly done due to xDrive and wheel speed calibration issues with drastically different diameters. So realistically, stick to staggers. The M8’s weight and power benefit from maximum rubber: a Michelin Cup2 285/35F & 285/35R square on 20×10 all around is one way to keep AWD happy (some owners do this: 285 square on OEM wheels – it reduces understeer). That fits no problem since 285 is stock rear size. For appearance, many like going wider rear: 295 or 305 rear looks beefy; just ensure rolling radius stays within ~1%.",
+      "clearance_notes_text": "The M8’s front fenders are quite roomy (similar to M5 F90) – stock 275 is moderate, and there’s space to push outward. A 10.5″ wide front at ET20 with 285 can fit after dialing in maybe -2° camber (the heavy M8 could use it anyway). Watch the front fender lining at the top – it can be pulled slightly for clearance if needed. Rear fenders: on the coupe and GC are broad, but not infinite. 285 on 10.5 ET28 is stock and okay; 305 on 11.5 ET20 is at the edge – rolling the rear fender lip is strongly advised for 305s, especially if the car is lowered. The M8 GC (Gran Coupe) has essentially same quarter panel width as M5 (it’s a sedan shape) – interestingly, the M8 coupe might have a tad more curve at the shoulder. In practice, their fitment is treated the same. Suspension: On inner side, the M8 uses a multi-link similar to 7-series; inner clearance is generally ample unless you drastically increase offset. The stock offsets ~ET28 indicate inner room available – folks run ET20 with no issue, so roughly 8+ mm more inner space remains even then. Brakes: Massive 395 mm front rotors (steel) or 400 mm (carbon). 20″ is minimum; 19″ wheels will not fit the front brakes safely. The brake calipers are similar to F90, so if a wheel clears F90 M5 CCB it likely clears M8. xDrive: as always, keep tire diameters equal. The slight stock stagger (275 vs 285) works due to identical ratios (front 35 aspect vs rear 35 on only 10 mm difference). If going 305 rear, best to also bump front to 285 or 295 to maintain circumference (e.g., some run 295/35R20 rear – but that’s taller than stock, might upset DSC). 305/30R20 rear paired with 285/30R20 front would keep diameters close (~26.8″ vs 26.5″ – within 1%). But those are shorter than OEM spec. The AWD is somewhat tolerant but one should not deviate wildly. Generally, staying within ±3% diameter front-to-rear is fine. In summary: The M8 is essentially an M5 in 2-door form, with similar wheel constraints. Most owners find the factory sizes more than sufficient, and aesthetic tweaks involve spacing out the wheels a bit (5 mm here or there) or going up in diameter with flashy rims. Pushing the performance envelope, you can add width especially up front to balance the AWD understeer. But as with any heavy powerful car, clearance is a game of millimeters – best to follow known fitments and adjust alignment accordingly to ensure nothing rubs when you’re deploying 600+ horsepower on sticky tires.",
+      "fitment_notes_text": "",
+      "verification_status": "unverified",
+      "subheader_descriptors": [],
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×112, 66.6 mm (same as G15 8-series platform)."
+    },
+    {
+      "family": "M5",
+      "header": "G90 M5 (2025–present)",
+      "chassis_codes": [
+        "G90"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2025–present",
+      "oem_wheels_text": "NEEDS RESEARCH — most aftermarket wheels still being released as of mid-2026.",
+      "aftermarket_range_text": "NEEDS RESEARCH — likely similar to F90 envelope with hybrid weight differences.",
+      "clearance_notes_text": "NEEDS RESEARCH — updated brake package vs F90.",
+      "fitment_notes_text": "",
+      "subheader_descriptors": [],
+      "verification_status": "stub-needs-research"
+    },
+    {
+      "family": "M5",
+      "header": "G99 M5 Touring (2025–present)",
+      "chassis_codes": [
+        "G99"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2025–present",
+      "oem_wheels_text": "NEEDS RESEARCH",
+      "aftermarket_range_text": "NEEDS RESEARCH — wagon-specific rear arch differences vs sedan.",
+      "clearance_notes_text": "NEEDS RESEARCH",
+      "fitment_notes_text": "",
+      "subheader_descriptors": [],
+      "verification_status": "stub-needs-research"
+    },
+    {
+      "family": "M8",
+      "header": "F91/F92/F93 M8 (2019–present)",
+      "chassis_codes": [
+        "F91",
+        "F92",
+        "F93"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2019–present",
+      "oem_wheels_text": "NEEDS RESEARCH — M8 Comp typically came with 20\" wheels. Suspect ~20×9.5 ET25 front / 20×10.5 ET25 rear baseline.",
+      "aftermarket_range_text": "NEEDS RESEARCH — likely similar envelope to F90 M5 due to shared platform; coupe/convertible/gran-coupe arch differences need separate notes.",
+      "clearance_notes_text": "NEEDS RESEARCH — M8 carbon ceramic option common; brake template verification critical for sub-19\" wheels.",
+      "fitment_notes_text": "",
+      "subheader_descriptors": [],
+      "verification_status": "stub-needs-research"
+    },
+    {
+      "family": "M-SUV",
+      "header": "F97 X3 M (2019–present)",
+      "chassis_codes": [
+        "F97"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2019–present",
+      "oem_wheels_text": "Base/Comp: 20x9.0J ET28 front + 20x10.0J ET39 rear; tires 255/45ZR20 front, 265/45ZR20 rear. Optional/Comp popular: 21x9.5J ET31 front + 21x10.0J ET39 rear; tires 255/40ZR21 + 265/40ZR21. Lug bolts M14x1.25. Sources: wheel-size.com / avtoreference / Apex bolt-pattern guide (researched 2026-09-27).",
+      "aftermarket_range_text": "SAV geometry — taller ride, different fender budget than F8X/G8X sedans. Prefer OEM-near offsets first; aggressive poke needs SUV-specific review (load rating + liner). Square 20s possible with care; confirm Comp brake package.",
+      "clearance_notes_text": "xDrive all F97. Outer clearance more generous than sedan M cars at OEM, but tire load index matters for aftermarket. Mark geometry stub unverified until measured.",
+      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27). Mechanical-first; no Claude.",
+      "subheader_descriptors": [
+        "X3 M",
+        "X3 M Competition"
+      ],
+      "verification_status": "researched-unverified-2026-09-27",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x112, 66.6 mm. M14x1.25 conical.",
+      "verified_oem_wheels": {
+        "style_20_oem": "20x9.0J ET28 front, 20x10.0J ET39 rear; 255/45ZR20 + 265/45ZR20",
+        "style_21_option": "21x9.5J ET31 front, 21x10.0J ET39 rear; 255/40ZR21 + 265/40ZR21",
+        "note": "Researched wheel-size.com / avtoreference 2026-09-27 — NOT Round-1 VERIFIED spot-check. Treat as unverified for under-call."
+      }
+    },
+    {
+      "family": "M-SUV",
+      "header": "F98 X4 M (2019–present)",
+      "chassis_codes": [
+        "F98"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2019–present",
+      "oem_wheels_text": "Shares F97 X3 M wheel program: 20x9.0J ET28 front + 20x10.0J ET39 rear (255/45ZR20 + 265/45ZR20); optional 21x9.5J ET31 / 21x10.0J ET39 (255/40ZR21 + 265/40ZR21). Competition packages commonly on 21s. Lug bolts M14x1.25. Sources: wheel-size.com F98 tables / wheelfitment.eu (researched 2026-09-27).",
+      "aftermarket_range_text": "Coupe-SUV roof; same hub/PCD as F97. Treat fitment near-identical to X3 M for bolt-on OEM-match; confirm rear hatch clearance on extreme poke separately.",
+      "clearance_notes_text": "xDrive. Geometry stub mirrors F97 until measured separately.",
+      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27).",
+      "subheader_descriptors": [
+        "X4 M",
+        "X4 M Competition"
+      ],
+      "verification_status": "researched-unverified-2026-09-27",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x112, 66.6 mm. M14x1.25 conical.",
+      "verified_oem_wheels": {
+        "style_20_oem": "20x9.0J ET28 front, 20x10.0J ET39 rear; 255/45ZR20 + 265/45ZR20",
+        "style_21_option": "21x9.5J ET31 front, 21x10.0J ET39 rear; 255/40ZR21 + 265/40ZR21",
+        "note": "Researched 2026-09-27 — unverified spot-check."
+      }
+    },
+    {
+      "family": "M-SUV",
+      "header": "F95 X5 M (2019–present)",
+      "chassis_codes": [
+        "F95"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2019–present",
+      "oem_wheels_text": "Typical OE staggered: 21x10.5J ET31 front + 22x11.5J ET43 rear; tires 295/35ZR21 front, 315/30ZR22 rear. Optional square-ish: 21x10.5J ET31 front + 21x11.0J ET48 rear with 295/35ZR21 both axles. Lug bolts M14x1.25; CB 66.6 both axles (unlike older E70 M). Sources: tiresaddict / wheel-size.com / Bimmerpost G05 hub notes (researched 2026-09-27).",
+      "aftermarket_range_text": "Full-size SAV — load rating and brake package dominate. Do not reuse F8X sedan poke budgets blindly. Prefer OEM-near ET; heavy under-call on custom.",
+      "clearance_notes_text": "xDrive. Big M brakes — 21\" generally practical minimum. Geometry clearance numbers are stubs (unverified).",
+      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27).",
+      "subheader_descriptors": [
+        "X5 M",
+        "X5 M Competition"
+      ],
+      "verification_status": "researched-unverified-2026-09-27",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x112, 66.6 mm. M14x1.25 conical.",
+      "verified_oem_wheels": {
+        "style_21_22_stagger": "21x10.5J ET31 front, 22x11.5J ET43 rear; 295/35ZR21 + 315/30ZR22",
+        "style_21_square_option": "21x10.5J ET31 front, 21x11.0J ET48 rear; 295/35ZR21 both (optional)",
+        "note": "Researched 2026-09-27 — unverified spot-check."
+      }
+    },
+    {
+      "family": "M-SUV",
+      "header": "F96 X6 M (2020–present)",
+      "chassis_codes": [
+        "F96"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2020–present",
+      "oem_wheels_text": "Shares F95 X5 M staggered program: OE 21x10.5J ET31 front + 22x11.5J ET43 rear; tires 295/35ZR21 + 315/30ZR22. Lug bolts M14x1.25; CB 66.6. Sources: wheel-size.com F96 / wheelfitment (researched 2026-09-27).",
+      "aftermarket_range_text": "Coupe-SAV; same hub/PCD as F95. Treat bolt-on OEM-match like X5 M; confirm rear hatch/fender on aggressive poke.",
+      "clearance_notes_text": "xDrive. Geometry stub mirrors F95 until measured.",
+      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27).",
+      "subheader_descriptors": [
+        "X6 M",
+        "X6 M Competition"
+      ],
+      "verification_status": "researched-unverified-2026-09-27",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x112, 66.6 mm. M14x1.25 conical.",
+      "verified_oem_wheels": {
+        "style_21_22_stagger": "21x10.5J ET31 front, 22x11.5J ET43 rear; 295/35ZR21 + 315/30ZR22",
+        "note": "Researched 2026-09-27 — unverified spot-check."
+      }
+    },
+    {
+      "family": "Z",
+      "header": "E85/E86 Z4 M Roadster / Coupe (2006–2008)",
+      "chassis_codes": [
+        "E85",
+        "E86"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2006–2008",
+      "oem_wheels_text": "Style 224M OEM: 18x8.0J ET42 front + 18x9.0J ET30 rear; tires 225/45R18 front, 255/40R18 rear. Lug bolts M12x1.5. PCD/CB shared with E46 M3 era but offsets are Z4 M-specific (do not assume E46 spacer math). Sources: z4-forum Style 224 thread / zpost definitive / Apex guide (researched 2026-09-27).",
+      "aftermarket_range_text": "Semi-trailing-arm rear — camber change under compression matters. Popular street: ~18x9 ET30 / 18x10 ET25 class setups with careful rear. Prefer under-call; confirm on car.",
+      "clearance_notes_text": "Roadster vs Coupe arches similar enough for first-pass; mark geometry stub unverified. S54 brakes — 18\" common minimum.",
+      "fitment_notes_text": "New card 2026-09-27 for classic M hunt coverage.",
+      "subheader_descriptors": [
+        "Z4 M Roadster",
+        "Z4 M Coupe"
+      ],
+      "verification_status": "researched-unverified-2026-09-27",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x120, 72.56 mm. M12x1.5 conical.",
+      "verified_oem_wheels": {
+        "style_224m": "18x8.0J ET42 front, 18x9.0J ET30 rear; 225/45R18 + 255/40R18",
+        "note": "Researched forum/OEM consensus 2026-09-27 — unverified Round-1 spot-check."
+      }
+    },
+    {
+      "family": "XM",
+      "header": "G09 XM (2023–present)",
+      "chassis_codes": [
+        "G09"
+      ],
+      "bolt_pattern": "5x112",
+      "center_bore_mm": 66.6,
+      "years": "2023–present",
+      "oem_wheels_text": "Typical OE: oversized staggered SUV wheels on 5x112 / 66.6 mm CB. Community fitment tables list ~front ET19 / rear ET42 class on large diameters (21–23\" range common); exact Style sizes vary by package. Lug bolts M14x1.25. Tire load rating is a hard constraint (heaviest M). Sources: wheelfitment XM front/rear ET notes (researched 2026-09-27) — treat sizes as unverified stubs.",
+      "aftermarket_range_text": "Heaviest M — tire load rating + brake package dominate. Do not reuse sedan poke budgets. Prefer OEM-near; heavy under-call on custom. Geometry still stub.",
+      "clearance_notes_text": "xDrive hybrid SAV. Geometry clearance unverified (pointer stub only).",
+      "fitment_notes_text": "Deepened OEM text 2026-09-27; still not Round-1 verified.",
+      "subheader_descriptors": [],
+      "verification_status": "researched-unverified-2026-09-27"
+    },
+    {
+      "family": "Z",
+      "header": "E36/7 / E36/8 Z3 M Roadster / Coupe (1998–2002)",
+      "chassis_codes": [
+        "E36/7",
+        "E36/8"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "1998–2002",
+      "oem_wheels_text": "Typical OE staggered (S54 US 2001–02 and late EU consensus): 17x7.5J ET41 front + 17x9.0J ET8 rear; tires 225/45ZR17 front, 245/40ZR17 rear. Lug bolts M12x1.5. PCD/CB shared with E36/E46-era M cars. Early S50 EU cars may carry Style 40 / same diameter class — confirm door placard. Sources: Apex Z3M BP/CB table; LimitlessTire / tirewheelguide / owners-manual rim tables (researched 2026-09-28).",
+      "aftermarket_range_text": "Very low rear OE ET (+8) — aftermarket often needs careful rear ET or spacers. Semi-trailing-arm rear like Z4 M: camber change under compression matters. Popular street ~17–18\" class; prefer under-call. Do not assume Z4 M Style 224M offsets.",
+      "clearance_notes_text": "Roadster (E36/7) vs Coupe (E36/8) arches similar for first-pass; geometry stub unverified. 17\" common OE minimum vs S50/S54 brakes.",
+      "fitment_notes_text": "New card 2026-09-28 for classic M hunt (was missing; distinct from E85/E86 Z4 M).",
+      "subheader_descriptors": [
+        "Z3 M Roadster",
+        "Z3 M Coupe",
+        "M Roadster",
+        "M Coupe"
+      ],
+      "verification_status": "researched-unverified-2026-09-28",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x120, 72.56 mm. M12x1.5 conical.",
+      "verified_oem_wheels": {
+        "late_s54_consensus": "17x7.5J ET41 front, 17x9.0J ET8 rear; 225/45ZR17 + 245/40ZR17",
+        "note": "Researched 2026-09-28 from fitment tables + owners-manual rim specs — unverified Round-1 spot-check. Early S50 Style variants unconfirmed here."
+      }
+    },
+    {
+      "family": "1M",
+      "header": "E82 1 Series M Coupe (2011–2012)",
+      "chassis_codes": [
+        "E82"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2011–2012",
+      "oem_wheels_text": "Style 359M Y-spoke (shared with E9X M3 Competition Package): 19x9.0J ET31 front + 19x10.0J ET25 rear; tires 245/35R19 front, 265/35R19 rear. Lug bolts M12x1.5. PCD/CB 5x120 / 72.56 mm (Apex E82 1M table). Sources: BMW 1M press kit rim IS31/IS25; ThreePiece OEM 19x9 +31 / 19x10 +25; Apex BP/CB (researched 2026-09-28).",
+      "aftermarket_range_text": "Widebody arches vs stock E82 135i — do not reuse non-M 1-Series poke budgets. Street aftermarket often 18–19\" near OEM stagger. Prefer under-call until Round-1 verified.",
+      "clearance_notes_text": "M-specific fenders/track. Geometry stub estimated from F87/F8X class clearances — unverified.",
+      "fitment_notes_text": "New card 2026-09-28 (classic limited-run M; Growth hunt value).",
+      "subheader_descriptors": [
+        "1M Coupe",
+        "1 Series M Coupe"
+      ],
+      "verification_status": "researched-unverified-2026-09-28",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x120, 72.56 mm. M12x1.5 conical.",
+      "verified_oem_wheels": {
+        "style_359m": "19x9.0J ET31 front, 19x10.0J ET25 rear; 245/35R19 + 265/35R19",
+        "note": "Offsets from BMW press kit (IS31/IS25) + aftermarket OEM tables 2026-09-28 — unverified Round-1 spot-check."
+      }
+    },
+    {
+      "family": "M1",
+      "header": "E26 M1 (1978–1981)",
+      "chassis_codes": [
+        "E26"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "1978–1981",
+      "oem_wheels_text": "Campagnolo Motorsport-unique alloys: 16x7.0 front + 16x8.0 rear; OE tires Pirelli P7 205/55VR16 front, 225/50VR16 rear (BMW M Registry). Front ET47 cited on wheel-size.com / avtoreference; **rear ET UNVERIFIED** (tables omit or disagree — do not invent). Lug bolts commonly listed M12x1.5. PCD 5x120 / CB ~72.6 mm from fitment databases (Apex table does not list E26 — treat hub as researched-unverified). Production ~453 cars.",
+      "aftermarket_range_text": "Ultra-rare mid-engine classic. Aftermarket fitment is case-by-case; many surviving cars retain OE Campagnolos. Prefer heavy under-call; never YES_DIRECT from this card alone.",
+      "clearance_notes_text": "Geometry not measured. Mid-engine packaging / unique arches — viz stub only.",
+      "fitment_notes_text": "New card 2026-09-28 for full-M checklist coverage. Rear OE offset and Round-1 hub verification still open.",
+      "subheader_descriptors": [
+        "M1",
+        "E26 M1"
+      ],
+      "verification_status": "researched-unverified-2026-09-28",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x120, 72.56 mm (researched; Apex table silent on E26). M12x1.5 conical (database consensus).",
+      "verified_oem_wheels": {
+        "note": "Sizes from BMW M Registry + wheel-size OE row 2026-09-28. Rear ET and CB need Round-1 confirmation.",
+        "campagnolo_oe": "16x7.0 front ET47, 16x8.0 rear ET UNVERIFIED; 205/55VR16 + 225/50VR16"
+      }
+    }
+  ]
+}
