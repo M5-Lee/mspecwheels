@@ -17,7 +17,7 @@
     "price": 4300,
     "location": "New Jersey",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2255541",
-    "hero": null
+    "hero": "/buffer/stories-v2/wlforged-c2201-f80arvs-story-f1-hero.png"
   },
   {
     "id": "FORUM-F80-CUSTOM-ADVAN-GT-Cj156.pack",
@@ -77,7 +77,7 @@
     "price": 1900,
     "location": "Babylon, NY — pickup only",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2257872",
-    "hero": null
+    "hero": "/buffer/stories-v2/824m-adisz-story-f1-hero.png"
   },
   {
     "id": "FORUM-G80-OEM-825M-threepedalseca.pack",
@@ -87,7 +87,7 @@
     "price": 3000,
     "location": "Los Angeles, CA — local pickup",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258317",
-    "hero": null
+    "hero": "/buffer/stories-v2/825m-threepedalseca-story-f1-hero.png"
   },
   {
     "id": "FORUM-G80-OEM-825M-grendel88.pack",
