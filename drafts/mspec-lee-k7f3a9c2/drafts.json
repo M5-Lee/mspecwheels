@@ -56,9 +56,12 @@
       "cosmetic": null,
       "caption": null,
       "forumUrl": null,
-      "images": [],
-      "imageNote": "No images in the repo for this pack yet. Add files under /buffer/adisz/ and list them in images.",
-      "notes": null
+      "images": [
+        "/buffer/stories-v2/824m-adisz-story-f1-hero.png",
+        "/buffer/stories-v2/824m-adisz-story-f2-well.png"
+      ],
+      "imageNote": null,
+      "notes": "Story frames only (824m-adisz). Specs are printed on the frame and did not read cleanly, so they are not copied onto this card."
     },
     {
       "pack": "f80arvs",
@@ -75,9 +78,12 @@
       "cosmetic": null,
       "caption": null,
       "forumUrl": null,
-      "images": [],
-      "imageNote": "No images in the repo for this pack yet. Add files under /buffer/f80arvs/ and list them in images.",
-      "notes": null
+      "images": [
+        "/buffer/stories-v2/wlforged-c2201-f80arvs-story-f1-hero.png",
+        "/buffer/stories-v2/wlforged-c2201-f80arvs-story-f2-well.png"
+      ],
+      "imageNote": null,
+      "notes": "Story frames only (wlforged-c2201-f80arvs). Specs are printed on the frame and did not read cleanly, so they are not copied onto this card."
     },
     {
       "pack": "threepedalseca",
@@ -88,15 +94,18 @@
       "status": "scheduled",
       "fit": null,
       "size": null,
-      "asking": null,
+      "asking": "$3,000",
       "location": null,
       "structural": null,
       "cosmetic": null,
       "caption": null,
       "forumUrl": null,
-      "images": [],
-      "imageNote": "No images in the repo for this pack yet. Add files under /buffer/threepedalseca/ and list them in images.",
-      "notes": null
+      "images": [
+        "/buffer/stories-v2/825m-threepedalseca-story-f1-hero.png",
+        "/buffer/stories-v2/825m-threepedalseca-story-f2-well.png"
+      ],
+      "imageNote": null,
+      "notes": "Story frame reads FOR SALE $3,000. The style and fit lines on that frame did not read cleanly (file name is 825m-threepedalseca)."
     },
     {
       "pack": "Cj156",
@@ -114,6 +123,8 @@
       "caption": null,
       "forumUrl": null,
       "images": [
+        "/buffer/stories-v2/advan-gt-cj156-story-f1-hero.png",
+        "/buffer/stories-v2/advan-gt-cj156-story-f2-well.png",
         "/buffer/Cj156/01-car.png",
         "/buffer/Cj156/02-well.png",
         "/buffer/Cj156/03.png",
@@ -122,7 +133,7 @@
         "/buffer/Cj156/06.png"
       ],
       "imageNote": null,
-      "notes": "Lead photo is a white E46 coupe on gold mesh wheels. 02-well.png is an F8x wheel-well reference, not a photo of this car."
+      "notes": "Lead is the advan-gt-cj156 story frame. Carousel 01-car.png is a white E46 coupe on gold mesh wheels. 02-well.png is an F8x wheel-well reference, not a photo of this car."
     },
     {
       "pack": "grendel88",
@@ -131,15 +142,17 @@
       "date": "2026-10-05",
       "schedule": "Mon Oct 5 · CT",
       "status": "scheduled",
-      "fit": null,
+      "fit": "G80 / G82",
       "size": null,
-      "asking": null,
+      "asking": "$2,800",
       "location": null,
       "structural": null,
       "cosmetic": null,
       "caption": null,
       "forumUrl": null,
       "images": [
+        "/buffer/stories-v2/825m-grendel88-story-f1-hero.png",
+        "/buffer/stories-v2/825m-grendel88-story-f2-well.png",
         "/buffer/grendel88/01-wheels.png",
         "/buffer/grendel88/02-well.png",
         "/buffer/grendel88/03.png",
@@ -151,7 +164,7 @@
         "/buffer/grendel88/09.png"
       ],
       "imageNote": null,
-      "notes": "Lead photo is a product shot of silver concave wheels with red BMW center caps. 02-well.png is an F8x wheel-well reference."
+      "notes": "Story frame reads FOR SALE $2,800, OEM 825M, Fit G80 / G82. Carousel lead is a product shot of silver concave wheels with red BMW center caps."
     },
     {
       "pack": "Advan",
@@ -169,6 +182,8 @@
       "caption": null,
       "forumUrl": null,
       "images": [
+        "/buffer/stories-v2/advan-gtbeyond-e97m3-story-f1-hero.png",
+        "/buffer/stories-v2/advan-gtbeyond-e97m3-story-f2-well.png",
         "/buffer/advan/01-car.png",
         "/buffer/advan/02-well.png",
         "/buffer/advan/03.png",
@@ -177,7 +192,7 @@
         "/buffer/advan/06.png"
       ],
       "imageNote": null,
-      "notes": "Lead photo is a white E46 sedan on silver Advan mesh wheels. 02-well.png is an F8x wheel-well reference, not a photo of this car."
+      "notes": "Lead is the advan-gtbeyond-e97m3 story frame. Price on that frame did not read cleanly. Carousel lead is a white E46 sedan on silver Advan mesh wheels."
     },
     {
       "pack": "Sylverlee",
