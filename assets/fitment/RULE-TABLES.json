@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "version": "0.1",
+    "owner": "MSpec — Product",
+    "sources": [
+      "ingest\\01\\MSpec Wheels\\chassis_database.json",
+      "ingest\\01\\MSpec Wheels\\mspec_wheels_phase1\\chassis_geometry.json"
+    ],
+    "note": "Extracted from ingest chassis_database shared_logic + geometry. Pure mechanical; no LLM.",
+    "date": "2026-09-27",
+    "status": "EXECUTE LIVE"
+  },
+  "verdict_tiers": {
+    "YES_DIRECT_FIT": "Wheel/tire setup bolts on with stock suspension, stock brakes, stock bodywork, normal alignment.",
+    "YES_WITH_MODS": "Realistic and commonly achievable with minor/moderate supporting changes (hub-centric rings, small spacers, mild negative camber, rear fender lip roll, minor liner trim, tire-size adjustment).",
+    "MAYBE_HEAVY_MODS": "Possible only with aggressive fitment work (significant negative camber, fender roll/pull, liner trim/delete, coilovers, over-fenders/widebody, aggressive tire stretch, custom spacers).",
+    "NO_NOT_RECOMMENDED": "Major mismatch: wrong bolt pattern, center bore too small, wheel diameter too small for brakes, offset too aggressive, wheel too wide for stock body, or would require unsafe adapters/bodywork."
+  },
+  "conservative_tier_bias": "When uncertain between two tiers, push verdict ONE tier toward NO. Brand-killing reviews come from over-promising fit, not from being conservative.",
+  "mandatory_disclaimer": "Buyer is responsible for final fitment verification. Fitment results may vary; always test-fit wheels before final mounting due to variations in camber, tire brand, ride height, and manufacturing tolerances.",
+  "bolt_pattern_5x120_chassis": [
+    "E30 M3",
+    "E36 M3",
+    "E46 M3",
+    "E9X M3",
+    "F80 M3",
+    "F82/F83 M4",
+    "F87 M2 (all variants)",
+    "E28 M5",
+    "E34 M5",
+    "E39 M5 (74.1mm bore)",
+    "E60/E61 M5",
+    "F10 M5",
+    "E24 M6",
+    "E63/E64 M6",
+    "F06/F12/F13 M6"
+  ],
+  "bolt_pattern_5x112_chassis": [
+    "G87 M2",
+    "G80/G81 M3",
+    "G82/G83 M4",
+    "F90 M5",
+    "G90 M5",
+    "G99 M5 Touring",
+    "F91/F92/F93 M8",
+    "F97 X3 M",
+    "F98 X4 M",
+    "F95 X5 M",
+    "F96 X6 M",
+    "G09 XM"
+  ],
+  "center_bore_by_pattern": {
+    "5x112": 66.6,
+    "5x120": 72.56,
+    "E39 M5": 74.1
+  },
+  "clearance_budget_mm": {
+    "E30 M3": {
+      "safe_extra": 6,
+      "aggressive_street": 12,
+      "heavy_mod_track": 18
+    },
+    "E36 M3": {
+      "safe_extra": 8,
+      "aggressive_street": 16,
+      "heavy_mod_track": 24
+    },
+    "E46 M3": {
+      "safe_extra": 10,
+      "aggressive_street": 20,
+      "heavy_mod_track": 28
+    },
+    "E9X M3": {
+      "safe_extra": 12,
+      "aggressive_street": 22,
+      "heavy_mod_track": 30
+    },
+    "F8X M3/M4": {
+      "safe_extra": 10,
+      "aggressive_street": 18,
+      "heavy_mod_track": 25
+    },
+    "G8X M3/M4": {
+      "safe_extra": 14,
+      "aggressive_street": 20,
+      "heavy_mod_track": 30
+    },
+    "G87 M2": {
+      "safe_extra": 14,
+      "aggressive_street": 20,
+      "heavy_mod_track": 30
+    },
+    "F87 M2": {
+      "safe_extra": 8,
+      "aggressive_street": 16,
+      "heavy_mod_track": 24
+    },
+    "E28 M5 / E24 M6": {
+      "safe_extra": 6,
+      "aggressive_street": 12,
+      "heavy_mod_track": 18
+    },
+    "E34 M5": {
+      "safe_extra": 10,
+      "aggressive_street": 18,
+      "heavy_mod_track": 25
+    },
+    "E39 M5": {
+      "safe_extra": 10,
+      "aggressive_street": 18,
+      "heavy_mod_track": 25
+    },
+    "E60 M5 / E63 M6": {
+      "safe_extra": 6,
+      "aggressive_street": 12,
+      "heavy_mod_track": 18
+    },
+    "F10 M5 / F1X M6": {
+      "safe_extra": 8,
+      "aggressive_street": 15,
+      "heavy_mod_track": 22
+    },
+    "F90 M5 / F9X M8": {
+      "safe_extra": 10,
+      "aggressive_street": 18,
+      "heavy_mod_track": 25
+    },
+    "F97/F98 X3M/X4M": {
+      "safe_extra": 10,
+      "aggressive_street": 16,
+      "heavy_mod_track": 22
+    },
+    "F95/F96 X5M/X6M": {
+      "safe_extra": 8,
+      "aggressive_street": 14,
+      "heavy_mod_track": 20
+    },
+    "G09 XM": {
+      "safe_extra": 8,
+      "aggressive_street": 12,
+      "heavy_mod_track": 18
+    },
+    "E85/E86 Z4 M": {
+      "safe_extra": 8,
+      "aggressive_street": 14,
+      "heavy_mod_track": 20
+    },
+    "E36/7 Z3 M": {
+      "heavy_mod_track": 20,
+      "safe_extra": 8,
+      "aggressive_street": 14
+    },
+    "E82 1M": {
+      "heavy_mod_track": 25,
+      "safe_extra": 10,
+      "aggressive_street": 18
+    },
+    "E26 M1": {
+      "heavy_mod_track": 18,
+      "safe_extra": 6,
+      "aggressive_street": 12
+    }
+  },
+  "brake_clearance_by_wheel_diameter": {
+    "17_inch": "Usually OK for E36 M3, E34 M5, E39 M5 depending on barrel design. Generally too small for modern M5/M6/M8 and big-brake cars.",
+    "18_inch": "Often works on E46 M3, E9X M3, F8X M3/M4, some G8X track wheels designed for brake clearance. May not clear large M5/M6/M8 brakes.",
+    "19_inch": "Generally safe for most M3/M4 applications. Often the minimum for E60 M5, F10 M5, and large-brake cars.",
+    "20_inch": "Often required or preferred for F90 M5, M8, carbon ceramic brakes, and big modern M cars."
+  },
+  "offset_poke_math": {
+    "outer_poke_mm": "((new_width_inches - oem_width_inches) / 2 * 25.4) + (oem_offset_mm - new_offset_mm)",
+    "inner_clearance_mm": "((new_width_inches - oem_width_inches) / 2 * 25.4) - (oem_offset_mm - new_offset_mm)",
+    "note": "Maintain at least ~5mm inner clearance when possible. Positive outer poke = wheel sits further outward. Positive inner clearance change = wheel moves closer to strut."
+  },
+  "spacer_rules": [
+    "Useful when inner clearance is tight and outer fender budget allows it.",
+    "Should be hub-centric.",
+    "Require proper extended bolts or studs.",
+    "Thin spacers may not have a hub lip Ã¢â‚¬” verify safety."
+  ],
+  "adapter_rules": [
+    "Change bolt pattern but typically add 15-25mm thickness.",
+    "Effective offset = original offset - adapter thickness.",
+    "Example: ET35 wheel with 20mm adapter -> effective ET15.",
+    "If adapters push the wheel beyond the chassis clearance budget, verdict should be NO or MAYBE with heavy mods."
+  ],
+  "tire_caveats": [
+    "Same tire size varies by brand. Michelin Pilot Sport, Yokohama A052, Cup 2, Toyo R888R run wide.",
+    "Tire diameter affects vertical fender clearance.",
+    "Tire section width affects fender and strut clearance.",
+    "On xDrive BMWs, front/rear rolling diameter must stay close."
+  ],
+  "viz_clearance_zones_mm": {
+    "ok_min": 8,
+    "tight_min": 3,
+    "contact_below": 3
+  },
+  "buffer_pack_fields": [
+    "chassis",
+    "axle",
+    "verdict",
+    "verdict_short",
+    "confidence",
+    "verification_status",
+    "stance",
+    "block_e_one_liner",
+    "seller_permission",
+    "ask_seller"
+  ]
+}

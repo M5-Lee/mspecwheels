@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MSpec Wheels — BMW M Wheel Fitment Intelligence + Curated Marketplace</title>
-<meta name="description" content="Verified fitment, curated wheels, no guesswork. Free AI fitment tool and curated BMW M wheel listings sourced from the enthusiast community." />
+<meta name="description" content="Mechanical fitment estimates, curated wheels, no guesswork. Free BMW M wheel fitment check and curated listings sourced from the enthusiast community." />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
@@ -98,11 +98,6 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 </style>
 </head>
 <body>
-  <!-- STATIC PREVIEW BANNER - Claude/Netlify fitment API disabled -->
-  <div id="static-preview-banner" style="background:#1a1a2e;border-bottom:2px solid #7c3aed;color:#e8e6e3;font-family:JetBrains Mono,monospace;font-size:12px;padding:10px 16px;text-align:center;letter-spacing:0.05em;">
-    STATIC PREVIEW — Fitment Guide UI shell · Claude / Netlify serverless DISABLED · Geometry viz still loads client-side · Not a live fitment API
-  </div>
-
 <!-- =============================== NAV =============================== -->
 <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -147,7 +142,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
         <span style="color:#0066B1">No Guesswork.</span>
       </h1>
       <p class="mt-8 text-silver text-lg max-w-xl leading-relaxed">
-        Type your wheel specs. Pick your chassis. Get an instant fitment verdict — backed by AI trained on every BMW M generation from E30 to G87. Then browse hand-picked listings sourced from the enthusiast community.
+        Type your wheel specs. Pick your chassis. Get an instant mechanical fitment estimate for BMW M cars from E30 to G87. Then browse hand-picked listings sourced from the enthusiast community.
       </p>
       <div class="mt-10 flex flex-wrap gap-4">
         <a href="#fitment" class="tricolor-bg text-white font-mono text-sm uppercase tracking-widest px-8 py-4 hover:opacity-90 transition glow-violet">
@@ -193,7 +188,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
     <div class="text-center mb-12">
       <div class="font-mono text-xs text-mblue uppercase tracking-widest mb-3">— FITMENT CHECKER —</div>
       <h2 class="font-display text-5xl md:text-6xl uppercase">Try It Now</h2>
-      <p class="mt-4 text-silver">No login. No email. Just a verdict in seconds.</p>
+      <p class="mt-4 text-silver">No login. No email. A mechanical estimate in seconds — confirm it on the car.</p>
     </div>
 
     <div class="bg-carbon border border-steel relative overflow-hidden">
@@ -298,7 +293,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
           <p id="data-caveats" class="hidden mt-4 text-xs text-muted italic"></p>
 
           <p class="mt-6 text-xs text-muted">
-            Buyer is responsible for final fitment verification. Fitment results may vary; always test-fit wheels before final mounting due to variations in camber, tire brand, ride height, and manufacturing tolerances.
+            Mechanical estimate only — confirm on the car; not a guarantee. Buyer is responsible for final fitment verification. Fitment results may vary; always test-fit wheels before final mounting due to variations in camber, tire brand, ride height, and manufacturing tolerances.
           </p>
         </div>
 
@@ -415,9 +410,9 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 
       <div class="border-stripe-left pl-6">
         <div class="font-mono text-xs text-mviolet mb-4">02 / VERIFY</div>
-        <h3 class="font-display text-2xl uppercase mb-3">Run The AI Fitment Check</h3>
+        <h3 class="font-display text-2xl uppercase mb-3">Run The Fitment Check</h3>
         <p class="text-silver leading-relaxed">
-          Our AI is trained on every BMW M chassis from E30 to G87. Type the specs, pick your chassis, get a verdict in seconds — covering bolt pattern, hub bore, brake clearance, fender geometry, and tire compatibility.
+          The check runs in your browser. It compares bolt pattern, hub bore, brake clearance, and width/offset with OEM numbers for that chassis. It is a mechanical estimate, not a guarantee — confirm on the car.
         </p>
       </div>
 
@@ -442,7 +437,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
       <p class="mt-4 text-silver">Submit your set. We feature curated listings on @mspecwheels every week. Free.</p>
     </div>
 
-    <form action="https://formspree.io/f/mzzrldnj" method="POST" class="space-y-6">
+    <form action="https://formspree.io/f/mzzrldnj" method="POST" enctype="multipart/form-data" class="space-y-6">
       <div class="grid md:grid-cols-2 gap-6">
         <div>
           <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Your name</label>
@@ -496,6 +491,15 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
       <div>
         <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Condition + description</label>
         <textarea name="description" rows="4" required class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition"></textarea>
+      </div>
+
+      <div>
+        <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2" for="listing-photos">Photos</label>
+        <input id="listing-photos" type="file" name="photos" accept="image/*" multiple
+               class="block w-full text-sm text-silver file:mr-4 file:border file:border-steel file:bg-ink file:px-4 file:py-2 file:font-mono file:text-xs file:uppercase file:tracking-widest file:text-bone hover:file:border-mblue" />
+        <p id="photo-file-list" class="mt-2 font-mono text-xs text-silver"></p>
+        <p class="mt-2 text-xs text-muted">Attach photos here if supported. If the form can't take files, email or DM them, or use the draft portal, and paste links below.</p>
+        <input type="hidden" name="photo_filenames" id="photo-filenames" value="" />
       </div>
 
       <div>
@@ -570,10 +574,10 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 
       <details class="bg-slate2 border border-steel p-6 group">
         <summary class="flex justify-between items-center font-display text-xl uppercase">
-          How accurate is the fitment AI?
+          How accurate is the fitment check?
           <span class="text-mblue group-open:rotate-180 transition">↓</span>
         </summary>
-        <p class="mt-4 text-silver leading-relaxed">It's trained on a database compiled from Apex Wheels, BimmerTips, Fitment Industries, Wheel-Size, and BimmerPost — the sources every serious BMW enthusiast already trusts. Always test-fit before final mounting; tire brand and ride height matter.</p>
+        <p class="mt-4 text-silver leading-relaxed">It is a mechanical estimate from the chassis data: bolt pattern, center bore, brake diameter, and width/offset versus OEM. It is not a guarantee. Always test-fit before final mounting; tire brand, camber, and ride height move the result.</p>
       </details>
 
       <details class="bg-slate2 border border-steel p-6 group">
@@ -650,43 +654,40 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 
 <!-- =============================== Wheel-Well SVG Renderer =============================== -->
 <script src="wheel_well_render.js"></script>
+<script src="fitment_engine.js"></script>
 
 <!-- =============================== JAVASCRIPT =============================== -->
 <script>
-  // Load chassis geometry once at page load
+  // Same-origin chassis tables. The check itself does not call a fitment API.
   let chassisGeometryDB = null;
-  fetch('chassis_geometry.json')
-    .then(r => r.json())
-    .then(data => { chassisGeometryDB = data; })
-    .catch(err => { console.warn('Could not load chassis_geometry.json — visualization will be unavailable.', err); });
-
-  // Parse a wheel-spec string like "19x10 ET25 5x112" or "19x10 +25 5x112"
-  function parseWheelSpec(s) {
-    if (!s) return null;
-    const cleaned = String(s).trim().replace(/\s+/g, ' ');
-    const m = cleaned.match(/(\d+(?:\.\d+)?)\s*[xX×]\s*(\d+(?:\.\d+)?)\s*(?:J\s*)?(?:ET\s*([+-]?\d+)|([+-]?\d+))?/i);
-    if (!m) return null;
-    return {
-      diameter_in: parseFloat(m[1]),
-      width_in: parseFloat(m[2]),
-      offset_mm: m[3] ? parseInt(m[3], 10) : (m[4] ? parseInt(m[4], 10) : null),
-    };
-  }
+  let fitmentData = null;
+  Promise.all([
+    fetch('chassis_database.json').then(r => r.json()),
+    fetch('chassis_geometry.json').then(r => r.json()),
+    fetch('assets/fitment/RULE-TABLES.json').then(r => r.json()),
+  ]).then(([database, geometry, rules]) => {
+    chassisGeometryDB = geometry;
+    fitmentData = { database, geometry, rules };
+  }).catch(err => {
+    console.warn('Could not load fitment tables.', err);
+  });
 
   // Track current viz state so the axle toggle can re-render
   let currentVizState = null;
 
   function renderViz(axle) {
     if (!chassisGeometryDB || !currentVizState) return;
-    const { chassis, parsed, xdrive } = currentVizState;
+    const side = axle === 'rear' ? 'rear' : 'front';
+    const parsed = currentVizState[side] || currentVizState.front;
+    if (!parsed || parsed.offset_mm == null) return;
     const svg = window.renderWheelWell({
-      chassis: chassis,
+      chassis: currentVizState.geometryKey || currentVizState.chassis,
       geometryDB: chassisGeometryDB,
       diameter_in: parsed.diameter_in,
       width_in: parsed.width_in,
       offset_mm: parsed.offset_mm,
-      axle: axle || 'front',
-      xdrive: xdrive,
+      axle: side,
+      xdrive: currentVizState.xdrive,
     });
     const mount = document.getElementById('verdict-svg-mount');
     if (mount) mount.innerHTML = svg;
@@ -729,7 +730,22 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
     'NO_NOT_RECOMMENDED': 'verdict-no',
   };
 
-  form.addEventListener('submit', async (e) => {
+  function addBreakdownRow(parent, label, value) {
+    if (!value) return;
+    const row = document.createElement('div');
+    const name = document.createElement('span');
+    name.className = 'text-muted';
+    name.textContent = label;
+    const gap = document.createTextNode('  ');
+    const val = document.createElement('span');
+    val.textContent = value;
+    row.appendChild(name);
+    row.appendChild(gap);
+    row.appendChild(val);
+    parent.appendChild(row);
+  }
+
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const specs = document.getElementById('specs').value.trim();
     const chassis = document.getElementById('chassis').value;
@@ -739,127 +755,122 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
       errorEl.classList.remove('hidden');
       return;
     }
-    errorEl.classList.add('hidden');
-    verdictEl.classList.add('hidden');
-    loadingEl.classList.remove('hidden');
-    submitBtn.disabled = true;
-
-    try {
-            // STATIC CUT: Claude Netlify function removed. No serverless call.
-      // Mechanical client-side engine not wired in this preview snapshot yet.
-      loadingEl.classList.add('hidden');
-      submitBtn.disabled = false;
-      errorEl.textContent = 'Static preview: fitment API disabled (Claude/Netlify removed). UI + chassis geometry viz still load. Mechanical engine ships separately under Product/engine/.';
+    if (!fitmentData || !window.MSpecFitment) {
+      errorEl.textContent = 'Fitment tables are still loading. Try again in a moment.';
       errorEl.classList.remove('hidden');
       return;
+    }
+    errorEl.classList.add('hidden');
+    verdictEl.classList.add('hidden');
+    loadingEl.classList.add('hidden');
+    submitBtn.disabled = false;
 
-      /* DISABLED_SERVERLESS_FETCH
-      const res = await fetch('/.netlify/functions/fitment', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ specs, chassis, context }),
+    const data = window.MSpecFitment.evaluateFitment(specs, chassis, context, fitmentData);
+    if (data.error) {
+      errorEl.textContent = data.error;
+      errorEl.classList.remove('hidden');
+      return;
+    }
+
+    const tierEl = document.getElementById('verdict-tier');
+    tierEl.textContent = data.verdict_short || data.verdict;
+    tierEl.className = 'font-display text-3xl uppercase mb-2 ' + (verdictColorMap[data.verdict] || '');
+    document.getElementById('verdict-why').textContent = data.why || '';
+
+    const bd = document.getElementById('verdict-breakdown');
+    bd.textContent = '';
+    addBreakdownRow(bd, 'BOLT PATTERN', data.breakdown.bolt_pattern);
+    addBreakdownRow(bd, 'CENTER BORE', data.breakdown.center_bore);
+    addBreakdownRow(bd, 'BRAKE CLEARANCE', data.breakdown.brake_clearance);
+    addBreakdownRow(bd, 'FRONT FITMENT', data.breakdown.front_fitment);
+    addBreakdownRow(bd, 'REAR FITMENT', data.breakdown.rear_fitment);
+    addBreakdownRow(bd, 'TIRE NOTE', data.breakdown.tire_concerns);
+    if (data.breakdown.required_mods && data.breakdown.required_mods.length) {
+      const row = document.createElement('div');
+      row.className = 'pt-3 mt-3 border-t border-steel';
+      const label = document.createElement('div');
+      label.className = 'text-muted';
+      label.textContent = 'NOTES';
+      row.appendChild(label);
+      data.breakdown.required_mods.forEach(mod => {
+        const line = document.createElement('div');
+        line.className = 'text-bone';
+        line.textContent = '• ' + mod;
+        row.appendChild(line);
       });
-      const data = await res.json();
-      loadingEl.classList.add('hidden');
-      submitBtn.disabled = false;
+      bd.appendChild(row);
+    }
+    if (data.buyer_recommendation) {
+      const row = document.createElement('div');
+      row.className = 'pt-3 mt-3 border-t border-steel';
+      const label = document.createElement('span');
+      label.className = 'text-mblue';
+      label.textContent = 'BOTTOM LINE  ';
+      const val = document.createElement('span');
+      val.className = 'text-bone';
+      val.textContent = data.buyer_recommendation;
+      row.appendChild(label);
+      row.appendChild(val);
+      bd.appendChild(row);
+    }
 
-      if (!res.ok || data.error) {
-        errorEl.textContent = data.error || 'Something went wrong. Try again.';
-        errorEl.classList.remove('hidden');
-        return;
-      }
-      DISABLED_SERVERLESS_FETCH */
-
-      // Render verdict
-      const tierEl = document.getElementById('verdict-tier');
-      tierEl.textContent = data.verdict_short || data.verdict;
-      tierEl.className = 'font-display text-3xl uppercase mb-2 ' + (verdictColorMap[data.verdict] || '');
-
-      document.getElementById('verdict-why').textContent = data.why || '';
-
-      // Breakdown
-      const bd = document.getElementById('verdict-breakdown');
-      bd.innerHTML = '';
-      const fields = [
-        ['BOLT PATTERN', data.breakdown?.bolt_pattern],
-        ['CENTER BORE', data.breakdown?.center_bore],
-        ['BRAKE CLEARANCE', data.breakdown?.brake_clearance],
-        ['FRONT FITMENT', data.breakdown?.front_fitment],
-        ['REAR FITMENT', data.breakdown?.rear_fitment],
-        ['TIRE NOTE', data.breakdown?.tire_concerns],
-      ];
-      fields.forEach(([label, val]) => {
-        if (val) {
-          const row = document.createElement('div');
-          row.innerHTML = '<span class="text-muted">' + label.padEnd(18, ' ') + '</span> <span>' + val + '</span>';
-          bd.appendChild(row);
-        }
+    const askBlock = document.getElementById('ask-seller-block');
+    const askList = document.getElementById('ask-seller-list');
+    askList.textContent = '';
+    if (data.ask_seller && data.ask_seller.length) {
+      data.ask_seller.forEach(q => {
+        const li = document.createElement('li');
+        li.textContent = q;
+        askList.appendChild(li);
       });
-      if (data.breakdown?.required_mods?.length) {
-        const row = document.createElement('div');
-        row.innerHTML = '<span class="text-muted">REQUIRED MODS&nbsp;&nbsp;&nbsp;&nbsp;</span><br/><span class="ml-4 text-bone">• ' + data.breakdown.required_mods.join('<br/>• ') + '</span>';
-        bd.appendChild(row);
-      }
-      if (data.buyer_recommendation) {
-        const row = document.createElement('div');
-        row.className = 'pt-3 mt-3 border-t border-steel';
-        row.innerHTML = '<span class="text-mblue">BOTTOM LINE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="text-bone">' + data.buyer_recommendation + '</span>';
-        bd.appendChild(row);
-      }
+      askBlock.classList.remove('hidden');
+    } else {
+      askBlock.classList.add('hidden');
+    }
 
-      // Ask seller
-      const askBlock = document.getElementById('ask-seller-block');
-      const askList = document.getElementById('ask-seller-list');
-      if (data.ask_seller && data.ask_seller.length) {
-        askList.innerHTML = '';
-        data.ask_seller.forEach(q => {
-          const li = document.createElement('li');
-          li.textContent = q;
-          askList.appendChild(li);
-        });
-        askBlock.classList.remove('hidden');
+    const caveatsEl = document.getElementById('data-caveats');
+    if (data.data_caveats) {
+      caveatsEl.textContent = data.data_caveats;
+      caveatsEl.classList.remove('hidden');
+    } else {
+      caveatsEl.classList.add('hidden');
+    }
+
+    try {
+      if (data.front && data.geometry_key && chassisGeometryDB) {
+        currentVizState = {
+          chassis: chassis,
+          geometryKey: data.geometry_key,
+          front: data.front,
+          rear: data.rear,
+          axle: 'front',
+          xdrive: /xdrive|awd/i.test(context),
+        };
+        renderViz('front');
+        document.getElementById('verdict-svg-container').classList.remove('hidden');
       } else {
-        askBlock.classList.add('hidden');
-      }
-
-      // Caveats
-      const caveatsEl = document.getElementById('data-caveats');
-      if (data.data_caveats) {
-        caveatsEl.textContent = data.data_caveats;
-        caveatsEl.classList.remove('hidden');
-      } else {
-        caveatsEl.classList.add('hidden');
-      }
-
-      // Phase 1.5 — render wheel-well SVG visualization if we have geometry data
-      try {
-        const parsed = parseWheelSpec(specs);
-        if (parsed && parsed.offset_mm != null && chassisGeometryDB) {
-          const xdrive = /xdrive/i.test(context);
-          currentVizState = { chassis, parsed, axle: 'front', xdrive };
-          renderViz('front');
-          document.getElementById('verdict-svg-container').classList.remove('hidden');
-        } else {
-          document.getElementById('verdict-svg-container').classList.add('hidden');
-        }
-      } catch (vizErr) {
-        console.warn('Visualization render failed:', vizErr);
         document.getElementById('verdict-svg-container').classList.add('hidden');
       }
-
-      verdictEl.classList.remove('hidden');
-      verdictEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      // Pixel event
-      if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'fitment_query', chassis: chassis });
-
-    } catch (err) {
-      loadingEl.classList.add('hidden');
-      submitBtn.disabled = false;
-      errorEl.textContent = 'Network error. Try again.';
-      errorEl.classList.remove('hidden');
+    } catch (vizErr) {
+      console.warn('Visualization render failed:', vizErr);
+      document.getElementById('verdict-svg-container').classList.add('hidden');
     }
+
+    verdictEl.classList.remove('hidden');
+    verdictEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'fitment_query', chassis: chassis });
   });
+
+  const photoInput = document.getElementById('listing-photos');
+  const photoNames = document.getElementById('photo-filenames');
+  const photoList = document.getElementById('photo-file-list');
+  if (photoInput && photoNames && photoList) {
+    photoInput.addEventListener('change', () => {
+      const names = Array.prototype.map.call(photoInput.files || [], file => file.name);
+      photoNames.value = names.join(', ');
+      photoList.textContent = names.length ? names.join(' · ') : '';
+    });
+  }
 </script>
 
 </body>
