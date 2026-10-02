@@ -327,7 +327,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 </section>
 
 <script>
-  // Public GO packs from listings.json. Grades stay as "—" until the source includes them.
+  // Public GO packs from listings.json.
   (function () {
     var grid = document.getElementById('listings-grid');
     if (!grid) return;
@@ -356,8 +356,6 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
     }
 
     function cardHtml(item) {
-      var structural = item.structural || '—';
-      var cosmetic = item.cosmetic || '—';
       return '<article class="bg-slate2 border border-steel hover:border-mblue transition group">' +
         '<a href="' + esc(item.url) + '" target="_blank" rel="noopener" class="block">' +
           heroHtml(item) +
@@ -369,7 +367,6 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
               '<div class="font-display text-2xl shrink-0">' + formatPrice(item.price) + '</div>' +
               '<div class="font-mono text-xs text-muted uppercase text-right">' + esc(item.location) + '</div>' +
             '</div>' +
-            '<div class="font-mono text-xs text-muted pt-2 border-t border-steel">STRUCTURAL: ' + esc(structural) + ' · COSMETIC: ' + esc(cosmetic) + '</div>' +
           '</div>' +
         '</a>' +
       '</article>';
