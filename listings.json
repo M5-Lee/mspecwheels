@@ -1,0 +1,112 @@
+[
+  {
+    "id": "FORUM-G80-CUSTOM-BBS-RSGT-Crazy8.M3.pack",
+    "short_title": "BBS RS GT",
+    "chassis": "G80 (adapters) / F8X 5x120",
+    "size": "F 20x9.5 ET25 / R 20x11 ET25",
+    "price": 7500,
+    "location": "Sacramento Area (EDH) / NorCal — local pickup",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258314",
+    "hero": null
+  },
+  {
+    "id": "FORUM-F80-CUSTOM-WLFORGED-C2201-f80arvs.pack",
+    "short_title": "WL Forged C2-201",
+    "chassis": "F80 M3",
+    "size": "F 19x9.5 ET20 / R 19x11 ET40",
+    "price": 4300,
+    "location": "New Jersey",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2255541",
+    "hero": null
+  },
+  {
+    "id": "FORUM-F80-CUSTOM-ADVAN-GT-Cj156.pack",
+    "short_title": "Advan GT Premium",
+    "chassis": "F80 M3",
+    "size": "F 19x9.5 ET25 / R 19x10.5 ET35",
+    "price": 3500,
+    "location": "San Diego, CA",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2251512",
+    "hero": "/buffer/Cj156/01-car.png"
+  },
+  {
+    "id": "FORUM-G80-CUSTOM-ADVAN-GTBEYOND-E97.M3.pack",
+    "short_title": "Advan GT Beyond",
+    "chassis": "G80 M3 Comp",
+    "size": "F 19x9.5 +15 / R 20x10.5 +15",
+    "price": 5000,
+    "location": "Vancouver, Canada — meetup preferred",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2253872",
+    "hero": "/buffer/advan/01-car.png"
+  },
+  {
+    "id": "FORUM-F80-CUSTOM-BBS-LMR-GOLD-Sylverlee.pack",
+    "short_title": "BBS LM-R Gold",
+    "chassis": "F80 M3",
+    "size": "F 20x9.5 ET23 / R 20x11 ET40",
+    "price": 6350,
+    "location": "Irvine, CA — will ship",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2249740",
+    "hero": null
+  },
+  {
+    "id": "FORUM-F80-CUSTOM-APEX-FL5-SpIndeed.pack",
+    "short_title": "Apex FL5",
+    "chassis": "F80 M3",
+    "size": "F 18x9.5 ET22 / R 18x10.5 ET22",
+    "price": 1100,
+    "location": "Washington",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2244752",
+    "hero": null
+  },
+  {
+    "id": "FORUM-G80-OEM-826M-rieck2000.pack",
+    "short_title": "BMW Style 826M",
+    "chassis": "G80 M3",
+    "size": "F 19x9.5 ET20 / R 20x10.5 ET20",
+    "price": 3000,
+    "location": "New Mexico — will ship",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2257218",
+    "hero": null
+  },
+  {
+    "id": "FORUM-G80-OEM-824M-adisz.pack",
+    "short_title": "BMW Style 824M",
+    "chassis": "G80 M3",
+    "size": "F 18x9.5 ET20 / R 19x10.5 ET20",
+    "price": 1900,
+    "location": "Babylon, NY — pickup only",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2257872",
+    "hero": null
+  },
+  {
+    "id": "FORUM-G80-OEM-825M-threepedalseca.pack",
+    "short_title": "BMW Style 825M",
+    "chassis": "G80/G82",
+    "size": "F 19x9.5 ET20 / R 20x10.5 ET20",
+    "price": 3000,
+    "location": "Los Angeles, CA — local pickup",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258317",
+    "hero": null
+  },
+  {
+    "id": "FORUM-G80-OEM-825M-grendel88.pack",
+    "short_title": "BMW Style 825M",
+    "chassis": "G80/G82",
+    "size": "F 19x9.5 ET20 / R 20x10.5 ET20",
+    "price": 2800,
+    "location": "Stockton, CA — ships US",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258307",
+    "hero": "/buffer/grendel88/01-wheels.png"
+  },
+  {
+    "id": "FORUM-F80-CUSTOM-BBS-LMR-TheAss3t.pack",
+    "short_title": "BBS LM-R",
+    "chassis": "F80 M3",
+    "size": "F 20x9.5 ET23 (LM317) / R 20x11 ET40 (LM340)",
+    "price": 6000,
+    "location": "MO",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?p=32970471",
+    "hero": null
+  }
+]
