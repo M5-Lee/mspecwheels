@@ -18,8 +18,17 @@
       "cosmetic": null,
       "caption": null,
       "forumUrl": null,
-      "images": [],
-      "imageNote": "No images in the repo for this pack yet. Add files under /buffer/826M/ and list them in images.",
+      "images": [
+        "/buffer/826M/01-wheels.jpg",
+        "/buffer/826M/02-well.png",
+        "/buffer/826M/03.jpg",
+        "/buffer/826M/04.jpg",
+        "/buffer/826M/05.jpg",
+        "/buffer/826M/06.jpg",
+        "/buffer/826M/07.jpg",
+        "/buffer/826M/08.jpg"
+      ],
+      "imageNote": null,
       "notes": null
     },
     {
@@ -37,8 +46,14 @@
       "cosmetic": null,
       "caption": null,
       "forumUrl": null,
-      "images": [],
-      "imageNote": "No images in the repo for this pack yet. Add files under /buffer/Crazy8/ and list them in images.",
+      "images": [
+        "/buffer/Crazy8/01-car.jpg",
+        "/buffer/Crazy8/02-well.png",
+        "/buffer/Crazy8/03.jpg",
+        "/buffer/Crazy8/04.jpg",
+        "/buffer/Crazy8/05.jpg"
+      ],
+      "imageNote": null,
       "notes": null
     },
     {
@@ -209,8 +224,17 @@
       "cosmetic": null,
       "caption": null,
       "forumUrl": null,
-      "images": [],
-      "imageNote": "No images in the repo for this pack yet. Add files under /buffer/Sylverlee/ and list them in images.",
+      "images": [
+        "/buffer/Sylverlee/01-car.jpg",
+        "/buffer/Sylverlee/02-well.png",
+        "/buffer/Sylverlee/03.jpg",
+        "/buffer/Sylverlee/04.jpg",
+        "/buffer/Sylverlee/05.jpg",
+        "/buffer/Sylverlee/06.jpg",
+        "/buffer/Sylverlee/07.jpg",
+        "/buffer/Sylverlee/08.jpg"
+      ],
+      "imageNote": null,
       "notes": null
     },
     {
@@ -228,8 +252,16 @@
       "cosmetic": null,
       "caption": null,
       "forumUrl": null,
-      "images": [],
-      "imageNote": "No images in the repo for this pack yet. Add files under /buffer/SpIndeed/ and list them in images.",
+      "images": [
+        "/buffer/SpIndeed/01-car.jpg",
+        "/buffer/SpIndeed/02-well.png",
+        "/buffer/SpIndeed/03.jpg",
+        "/buffer/SpIndeed/04.jpg",
+        "/buffer/SpIndeed/05.jpg",
+        "/buffer/SpIndeed/06.jpg",
+        "/buffer/SpIndeed/07.jpg"
+      ],
+      "imageNote": null,
       "notes": null
     }
   ]
