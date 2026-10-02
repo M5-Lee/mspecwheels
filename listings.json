@@ -7,7 +7,7 @@
     "price": 7500,
     "location": "Sacramento Area (EDH) / NorCal — local pickup",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258314",
-    "hero": null
+    "hero": "/buffer/Crazy8/01-car.jpg"
   },
   {
     "id": "FORUM-F80-CUSTOM-WLFORGED-C2201-f80arvs.pack",
@@ -47,7 +47,7 @@
     "price": 6350,
     "location": "Irvine, CA — will ship",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2249740",
-    "hero": null
+    "hero": "/buffer/Sylverlee/01-car.jpg"
   },
   {
     "id": "FORUM-F80-CUSTOM-APEX-FL5-SpIndeed.pack",
@@ -57,7 +57,7 @@
     "price": 1100,
     "location": "Washington",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2244752",
-    "hero": null
+    "hero": "/buffer/SpIndeed/01-car.jpg"
   },
   {
     "id": "FORUM-G80-OEM-826M-rieck2000.pack",
@@ -67,7 +67,7 @@
     "price": 3000,
     "location": "New Mexico — will ship",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2257218",
-    "hero": null
+    "hero": "/buffer/826M/01-wheels.jpg"
   },
   {
     "id": "FORUM-G80-OEM-824M-adisz.pack",
