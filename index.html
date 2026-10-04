@@ -575,8 +575,11 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 
       <div>
         <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2" for="listing-photos">Photos</label>
-        <input id="listing-photos" type="file" name="photos" accept="image/*" multiple
-               class="block w-full text-sm text-silver file:mr-4 file:border file:border-steel file:bg-ink file:px-4 file:py-2 file:font-mono file:text-xs file:uppercase file:tracking-widest file:text-bone hover:file:border-mblue" />
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <input id="listing-photos" type="file" name="photos" accept="image/*" multiple
+                 class="block w-full sm:w-auto text-sm text-silver file:mr-4 file:border file:border-steel file:bg-ink file:px-4 file:py-2 file:font-mono file:text-xs file:uppercase file:tracking-widest file:text-bone hover:file:border-mblue" />
+          <p class="font-mono text-sm text-bone">email photos to <a href="mailto:mspecwheels@gmail.com" class="text-mblue hover:text-bone transition">mspecwheels@gmail.com</a></p>
+        </div>
         <p id="photo-file-list" class="mt-2 font-mono text-xs text-silver"></p>
         <p class="mt-2 text-xs text-muted">Attach photos here if supported. If the form can't take files, email or DM them, or use the draft portal, and paste links below.</p>
         <input type="hidden" name="photo_filenames" id="photo-filenames" value="" />
