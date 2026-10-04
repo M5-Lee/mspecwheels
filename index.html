@@ -197,7 +197,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 
         <form id="fitment-form" class="space-y-6">
           <div>
-            <!-- Widths are the half-inch OEM steps in chassis_geometry.json (7–11.5). The rule tables have no width option list; the engine accepts any numeric width. Bolt patterns are the only two in chassis_database.json. -->
+            <!-- Width menu is half-inch steps from 7 through 13. Geometry OEM widths stop at 11.5; 12, 12.5, and 13 are aftermarket sizes the parser already accepts. Bolt patterns are the only two in chassis_database.json. -->
             <div class="grid grid-cols-4 gap-2 sm:gap-4 items-end">
               <div class="min-w-0">
                 <label for="spec-diameter" class="block font-mono text-[10px] sm:text-xs uppercase tracking-wide sm:tracking-widest text-muted mb-2 leading-tight">Diameter</label>
@@ -226,6 +226,9 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
                   <option value="10.5">10.5"</option>
                   <option value="11">11"</option>
                   <option value="11.5">11.5"</option>
+                  <option value="12">12"</option>
+                  <option value="12.5">12.5"</option>
+                  <option value="13">13"</option>
                 </select>
               </div>
               <div class="min-w-0">
