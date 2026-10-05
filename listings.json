@@ -148,5 +148,15 @@
     "location": "Seattle, WA — will ship (buyer pays)",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2242586",
     "hero": "/buffer/fwrigley/arc8-att-06.png"
+  },
+  {
+    "id": "MARKETPLACE-G80-OEM-826M-ajpstreets.pack",
+    "short_title": "BMW Style 826M",
+    "chassis": "G80/G82",
+    "size": "F 19x9.5 / R 20x10.5 (factory size)",
+    "price": 3650,
+    "location": "Moore, SC",
+    "url": "https://www.facebook.com/marketplace/item/1552707622800002",
+    "hero": "/buffer/ajpstreets/01-car.jpg"
   }
 ]
