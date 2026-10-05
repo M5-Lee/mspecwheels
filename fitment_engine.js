@@ -32,6 +32,7 @@
     'E92 M3 GTS':          { header: 'E92 M3 GTS', geometry: 'E9X M3', budget: 'E9X M3' },
     'F80 M3':              { header: 'F80 M3', geometry: 'F80 M3', budget: 'F8X M3/M4' },
     'G80 M3':              { header: 'G80 M3', geometry: 'G80 M3', budget: 'G8X M3/M4' },
+    'G81 M3 Touring':      { header: 'G81 M3 Touring', geometry: 'G81 M3 Touring', budget: 'G8X M3/M4' },
     'F82/F83 M4':          { header: 'F82/F83 M4', geometry: 'F82/F83 M4', budget: 'F8X M3/M4' },
     'G82/G83 M4':          { header: 'G82/G83 M4', geometry: 'G82/G83 M4', budget: 'G8X M3/M4' },
     'E28 M5':              { header: 'E28 M5', geometry: null, budget: 'E28 M5 / E24 M6' },
@@ -41,10 +42,20 @@
     'F10 M5':              { header: 'F10 M5', geometry: 'F10 M5', budget: 'F10 M5 / F1X M6' },
     'F90 M5':              { header: 'F90 M5', geometry: 'F90 M5', budget: 'F90 M5 / F9X M8' },
     'G90 M5':              { header: 'G90 M5', geometry: 'G90 M5', budget: 'F90 M5 / F9X M8' },
+    'G99 M5 Touring':      { header: 'G99 M5 Touring', geometry: null, budget: 'F90 M5 / F9X M8' },
     'E24 M6':              { header: 'E24 M635', geometry: null, budget: 'E28 M5 / E24 M6' },
     'E63/E64 M6':          { header: 'E63/E64 M6', geometry: 'E63/E64 M6', budget: 'E60 M5 / E63 M6' },
     'F06/F12/F13 M6':      { header: 'F06/F12/F13 M6', geometry: null, budget: 'F10 M5 / F1X M6' },
     'F92 M8':              { header: 'F91/F92/F93 M8', geometry: null, budget: 'F90 M5 / F9X M8' },
+    'F97 X3 M':            { header: 'F97 X3 M', geometry: 'F97 X3 M', budget: 'F97/F98 X3M/X4M' },
+    'F98 X4 M':            { header: 'F98 X4 M', geometry: 'F98 X4 M', budget: 'F97/F98 X3M/X4M' },
+    'F95 X5 M':            { header: 'F95 X5 M', geometry: 'F95 X5 M', budget: 'F95/F96 X5M/X6M' },
+    'F96 X6 M':            { header: 'F96 X6 M', geometry: 'F96 X6 M', budget: 'F95/F96 X5M/X6M' },
+    'G09 XM':              { header: 'G09 XM', geometry: 'G09 XM', budget: 'G09 XM' },
+    'E36/7 Z3 M':          { header: 'E36/7 / E36/8 Z3 M', geometry: 'E36/7 Z3 M', budget: 'E36/7 Z3 M' },
+    'E85/E86 Z4 M':        { header: 'E85/E86 Z4 M', geometry: 'E85/E86 Z4 M', budget: 'E85/E86 Z4 M' },
+    'E82 1M':              { header: 'E82 1 Series M Coupe', geometry: 'E82 1M', budget: 'E82 1M' },
+    'E26 M1':              { header: 'E26 M1', geometry: 'E26 M1', budget: 'E26 M1' },
   };
 
   function worse(a, b) {
