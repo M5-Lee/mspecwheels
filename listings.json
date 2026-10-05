@@ -128,5 +128,25 @@
     "location": "Woodbridge, NJ",
     "url": "https://www.facebook.com/marketplace/item/1503617158454016",
     "hero": "/buffer/prestigeautotintsnj/01-car.jpg"
+  },
+  {
+    "id": "FORUM-F80-OEM-513M-JustanotherF80.pack",
+    "short_title": "BMW Style 513M",
+    "chassis": "F80 M3",
+    "size": "F 18x9 ET29 / R 18x10 ET40",
+    "price": 2300,
+    "location": "Central New Jersey — pickup only",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?p=32986760",
+    "hero": "/buffer/JustanotherF80/513m-att-04.png"
+  },
+  {
+    "id": "FORUM-F80-CUSTOM-ARC8-fwrigley.pack",
+    "short_title": "ARC-8",
+    "chassis": "F80 M3",
+    "size": "F 19x9.5 ET22 / R 19x11 ET43",
+    "price": 1300,
+    "location": "Seattle, WA — will ship (buyer pays)",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2242586",
+    "hero": "/buffer/fwrigley/arc8-att-06.png"
   }
 ]
