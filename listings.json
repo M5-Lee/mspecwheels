@@ -5,7 +5,7 @@
     "chassis": "G80 (adapters) / F8X 5x120",
     "size": "F 20x9.5 ET25 / R 20x11 ET25",
     "price": 7500,
-    "location": "Sacramento Area (EDH) / NorCal — local pickup",
+    "location": "Sacramento Area (EDH) / NorCal \u2014 local pickup",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258314",
     "hero": "/buffer/Crazy8/01-car.jpg"
   },
@@ -35,7 +35,7 @@
     "chassis": "G80 M3 Comp",
     "size": "F 19x9.5 +15 / R 20x10.5 +15",
     "price": 5000,
-    "location": "Vancouver, Canada — meetup preferred",
+    "location": "Vancouver, Canada \u2014 meetup preferred",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2253872",
     "hero": "/buffer/advan/01-car.png"
   },
@@ -45,7 +45,7 @@
     "chassis": "F80 M3",
     "size": "F 20x9.5 ET23 / R 20x11 ET40",
     "price": 6350,
-    "location": "Irvine, CA — will ship",
+    "location": "Irvine, CA \u2014 will ship",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2249740",
     "hero": "/buffer/Sylverlee/01-car.jpg"
   },
@@ -65,7 +65,7 @@
     "chassis": "G80 M3",
     "size": "F 19x9.5 ET20 / R 20x10.5 ET20",
     "price": 3000,
-    "location": "New Mexico — will ship",
+    "location": "New Mexico \u2014 will ship",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2257218",
     "hero": "/buffer/826M/01-wheels.jpg"
   },
@@ -75,7 +75,7 @@
     "chassis": "G80 M3",
     "size": "F 18x9.5 ET20 / R 19x10.5 ET20",
     "price": 1900,
-    "location": "Babylon, NY — pickup only",
+    "location": "Babylon, NY \u2014 pickup only",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2257872",
     "hero": "/buffer/stories-v2/824m-adisz-story-f1-hero.png"
   },
@@ -85,7 +85,7 @@
     "chassis": "G80/G82",
     "size": "F 19x9.5 ET20 / R 20x10.5 ET20",
     "price": 3000,
-    "location": "Los Angeles, CA — local pickup",
+    "location": "Los Angeles, CA \u2014 local pickup",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258317",
     "hero": "/buffer/stories-v2/825m-threepedalseca-story-f1-hero.png"
   },
@@ -95,7 +95,7 @@
     "chassis": "G80/G82",
     "size": "F 19x9.5 ET20 / R 20x10.5 ET20",
     "price": 2800,
-    "location": "Stockton, CA — ships US",
+    "location": "Stockton, CA \u2014 ships US",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258307",
     "hero": "/buffer/grendel88/01-wheels.png"
   },
@@ -135,7 +135,7 @@
     "chassis": "F80 M3",
     "size": "F 18x9 ET29 / R 18x10 ET40",
     "price": 2300,
-    "location": "Central New Jersey — pickup only",
+    "location": "Central New Jersey \u2014 pickup only",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?p=32986760",
     "hero": "/buffer/JustanotherF80/513m-att-04.png"
   },
@@ -145,7 +145,7 @@
     "chassis": "F80 M3",
     "size": "F 19x9.5 ET22 / R 19x11 ET43",
     "price": 1300,
-    "location": "Seattle, WA — will ship (buyer pays)",
+    "location": "Seattle, WA \u2014 will ship (buyer pays)",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2242586",
     "hero": "/buffer/fwrigley/arc8-att-06.png"
   },
@@ -168,5 +168,25 @@
     "location": "Old Bridge, NJ",
     "url": "https://www.facebook.com/marketplace/item/1044420501961301",
     "hero": "/buffer/m2.kel/01-car.jpg"
+  },
+  {
+    "id": "FORUM-F80-CUSTOM-TE37-joshuasok.pack",
+    "short_title": "Volk TE37 Ultra Track Edition II",
+    "chassis": "F80 / F8X",
+    "size": "F 19x9.5 ET23 / R 19x11 ET37",
+    "price": 4400,
+    "location": "Northern CA Bay Area / SoCal",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2256768",
+    "hero": "/buffer/joshuasok/01-car.png"
+  },
+  {
+    "id": "FORUM-F80-666M-SHADOWLINE-SteveYem.pack",
+    "short_title": "BMW Style 666M Shadowline",
+    "chassis": "F80 M3",
+    "size": "F 20x9 ET29 / R 20x10 ET40",
+    "price": 2000,
+    "location": "Southeast PA \u2014 local pickup",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2134002",
+    "hero": "/buffer/SteveYem/01-car.jpg"
   }
 ]
