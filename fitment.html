@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fitment Tool — MSpec Wheels</title>
+<meta name="description" content="Free BMW M wheel fitment check. Mechanical estimates for chassis from E30 to G87 — confirm on the car." />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:    '#0A0E14',
+          carbon: '#14181F',
+          slate2: '#1A2030',
+          steel:  '#2A3142',
+          bone:   '#F0F0EC',
+          silver: '#C8CCD0',
+          muted:  '#6B7280',
+          mblue:  '#0066B1',
+          mviolet:'#6E5DA5',
+          mred:   '#E22718',
+        },
+        fontFamily: {
+          display: ['Anton', 'Bebas Neue', 'sans-serif'],
+          sans:    ['Inter', 'system-ui', 'sans-serif'],
+          mono:    ['"JetBrains Mono"', '"IBM Plex Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel placeholder (replace ID before deploy) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+// fbq('init', 'YOUR_PIXEL_ID'); // <-- uncomment + paste ID
+// fbq('track', 'PageView');
+</script>
+
+<style>
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0A0E14;
+    color: #F0F0EC;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-display { font-family: 'Anton', 'Bebas Neue', sans-serif; letter-spacing: 0.01em; }
+  .font-mono { font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace; }
+  .tricolor-stripe {
+    background: linear-gradient(90deg, #0066B1 0%, #6E5DA5 50%, #E22718 100%);
+    height: 3px;
+  }
+  .tricolor-bg {
+    background: linear-gradient(90deg, #0066B1 0%, #6E5DA5 50%, #E22718 100%);
+  }
+  .glow-blue { box-shadow: 0 0 24px rgba(0, 102, 177, 0.25); }
+  .glow-violet { box-shadow: 0 0 24px rgba(110, 93, 165, 0.3); }
+  .dot-grid {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .border-stripe-left {
+    border-left: 3px solid;
+    border-image: linear-gradient(180deg, #0066B1 0%, #6E5DA5 50%, #E22718 100%) 1;
+  }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  .nav-scrolled {
+    background-color: rgba(10, 14, 20, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #2A3142;
+  }
+  /* fitment verdict accent colors */
+  .verdict-yes { color: #4ade80; }
+  .verdict-with-mods { color: #facc15; }
+  .verdict-maybe { color: #fb923c; }
+  .verdict-no { color: #E22718; }
+</style>
+</head>
+<body>
+<!-- =============================== NAV =============================== -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/logo.png" alt="MSpec Wheels" class="h-10 w-10 rounded" />
+      <span class="font-display text-2xl tracking-tight">MSPEC WHEELS</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-silver">
+      <a href="fitment.html" class="text-bone" aria-current="page">Fitment Tool</a>
+      <a href="listings.html" class="hover:text-bone transition">Listings</a>
+      <a href="index.html#submit" class="hover:text-bone transition">Submit</a>
+      <a href="index.html#about" class="hover:text-bone transition">About</a>
+      <a href="https://www.instagram.com/mspecwheels/" target="_blank" rel="noopener" class="hover:text-mblue transition" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+      </a>
+    </div>
+    <button id="mobile-menu-btn" class="md:hidden text-bone" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden bg-carbon border-t border-steel">
+    <div class="px-6 py-4 space-y-3 text-silver">
+      <a href="fitment.html" class="block text-bone" aria-current="page">Fitment Tool</a>
+      <a href="listings.html" class="block hover:text-bone">Listings</a>
+      <a href="index.html#submit" class="block hover:text-bone">Submit</a>
+      <a href="index.html#about" class="block hover:text-bone">About</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =============================== FITMENT TOOL =============================== -->
+<section id="fitment" class="pt-32 pb-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="font-mono text-xs text-mblue uppercase tracking-widest mb-3">— FITMENT CHECKER —</div>
+      <h2 class="font-display text-5xl md:text-6xl uppercase">Try It Now</h2>
+      <p class="mt-4 text-silver">No login. No email. A mechanical estimate in seconds — confirm it on the car.</p>
+    </div>
+
+    <div class="bg-carbon border border-steel relative overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 tricolor-stripe"></div>
+      <div class="p-8 md:p-12">
+
+        <form id="fitment-form" class="space-y-6">
+          <div>
+            <!-- Width menu is half-inch steps from 7 through 13. Geometry OEM widths stop at 11.5; 12, 12.5, and 13 are aftermarket sizes the parser already accepts. Bolt patterns are the only two in chassis_database.json. -->
+            <div class="grid grid-cols-4 gap-2 sm:gap-4 items-end">
+              <div class="min-w-0">
+                <label for="spec-diameter" class="block font-mono text-[10px] sm:text-xs uppercase tracking-wide sm:tracking-widest text-muted mb-2 leading-tight">Diameter</label>
+                <select id="spec-diameter" class="w-full min-w-0 bg-ink border border-steel px-1.5 sm:px-4 py-3 font-mono text-sm sm:text-base text-bone focus:outline-none focus:border-mblue transition">
+                  <option value="">—</option>
+                  <option value="17">17"</option>
+                  <option value="18">18"</option>
+                  <option value="19">19"</option>
+                  <option value="20">20"</option>
+                  <option value="21">21"</option>
+                  <option value="22">22"</option>
+                  <option value="23">23"</option>
+                </select>
+              </div>
+              <div class="min-w-0">
+                <label for="spec-width" class="block font-mono text-[10px] sm:text-xs uppercase tracking-wide sm:tracking-widest text-muted mb-2 leading-tight">Width</label>
+                <select id="spec-width" class="w-full min-w-0 bg-ink border border-steel px-1.5 sm:px-4 py-3 font-mono text-sm sm:text-base text-bone focus:outline-none focus:border-mblue transition">
+                  <option value="">—</option>
+                  <option value="7">7"</option>
+                  <option value="7.5">7.5"</option>
+                  <option value="8">8"</option>
+                  <option value="8.5">8.5"</option>
+                  <option value="9">9"</option>
+                  <option value="9.5">9.5"</option>
+                  <option value="10">10"</option>
+                  <option value="10.5">10.5"</option>
+                  <option value="11">11"</option>
+                  <option value="11.5">11.5"</option>
+                  <option value="12">12"</option>
+                  <option value="12.5">12.5"</option>
+                  <option value="13">13"</option>
+                </select>
+              </div>
+              <div class="min-w-0">
+                <label for="spec-bolt" class="block font-mono text-[10px] sm:text-xs uppercase tracking-wide sm:tracking-widest text-muted mb-2 leading-tight">Bolt pattern</label>
+                <select id="spec-bolt" class="w-full min-w-0 bg-ink border border-steel px-1.5 sm:px-4 py-3 font-mono text-sm sm:text-base text-bone focus:outline-none focus:border-mblue transition">
+                  <option value="">—</option>
+                  <option value="5x120">5x120</option>
+                  <option value="5x112">5x112</option>
+                </select>
+              </div>
+              <div class="min-w-0">
+                <label for="spec-offset" class="block font-mono text-[10px] sm:text-xs uppercase tracking-wide sm:tracking-widest text-muted mb-2 leading-tight">Offset</label>
+                <input type="text" id="spec-offset" inputmode="text" autocomplete="off" placeholder="ET25"
+                       class="w-full min-w-0 bg-ink border border-steel px-1.5 sm:px-4 py-3 font-mono text-sm sm:text-base text-bone focus:outline-none focus:border-mblue transition" />
+              </div>
+            </div>
+            <p class="mt-1 font-mono text-xs text-muted">Square setup — same size on both axles. Negative offset is allowed.</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Your chassis</label>
+              <select id="chassis" name="chassis" class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition">
+                <option value="">Pick your BMW M…</option>
+                <optgroup label="M2">
+                  <option value="F87 M2">F87 M2 (2016–2018)</option>
+                  <option value="F87 M2 Competition">F87 M2 Competition (2019–2021)</option>
+                  <option value="F87 M2 CS">F87 M2 CS (2020)</option>
+                  <option value="G87 M2">G87 M2 (2023–present)</option>
+                </optgroup>
+                <optgroup label="M3">
+                  <option value="E30 M3">E30 M3 (1986–1991)</option>
+                  <option value="E36 M3">E36 M3 (1992–1999)</option>
+                  <option value="E46 M3">E46 M3 (2001–2006)</option>
+                  <option value="E9X M3">E90/E92/E93 M3 (2008–2013)</option>
+                  <option value="E92 M3 GTS">E92 M3 GTS (2010)</option>
+                  <option value="F80 M3">F80 M3 (2015–2018)</option>
+                  <option value="G80 M3">G80 M3 (2021–present)</option>
+                  <option value="G81 M3 Touring">G81 M3 Touring (2022–present)</option>
+                </optgroup>
+                <optgroup label="M4">
+                  <option value="F82/F83 M4">F82/F83 M4 (2015–2020)</option>
+                  <option value="G82/G83 M4">G82/G83 M4 (2021–present)</option>
+                </optgroup>
+                <optgroup label="M5">
+                  <option value="E28 M5">E28 M5 (1985–1988)</option>
+                  <option value="E34 M5">E34 M5 (1989–1995)</option>
+                  <option value="E39 M5">E39 M5 (1998–2003)</option>
+                  <option value="E60 M5">E60 M5 (2005–2010)</option>
+                  <option value="F10 M5">F10 M5 (2011–2016)</option>
+                  <option value="F90 M5">F90 M5 (2018–2023)</option>
+                  <option value="G90 M5">G90 M5 (2025–present) — limited data</option>
+                  <option value="G99 M5 Touring">G99 M5 Touring (2025–present) — limited data</option>
+                </optgroup>
+                <optgroup label="M6">
+                  <option value="E24 M6">E24 M635CSi/M6 (1984–1989)</option>
+                  <option value="E63/E64 M6">E63/E64 M6 (2006–2010)</option>
+                  <option value="F06/F12/F13 M6">F06/F12/F13 M6 (2012–2018)</option>
+                </optgroup>
+                <optgroup label="M8">
+                  <option value="F92 M8">F91/F92/F93 M8 (2019–present) — limited data</option>
+                </optgroup>
+                <optgroup label="M-SUV / XM">
+                  <option value="F97 X3 M">F97 X3 M (2019–present)</option>
+                  <option value="F98 X4 M">F98 X4 M (2019–present)</option>
+                  <option value="F95 X5 M">F95 X5 M (2019–present)</option>
+                  <option value="F96 X6 M">F96 X6 M (2020–present)</option>
+                  <option value="G09 XM">G09 XM (2023–present)</option>
+                </optgroup>
+                <optgroup label="Z">
+                  <option value="E36/7 Z3 M">E36/7 Z3 M (1998–2002)</option>
+                  <option value="E85/E86 Z4 M">E85/E86 Z4 M (2006–2008)</option>
+                </optgroup>
+                <optgroup label="1M">
+                  <option value="E82 1M">E82 1 Series M Coupe (2011–2012)</option>
+                </optgroup>
+                <optgroup label="M1">
+                  <option value="E26 M1">E26 M1 (1978–1981)</option>
+                </optgroup>
+              </select>
+            </div>
+            <div>
+              <label class="block font-mono text-xs uppercase tracking-widest text-muted mb-2">Optional context</label>
+              <input type="text" id="context" placeholder="e.g., lowered 20mm, -2° camber, CCB brakes"
+                     class="w-full bg-ink border border-steel px-4 py-3 text-bone focus:outline-none focus:border-mblue transition" />
+            </div>
+          </div>
+
+          <button type="submit" id="submit-btn"
+                  class="w-full md:w-auto tricolor-bg text-white font-mono text-sm uppercase tracking-widest px-10 py-4 hover:opacity-90 transition glow-violet">
+            Run Fitment Check →
+          </button>
+        </form>
+
+        <!-- Loading state -->
+        <div id="loading" class="hidden mt-8 text-center text-silver">
+          <div class="inline-flex items-center gap-3 font-mono text-sm uppercase tracking-widest">
+            <svg class="animate-spin h-4 w-4 text-mblue" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+            <span>Running fitment check…</span>
+          </div>
+        </div>
+
+        <!-- Verdict output -->
+        <div id="verdict" class="hidden mt-8 border-t border-steel pt-8">
+          <div class="border-stripe-left pl-6 mb-6">
+            <div id="verdict-tier" class="font-display text-3xl uppercase mb-2"></div>
+            <p id="verdict-why" class="text-silver"></p>
+          </div>
+
+          <!-- Wheel-well visualization (Phase 1.5 v0.4 — dual-image overlay) -->
+          <div id="verdict-svg-container" class="hidden mb-6 bg-ink border border-steel overflow-hidden">
+            <div class="px-4 py-2 border-b border-steel font-mono text-xs uppercase tracking-widest text-muted flex items-center justify-between">
+              <span>— Clearance Diagram —</span>
+              <span id="verdict-svg-axle-toggle" class="text-mblue cursor-pointer hover:text-bone transition">Switch to Rear ↗</span>
+            </div>
+            <div id="verdict-svg-mount" class="w-full"></div>
+          </div>
+
+          <div id="verdict-breakdown" class="bg-ink border border-steel p-6 font-mono text-sm space-y-2"></div>
+
+          <div id="ask-seller-block" class="hidden mt-6 bg-ink border border-mblue p-6">
+            <div class="font-mono text-xs uppercase tracking-widest text-mblue mb-3">Ask the seller:</div>
+            <ul id="ask-seller-list" class="text-silver space-y-2 list-disc list-inside"></ul>
+          </div>
+
+          <p id="data-caveats" class="hidden mt-4 text-xs text-muted italic"></p>
+
+          <p class="mt-6 text-xs text-muted">
+            Mechanical estimate only — confirm on the car; not a guarantee. Buyer is responsible for final fitment verification. Fitment results may vary; always test-fit wheels before final mounting due to variations in camber, tire brand, ride height, and manufacturing tolerances.
+          </p>
+        </div>
+
+        <!-- Error state -->
+        <div id="error" class="hidden mt-8 border-l-4 border-mred bg-carbon p-4 text-mred font-mono text-sm"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== FOOTER =============================== -->
+<footer class="py-16 px-6 border-t border-steel bg-carbon">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="assets/logo.png" alt="MSpec Wheels" class="h-10 w-10 rounded" />
+          <span class="font-display text-xl">MSPEC WHEELS</span>
+        </div>
+        <p class="text-silver text-sm leading-relaxed mb-4">
+          BMW M wheel fitment intelligence + curated marketplace.
+        </p>
+        <div class="flex gap-4">
+          <a href="https://www.instagram.com/mspecwheels/" target="_blank" rel="noopener" class="text-muted hover:text-mblue transition">Instagram</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="font-mono text-xs uppercase tracking-widest text-muted mb-4">Navigate</div>
+        <ul class="space-y-2 text-silver text-sm">
+          <li><a href="fitment.html" class="hover:text-bone transition">Fitment Tool</a></li>
+          <li><a href="listings.html" class="hover:text-bone transition">Listings</a></li>
+          <li><a href="index.html#submit" class="hover:text-bone transition">Submit Wheels</a></li>
+          <li><a href="index.html#about" class="hover:text-bone transition">About</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="font-mono text-xs uppercase tracking-widest text-muted mb-4">Trust</div>
+        <ul class="space-y-2 text-silver text-sm">
+          <li><a href="#" class="hover:text-bone transition">Privacy Policy (TBD)</a></li>
+          <li><a href="#" class="hover:text-bone transition">Terms of Service (TBD)</a></li>
+          <li><a href="mailto:hello@mspecwheels.com" class="hover:text-bone transition">hello@mspecwheels.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-steel text-xs text-muted text-center">
+      © 2026 MSpec Wheels. Independent enthusiast project. Not affiliated with BMW AG. BMW, M, and chassis names are trademarks of BMW AG.
+    </div>
+  </div>
+</footer>
+
+<!-- =============================== Wheel-Well SVG Renderer =============================== -->
+<script src="wheel_well_render.js"></script>
+<script src="fitment_engine.js"></script>
+
+<!-- =============================== JAVASCRIPT =============================== -->
+<script>
+  // Same-origin chassis tables. The check itself does not call a fitment API.
+  let chassisGeometryDB = null;
+  let fitmentData = null;
+  Promise.all([
+    fetch('chassis_database.json').then(r => r.json()),
+    fetch('chassis_geometry.json').then(r => r.json()),
+    fetch('assets/fitment/RULE-TABLES.json').then(r => r.json()),
+  ]).then(([database, geometry, rules]) => {
+    chassisGeometryDB = geometry;
+    fitmentData = { database, geometry, rules };
+  }).catch(err => {
+    console.warn('Could not load fitment tables.', err);
+  });
+
+  // Track current viz state so the axle toggle can re-render
+  let currentVizState = null;
+
+  function renderViz(axle) {
+    if (!chassisGeometryDB || !currentVizState) return;
+    const side = axle === 'rear' ? 'rear' : 'front';
+    const parsed = currentVizState[side] || currentVizState.front;
+    if (!parsed || parsed.offset_mm == null) return;
+    const svg = window.renderWheelWell({
+      chassis: currentVizState.geometryKey || currentVizState.chassis,
+      geometryDB: chassisGeometryDB,
+      diameter_in: parsed.diameter_in,
+      width_in: parsed.width_in,
+      offset_mm: parsed.offset_mm,
+      axle: side,
+      xdrive: currentVizState.xdrive,
+    });
+    const mount = document.getElementById('verdict-svg-mount');
+    if (mount) mount.innerHTML = svg;
+    currentVizState.axle = axle || 'front';
+    const toggle = document.getElementById('verdict-svg-axle-toggle');
+    if (toggle) toggle.textContent = (axle === 'rear') ? 'Switch to Front ↗' : 'Switch to Rear ↗';
+  }
+
+  // Wire axle toggle
+  document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'verdict-svg-axle-toggle') {
+      const next = (currentVizState && currentVizState.axle === 'rear') ? 'front' : 'rear';
+      renderViz(next);
+    }
+  });
+
+  // Nav background on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) nav.classList.add('nav-scrolled');
+    else nav.classList.remove('nav-scrolled');
+  });
+
+  // Mobile menu toggle
+  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  // Fitment form
+  const form = document.getElementById('fitment-form');
+  const loadingEl = document.getElementById('loading');
+  const verdictEl = document.getElementById('verdict');
+  const errorEl = document.getElementById('error');
+  const submitBtn = document.getElementById('submit-btn');
+
+  const verdictColorMap = {
+    'YES_DIRECT_FIT': 'verdict-yes',
+    'YES_WITH_MODS': 'verdict-with-mods',
+    'MAYBE_HEAVY_MODS': 'verdict-maybe',
+    'NO_NOT_RECOMMENDED': 'verdict-no',
+  };
+
+  function addBreakdownRow(parent, label, value) {
+    if (!value) return;
+    const row = document.createElement('div');
+    const name = document.createElement('span');
+    name.className = 'text-muted';
+    name.textContent = label;
+    const gap = document.createTextNode('  ');
+    const val = document.createElement('span');
+    val.textContent = value;
+    row.appendChild(name);
+    row.appendChild(gap);
+    row.appendChild(val);
+    parent.appendChild(row);
+  }
+
+  function offsetToken(raw) {
+    const cleaned = String(raw || '').trim().replace(/[−–—]/g, '-').replace(/^et\s*/i, '').replace(/\s+/g, '');
+    return /^[+-]?\d+(?:\.\d+)?$/.test(cleaned) ? cleaned : '';
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const diameter = document.getElementById('spec-diameter').value;
+    const width = document.getElementById('spec-width').value;
+    const bolt = document.getElementById('spec-bolt').value;
+    const offsetRaw = document.getElementById('spec-offset').value;
+    const offset = offsetToken(offsetRaw);
+    const chassis = document.getElementById('chassis').value;
+    const context = document.getElementById('context').value.trim();
+    if (!diameter || !width || !bolt || !offsetRaw.trim() || !chassis) {
+      errorEl.textContent = 'Choose a diameter, width, bolt pattern, offset, and chassis.';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+    if (!offset) {
+      errorEl.textContent = 'Offset needs a number, like 25 or -12.';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+    const specs = diameter + 'x' + width + ' ET' + offset + ' ' + bolt;
+    if (!fitmentData || !window.MSpecFitment) {
+      errorEl.textContent = 'Fitment tables are still loading. Try again in a moment.';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+    errorEl.classList.add('hidden');
+    verdictEl.classList.add('hidden');
+    loadingEl.classList.add('hidden');
+    submitBtn.disabled = false;
+
+    const data = window.MSpecFitment.evaluateFitment(specs, chassis, context, fitmentData);
+    if (data.error) {
+      errorEl.textContent = data.error;
+      errorEl.classList.remove('hidden');
+      return;
+    }
+
+    const tierEl = document.getElementById('verdict-tier');
+    tierEl.textContent = data.verdict_short || data.verdict;
+    tierEl.className = 'font-display text-3xl uppercase mb-2 ' + (verdictColorMap[data.verdict] || '');
+    document.getElementById('verdict-why').textContent = data.why || '';
+
+    const bd = document.getElementById('verdict-breakdown');
+    bd.textContent = '';
+    addBreakdownRow(bd, 'BOLT PATTERN', data.breakdown.bolt_pattern);
+    addBreakdownRow(bd, 'CENTER BORE', data.breakdown.center_bore);
+    addBreakdownRow(bd, 'BRAKE CLEARANCE', data.breakdown.brake_clearance);
+    addBreakdownRow(bd, 'FRONT FITMENT', data.breakdown.front_fitment);
+    addBreakdownRow(bd, 'REAR FITMENT', data.breakdown.rear_fitment);
+    addBreakdownRow(bd, 'TIRE NOTE', data.breakdown.tire_concerns);
+    if (data.breakdown.required_mods && data.breakdown.required_mods.length) {
+      const row = document.createElement('div');
+      row.className = 'pt-3 mt-3 border-t border-steel';
+      const label = document.createElement('div');
+      label.className = 'text-muted';
+      label.textContent = 'NOTES';
+      row.appendChild(label);
+      data.breakdown.required_mods.forEach(mod => {
+        const line = document.createElement('div');
+        line.className = 'text-bone';
+        line.textContent = '• ' + mod;
+        row.appendChild(line);
+      });
+      bd.appendChild(row);
+    }
+    if (data.buyer_recommendation) {
+      const row = document.createElement('div');
+      row.className = 'pt-3 mt-3 border-t border-steel';
+      const label = document.createElement('span');
+      label.className = 'text-mblue';
+      label.textContent = 'BOTTOM LINE  ';
+      const val = document.createElement('span');
+      val.className = 'text-bone';
+      val.textContent = data.buyer_recommendation;
+      row.appendChild(label);
+      row.appendChild(val);
+      bd.appendChild(row);
+    }
+
+    const askBlock = document.getElementById('ask-seller-block');
+    const askList = document.getElementById('ask-seller-list');
+    askList.textContent = '';
+    if (data.ask_seller && data.ask_seller.length) {
+      data.ask_seller.forEach(q => {
+        const li = document.createElement('li');
+        li.textContent = q;
+        askList.appendChild(li);
+      });
+      askBlock.classList.remove('hidden');
+    } else {
+      askBlock.classList.add('hidden');
+    }
+
+    const caveatsEl = document.getElementById('data-caveats');
+    if (data.data_caveats) {
+      caveatsEl.textContent = data.data_caveats;
+      caveatsEl.classList.remove('hidden');
+    } else {
+      caveatsEl.classList.add('hidden');
+    }
+
+    try {
+      if (data.front && data.geometry_key && chassisGeometryDB) {
+        currentVizState = {
+          chassis: chassis,
+          geometryKey: data.geometry_key,
+          front: data.front,
+          rear: data.rear,
+          axle: 'front',
+          xdrive: /xdrive|awd/i.test(context),
+        };
+        renderViz('front');
+        document.getElementById('verdict-svg-container').classList.remove('hidden');
+      } else {
+        document.getElementById('verdict-svg-container').classList.add('hidden');
+      }
+    } catch (vizErr) {
+      console.warn('Visualization render failed:', vizErr);
+      document.getElementById('verdict-svg-container').classList.add('hidden');
+    }
+
+    verdictEl.classList.remove('hidden');
+    verdictEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'fitment_query', chassis: chassis });
+  });
+
+  const photoInput = document.getElementById('listing-photos');
+  const photoNames = document.getElementById('photo-filenames');
+  const photoList = document.getElementById('photo-file-list');
+  if (photoInput && photoNames && photoList) {
+    photoInput.addEventListener('change', () => {
+      const names = Array.prototype.map.call(photoInput.files || [], file => file.name);
+      photoNames.value = names.join(', ');
+      photoList.textContent = names.length ? names.join(' · ') : '';
+    });
+  }
+</script>
+</body>
+</html>
