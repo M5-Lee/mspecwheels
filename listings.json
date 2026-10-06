@@ -208,5 +208,15 @@
     "location": "Maryland / outside Washington DC",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2174946",
     "hero": "/buffer/Son_Adolphe/01-car.png"
+  },
+  {
+    "id": "MARKETPLACE-F92-OEM-826M-f92ghost.pack",
+    "short_title": "BMW Style 826M",
+    "chassis": "F92 M8",
+    "size": "F 20x10 / R 20x11.5",
+    "price": 2000,
+    "location": "Coconut Creek, FL",
+    "url": "https://www.facebook.com/marketplace/item/1859850188716760",
+    "hero": "/buffer/F92.ghost/01-car.jpg"
   }
 ]
