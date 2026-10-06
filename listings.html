@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Listings — MSpec Wheels</title>
+<meta name="description" content="Curated BMW M wheel listings sourced from the enthusiast community. Verified specs, clean photography, direct seller contact." />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:    '#0A0E14',
+          carbon: '#14181F',
+          slate2: '#1A2030',
+          steel:  '#2A3142',
+          bone:   '#F0F0EC',
+          silver: '#C8CCD0',
+          muted:  '#6B7280',
+          mblue:  '#0066B1',
+          mviolet:'#6E5DA5',
+          mred:   '#E22718',
+        },
+        fontFamily: {
+          display: ['Anton', 'Bebas Neue', 'sans-serif'],
+          sans:    ['Inter', 'system-ui', 'sans-serif'],
+          mono:    ['"JetBrains Mono"', '"IBM Plex Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel placeholder (replace ID before deploy) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+// fbq('init', 'YOUR_PIXEL_ID'); // <-- uncomment + paste ID
+// fbq('track', 'PageView');
+</script>
+
+<style>
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0A0E14;
+    color: #F0F0EC;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-display { font-family: 'Anton', 'Bebas Neue', sans-serif; letter-spacing: 0.01em; }
+  .font-mono { font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace; }
+  .tricolor-stripe {
+    background: linear-gradient(90deg, #0066B1 0%, #6E5DA5 50%, #E22718 100%);
+    height: 3px;
+  }
+  .tricolor-bg {
+    background: linear-gradient(90deg, #0066B1 0%, #6E5DA5 50%, #E22718 100%);
+  }
+  .glow-blue { box-shadow: 0 0 24px rgba(0, 102, 177, 0.25); }
+  .glow-violet { box-shadow: 0 0 24px rgba(110, 93, 165, 0.3); }
+  .dot-grid {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .border-stripe-left {
+    border-left: 3px solid;
+    border-image: linear-gradient(180deg, #0066B1 0%, #6E5DA5 50%, #E22718 100%) 1;
+  }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  .nav-scrolled {
+    background-color: rgba(10, 14, 20, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #2A3142;
+  }
+  /* fitment verdict accent colors */
+  .verdict-yes { color: #4ade80; }
+  .verdict-with-mods { color: #facc15; }
+  .verdict-maybe { color: #fb923c; }
+  .verdict-no { color: #E22718; }
+</style>
+</head>
+<body>
+<!-- =============================== NAV =============================== -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/logo.png" alt="MSpec Wheels" class="h-10 w-10 rounded" />
+      <span class="font-display text-2xl tracking-tight">MSPEC WHEELS</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-silver">
+      <a href="fitment.html" class="hover:text-bone transition">Fitment Tool</a>
+      <a href="listings.html" class="text-bone" aria-current="page">Listings</a>
+      <a href="index.html#submit" class="hover:text-bone transition">Submit</a>
+      <a href="index.html#about" class="hover:text-bone transition">About</a>
+      <a href="https://www.instagram.com/mspecwheels/" target="_blank" rel="noopener" class="hover:text-mblue transition" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+      </a>
+    </div>
+    <button id="mobile-menu-btn" class="md:hidden text-bone" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden bg-carbon border-t border-steel">
+    <div class="px-6 py-4 space-y-3 text-silver">
+      <a href="fitment.html" class="block hover:text-bone">Fitment Tool</a>
+      <a href="listings.html" class="block text-bone" aria-current="page">Listings</a>
+      <a href="index.html#submit" class="block hover:text-bone">Submit</a>
+      <a href="index.html#about" class="block hover:text-bone">About</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =============================== LISTINGS =============================== -->
+<section id="listings" class="pt-32 pb-24 px-6 bg-carbon">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="font-mono text-xs text-mblue uppercase tracking-widest mb-3">— CURATED MARKETPLACE —</div>
+      <h2 class="font-display text-5xl md:text-6xl uppercase">Curated From The Community</h2>
+      <p class="mt-4 text-silver max-w-2xl mx-auto">
+        Hand-picked BMW M wheel listings sourced from Facebook Marketplace, Instagram, and direct seller submissions. Verified specs, clean photography, direct seller contact.
+      </p>
+    </div>
+
+    <div id="listings-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+    <div class="text-center mt-12">
+      <a href="https://www.instagram.com/mspecwheels/" target="_blank" rel="noopener"
+         class="inline-block border border-bone text-bone font-mono text-sm uppercase tracking-widest px-8 py-4 hover:bg-bone hover:text-ink transition">
+        View All Listings on Instagram →
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Public GO packs from listings.json.
+  (function () {
+    var grid = document.getElementById('listings-grid');
+    if (!grid) return;
+    var limit = grid.getAttribute('data-limit');
+    limit = limit ? parseInt(limit, 10) : 0;
+
+    function esc(value) {
+      return String(value == null ? '' : value).replace(/[&<>"']/g, function (ch) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+      });
+    }
+
+    function formatPrice(price) {
+      var n = Number(price);
+      if (!isFinite(n)) return '';
+      return '$' + Math.round(n).toLocaleString('en-US');
+    }
+
+    function heroHtml(item) {
+      if (item.hero) {
+        return '<div class="aspect-[4/3] bg-ink border-b border-steel overflow-hidden">' +
+          '<img src="' + esc(item.hero) + '" alt="' + esc(item.short_title) + '" class="w-full h-full object-cover" loading="lazy">' +
+          '</div>';
+      }
+      return '<div class="aspect-[4/3] bg-ink border-b border-steel flex items-center justify-center px-6">' +
+        '<div class="font-display text-3xl text-muted opacity-60 text-center uppercase leading-tight">' + esc(item.short_title) + '</div>' +
+        '</div>';
+    }
+
+    function cardHtml(item) {
+      return '<article class="bg-slate2 border border-steel hover:border-mblue transition group">' +
+        '<a href="' + esc(item.url) + '" target="_blank" rel="noopener" class="block">' +
+          heroHtml(item) +
+          '<div class="p-5 space-y-2">' +
+            '<div class="font-display text-xl uppercase">' + esc(item.short_title) + '</div>' +
+            '<div class="font-mono text-xs text-mblue uppercase">FITS ' + esc(item.chassis) + '</div>' +
+            '<div class="font-mono text-xs text-silver">' + esc(item.size) + '</div>' +
+            '<div class="flex justify-between items-end gap-4 pt-3">' +
+              '<div class="font-display text-2xl shrink-0">' + formatPrice(item.price) + '</div>' +
+              '<div class="font-mono text-xs text-muted uppercase text-right">' + esc(item.location) + '</div>' +
+            '</div>' +
+          '</div>' +
+        '</a>' +
+      '</article>';
+    }
+
+    fetch('listings.json')
+      .then(function (res) {
+        if (!res.ok) throw new Error('listings.json ' + res.status);
+        return res.json();
+      })
+      .then(function (items) {
+        if (!Array.isArray(items)) throw new Error('listings.json is not a list');
+        var shown = limit > 0 ? items.slice(0, limit) : items;
+        grid.innerHTML = shown.map(cardHtml).join('');
+      })
+      .catch(function (err) {
+        console.warn('Could not load listings.', err);
+      });
+  })();
+</script>
+
+<!-- =============================== FOOTER =============================== -->
+<footer class="py-16 px-6 border-t border-steel bg-carbon">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="assets/logo.png" alt="MSpec Wheels" class="h-10 w-10 rounded" />
+          <span class="font-display text-xl">MSPEC WHEELS</span>
+        </div>
+        <p class="text-silver text-sm leading-relaxed mb-4">
+          BMW M wheel fitment intelligence + curated marketplace.
+        </p>
+        <div class="flex gap-4">
+          <a href="https://www.instagram.com/mspecwheels/" target="_blank" rel="noopener" class="text-muted hover:text-mblue transition">Instagram</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="font-mono text-xs uppercase tracking-widest text-muted mb-4">Navigate</div>
+        <ul class="space-y-2 text-silver text-sm">
+          <li><a href="fitment.html" class="hover:text-bone transition">Fitment Tool</a></li>
+          <li><a href="listings.html" class="hover:text-bone transition">Listings</a></li>
+          <li><a href="index.html#submit" class="hover:text-bone transition">Submit Wheels</a></li>
+          <li><a href="index.html#about" class="hover:text-bone transition">About</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="font-mono text-xs uppercase tracking-widest text-muted mb-4">Trust</div>
+        <ul class="space-y-2 text-silver text-sm">
+          <li><a href="#" class="hover:text-bone transition">Privacy Policy (TBD)</a></li>
+          <li><a href="#" class="hover:text-bone transition">Terms of Service (TBD)</a></li>
+          <li><a href="mailto:hello@mspecwheels.com" class="hover:text-bone transition">hello@mspecwheels.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-steel text-xs text-muted text-center">
+      © 2026 MSpec Wheels. Independent enthusiast project. Not affiliated with BMW AG. BMW, M, and chassis names are trademarks of BMW AG.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) nav.classList.add('nav-scrolled');
+    else nav.classList.remove('nav-scrolled');
+  });
+
+  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>
+</body>
+</html>
