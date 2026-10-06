@@ -188,5 +188,25 @@
     "location": "Southeast PA \u2014 local pickup",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2134002",
     "hero": "/buffer/SteveYem/01-car.jpg"
+  },
+  {
+    "id": "FORUM-F80-437M-BICOLOR-BimmerBlitz.pack",
+    "short_title": "BMW Style 437M Bi-Color",
+    "chassis": "F80 M3",
+    "size": "F 19x9 ET29 / R 19x10 ET40",
+    "price": 1000,
+    "location": "Saint Louis, MO \u2014 local or ship",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2242641",
+    "hero": "/buffer/BimmerBlitz/01-car.png"
+  },
+  {
+    "id": "FORUM-F80-666M-FERRIC-Son_Adolphe.pack",
+    "short_title": "BMW Style 666M Ferric Grey",
+    "chassis": "F80 M3",
+    "size": "F 20x9 ET29 / R 20x10 ET40",
+    "price": 1300,
+    "location": "Maryland / outside Washington DC",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2174946",
+    "hero": "/buffer/Son_Adolphe/01-car.png"
   }
 ]
