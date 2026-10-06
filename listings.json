@@ -218,5 +218,25 @@
     "location": "Coconut Creek, FL",
     "url": "https://www.facebook.com/marketplace/item/1859850188716760",
     "hero": "/buffer/F92.ghost/01-car.jpg"
+  },
+  {
+    "id": "FORUM-F80-OEM-437M-crts2023.pack",
+    "short_title": "BMW Style 437M",
+    "chassis": "F80 M3 / F82 M4",
+    "size": "F 19x9 ET29 / R 19x10 ET40",
+    "price": 1500,
+    "location": "Connecticut \u2014 will ship",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?p=32987505",
+    "hero": "/buffer/crts2023/01-car.png"
+  },
+  {
+    "id": "FORUM-F80-CUSTOM-BBS-LMR-BMmclaren.pack",
+    "short_title": "BBS LM-R",
+    "chassis": "F80 M3",
+    "size": "F 20x9.5 ET23 / R 20x11 ET40",
+    "price": 5000,
+    "location": "Cleveland / Lakewood, OH",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2256679",
+    "hero": "/buffer/BMmclaren/01-wheels.png"
   }
 ]
