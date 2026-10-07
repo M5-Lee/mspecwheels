@@ -1,5 +1,38 @@
 [
   {
+    "id": "FORUM-F80-CUSTOM-WLFORGED-C2201-f80arvs.pack",
+    "short_title": "WL Forged C2-201",
+    "chassis": "F80 M3",
+    "size": "F 19x9.5 ET20 / R 19x11 ET40",
+    "price": 4300,
+    "location": "New Jersey",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2255541",
+    "hero": "/buffer/f80arvs/01-car.jpg",
+    "listed": "2026-10-07"
+  },
+  {
+    "id": "FORUM-G80-CUSTOM-FORGESTAR-F14-Leophay.pack",
+    "short_title": "Forgestar F14",
+    "chassis": "G80/G8X",
+    "size": "F 19x10 / R 20x11",
+    "price": 2000,
+    "location": "Ventura/Oxnard, CA",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2257803",
+    "hero": "/buffer/Leophay/01-car.jpg",
+    "listed": "2026-10-07"
+  },
+  {
+    "id": "FORUM-F80-CUSTOM-APEX-VS5RS-sethar22.pack",
+    "short_title": "Apex VS-5RS",
+    "chassis": "F80/F8X",
+    "size": "F 18x9.5 ET35 / R 18x10 ET25",
+    "price": 2200,
+    "location": "Dallas / DFW, TX",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2257692",
+    "hero": "/buffer/sethar22/01-car.jpg",
+    "listed": "2026-10-07"
+  },
+  {
     "id": "FORUM-F80-OEM-640M-MudkipF87.pack",
     "short_title": "BMW Style 640M",
     "chassis": "F87 M2 Competition",
@@ -250,17 +283,6 @@
     "location": "San Diego, CA",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2251512",
     "hero": "/buffer/Cj156/01-car.png",
-    "listed": "2026-10-02"
-  },
-  {
-    "id": "FORUM-F80-CUSTOM-WLFORGED-C2201-f80arvs.pack",
-    "short_title": "WL Forged C2-201",
-    "chassis": "F80 M3",
-    "size": "F 19x9.5 ET20 / R 19x11 ET40",
-    "price": 4300,
-    "location": "New Jersey",
-    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2255541",
-    "hero": "/buffer/stories-v2/wlforged-c2201-f80arvs-story-f1-hero.png",
     "listed": "2026-10-02"
   },
   {
