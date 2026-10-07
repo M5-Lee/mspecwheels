@@ -1,5 +1,40 @@
 [
   {
+    "id": "FORUM-G80-CUSTOM-BC-FORGED-MHK519-tomwins.pack",
+    "short_title": "BC Forged MHK519, Satin Royal Gold",
+    "chassis": "G80/G81 M3, G82/G83 M4 (Shown on G80 M3)",
+    "size": "F 20x10.5 / R 20x11 (285 F / 295 R)",
+    "price": 4000,
+    "location": "Elk Grove, CA",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2250100",
+    "hero": "/buffer/tomwins/01-car.jpg",
+    "images": [
+      "/buffer/tomwins/01-car.jpg",
+      "/buffer/tomwins/02.jpg",
+      "/buffer/tomwins/03.jpg",
+      "/buffer/tomwins/04.jpg",
+      "/buffer/tomwins/05.jpg"
+    ],
+    "listed": "2026-10-07T14:23:14-05:00"
+  },
+  {
+    "id": "FORUM-X5M-OEM-818M-DoctorWatson.pack",
+    "short_title": "BMW 818M Gloss Black, F95 X5 M / F96 X6 M (winter tires + TPMS)",
+    "chassis": "F95 X5 M, F96 X6 M",
+    "size": "F 21x10.5 ET31 / R 22x11.5 ET43 (Pirelli Scorpion Winter 295/35R21 F / 315/30R22 R)",
+    "price": 2800,
+    "location": "Lee's Summit / Kansas City, MO (local pickup)",
+    "url": "https://g05.bimmerpost.com/forums/showthread.php?t=2240112",
+    "hero": "/buffer/DoctorWatson/01-wheels.jpg",
+    "images": [
+      "/buffer/DoctorWatson/01-wheels.jpg",
+      "/buffer/DoctorWatson/02.jpg",
+      "/buffer/DoctorWatson/03.jpg",
+      "/buffer/DoctorWatson/04.jpg"
+    ],
+    "listed": "2026-10-07T14:23:12-05:00"
+  },
+  {
     "id": "FORUM-G87-OEM-930M-Davey_Goliath.pack",
     "short_title": "BMW 930M (G87 factory) — takeoffs w/ star Advan",
     "chassis": "G87 M2 (Shown on G82 M4)",
