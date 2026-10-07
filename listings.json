@@ -1,5 +1,59 @@
 [
   {
+    "id": "FORUM-G87-OEM-930M-Davey_Goliath.pack",
+    "short_title": "BMW 930M (G87 factory) — takeoffs w/ star Advan",
+    "chassis": "G87 M2 (Shown on G82 M4)",
+    "size": "F 19x9.5 / R 20x10.5 (factory size)",
+    "price": 2500,
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258082",
+    "hero": "/buffer/Davey_Goliath/01-car.jpg",
+    "images": [
+      "/buffer/Davey_Goliath/01-car.jpg",
+      "/buffer/Davey_Goliath/02.jpg",
+      "/buffer/Davey_Goliath/03.jpg",
+      "/buffer/Davey_Goliath/04.jpg",
+      "/buffer/Davey_Goliath/05.jpg"
+    ],
+    "listed": "2026-10-07T09:36:22-05:00"
+  },
+  {
+    "id": "FORUM-F90-OEM-706M-Camarejh.pack",
+    "short_title": "BMW 706M — F90 M5 factory size",
+    "chassis": "F90 M5",
+    "size": "F 20x9.5 ET28 / R 20x10.5 ET28 (factory size)",
+    "price": 1000,
+    "url": "https://f90.bimmerpost.com/forums/showthread.php?t=2251151",
+    "hero": "/buffer/Camarejh/01-wheels.jpg",
+    "images": [
+      "/buffer/Camarejh/01-wheels.jpg",
+      "/buffer/Camarejh/02.jpg",
+      "/buffer/Camarejh/03.jpg",
+      "/buffer/Camarejh/04.jpg",
+      "/buffer/Camarejh/05.jpg",
+      "/buffer/Camarejh/06.jpg",
+      "/buffer/Camarejh/07.jpg",
+      "/buffer/Camarejh/08.jpg",
+      "/buffer/Camarejh/09.jpg"
+    ],
+    "listed": "2026-10-07T09:36:20-05:00"
+  },
+  {
+    "id": "FORUM-X3M-OEM-765M-badm3.pack",
+    "short_title": "BMW 765M — F97 X3 M / F98 X4 M",
+    "chassis": "F97 X3 M, F98 X4 M",
+    "size": "F 9.5x21 ET31 / R 10x21 ET39",
+    "price": 1500,
+    "url": "https://x3.xbimmers.com/forums/showthread/2258933/bmw-765-wheels-for-sale",
+    "hero": "/buffer/badm3/01-wheels.jpg",
+    "images": [
+      "/buffer/badm3/01-wheels.jpg",
+      "/buffer/badm3/02.jpg",
+      "/buffer/badm3/03.jpg",
+      "/buffer/badm3/04.jpg"
+    ],
+    "listed": "2026-10-07T09:36:18-05:00"
+  },
+  {
     "id": "FORUM-G80-CUSTOM-BBS-FIR-EVO-Fastalpine.pack",
     "short_title": "BBS FI-R Evo",
     "chassis": "G80/G81 M3, G82/G83 M4",

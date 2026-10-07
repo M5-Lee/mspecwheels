@@ -183,7 +183,8 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
     var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     function listedKey(value) {
-      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value || ''));
+      var s = String(value || '').trim();
+      var m = /^(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2})(?::(\d{2})(?:\.\d+)?)?(Z|[+-]\d{2}:\d{2}))?$/.exec(s);
       if (!m) return null;
       var y = parseInt(m[1], 10);
       var month = parseInt(m[2], 10);
@@ -191,13 +192,19 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
       if (month < 1 || month > 12 || day < 1 || day > 31) return null;
       var dt = new Date(Date.UTC(y, month - 1, day));
       if (dt.getUTCFullYear() !== y || dt.getUTCMonth() !== month - 1 || dt.getUTCDate() !== day) return null;
-      return m[1] + '-' + m[2] + '-' + m[3];
+      if (!m[4]) return m[1] + '-' + m[2] + '-' + m[3];
+      var hh = parseInt(m[4], 10);
+      var mm = parseInt(m[5], 10);
+      var ss = m[6] == null ? 0 : parseInt(m[6], 10);
+      if (hh > 23 || mm > 59 || ss > 59 || !m[7]) return null;
+      // Full Chicago timestamps sort after a bare date on the same day.
+      return s;
     }
 
     function formatListed(value) {
       var key = listedKey(value);
       if (!key) return '';
-      var parts = key.split('-');
+      var parts = key.slice(0, 10).split('-');
       return MONTHS[parseInt(parts[1], 10) - 1] + ' ' + parseInt(parts[2], 10);
     }
 
