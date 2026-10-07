@@ -7,7 +7,8 @@
     "price": 7500,
     "location": "Sacramento Area (EDH) / NorCal \u2014 local pickup",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258314",
-    "hero": "/buffer/Crazy8/01-car.jpg"
+    "hero": "/buffer/Crazy8/01-car.jpg",
+    "listed": "2026-10-02"
   },
   {
     "id": "FORUM-F80-CUSTOM-WLFORGED-C2201-f80arvs.pack",
@@ -17,7 +18,8 @@
     "price": 4300,
     "location": "New Jersey",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2255541",
-    "hero": "/buffer/stories-v2/wlforged-c2201-f80arvs-story-f1-hero.png"
+    "hero": "/buffer/stories-v2/wlforged-c2201-f80arvs-story-f1-hero.png",
+    "listed": "2026-10-02"
   },
   {
     "id": "FORUM-F80-CUSTOM-ADVAN-GT-Cj156.pack",
@@ -27,7 +29,8 @@
     "price": 3500,
     "location": "San Diego, CA",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2251512",
-    "hero": "/buffer/Cj156/01-car.png"
+    "hero": "/buffer/Cj156/01-car.png",
+    "listed": "2026-10-02"
   },
   {
     "id": "FORUM-G80-CUSTOM-ADVAN-GTBEYOND-E97.M3.pack",
@@ -37,7 +40,8 @@
     "price": 5000,
     "location": "Vancouver, Canada \u2014 meetup preferred",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2253872",
-    "hero": "/buffer/advan/01-car.png"
+    "hero": "/buffer/advan/01-car.png",
+    "listed": "2026-10-02"
   },
   {
     "id": "FORUM-F80-CUSTOM-BBS-LMR-GOLD-Sylverlee.pack",
@@ -47,7 +51,8 @@
     "price": 6350,
     "location": "Irvine, CA \u2014 will ship",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2249740",
-    "hero": "/buffer/Sylverlee/01-car.jpg"
+    "hero": "/buffer/Sylverlee/01-car.jpg",
+    "listed": "2026-10-02"
   },
   {
     "id": "FORUM-F80-CUSTOM-APEX-FL5-SpIndeed.pack",
@@ -57,7 +62,8 @@
     "price": 1100,
     "location": "Washington",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2244752",
-    "hero": "/buffer/SpIndeed/01-car.jpg"
+    "hero": "/buffer/SpIndeed/01-car.jpg",
+    "listed": "2026-10-02"
   },
   {
     "id": "FORUM-G80-OEM-826M-rieck2000.pack",
@@ -67,7 +73,8 @@
     "price": 3000,
     "location": "New Mexico \u2014 will ship",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2257218",
-    "hero": "/buffer/826M/01-wheels.jpg"
+    "hero": "/buffer/826M/01-wheels.jpg",
+    "listed": "2026-10-02"
   },
   {
     "id": "FORUM-G80-OEM-824M-adisz.pack",
@@ -77,7 +84,8 @@
     "price": 1900,
     "location": "Babylon, NY \u2014 pickup only",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2257872",
-    "hero": "/buffer/stories-v2/824m-adisz-story-f1-hero.png"
+    "hero": "/buffer/stories-v2/824m-adisz-story-f1-hero.png",
+    "listed": "2026-10-02"
   },
   {
     "id": "FORUM-G80-OEM-825M-threepedalseca.pack",
@@ -87,7 +95,8 @@
     "price": 3000,
     "location": "Los Angeles, CA \u2014 local pickup",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258317",
-    "hero": "/buffer/stories-v2/825m-threepedalseca-story-f1-hero.png"
+    "hero": "/buffer/stories-v2/825m-threepedalseca-story-f1-hero.png",
+    "listed": "2026-10-02"
   },
   {
     "id": "FORUM-G80-OEM-825M-grendel88.pack",
@@ -97,7 +106,8 @@
     "price": 2800,
     "location": "Stockton, CA \u2014 ships US",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258307",
-    "hero": "/buffer/grendel88/01-wheels.png"
+    "hero": "/buffer/grendel88/01-wheels.png",
+    "listed": "2026-10-02"
   },
   {
     "id": "FORUM-F80-CUSTOM-BBS-LMR-TheAss3t.pack",
@@ -107,7 +117,8 @@
     "price": 6000,
     "location": "MO",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?p=32970471",
-    "hero": "/buffer/TheAss3t/01-wheels.png"
+    "hero": "/buffer/TheAss3t/01-wheels.png",
+    "listed": "2026-10-02"
   },
   {
     "id": "MARKETPLACE-M4CS-OEM-827M-g80killz.pack",
@@ -117,7 +128,8 @@
     "price": 3800,
     "location": "Allentown, PA",
     "url": "https://www.facebook.com/marketplace/item/2102248203755472",
-    "hero": "/buffer/g80killz/04.jpg"
+    "hero": "/buffer/g80killz/04.jpg",
+    "listed": "2026-10-05"
   },
   {
     "id": "MARKETPLACE-F90-OEM-706M-prestigeautotintsnj.pack",
@@ -127,7 +139,8 @@
     "price": 1700,
     "location": "Woodbridge, NJ",
     "url": "https://www.facebook.com/marketplace/item/1503617158454016",
-    "hero": "/buffer/prestigeautotintsnj/01-car.jpg"
+    "hero": "/buffer/prestigeautotintsnj/01-car.jpg",
+    "listed": "2026-10-05"
   },
   {
     "id": "FORUM-F80-OEM-513M-JustanotherF80.pack",
@@ -137,7 +150,8 @@
     "price": 2300,
     "location": "Central New Jersey \u2014 pickup only",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?p=32986760",
-    "hero": "/buffer/JustanotherF80/513m-att-04.png"
+    "hero": "/buffer/JustanotherF80/513m-att-04.png",
+    "listed": "2026-10-05"
   },
   {
     "id": "FORUM-F80-CUSTOM-ARC8-fwrigley.pack",
@@ -147,7 +161,8 @@
     "price": 1300,
     "location": "Seattle, WA \u2014 will ship (buyer pays)",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2242586",
-    "hero": "/buffer/fwrigley/arc8-att-06.png"
+    "hero": "/buffer/fwrigley/arc8-att-06.png",
+    "listed": "2026-10-05"
   },
   {
     "id": "MARKETPLACE-G80-OEM-826M-ajpstreets.pack",
@@ -157,7 +172,8 @@
     "price": 3650,
     "location": "Moore, SC",
     "url": "https://www.facebook.com/marketplace/item/1552707622800002",
-    "hero": "/buffer/ajpstreets/01-car.jpg"
+    "hero": "/buffer/ajpstreets/01-car.jpg",
+    "listed": "2026-10-05"
   },
   {
     "id": "MARKETPLACE-G80-OEM-825M-m2kel.pack",
@@ -167,7 +183,8 @@
     "price": 2500,
     "location": "Old Bridge, NJ",
     "url": "https://www.facebook.com/marketplace/item/1044420501961301",
-    "hero": "/buffer/m2.kel/01-car.jpg"
+    "hero": "/buffer/m2.kel/01-car.jpg",
+    "listed": "2026-10-05"
   },
   {
     "id": "FORUM-F80-CUSTOM-TE37-joshuasok.pack",
@@ -177,7 +194,8 @@
     "price": 4400,
     "location": "Northern CA Bay Area / SoCal",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2256768",
-    "hero": "/buffer/joshuasok/01-car.png"
+    "hero": "/buffer/joshuasok/01-car.png",
+    "listed": "2026-10-06"
   },
   {
     "id": "FORUM-F80-666M-SHADOWLINE-SteveYem.pack",
@@ -187,7 +205,8 @@
     "price": 2000,
     "location": "Southeast PA \u2014 local pickup",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2134002",
-    "hero": "/buffer/SteveYem/01-car.jpg"
+    "hero": "/buffer/SteveYem/01-car.jpg",
+    "listed": "2026-10-06"
   },
   {
     "id": "FORUM-F80-437M-BICOLOR-BimmerBlitz.pack",
@@ -197,7 +216,8 @@
     "price": 1000,
     "location": "Saint Louis, MO \u2014 local or ship",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2242641",
-    "hero": "/buffer/BimmerBlitz/01-car.png"
+    "hero": "/buffer/BimmerBlitz/01-car.png",
+    "listed": "2026-10-06"
   },
   {
     "id": "FORUM-F80-666M-FERRIC-Son_Adolphe.pack",
@@ -207,7 +227,8 @@
     "price": 1300,
     "location": "Maryland / outside Washington DC",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2174946",
-    "hero": "/buffer/Son_Adolphe/01-car.png"
+    "hero": "/buffer/Son_Adolphe/01-car.png",
+    "listed": "2026-10-06"
   },
   {
     "id": "MARKETPLACE-F92-OEM-826M-f92ghost.pack",
@@ -217,7 +238,8 @@
     "price": 2000,
     "location": "Coconut Creek, FL",
     "url": "https://www.facebook.com/marketplace/item/1859850188716760",
-    "hero": "/buffer/F92.ghost/01-car.jpg"
+    "hero": "/buffer/F92.ghost/01-car.jpg",
+    "listed": "2026-10-06"
   },
   {
     "id": "FORUM-F80-OEM-437M-crts2023.pack",
@@ -227,7 +249,8 @@
     "price": 1500,
     "location": "Connecticut \u2014 will ship",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?p=32987505",
-    "hero": "/buffer/crts2023/01-car.png"
+    "hero": "/buffer/crts2023/01-car.png",
+    "listed": "2026-10-06"
   },
   {
     "id": "FORUM-F80-CUSTOM-BBS-LMR-BMmclaren.pack",
@@ -237,6 +260,18 @@
     "price": 5000,
     "location": "Cleveland / Lakewood, OH",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2256679",
-    "hero": "/buffer/BMmclaren/01-wheels.png"
+    "hero": "/buffer/BMmclaren/01-wheels.png",
+    "listed": "2026-10-06"
+  },
+  {
+    "id": "FORUM-F80-OEM-640M-MudkipF87.pack",
+    "short_title": "BMW Style 640M",
+    "chassis": "F87 M2 Competition",
+    "size": "F 18x8.5 ET36 / R 18x9 ET40",
+    "price": 1500,
+    "location": "New York \u2014 local pickup only",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2257789",
+    "hero": "/buffer/MudkipF87/01-wheels.png",
+    "listed": "2026-10-06"
   }
 ]

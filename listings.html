@@ -180,7 +180,41 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
         '</div>';
     }
 
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    function listedKey(value) {
+      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value || ''));
+      if (!m) return null;
+      var y = parseInt(m[1], 10);
+      var month = parseInt(m[2], 10);
+      var day = parseInt(m[3], 10);
+      if (month < 1 || month > 12 || day < 1 || day > 31) return null;
+      var dt = new Date(Date.UTC(y, month - 1, day));
+      if (dt.getUTCFullYear() !== y || dt.getUTCMonth() !== month - 1 || dt.getUTCDate() !== day) return null;
+      return m[1] + '-' + m[2] + '-' + m[3];
+    }
+
+    function formatListed(value) {
+      var key = listedKey(value);
+      if (!key) return '';
+      var parts = key.split('-');
+      return MONTHS[parseInt(parts[1], 10) - 1] + ' ' + parseInt(parts[2], 10);
+    }
+
+    function sortNewest(items) {
+      return items.slice().sort(function (a, b) {
+        var ka = listedKey(a && a.listed);
+        var kb = listedKey(b && b.listed);
+        if (ka == null && kb == null) return 0;
+        if (ka == null) return 1;
+        if (kb == null) return -1;
+        if (ka === kb) return 0;
+        return ka < kb ? 1 : -1;
+      });
+    }
+
     function cardHtml(item) {
+      var listed = formatListed(item.listed);
       return '<article class="bg-slate2 border border-steel hover:border-mblue transition group">' +
         '<a href="' + esc(item.url) + '" target="_blank" rel="noopener" class="block">' +
           heroHtml(item) +
@@ -188,6 +222,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
             '<div class="font-display text-xl uppercase">' + esc(item.short_title) + '</div>' +
             '<div class="font-mono text-xs text-mblue uppercase">FITS ' + esc(item.chassis) + '</div>' +
             '<div class="font-mono text-xs text-silver">' + esc(item.size) + '</div>' +
+            (listed ? '<div class="font-mono text-xs text-muted">Listed: ' + esc(listed) + '</div>' : '') +
             '<div class="flex justify-between items-end gap-4 pt-3">' +
               '<div class="font-display text-2xl shrink-0">' + formatPrice(item.price) + '</div>' +
               '<div class="font-mono text-xs text-muted uppercase text-right">' + esc(item.location) + '</div>' +
@@ -204,7 +239,8 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
       })
       .then(function (items) {
         if (!Array.isArray(items)) throw new Error('listings.json is not a list');
-        var shown = limit > 0 ? items.slice(0, limit) : items;
+        var sorted = sortNewest(items);
+        var shown = limit > 0 ? sorted.slice(0, limit) : sorted;
         grid.innerHTML = shown.map(cardHtml).join('');
       })
       .catch(function (err) {
