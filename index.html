@@ -240,6 +240,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
     var grid = document.getElementById('listings-grid');
     if (!grid) return;
     var limit = parseInt(grid.getAttribute('data-limit') || '0', 10);
+    if (!isFinite(limit)) limit = 0;
 
     function esc(value) {
       return String(value == null ? '' : value).replace(/[&<>"']/g, function (ch) {
@@ -286,15 +287,23 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
     }
 
     function sortNewest(items) {
-      return items.slice().sort(function (a, b) {
-        var ka = listedKey(a && a.listed);
-        var kb = listedKey(b && b.listed);
-        if (ka == null && kb == null) return 0;
+      // Tie-break on the fetched index so equal days do not depend on a stable
+      // sort. listings.json is newest-first, and within a day the later-added
+      // card is stored earlier, so a lower index ranks first. Missing dates
+      // sort last.
+      var tagged = items.map(function (item, index) {
+        return { item: item, index: index };
+      });
+      tagged.sort(function (a, b) {
+        var ka = listedKey(a.item && a.item.listed);
+        var kb = listedKey(b.item && b.item.listed);
+        if (ka == null && kb == null) return a.index - b.index;
         if (ka == null) return 1;
         if (kb == null) return -1;
-        if (ka === kb) return 0;
+        if (ka === kb) return a.index - b.index;
         return ka < kb ? 1 : -1;
       });
+      return tagged.map(function (entry) { return entry.item; });
     }
 
     function cardHtml(item) {
