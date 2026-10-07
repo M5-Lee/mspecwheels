@@ -1,5 +1,44 @@
 [
   {
+    "id": "FORUM-G80-CUSTOM-BBS-FIR-EVO-Fastalpine.pack",
+    "short_title": "BBS FI-R Evo",
+    "chassis": "G80/G81 M3, G82/G83 M4",
+    "size": "20x10.5 ET15 square",
+    "price": 9500,
+    "location": "Pennsylvania (pickup preferred; will ship)",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2244654",
+    "hero": "/buffer/Fastalpine/01-car.jpg",
+    "images": [
+      "/buffer/Fastalpine/01-car.jpg",
+      "/buffer/Fastalpine/02-car.jpg",
+      "/buffer/Fastalpine/03-wheels.jpg",
+      "/buffer/Fastalpine/04-wheels.jpg",
+      "/buffer/Fastalpine/05-wheels.jpg",
+      "/buffer/Fastalpine/06-wheels.jpg",
+      "/buffer/Fastalpine/07-wheels.jpg",
+      "/buffer/Fastalpine/08-wheels.jpg"
+    ],
+    "listed": "2026-10-07"
+  },
+  {
+    "id": "FORUM-F90-CUSTOM-SIGNATURE-SV602-calicruisin.pack",
+    "short_title": "Signature SV602",
+    "chassis": "F90 M5",
+    "size": "F 20x10 ET22 / R 20x11 ET26",
+    "price": 2500,
+    "location": "SoCal (will ship)",
+    "url": "https://f90.bimmerpost.com/forums/showthread.php?t=2248847",
+    "hero": "/buffer/calicruisin/01-car.jpg",
+    "images": [
+      "/buffer/calicruisin/01-car.jpg",
+      "/buffer/calicruisin/02-wheels.jpg",
+      "/buffer/calicruisin/03-wheels.jpg",
+      "/buffer/calicruisin/04-wheels.jpg",
+      "/buffer/calicruisin/05-wheels.jpg"
+    ],
+    "listed": "2026-10-07"
+  },
+  {
     "id": "FORUM-F80-CUSTOM-WLFORGED-C2201-f80arvs.pack",
     "short_title": "WL Forged C2-201",
     "chassis": "F80 M3",
