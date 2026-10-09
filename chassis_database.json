@@ -49,8 +49,6 @@
       "G80/G81 M3",
       "G82/G83 M4",
       "F90 M5",
-      "G90 M5",
-      "G99 M5 Touring",
       "F91/F92/F93 M8",
       "F97 X3 M",
       "F98 X4 M",
@@ -60,7 +58,7 @@
     ],
     "center_bore_72_56mm": "Most older 5×120 M cars (E36, E46, E9X, F8X, F87, E28, E34, E60, F10, E24, E63, F06–F13)",
     "center_bore_74_1mm_unique": "E39 M5 only — unique among BMW M cars",
-    "center_bore_66_6mm": "All 5×112 M cars (G87, G8X, F90, G90, F9X M8, M-SUVs, XM)",
+    "center_bore_66_6mm": "All 5×112 M cars (G87, G8X, F90, F9X M8, M-SUVs, XM). G90/G99 are 5x132 with the same 66.6 bore.",
     "clearance_budget_mm": {
       "E30 M3": {
         "safe_extra": 6,
@@ -572,9 +570,7 @@
       "clearance_notes_text": "The F90’s front fenders are aluminum with a decent lip that can be rolled flat if necessary. The stock 275 on ET28 is conservative – there’s room to go outward (many add spacers to stock wheels: ~5 mm front, ~3 mm rear for flush look). So adding width and lower offset is feasible. However, the front fender design on F90 has an internal bracket near 12 o’clock that can snag the tire if it’s very close – adding more than ~15 mm poke beyond stock can risk contact on full compression. That’s why even aggressive setups stick around ET20 front (only ~8 mm more poke than stock ET28 on a similar width). The rear fenders can be rolled; from factory they can accept the mild stagger easily. Pushing rear wheels out ~10 mm (to ET18 on a 10.5, for example) will bring the tire near flush – but if the car is heavily loaded or lowered, the outer shoulder could graze the fender. Rolling the rear lip flat cures this. AWD considerations: Because the F90 is AWD (xDrive), maintaining front/rear rolling radius is crucial. Most fitters keep the tire aspect ratios equal (e.g., 285/35 & 295/35, or 295/30 & 295/30 square). A square setup is easiest for AWD, but the car’s staggered power bias can still handle a slight stagger as BMW did stock (1 cm difference). Generally keep diameters within 1%. Suspension clearance: The F90’s double-wishbone front and multi-link rear mean inner clearance is not usually the issue – you’ll hit the fender before the suspension. One thing to note: the M5 CS has slightly more negative camber from factory (-1.5° front) which helps it run the same 275 on wider wheels with absolutely no rub – regular F90 might need camber plates to achieve that if running similarly wide front tires. Brakes: Standard steel rotors are 395 mm front – require ≥20″ wheel. Some 19″ may clear steel brakes (with careful design and maybe spacers), but carbon ceramic rotors (400 mm front) practically mandate 20″. All the OEM wheel options are 20″ in most markets, with 19″ only as base in some. If downsizing for winter, check templates; a few 19″ wheels (like BBS CI-R) claim to clear F90 steel brakes, but it’s tight. For track, most will stick with 20s or get custom 19s that clear. In summary, the F90 M5 can handle a bit more tire than stock – especially up front where BMW played it safe with 275 – but going too wild will necessitate fender modifications or significant camber. A moderate widening yields big traction benefits and a better flush look, all while staying within the constraints of the xDrive system.",
       "fitment_notes_text": "",
       "verification_status": "unverified",
-      "subheader_descriptors": [
-        "(Note: The upcoming 2025 G90 M5 will introduce new specs – e.g., rumor is 5×112 with larger 5×132 rear bolt pattern for strength – but that is beyond this scope as we focus on existing generations.)"
-      ],
+      "subheader_descriptors": [],
       "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×112, 66.6Â mm. (The F90, despite being called “F”, rides on the G30 chassis platform, so it uses the new 5×112 hubs.)"
     },
     {
@@ -634,15 +630,21 @@
       "chassis_codes": [
         "G90"
       ],
-      "bolt_pattern": "5x112",
+      "bolt_pattern": "5x132",
       "center_bore_mm": 66.6,
       "years": "2025–present",
-      "oem_wheels_text": "NEEDS RESEARCH — most aftermarket wheels still being released as of mid-2026.",
-      "aftermarket_range_text": "NEEDS RESEARCH — likely similar to F90 envelope with hybrid weight differences.",
-      "clearance_notes_text": "NEEDS RESEARCH — updated brake package vs F90.",
-      "fitment_notes_text": "",
+      "oem_wheels_text": "Standard (951M; also 952M): 20x10.5J ET28 front, 21x11J ET28 rear; tires 285/40 ZR20 111Y XL front, 295/35 ZR21 110Y XL rear. BMW winter set (951M Jet Black): 10Jx20 ET28 front, 10.5Jx20 ET28 rear (275/40R20 / 285/40R20). No factory 19\" or square option. Lug bolts M14x1.25 (BMW 36136795153). Sources: BMW PressClub tech data; RealOEM G90 wheel groups; wheel-size.com; IND Distribution.",
+      "aftermarket_range_text": "NEEDS RESEARCH — new 5x132 hub: 5x112 wheels/spacers do NOT fit without adapters. Vendor-tested spacers on OE suspension: 12mm F/R (effective ET16) is IND's flush recommendation; 5–18mm tested.",
+      "clearance_notes_text": "NEEDS RESEARCH — brake/barrel templates for M Compound vs M Carbon ceramic not yet verified.",
+      "fitment_notes_text": "Corrected 2026-10-08: bolt pattern is 5x132 (not 5x112); CB 66.56 mm. Wheels and bolts share part numbers with G99.",
       "subheader_descriptors": [],
-      "verification_status": "stub-needs-research"
+      "verification_status": "researched-unverified-2026-10-08",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x132, 66.56 mm (66.6). M14x1.25 floating-collar lug bolts.",
+      "verified_oem_wheels": {
+        "style_951M_952M_std": "20x10.5J ET28 front, 21x11J ET28 rear; 285/40ZR20 111Y XL + 295/35ZR21 110Y XL",
+        "winter_951M": "20x10J ET28 front, 20x10.5J ET28 rear; 275/40R20 + 285/40R20",
+        "note": "Researched BMW PressClub / RealOEM / wheel-size.com / IND 2026-10-08 — not Round-1 spot-checked."
+      }
     },
     {
       "family": "M5",
@@ -650,15 +652,21 @@
       "chassis_codes": [
         "G99"
       ],
-      "bolt_pattern": "5x112",
+      "bolt_pattern": "5x132",
       "center_bore_mm": 66.6,
       "years": "2025–present",
-      "oem_wheels_text": "NEEDS RESEARCH",
-      "aftermarket_range_text": "NEEDS RESEARCH — wagon-specific rear arch differences vs sedan.",
-      "clearance_notes_text": "NEEDS RESEARCH",
-      "fitment_notes_text": "",
+      "oem_wheels_text": "Standard (951M; also 952M): 20x10.5J ET28 front, 21x11J ET28 rear; tires 285/40 ZR20 111Y XL front, 295/35 ZR21 110Y XL rear. BMW winter set (951M Jet Black): 10Jx20 ET28 front, 10.5Jx20 ET28 rear (275/40R20 / 285/40R20). No factory 19\" or square option. Lug bolts M14x1.25 (BMW 36136795153). Sources: BMW PressClub M5 Touring tech data; RealOEM G99 wheel groups; wheel-size.com; IND Distribution.",
+      "aftermarket_range_text": "NEEDS RESEARCH — 5x132 hub (same as G90); Touring rear-arch differences vs sedan unmeasured.",
+      "clearance_notes_text": "NEEDS RESEARCH — brake/barrel templates for M Compound vs M Carbon ceramic not yet verified.",
+      "fitment_notes_text": "Corrected 2026-10-08: 5x132 / CB 66.56. Identical OEM wheel part numbers to G90 (951M 36107884268/269/272/273, 952M 36107884274/275), same tire load indexes.",
       "subheader_descriptors": [],
-      "verification_status": "stub-needs-research"
+      "verification_status": "researched-unverified-2026-10-08",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x132, 66.56 mm (66.6). M14x1.25 floating-collar lug bolts.",
+      "verified_oem_wheels": {
+        "style_951M_952M_std": "20x10.5J ET28 front, 21x11J ET28 rear; 285/40ZR20 111Y XL + 295/35ZR21 110Y XL",
+        "winter_951M": "20x10J ET28 front, 20x10.5J ET28 rear; 275/40R20 + 285/40R20",
+        "note": "Researched BMW PressClub / RealOEM / wheel-size.com / IND 2026-10-08 — not Round-1 spot-checked."
+      }
     },
     {
       "family": "M8",
