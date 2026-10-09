@@ -385,17 +385,17 @@
       },
       "oem_front": {
         "diameter_in": 20,
-        "width_in": 9.5,
-        "offset_mm": 27,
-        "tire": "275/35ZR20"
+        "width_in": 10.5,
+        "offset_mm": 28,
+        "tire": "285/40ZR20"
       },
       "oem_rear": {
         "diameter_in": 21,
-        "width_in": 10.5,
-        "offset_mm": 30,
-        "tire": "295/30ZR21"
+        "width_in": 11,
+        "offset_mm": 28,
+        "tire": "295/35ZR21"
       },
-      "notes": "STUB — geometry approximated from F90."
+      "notes": "STUB — clearances approximated from F90; OEM sizes verified 2026-10-08 (951M/952M 20x10.5 ET28 F / 21x11 ET28 R)."
     },
     "E63/E64 M6": {
       "extends": "BMW_M_sedan_default",
