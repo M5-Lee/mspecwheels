@@ -258,7 +258,8 @@
     "location": "Dallas / DFW, TX",
     "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2257692",
     "hero": "/buffer/sethar22/01-car.jpg",
-    "listed": "2026-10-07"
+    "listed": "2026-10-07",
+    "sold": true
   },
   {
     "id": "FORUM-F80-OEM-640M-MudkipF87.pack",
@@ -523,5 +524,66 @@
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258314",
     "hero": "/buffer/Crazy8/01-car.jpg",
     "listed": "2026-10-02"
+  },
+  {
+    "id": "FORUM-G80-CUSTOM-BBS-LM-prpz.pack",
+    "short_title": "BBS LM",
+    "chassis": "G80/G81 M3, G82/G83 M4, G87 M2 (Shown on G80 M3)",
+    "size": "F 20x9.5 ET8 / R 20x10.5 ET15",
+    "price": 6300,
+    "location": "Kitchener / SW Ontario, Canada",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2259363",
+    "hero": "/buffer/prpz/crop45-01.jpg",
+    "images": [
+      "/buffer/prpz/crop45-01.jpg",
+      "/buffer/prpz/crop45-02.jpg",
+      "/buffer/prpz/crop45-03.jpg",
+      "/buffer/prpz/crop45-04.jpg",
+      "/buffer/prpz/crop45-05.jpg",
+      "/buffer/prpz/crop45-06.jpg",
+      "/buffer/prpz/crop45-07.jpg",
+      "/buffer/prpz/crop45-08.jpg"
+    ],
+    "listed": "2026-10-09"
+  },
+  {
+    "id": "FORUM-G80-CUSTOM-BSPK-MAG-Dirtbikerr450.pack",
+    "short_title": "BSPK Forged Magnesium",
+    "chassis": "G80/G81 M3, G82/G83 M4, G87 M2 (Shown on G80 M3)",
+    "size": "19x10.5 ET14 square",
+    "price": 4000,
+    "location": "Boston, MA",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2258091",
+    "hero": "/buffer/Dirtbikerr450/crop45-01.jpg",
+    "images": [
+      "/buffer/Dirtbikerr450/crop45-01.jpg",
+      "/buffer/Dirtbikerr450/crop45-02.jpg",
+      "/buffer/Dirtbikerr450/crop45-03.jpg",
+      "/buffer/Dirtbikerr450/crop45-04.jpg",
+      "/buffer/Dirtbikerr450/crop45-05.jpg",
+      "/buffer/Dirtbikerr450/crop45-06.jpg",
+      "/buffer/Dirtbikerr450/crop45-07.jpg",
+      "/buffer/Dirtbikerr450/crop45-08.jpg",
+      "/buffer/Dirtbikerr450/crop45-09.jpg"
+    ],
+    "listed": "2026-10-09"
+  },
+  {
+    "id": "FORUM-G80-CUSTOM-APEX-VS5RS-e90-4aj.pack",
+    "short_title": "Apex VS-5RS",
+    "chassis": "G80/G81 M3, G82/G83 M4, G87 M2",
+    "size": "F 20x10 ET8 / R 20x11 ET18",
+    "price": 4300,
+    "location": "Cerritos, CA",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2259259",
+    "hero": "/buffer/e90-4aj/crop45-01.jpg",
+    "images": [
+      "/buffer/e90-4aj/crop45-01.jpg",
+      "/buffer/e90-4aj/crop45-02.jpg",
+      "/buffer/e90-4aj/crop45-03.jpg",
+      "/buffer/e90-4aj/crop45-04.jpg",
+      "/buffer/e90-4aj/crop45-05.jpg"
+    ],
+    "listed": "2026-10-09"
   }
 ]

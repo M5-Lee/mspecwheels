@@ -94,6 +94,26 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
   .verdict-with-mods { color: #facc15; }
   .verdict-maybe { color: #fb923c; }
   .verdict-no { color: #E22718; }
+  .sold-card { opacity: 0.72; }
+  .sold-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 2;
+    background: #E22718;
+    color: #F0F0EC;
+    font-family: 'Anton', 'Bebas Neue', sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    padding: 0.45rem 0.7rem 0.35rem;
+    pointer-events: none;
+  }
+  .sold-price {
+    text-decoration: line-through;
+    text-decoration-color: #E22718;
+    text-decoration-thickness: 2px;
+  }
 </style>
 </head>
 <body>
@@ -170,13 +190,16 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
     }
 
     function heroHtml(item) {
+      var soldBadge = item.sold ? '<div class="sold-badge">SOLD</div>' : '';
       if (item.hero) {
-        return '<div class="aspect-[4/3] bg-ink border-b border-steel overflow-hidden">' +
+        return '<div class="aspect-[4/3] bg-ink border-b border-steel overflow-hidden' + (item.sold ? ' relative' : '') + '">' +
           '<img src="' + esc(item.hero) + '" alt="' + esc(item.short_title) + '" class="w-full h-full object-cover" loading="lazy">' +
+          soldBadge +
           '</div>';
       }
-      return '<div class="aspect-[4/3] bg-ink border-b border-steel flex items-center justify-center px-6">' +
+      return '<div class="aspect-[4/3] bg-ink border-b border-steel flex items-center justify-center px-6' + (item.sold ? ' relative' : '') + '">' +
         '<div class="font-display text-3xl text-muted opacity-60 text-center uppercase leading-tight">' + esc(item.short_title) + '</div>' +
+        soldBadge +
         '</div>';
     }
 
@@ -230,7 +253,10 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 
     function cardHtml(item) {
       var listed = formatListed(item.listed);
-      return '<article class="bg-slate2 border border-steel hover:border-mblue transition group">' +
+      var priceHtml = item.sold
+        ? '<div class="font-display text-2xl shrink-0 sold-price">' + formatPrice(item.price) + '</div>'
+        : '<div class="font-display text-2xl shrink-0">' + formatPrice(item.price) + '</div>';
+      return '<article class="bg-slate2 border border-steel hover:border-mblue transition group' + (item.sold ? ' sold-card' : '') + '">' +
         '<a href="' + esc(item.url) + '" target="_blank" rel="noopener" class="block">' +
           heroHtml(item) +
           '<div class="p-5 space-y-2">' +
@@ -239,7 +265,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
             '<div class="font-mono text-xs text-silver">' + esc(item.size) + '</div>' +
             (listed ? '<div class="font-mono text-xs text-muted">Listed: ' + esc(listed) + '</div>' : '') +
             '<div class="flex justify-between items-end gap-4 pt-3">' +
-              '<div class="font-display text-2xl shrink-0">' + formatPrice(item.price) + '</div>' +
+              priceHtml +
               '<div class="font-mono text-xs text-muted uppercase text-right">' + esc(item.location) + '</div>' +
             '</div>' +
           '</div>' +
