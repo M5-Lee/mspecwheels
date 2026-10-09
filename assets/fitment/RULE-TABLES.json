@@ -40,14 +40,16 @@
     "G80/G81 M3",
     "G82/G83 M4",
     "F90 M5",
-    "G90 M5",
-    "G99 M5 Touring",
     "F91/F92/F93 M8",
     "F97 X3 M",
     "F98 X4 M",
     "F95 X5 M",
     "F96 X6 M",
     "G09 XM"
+  ],
+  "bolt_pattern_5x132_chassis": [
+    "G90 M5",
+    "G99 M5 Touring"
   ],
   "center_bore_by_pattern": {
     "5x112": 66.6,

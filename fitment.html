@@ -142,7 +142,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 
         <form id="fitment-form" class="space-y-6">
           <div>
-            <!-- Width menu is half-inch steps from 7 through 13. Geometry OEM widths stop at 11.5; 12, 12.5, and 13 are aftermarket sizes the parser already accepts. Bolt patterns are the only two in chassis_database.json. -->
+            <!-- Width menu is half-inch steps from 7 through 13. Geometry OEM widths stop at 11.5; 12, 12.5, and 13 are aftermarket sizes the parser already accepts. Bolt patterns are 5x120, 5x112, and 5x132 (G90 M5 / G99 M5 Touring). -->
             <div class="grid grid-cols-4 gap-2 sm:gap-4 items-end">
               <div class="min-w-0">
                 <label for="spec-diameter" class="block font-mono text-[10px] sm:text-xs uppercase tracking-wide sm:tracking-widest text-muted mb-2 leading-tight">Diameter</label>
@@ -182,6 +182,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
                   <option value="">—</option>
                   <option value="5x120">5x120</option>
                   <option value="5x112">5x112</option>
+                  <option value="5x132">5x132</option>
                 </select>
               </div>
               <div class="min-w-0">
