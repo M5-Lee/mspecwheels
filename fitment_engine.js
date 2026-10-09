@@ -114,6 +114,28 @@
     return w.diameter_in + 'x' + w.width_in + ' ET' + w.offset_mm;
   }
 
+  function sameInches(a, b) {
+    return Math.abs(Number(a) - Number(b)) < 0.001;
+  }
+
+  // Factory wheel set: each axle matches oem_front / oem_rear (diameter and width,
+  // offset within ±1 mm). Bolt pattern may be omitted; a pattern that does not
+  // match this hub is not the factory set.
+  function isFactoryWheelSet(setup, geo, card) {
+    if (!setup || !geo || !geo.oem_front || !geo.oem_rear || !card) return false;
+    if (!axleMatchesOem(setup.front, geo.oem_front)) return false;
+    if (!axleMatchesOem(setup.rear, geo.oem_rear)) return false;
+    if (setup.bolt && setup.bolt !== card.bolt_pattern) return false;
+    return true;
+  }
+
+  function axleMatchesOem(wheel, oem) {
+    if (!wheel || !oem) return false;
+    if (!sameInches(wheel.diameter_in, oem.diameter_in)) return false;
+    if (!sameInches(wheel.width_in, oem.width_in)) return false;
+    return Math.abs(Number(wheel.offset_mm) - Number(oem.offset_mm)) <= 1;
+  }
+
   function scoreAxle(wheel, oem, clearance, budget, lowered) {
     var half = ((wheel.width_in - oem.width_in) / 2) * 25.4;
     var offsetDelta = oem.offset_mm - wheel.offset_mm;
@@ -182,6 +204,7 @@
     var budgets = rules.clearance_budget_mm || {};
     var budget = budgets[map.budget] || { safe_extra: 8, aggressive_street: 14, heavy_mod_track: 22 };
     var geo = resolveGeometry(data.geometry, map.geometry);
+    var oemMatch = isFactoryWheelSet(setup, geo, card);
     var ctx = String(context || '');
     var lowered = /lower|dropped|coilover|slammed/i.test(ctx);
     var ccb = /ccb|carbon ceramic|carbon-ceramic/i.test(ctx);
@@ -195,7 +218,8 @@
     var boltText;
     if (!setup.bolt) {
       boltText = 'Not in the spec. This chassis is ' + card.bolt_pattern + '.';
-      tier = worse(tier, 'YES_WITH_MODS');
+      // A blank pattern on the factory sizes is still a direct fit. The note stays.
+      if (!oemMatch) tier = worse(tier, 'YES_WITH_MODS');
       asks.push('What is the bolt pattern? This chassis needs ' + card.bolt_pattern + '.');
     } else if (setup.bolt === card.bolt_pattern) {
       boltText = setup.bolt + ' matches ' + chassisName + '.';
@@ -208,6 +232,7 @@
     var hub = card.center_bore_mm;
     var boreText;
     if (setup.center_bore_mm == null) {
+      // Missing bore is a note only. It does not change the tier, including factory sizes.
       boreText = 'Not in the spec. Hub is ' + hub + ' mm. The wheel bore must be at least that.';
       asks.push('What is the center bore? It must be ≥ ' + hub + ' mm. A larger bore needs hub-centric rings.');
     } else if (setup.center_bore_mm + 0.3 < hub) {
@@ -252,8 +277,13 @@
     }
 
     if (xdrive && setup.front.diameter_in !== setup.rear.diameter_in) {
-      caveats.push('xDrive: keep front and rear rolling diameters close. This spec changes diameter by axle.');
-      tier = worse(tier, 'YES_WITH_MODS');
+      if (oemMatch) {
+        // Factory stagger is the OEM setup. Keep the xDrive line as a note, not a downgrade.
+        caveats.push('xDrive: front and rear diameters are staggered, matching this chassis factory setup.');
+      } else {
+        caveats.push('xDrive: keep front and rear rolling diameters close. This spec changes diameter by axle.');
+        tier = worse(tier, 'YES_WITH_MODS');
+      }
     }
 
     if (card.verification_status && /unverified|limited|partial/i.test(card.verification_status)) {
@@ -263,6 +293,8 @@
     var whyBits = [];
     if (setup.bolt && setup.bolt !== card.bolt_pattern) {
       whyBits.push('Bolt pattern does not match this hub.');
+    } else if (tier === 'YES_DIRECT_FIT' && oemMatch) {
+      whyBits.push('These sizes match the factory wheels for this chassis.');
     } else if (tier === 'YES_DIRECT_FIT') {
       whyBits.push('Bolt pattern, bore, diameter, and width/offset stay inside the direct-fit budget versus OEM.');
     } else if (tier === 'YES_WITH_MODS') {
