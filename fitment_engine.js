@@ -69,7 +69,7 @@
   function parseSetup(raw) {
     var s = String(raw || '').trim();
     if (!s) return { error: 'Enter wheel specs.' };
-    var boltM = s.match(/5\s*[x×]\s*(112|120|130)/i);
+    var boltM = s.match(/5\s*[x×]\s*(112|120|130|132)/i);
     var cbM = s.match(/(?:cb|bore|center\s*bore)\s*[:=]?\s*(\d{2}(?:\.\d+)?)|(\d{2}\.\d+)\s*mm/i);
     var wheelRe = /(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)\s*(?:j)?\s*(?:et\s*([+-]?\d+(?:\.\d+)?)|([+-]\d+(?:\.\d+)?))/gi;
     var wheels = [];
