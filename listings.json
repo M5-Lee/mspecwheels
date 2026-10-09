@@ -585,5 +585,60 @@
       "/buffer/e90-4aj/crop45-05.jpg"
     ],
     "listed": "2026-10-09"
+  },
+  {
+    "id": "INSTAGRAM-G80-CUSTOM-APEX-VS5RS-vietspec.pack",
+    "short_title": "Apex VS-5RS Chrome",
+    "chassis": "G80/G81 M3, G82/G83 M4, G87 M2 (Shown on G80 M3)",
+    "size": "19x10.5 +18 square",
+    "price": 4000,
+    "location": "Manteca, CA",
+    "url": "https://instagram.com/vietspec",
+    "hero": "/buffer/vietspec/crop45-01.jpg",
+    "images": [
+      "/buffer/vietspec/crop45-01.jpg",
+      "/buffer/vietspec/crop45-02.jpg",
+      "/buffer/vietspec/crop45-03.jpg",
+      "/buffer/vietspec/crop45-04.jpg",
+      "/buffer/vietspec/crop45-05.jpg",
+      "/buffer/vietspec/crop45-06.jpg"
+    ],
+    "listed": "2026-10-09"
+  },
+  {
+    "id": "INSTAGRAM-F82-CUSTOM-VOLK-TE37-ULTRA-MSPEC-S55powered.pack",
+    "short_title": "Volk TE37 Ultra M-Spec Dash White",
+    "chassis": "F80 M3, F82/F83 M4 (Shown on F82 M4)",
+    "size": "19x9.5 +23 / 19x11 +37",
+    "price": 4000,
+    "location": "Tampa, FL",
+    "url": "https://instagram.com/S55powered",
+    "hero": "/buffer/S55powered/crop45-01.jpg",
+    "images": [
+      "/buffer/S55powered/crop45-01.jpg",
+      "/buffer/S55powered/crop45-02.jpg",
+      "/buffer/S55powered/crop45-03.jpg",
+      "/buffer/S55powered/crop45-04.jpg",
+      "/buffer/S55powered/crop45-05.jpg",
+      "/buffer/S55powered/crop45-06.jpg"
+    ],
+    "listed": "2026-10-09"
+  },
+  {
+    "id": "FORUM-G82-CUSTOM-BBS-RI-D-M4_lgnd.pack",
+    "short_title": "BBS RI-D Diamond Black (OBO)",
+    "chassis": "G80/G81 M3, G82/G83 M4, G87 M2 (Shown on G82 M4)",
+    "size": "20x9.5 ET10 / 20x10.5 ET15",
+    "price": 7000,
+    "location": "Los Angeles, CA",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2248866",
+    "hero": "/buffer/M4_lgnd/crop45-01.jpg",
+    "images": [
+      "/buffer/M4_lgnd/crop45-01.jpg",
+      "/buffer/M4_lgnd/crop45-02.jpg",
+      "/buffer/M4_lgnd/crop45-03.jpg",
+      "/buffer/M4_lgnd/crop45-04.jpg"
+    ],
+    "listed": "2026-10-09"
   }
 ]
