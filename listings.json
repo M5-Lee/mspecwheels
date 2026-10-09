@@ -658,5 +658,38 @@
       "/buffer/1dopem5/crop45-06.jpg"
     ],
     "listed": "2026-10-09"
+  },
+  {
+    "id": "FORUM-G82-CUSTOM-VOLK-TE37-ULTRA-MSPEC-BRONZE-shospec.pack",
+    "short_title": "Volk TE37 Ultra M-Spec Bronze",
+    "chassis": "G80/G81 M3, G82/G83 M4 (Shown on G82 M4)",
+    "size": "20x10 +15 / 20x11 +15",
+    "price": 5500,
+    "location": "Houston, TX",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2190497",
+    "hero": "/buffer/shospec/crop45-01.jpg",
+    "images": [
+      "/buffer/shospec/crop45-01.jpg",
+      "/buffer/shospec/crop45-02.jpg",
+      "/buffer/shospec/crop45-03.jpg",
+      "/buffer/shospec/crop45-04.jpg",
+      "/buffer/shospec/crop45-05.jpg"
+    ],
+    "listed": "2026-10-09"
+  },
+  {
+    "id": "FORUM-G87-OEM-SILVER-DriftShift.pack",
+    "short_title": "OEM G87 M2 Silver (OBO)",
+    "chassis": "G87 M2 (Shown on G87 M2)",
+    "size": "19x9.5 ET25 / 20x10.5 ET27",
+    "price": 2200,
+    "location": "Ventura, CA",
+    "url": "https://g87.bimmerpost.com/forums/showthread.php?t=2255259",
+    "hero": "/buffer/DriftShift/crop45-01.jpg",
+    "images": [
+      "/buffer/DriftShift/crop45-01.jpg",
+      "/buffer/DriftShift/crop45-02.jpg"
+    ],
+    "listed": "2026-10-09"
   }
 ]
