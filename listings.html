@@ -114,6 +114,23 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
     text-decoration-color: #E22718;
     text-decoration-thickness: 2px;
   }
+  /* Deep link: keep a focused card below the fixed nav, then flash a ring. */
+  html { scroll-padding-top: 6rem; }
+  #listings-grid > article {
+    scroll-margin-top: 6rem;
+    scroll-margin-bottom: 1.5rem;
+  }
+  .listing-deeplink {
+    outline: 3px solid #0066B1;
+    outline-offset: 4px;
+    animation: listing-deeplink-ring 2.4s ease;
+  }
+  @keyframes listing-deeplink-ring {
+    0% { outline-color: #0066B1; outline-offset: 2px; }
+    18% { outline-color: #E22718; outline-offset: 5px; }
+    42% { outline-color: #6E5DA5; outline-offset: 4px; }
+    100% { outline-color: transparent; outline-offset: 8px; }
+  }
 </style>
 </head>
 <body>
@@ -251,12 +268,91 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
       return tagged.map(function (entry) { return entry.item; });
     }
 
+    // Seller handle is the trailing part of the listing id ("…-vietspec.pack").
+    // A handle may itself contain hyphens ("e90-4aj"); those segments are
+    // lowercase. Strip ".pack", keep a-z 0-9 and hyphen, lowercase the rest.
+    function listingSlug(id) {
+      var base = String(id || '').replace(/\.pack$/i, '');
+      if (!base) return '';
+      var parts = base.split('-');
+      var start = parts.length - 1;
+      while (start > 0 && /[a-z]/.test(parts[start - 1])) start -= 1;
+      return parts.slice(start).join('-').toLowerCase().replace(/[^a-z0-9-]/g, '');
+    }
+
+    function readSlug(value) {
+      var raw = String(value || '').replace(/^#/, '').split(/[?&]/)[0].trim();
+      try { raw = decodeURIComponent(raw.replace(/\+/g, ' ')); } catch (err) { /* keep raw */ }
+      return raw.toLowerCase().replace(/[^a-z0-9-]/g, '');
+    }
+
+    function requestedSlug() {
+      var hash = readSlug(window.location.hash);
+      var query = '';
+      try {
+        query = readSlug(new URLSearchParams(window.location.search).get('set'));
+      } catch (err) {
+        query = '';
+      }
+      if (hash && document.getElementById(hash)) return hash;
+      if (query && document.getElementById(query)) return query;
+      return '';
+    }
+
+    function revealCard(card, done) {
+      var nav = document.getElementById('nav');
+      var navH = nav ? Math.ceil(nav.getBoundingClientRect().height) : 0;
+      var gap = 16;
+      var rect = card.getBoundingClientRect();
+      var viewH = window.innerHeight || document.documentElement.clientHeight || 0;
+      var available = Math.max(0, viewH - navH - gap);
+      var delta = rect.height >= available
+        ? rect.top - navH - gap
+        : rect.top - navH - (available - rect.height) / 2;
+      var top = (window.scrollY || window.pageYOffset || 0) + delta;
+      if (top < 0) top = 0;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+      var started = Date.now();
+      (function wait() {
+        var y = window.scrollY || window.pageYOffset || 0;
+        if (Math.abs(y - top) < 2 || Date.now() - started > 4000) {
+          done();
+          return;
+        }
+        requestAnimationFrame(wait);
+      })();
+    }
+
+    var highlightTimer = 0;
+    var focusGen = 0;
+    function focusRequested() {
+      var slug = requestedSlug();
+      if (!slug) return;
+      var card = document.getElementById(slug);
+      if (!card || !grid.contains(card)) return;
+      var gen = ++focusGen;
+      if (highlightTimer) window.clearTimeout(highlightTimer);
+      card.classList.remove('listing-deeplink');
+      revealCard(card, function () {
+        if (gen !== focusGen || !card.isConnected) return;
+        card.classList.remove('listing-deeplink');
+        void card.offsetWidth;
+        card.classList.add('listing-deeplink');
+        highlightTimer = window.setTimeout(function () {
+          card.classList.remove('listing-deeplink');
+        }, 2600);
+      });
+    }
+
+    window.addEventListener('hashchange', focusRequested);
+
     function cardHtml(item) {
       var listed = formatListed(item.listed);
+      var slug = listingSlug(item.id);
       var priceHtml = item.sold
         ? '<div class="font-display text-2xl shrink-0 sold-price">' + formatPrice(item.price) + '</div>'
         : '<div class="font-display text-2xl shrink-0">' + formatPrice(item.price) + '</div>';
-      return '<article class="bg-slate2 border border-steel hover:border-mblue transition group' + (item.sold ? ' sold-card' : '') + '">' +
+      return '<article' + (slug ? ' id="' + esc(slug) + '"' : '') + ' class="bg-slate2 border border-steel hover:border-mblue transition group' + (item.sold ? ' sold-card' : '') + '">' +
         '<a href="' + esc(item.url) + '" target="_blank" rel="noopener" class="block">' +
           heroHtml(item) +
           '<div class="p-5 space-y-2">' +
@@ -283,6 +379,9 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
         var sorted = sortNewest(items);
         var shown = limit > 0 ? sorted.slice(0, limit) : sorted;
         grid.innerHTML = shown.map(cardHtml).join('');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(focusRequested);
+        });
       })
       .catch(function (err) {
         console.warn('Could not load listings.', err);
