@@ -275,7 +275,7 @@
   {
     "id": "FORUM-F80-CUSTOM-BBS-LMR-BMmclaren.pack",
     "short_title": "BBS LM-R",
-    "chassis": "F80 M3",
+    "chassis": "F80 M3, F82/F83 M4 · about 12–13 mm more poke than stock, plan on camber or a fender roll",
     "size": "F 20x9.5 ET23 / R 20x11 ET40",
     "price": 5000,
     "location": "Cleveland / Lakewood, OH",
@@ -418,7 +418,7 @@
   {
     "id": "FORUM-F80-CUSTOM-BBS-LMR-TheAss3t.pack",
     "short_title": "BBS LM-R",
-    "chassis": "F80 M3",
+    "chassis": "F80 M3, F82/F83 M4 · about 12–13 mm more poke than stock, plan on camber or a fender roll",
     "size": "F 20x9.5 ET23 (LM317) / R 20x11 ET40 (LM340)",
     "price": 6000,
     "location": "MO",
