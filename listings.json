@@ -2,7 +2,7 @@
   {
     "id": "MARKETPLACE-F82-CUSTOM-APEX-VS5RS-straysht.pack",
     "short_title": "Apex VS-5RS",
-    "chassis": "F80 M3 / F82/F83 M4 (Shown on F82 M4)",
+    "chassis": "F80 M3 / F82/F83 M4 (Shown on F82 M4) · confirm offset before buying",
     "size": "F 19x9.5 / R 19x10.5",
     "price": 2300,
     "location": "Santa Clara, CA",
@@ -63,7 +63,7 @@
   {
     "id": "MARKETPLACE-G90-OEM-joeycouto.pack",
     "short_title": "BMW G90 M5 OEM wheels, Black",
-    "chassis": "G90 M5, G99 M5 Touring",
+    "chassis": "G90 M5, G99 M5 Touring · confirm width/offset before buying",
     "size": "F 20\" / R 21\"",
     "price": 4350,
     "location": "Fall River, MA",
@@ -86,7 +86,7 @@
   {
     "id": "FORUM-G80-CUSTOM-BC-FORGED-MHK519-tomwins.pack",
     "short_title": "BC Forged MHK519, Satin Royal Gold",
-    "chassis": "G80/G81 M3, G82/G83 M4 (Shown on G80 M3)",
+    "chassis": "G80/G81 M3, G82/G83 M4 (Shown on G80 M3) · confirm offset before buying",
     "size": "F 20x10.5 / R 20x11 (285 F / 295 R)",
     "price": 4000,
     "location": "Elk Grove, CA",
@@ -628,7 +628,7 @@
   {
     "id": "FORUM-G82-CUSTOM-BBS-RI-D-M4_lgnd.pack",
     "short_title": "BBS RI-D Diamond Black (OBO)",
-    "chassis": "G80/G81 M3, G82/G83 M4, G87 M2 (Shown on G82 M4)",
+    "chassis": "G80/G81 M3, G82/G83 M4, G87 M2 (Shown on G82 M4) · slight front poke at stock, check fender/camber",
     "size": "20x9.5 ET10 / 20x10.5 ET15",
     "price": 7000,
     "location": "Los Angeles, CA",
