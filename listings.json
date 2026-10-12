@@ -692,5 +692,21 @@
       "/buffer/DriftShift/crop45-02.jpg"
     ],
     "listed": "2026-10-09"
+  },
+  {
+    "id": "FORUM-F80-CUSTOM-BBS-RID-GOLD-ericson112.pack",
+    "short_title": "BBS RI-D Motorsport Gold",
+    "chassis": "F80 M3, F82/F83 M4 · direct fit, about 9 mm more poke up front and 6 mm at the rear vs stock · confirm center bore / hub rings with seller",
+    "size": "F 20x9 ET20 / R 20x10 ET34",
+    "price": 6000,
+    "location": "Fullerton, CA \u2014 local pickup",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2259716",
+    "hero": "/buffer/ericson112/crop45-01.jpg",
+    "images": [
+      "/buffer/ericson112/crop45-01.jpg",
+      "/buffer/ericson112/crop45-02.jpg",
+      "/buffer/ericson112/crop45-03.jpg"
+    ],
+    "listed": "2026-10-12"
   }
 ]
