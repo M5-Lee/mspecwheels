@@ -209,7 +209,7 @@
     "G80 M3": {
       "extends": "BMW_M_sedan_default",
       "front": {
-        "oem_outer_clearance_mm": 10,
+        "oem_outer_clearance_mm": 14,
         "oem_inner_clearance_mm": 35,
         "brake_caliper_outer_radius_mm": 200,
         "has_xdrive_driveshaft_variant": true,
@@ -217,7 +217,7 @@
         "driveshaft_radius_mm": 30
       },
       "rear": {
-        "oem_outer_clearance_mm": 12,
+        "oem_outer_clearance_mm": 13,
         "oem_inner_clearance_mm": 30,
         "brake_caliper_outer_radius_mm": 185
       },
@@ -233,12 +233,12 @@
         "offset_mm": 20,
         "tire": "285/30ZR20"
       },
-      "notes": "Verified Wheel-Size.com 2026-04-30. ALL OEM offsets ET20 across base/Comp/CS. xDrive variant has front driveshaft."
+      "notes": "Verified Wheel-Size.com 2026-04-30. ALL OEM offsets ET20 across base/Comp/CS. xDrive variant has front driveshaft. outer clearance estimated 2026-10-14 from stock-tire flush-spacer specs (IND 15F/12R, ECS/EMD 12.5F/15R, FMB ~14F); not tape-measured; inner clearance unverified"
     },
     "G82/G83 M4": {
       "extends": "BMW_M_sedan_default",
       "front": {
-        "oem_outer_clearance_mm": 10,
+        "oem_outer_clearance_mm": 14,
         "oem_inner_clearance_mm": 35,
         "brake_caliper_outer_radius_mm": 200,
         "has_xdrive_driveshaft_variant": true,
@@ -246,7 +246,7 @@
         "driveshaft_radius_mm": 30
       },
       "rear": {
-        "oem_outer_clearance_mm": 12,
+        "oem_outer_clearance_mm": 13,
         "oem_inner_clearance_mm": 30,
         "brake_caliper_outer_radius_mm": 185
       },
@@ -261,7 +261,8 @@
         "width_in": 10.5,
         "offset_mm": 20,
         "tire": "285/30ZR20"
-      }
+      },
+      "notes": "outer clearance estimated 2026-10-14 from stock-tire flush-spacer specs (IND 15F/12R, ECS/EMD 12.5F/15R, FMB ~14F); not tape-measured; inner clearance unverified"
     },
     "E39 M5": {
       "extends": "BMW_M_sedan_default",
@@ -366,7 +367,7 @@
         "offset_mm": 27,
         "tire": "285/35ZR20"
       },
-      "notes": "All F90 M5 are xDrive. Big M Comp brakes — 20\" generally minimum. PILOT CHASSIS for v0 visualization."
+      "notes": "All F90 M5 are xDrive. Big M Comp brakes — 20\" generally minimum. PILOT CHASSIS for v0 visualization. needs recheck: front outer clearance contradicted by BBS-listed LM436/437 direct fit (2026-10-14)"
     },
     "G90 M5": {
       "extends": "BMW_M_sedan_default",
