@@ -708,5 +708,24 @@
       "/buffer/ericson112/crop45-03.jpg"
     ],
     "listed": "2026-10-12"
+  },
+  {
+    "id": "FORUM-F90-CUSTOM-BBS-LM-Mitchubishievo.pack",
+    "short_title": "BBS LM",
+    "chassis": "F90 M5 · BBS-listed F90 fitment (LM436/LM437), sits slightly tucked; spacers for flush · confirm hub rings come with the set",
+    "size": "20x10 ET22 / 20x11 ET24 staggered",
+    "price": 6000,
+    "location": "Wauconda, IL",
+    "url": "https://f90.bimmerpost.com/forums/showthread.php?t=2252794",
+    "hero": "/buffer/Mitchubishievo/crop45-01.jpg",
+    "images": [
+      "/buffer/Mitchubishievo/crop45-01.jpg",
+      "/buffer/Mitchubishievo/crop45-02.jpg",
+      "/buffer/Mitchubishievo/crop45-03.jpg",
+      "/buffer/Mitchubishievo/crop45-04.jpg",
+      "/buffer/Mitchubishievo/crop45-05.jpg",
+      "/buffer/Mitchubishievo/fit-well.jpg"
+    ],
+    "listed": "2026-10-14"
   }
 ]
