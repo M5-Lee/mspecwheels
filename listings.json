@@ -727,5 +727,42 @@
       "/buffer/Mitchubishievo/fit-well.jpg"
     ],
     "listed": "2026-10-14"
+  },
+  {
+    "id": "FORUM-X5M-CUSTOM-2PC-menashehata.pack",
+    "short_title": "Custom 2-piece 21/22",
+    "chassis": "F95 X5M, F96 X6M · built for the seller's X5M Competition, no on-car photos, confirm clearance · confirm center bore / hub rings with seller",
+    "size": "F 21x10.5 ET30 / R 22x11.5 ET30",
+    "price": 2000,
+    "location": "Bloomfield Hills, MI \u2014 ships in original packaging",
+    "url": "https://g05.bimmerpost.com/forums/showthread.php?t=2257955",
+    "hero": "/buffer/menashehata/crop45-01.jpg",
+    "images": [
+      "/buffer/menashehata/crop45-01.jpg",
+      "/buffer/menashehata/crop45-02.jpg",
+      "/buffer/menashehata/crop45-03.jpg",
+      "/buffer/menashehata/crop45-04.jpg",
+      "/buffer/menashehata/fit-well.jpg"
+    ],
+    "listed": "2026-10-16"
+  },
+  {
+    "id": "FORUM-G80-CUSTOM-BBS-LM-PhasedOut.pack",
+    "short_title": "BBS LM Japan Spec",
+    "chassis": "G80 M3 · BBS-listed G80 fitment, front sits about 12 mm further out than stock and rear about 5 mm; shown off-car, confirm on the car · confirm center bore / hub rings with seller",
+    "size": "F 20x9.5 ET8 / R 20x10.5 ET15",
+    "price": 7000,
+    "location": "New York",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2253030",
+    "hero": "/buffer/PhasedOut/crop45-01.jpg",
+    "images": [
+      "/buffer/PhasedOut/crop45-01.jpg",
+      "/buffer/PhasedOut/crop45-02.jpg",
+      "/buffer/PhasedOut/crop45-03.jpg",
+      "/buffer/PhasedOut/crop45-04.jpg",
+      "/buffer/PhasedOut/crop45-05.jpg",
+      "/buffer/PhasedOut/fit-well.jpg"
+    ],
+    "listed": "2026-10-16"
   }
 ]
