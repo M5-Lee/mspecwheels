@@ -764,5 +764,42 @@
       "/buffer/PhasedOut/fit-well.jpg"
     ],
     "listed": "2026-10-16"
+  },
+  {
+    "id": "MUSE-G82-OEM-827M-hialeah-fl.pack",
+    "short_title": "BMW OEM Style 827M",
+    "chassis": "G80/G81 M3, G82/G83 M4, G87 M2 · confirm on the car · confirm center bore / hub rings with seller",
+    "size": "F 19x9.5 ET20 / R 20x10.5 ET20",
+    "price": 4800,
+    "location": "Hialeah, FL",
+    "url": "https://www.facebook.com/marketplace/item/1127315959643016",
+    "hero": "/buffer/oem-827m-hialeah-fl/crop45-01.jpg",
+    "images": [
+      "/buffer/oem-827m-hialeah-fl/crop45-01.jpg",
+      "/buffer/oem-827m-hialeah-fl/crop45-02.jpg",
+      "/buffer/oem-827m-hialeah-fl/crop45-03.jpg",
+      "/buffer/oem-827m-hialeah-fl/crop45-04.jpg",
+      "/buffer/oem-827m-hialeah-fl/crop45-05.jpg",
+      "/buffer/oem-827m-hialeah-fl/fit-well.jpg"
+    ],
+    "listed": "2026-10-16"
+  },
+  {
+    "id": "MUSE-F90-OEM-706M-chicago-il.pack",
+    "short_title": "BMW OEM Style 706M",
+    "chassis": "F90 M5 and F92 M8 · shown off the car, confirm on the car · confirm center bore / hub rings with seller",
+    "size": "F 20x9.5 ET28 / R 20x10.5 ET28",
+    "price": 3500,
+    "location": "Chicago, IL",
+    "url": "https://www.facebook.com/marketplace/item/3082931718715048",
+    "hero": "/buffer/oem-706m-chicago-il/crop45-01.jpg",
+    "images": [
+      "/buffer/oem-706m-chicago-il/crop45-01.jpg",
+      "/buffer/oem-706m-chicago-il/crop45-02.jpg",
+      "/buffer/oem-706m-chicago-il/crop45-03.jpg",
+      "/buffer/oem-706m-chicago-il/crop45-04.jpg",
+      "/buffer/oem-706m-chicago-il/fit-well.jpg"
+    ],
+    "listed": "2026-10-16"
   }
 ]
