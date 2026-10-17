@@ -801,5 +801,44 @@
       "/buffer/oem-706m-chicago-il/fit-well.jpg"
     ],
     "listed": "2026-10-16"
+  },
+  {
+    "id": "FORUM-G80-CUSTOM-LITESPEED-Crazy8.M3.pack",
+    "short_title": "Litespeed Racing three-piece",
+    "chassis": "G80 M3, fender check, shown on a G80 \u00b7 confirm bolt pattern and center bore with seller",
+    "size": "F 20x10 ET11 / R 20x11 ET14",
+    "price": 6500,
+    "location": "Sacramento area (EDH), CA",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2260013",
+    "hero": "/buffer/FORUM-G80-CUSTOM-LITESPEED-Crazy8.M3/crop45-01.jpg",
+    "images": [
+      "/buffer/FORUM-G80-CUSTOM-LITESPEED-Crazy8.M3/crop45-01.jpg",
+      "/buffer/FORUM-G80-CUSTOM-LITESPEED-Crazy8.M3/crop45-03.jpg",
+      "/buffer/FORUM-G80-CUSTOM-LITESPEED-Crazy8.M3/crop45-04.jpg",
+      "/buffer/FORUM-G80-CUSTOM-LITESPEED-Crazy8.M3/crop45-02.jpg",
+      "/buffer/FORUM-G80-CUSTOM-LITESPEED-Crazy8.M3/crop45-05.jpg",
+      "/buffer/FORUM-G80-CUSTOM-LITESPEED-Crazy8.M3/fit-well.jpg"
+    ],
+    "listed": "2026-10-17"
+  },
+  {
+    "id": "MUSE-E9X-CUSTOM-VOLK-ZE40-poughkeepsie-ny.pack",
+    "short_title": "Volk Racing ZE40",
+    "chassis": "E9X M3, fender check, confirm on the car \u00b7 confirm center bore / hub rings with seller",
+    "size": "18x10 ET25 square",
+    "price": 3600,
+    "location": "Poughkeepsie, NY",
+    "url": "https://www.facebook.com/marketplace/item/1810244316773586",
+    "hero": "/buffer/volk-ze40-poughkeepsie-ny/crop45-01.jpg",
+    "images": [
+      "/buffer/volk-ze40-poughkeepsie-ny/crop45-01.jpg",
+      "/buffer/volk-ze40-poughkeepsie-ny/crop45-02.jpg",
+      "/buffer/volk-ze40-poughkeepsie-ny/crop45-03.jpg",
+      "/buffer/volk-ze40-poughkeepsie-ny/crop45-04.jpg",
+      "/buffer/volk-ze40-poughkeepsie-ny/crop45-05.jpg",
+      "/buffer/volk-ze40-poughkeepsie-ny/crop45-06.jpg",
+      "/buffer/volk-ze40-poughkeepsie-ny/fit-well.jpg"
+    ],
+    "listed": "2026-10-17"
   }
 ]
