@@ -858,5 +858,41 @@
       "/buffer/FORUM-G80-CUSTOM-BC-FORGED-LE81-ny2nj/fit-well.jpg"
     ],
     "listed": "2026-10-17"
+  },
+  {
+    "id": "MUSE-E9X-CUSTOM-APEX-EC7RS-orlando-fl.pack",
+    "short_title": "Apex EC-7RS forged",
+    "chassis": "E90/E92/E93 M3 bolt-on, no spacers, but the front sits past the fender and the rear is tight, so check fender and tire clearance \u00b7 E60 M5 only with mods (about 15 mm front spacers), not a direct fit \u00b7 confirm on the car \u00b7 confirm center bore / hub rings with seller",
+    "size": "F 19x9.5 ET22 / R 19x10.5 ET25",
+    "price": 2500,
+    "location": "Orlando, FL",
+    "url": "https://www.facebook.com/marketplace/item/1057642057145384",
+    "hero": "/buffer/apex-ec7rs-orlando-fl/crop45-01.jpg",
+    "images": [
+      "/buffer/apex-ec7rs-orlando-fl/crop45-01.jpg",
+      "/buffer/apex-ec7rs-orlando-fl/crop45-02.jpg",
+      "/buffer/apex-ec7rs-orlando-fl/crop45-03.jpg",
+      "/buffer/apex-ec7rs-orlando-fl/fit-well.jpg"
+    ],
+    "listed": "2026-10-17"
+  },
+  {
+    "id": "FORUM-F80-CUSTOM-BBS-LM-pikkagtr.pack",
+    "short_title": "BBS LM two-piece",
+    "chassis": "F80 M3, F82/F83 M4 \u00b7 near-OEM sizes, about 2 mm out front and 3 mm out rear versus stock (our estimate) \u00b7 confirm on the car \u00b7 confirm center bore / hub rings and the car in the photos with seller",
+    "size": "F 19x9 ET27 / R 19x10 ET37",
+    "price": 5500,
+    "location": "San Jose, CA",
+    "url": "https://f80.bimmerpost.com/forums/showthread.php?t=2259840",
+    "hero": "/buffer/FORUM-F80-CUSTOM-BBS-LM-pikkagtr/crop45-01.jpg",
+    "images": [
+      "/buffer/FORUM-F80-CUSTOM-BBS-LM-pikkagtr/crop45-01.jpg",
+      "/buffer/FORUM-F80-CUSTOM-BBS-LM-pikkagtr/crop45-02.jpg",
+      "/buffer/FORUM-F80-CUSTOM-BBS-LM-pikkagtr/crop45-03.jpg",
+      "/buffer/FORUM-F80-CUSTOM-BBS-LM-pikkagtr/crop45-04.jpg",
+      "/buffer/FORUM-F80-CUSTOM-BBS-LM-pikkagtr/crop45-05.jpg",
+      "/buffer/FORUM-F80-CUSTOM-BBS-LM-pikkagtr/fit-well.jpg"
+    ],
+    "listed": "2026-10-17"
   }
 ]
