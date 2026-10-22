@@ -6,8 +6,8 @@
       "ingest\\01\\MSpec Wheels\\chassis_database.json",
       "ingest\\01\\MSpec Wheels\\mspec_wheels_phase1\\chassis_geometry.json"
     ],
-    "note": "Extracted from ingest chassis_database shared_logic + geometry. Pure mechanical; no LLM.",
-    "date": "2026-09-27",
+    "note": "Extracted from ingest chassis_database shared_logic + geometry. Pure mechanical; no LLM. 2026-10-08: split-hub entries for E70 X5 M / E71 X6 M (74.1F/72.56R); F85/F86 74.1 both axles. 2026-10-12: G09 XM moved to 5x120 (66.6 hub); G90/G99 moved to bolt_pattern_5x132_chassis (engine copy was stale vs site); older 5x120 M-SUV/Z/1M/M1 rows listed.",
+    "date": "2026-10-12",
     "status": "EXECUTE LIVE"
   },
   "verdict_tiers": {
@@ -33,7 +33,16 @@
     "F10 M5",
     "E24 M6",
     "E63/E64 M6",
-    "F06/F12/F13 M6"
+    "F06/F12/F13 M6",
+    "E85/E86 Z4 M",
+    "E36/7 / E36/8 Z3 M",
+    "E82 1M",
+    "E26 M1",
+    "E70 X5 M",
+    "E71 X6 M",
+    "F85 X5 M",
+    "F86 X6 M",
+    "G09 XM (66.6 hub)"
   ],
   "bolt_pattern_5x112_chassis": [
     "G87 M2",
@@ -44,17 +53,17 @@
     "F97 X3 M",
     "F98 X4 M",
     "F95 X5 M",
-    "F96 X6 M",
-    "G09 XM"
-  ],
-  "bolt_pattern_5x132_chassis": [
-    "G90 M5",
-    "G99 M5 Touring"
+    "F96 X6 M"
   ],
   "center_bore_by_pattern": {
     "5x112": 66.6,
     "5x120": 72.56,
-    "E39 M5": 74.1
+    "E39 M5": 74.1,
+    "F85/F86 X5M/X6M": 74.1,
+    "E70 X5 M / E71 X6 M front": 74.1,
+    "E70 X5 M / E71 X6 M rear": 72.56,
+    "5x132": 66.6,
+    "G09 XM (5x120)": 66.6
   },
   "clearance_budget_mm": {
     "E30 M3": {
@@ -161,6 +170,11 @@
       "heavy_mod_track": 18,
       "safe_extra": 6,
       "aggressive_street": 12
+    },
+    "E70/E71/F85/F86 X5M/X6M": {
+      "safe_extra": 8,
+      "aggressive_street": 14,
+      "heavy_mod_track": 20
     }
   },
   "brake_clearance_by_wheel_diameter": {
@@ -208,5 +222,9 @@
     "block_e_one_liner",
     "seller_permission",
     "ask_seller"
+  ],
+  "bolt_pattern_5x132_chassis": [
+    "G90 M5",
+    "G99 M5 Touring"
   ]
 }
