@@ -577,15 +577,16 @@
     "price": 4300,
     "location": "Cerritos, CA",
     "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2259259",
-    "hero": "/buffer/e90-4aj/crop45-01.jpg",
+    "hero": "/buffer/FORUM-G80-CUSTOM-APEX-VS5RS-e90-4aj/crop45-01.jpg",
     "images": [
-      "/buffer/e90-4aj/crop45-01.jpg",
-      "/buffer/e90-4aj/crop45-02.jpg",
-      "/buffer/e90-4aj/crop45-03.jpg",
-      "/buffer/e90-4aj/crop45-04.jpg",
-      "/buffer/e90-4aj/crop45-05.jpg"
+      "/buffer/FORUM-G80-CUSTOM-APEX-VS5RS-e90-4aj/crop45-01.jpg",
+      "/buffer/FORUM-G80-CUSTOM-APEX-VS5RS-e90-4aj/crop45-02.jpg",
+      "/buffer/FORUM-G80-CUSTOM-APEX-VS5RS-e90-4aj/crop45-03.jpg",
+      "/buffer/FORUM-G80-CUSTOM-APEX-VS5RS-e90-4aj/crop45-04.jpg",
+      "/buffer/FORUM-G80-CUSTOM-APEX-VS5RS-e90-4aj/crop45-05.jpg",
+      "/buffer/FORUM-G80-CUSTOM-APEX-VS5RS-e90-4aj/fit-well.jpg"
     ],
-    "listed": "2026-10-09"
+    "listed": "2026-10-22"
   },
   {
     "id": "INSTAGRAM-G80-CUSTOM-APEX-VS5RS-vietspec.pack",
@@ -931,5 +932,46 @@
       "/buffer/FORUM-G80-CUSTOM-BBS-LMR-3PC-AlenGE/fit-well.jpg"
     ],
     "listed": "2026-10-18"
+  },
+  {
+    "id": "FORUM-G80-CUSTOM-FORGEDLITE-DC2-electric31x.pack",
+    "short_title": "Forgedlite DC2 2-piece forged",
+    "chassis": "G80 M3, G82/G83 M4 · fender check front and rear (front about 2 mm past, rear right at the fender line, by our estimate) · shown on a G80 M3 · confirm on the car",
+    "size": "F 20x9.5 ET8 / R 20x10.5 ET8",
+    "price": 6500,
+    "location": "Winter Park, FL",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2260537",
+    "hero": "/buffer/FORUM-G80-CUSTOM-FORGEDLITE-DC2-electric31x/crop45-01.jpg",
+    "images": [
+      "/buffer/FORUM-G80-CUSTOM-FORGEDLITE-DC2-electric31x/crop45-01.jpg",
+      "/buffer/FORUM-G80-CUSTOM-FORGEDLITE-DC2-electric31x/crop45-02.jpg",
+      "/buffer/FORUM-G80-CUSTOM-FORGEDLITE-DC2-electric31x/crop45-03.jpg",
+      "/buffer/FORUM-G80-CUSTOM-FORGEDLITE-DC2-electric31x/crop45-04.jpg",
+      "/buffer/FORUM-G80-CUSTOM-FORGEDLITE-DC2-electric31x/crop45-05.jpg",
+      "/buffer/FORUM-G80-CUSTOM-FORGEDLITE-DC2-electric31x/fit-well.jpg"
+    ],
+    "listed": "2026-10-22"
+  },
+  {
+    "id": "FORUM-G80-OEM-825M-prpz.pack",
+    "short_title": "BMW OEM Style 825M forged, square set",
+    "chassis": "G80 M3, G82/G83 M4 · fender check at the front (about 3 mm past by our estimate, assuming the factory 825M rear offset), rear matches factory · shown on a G80 M3 · confirm on the car · confirm offset and center bore with seller",
+    "size": "20x10.5 front and rear (per thread title) · offset not posted",
+    "price": 2500,
+    "location": "Kitchener, ON",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2260410",
+    "hero": "/buffer/FORUM-G80-OEM-825M-prpz/crop45-01.jpg",
+    "images": [
+      "/buffer/FORUM-G80-OEM-825M-prpz/crop45-01.jpg",
+      "/buffer/FORUM-G80-OEM-825M-prpz/crop45-02.jpg",
+      "/buffer/FORUM-G80-OEM-825M-prpz/crop45-03.jpg",
+      "/buffer/FORUM-G80-OEM-825M-prpz/crop45-04.jpg",
+      "/buffer/FORUM-G80-OEM-825M-prpz/crop45-05.jpg",
+      "/buffer/FORUM-G80-OEM-825M-prpz/crop45-06.jpg",
+      "/buffer/FORUM-G80-OEM-825M-prpz/crop45-07.jpg",
+      "/buffer/FORUM-G80-OEM-825M-prpz/crop45-08.jpg",
+      "/buffer/FORUM-G80-OEM-825M-prpz/fit-well.jpg"
+    ],
+    "listed": "2026-10-22"
   }
 ]
