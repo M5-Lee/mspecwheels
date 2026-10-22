@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "version": "1.3-product-engine",
-    "last_updated": "2026-09-28",
-    "doc_role": "Working Product mechanical-first chassis DB (copied from phase1; expanded 2026-09-27 SUV/Z4M/G81; 2026-09-28 Z3M/1M/M1). Ingest phase1 remains archive until Chair clears sync. No Claude Netlify.",
-    "verification_status": "AI-assembled. Round 1 spot-check complete: F80 ✓ VERIFIED, G80 ⚠ PARTIAL (corrected), E39 ✓ VERIFIED. Rounds 2-5 pending.",
+    "version": "2.0.1-product-engine",
+    "last_updated": "2026-10-22",
+    "doc_role": "Working Product mechanical-first chassis DB (copied from phase1; expanded 2026-09-27 SUV/Z4M/G81; 2026-09-28 Z3M/1M/M1; 2026-10-01 G90/G99 BP fix 5x132 + OEM deepen, M8 OEM deepen). Ingest phase1 remains archive until Chair clears sync. No Claude Netlify.; 2026-10-05 older M-SUV gen added: E70 X5 M, F85 X5 M, F86 X6 M (5x120/74.1); 74.1 hub note corrected.; 2026-10-08 added E71 X6 M + E61 M5 Touring; E70 X5 M rear hub corrected to 72.56 (front 74.1); F90 Comp/CS split closed (same OE sizes).; 2026-10-12 G09 XM bolt pattern corrected 5x112 -> 5x120 (66.6 hub) + OEM 21/22/23in sizes filled; G87 M2 OEM ET20/ET20 confirmed (Round-1 verified); E60 M5 rear OEM ET28 reconciled vs M6 ET17.; 2026-10-15 F95/F96/F97/F98 M-SUV OEM sizes Round-1 VERIFIED (wheel-size + RealOEM/BMW part numbers); F97/F98 LCI 21in 765M + 20in square rear rows added; F95 21in 11.5 ET43 rear option added.; 2026-10-19 G90/G99 M5 + F91/F92/F93 M8 OEM sizes Round-1 VERIFIED (RealOEM 951M part nos + BMW NA M8 order guide / bmwoemwheelstyles 811M).; 2026-10-22 G80 M3 / G81 M3 Touring / G82-G83 M4 OEM wheel program Round-1 VERIFIED (BMW part nos 824M/825M/826M/827M/963M/1000M, all ET20); G80 rear-ET guesses removed, CSL 'square 20' corrected, G81 xDrive-only; F90 geometry OEM ET27 -> ET28 (RealOEM 789M).; 2026-10-22 (later) G80/G81/G82-G83 geometry outer fender-room 14 mm F / 13 mm R per COO ruling - ESTIMATED from vendor flush-spacer specs, not measured.",
+    "verification_status": "AI-assembled. Round 1 spot-check: F80 ✓, G80/G81/G82/G83 ✓ (2026-10-22), E39 ✓, G87 ✓, F95/F96/F97/F98 ✓ (2026-10-15), G90/G99 ✓ + M8 F91/F92/F93 ✓ (2026-10-19). Remaining researched-unverified: older SUV E70/E71/F85/F86, G09 XM, Z3M/Z4M/1M/M1, classics.",
     "sources": [
       "apexwheels.com",
       "bimmertips.com",
@@ -11,10 +11,31 @@
       "wheel-size.com",
       "g87.bimmerpost.com",
       "bmwmregistry.com",
-      "limitlesstire.com"
+      "limitlesstire.com",
+      "ind-distribution.com",
+      "baanvelgen.com",
+      "bmwusa.com order guides",
+      "realoem.com",
+      "tirewheelguide.com",
+      "avtoreference.com",
+      "bmwstylewheels.com",
+      "bimmerworld.com",
+      "f15.bimmerpost.com",
+      "press.bmwgroup.com",
+      "manchesteralloys.com",
+      "tyresaddict.com",
+      "breyton.com",
+      "r44performance.com (H&R TRAK+)",
+      "bmwoemwheelstyles.com",
+      "5series.net",
+      "bmwpartspros.com",
+      "schmiedmann.com",
+      "g05.bimmerpost.com",
+      "bmv.parts",
+      "fmbwheels.com"
     ],
     "product_note": "Live working copies: Product/engine/ and Product/site-preview/. Prefer these over mutating ingest.",
-    "card_count": 35
+    "card_count": 40
   },
   "shared_logic": {
     "verdict_tiers": {
@@ -34,7 +55,7 @@
       "E28 M5",
       "E34 M5",
       "E39 M5 (74.1mm bore)",
-      "E60/E61 M5",
+      "E60 M5 / E61 M5 Touring",
       "F10 M5",
       "E24 M6",
       "E63/E64 M6",
@@ -42,7 +63,12 @@
       "E85/E86 Z4 M",
       "E36/7 / E36/8 Z3 M",
       "E82 1M Coupe",
-      "E26 M1"
+      "E26 M1",
+      "E70 X5 M",
+      "E71 X6 M",
+      "F85 X5 M",
+      "F86 X6 M",
+      "G09 XM (66.6 mm hub)"
     ],
     "bolt_pattern_5x112_chassis": [
       "G87 M2",
@@ -53,12 +79,11 @@
       "F97 X3 M",
       "F98 X4 M",
       "F95 X5 M",
-      "F96 X6 M",
-      "G09 XM"
+      "F96 X6 M"
     ],
     "center_bore_72_56mm": "Most older 5×120 M cars (E36, E46, E9X, F8X, F87, E28, E34, E60, F10, E24, E63, F06–F13)",
-    "center_bore_74_1mm_unique": "E39 M5 only — unique among BMW M cars",
-    "center_bore_66_6mm": "All 5×112 M cars (G87, G8X, F90, F9X M8, M-SUVs, XM). G90/G99 are 5x132 with the same 66.6 bore.",
+    "center_bore_74_1mm_unique": "74.1 mm hub: E39 M5 (only M sedan); F85 X5 M / F86 X6 M (74.1 front AND rear); E70 X5 M / E71 X6 M = 74.1 FRONT only, 72.56 REAR (split hub, corrected 2026-10-08). 72.56 mm sedan wheels will not center on any 74.1 hub; 74.1-bore wheels need a ring on the E70M/E71 rear.",
+    "center_bore_66_6mm": "All 5x112 M cars (G87, G8X, F90, F9X M8, F95/F96/F97/F98 M-SUVs), the unique 5x132 G90/G99 M5, AND the 5x120 G09 XM (same 66.6 mm hub; different PCD - corrected 2026-10-12). Older E70/E71/F85/F86 M-SUVs are 5x120/74.1 (E70/E71 rear 72.56).",
     "clearance_budget_mm": {
       "E30 M3": {
         "safe_extra": 6,
@@ -196,7 +221,24 @@
       "If adapters push the wheel beyond the chassis clearance budget, verdict should be NO or MAYBE with heavy mods."
     ],
     "conservative_tier_bias": "When uncertain between two tiers, push verdict ONE tier toward NO. Brand-killing reviews come from over-promising fit, not from being conservative.",
-    "mandatory_disclaimer": "Buyer is responsible for final fitment verification. Fitment results may vary; always test-fit wheels before final mounting due to variations in camber, tire brand, ride height, and manufacturing tolerances."
+    "mandatory_disclaimer": "Buyer is responsible for final fitment verification. Fitment results may vary; always test-fit wheels before final mounting due to variations in camber, tire brand, ride height, and manufacturing tolerances.",
+    "bolt_pattern_5x132_chassis": [
+      "G90 M5",
+      "G99 M5 Touring"
+    ],
+    "bolt_pattern_note_g90": "G90/G99 M5 use 5x132 / 66.6 — do not treat as F90/G8X 5x112. Confirmed Apex (updated 2026-06) + wheel-size/avtoreference/IND 2026-10-01.",
+    "center_bore_split_axle": {
+      "E70 X5 M": {
+        "front": 74.1,
+        "rear": 72.56
+      },
+      "E71 X6 M": {
+        "front": 74.1,
+        "rear": 72.56
+      },
+      "note": "Engine reads center_bore_by_axle from pilots when present (added 2026-10-08)."
+    },
+    "xm_pcd_note": "G09 XM = 5x120 PCD on 66.6 hub (2026-10-12). Neither 5x112 G-chassis wheels nor 72.56/74.1-bore 5x120 wheels are a ring-free fit."
   },
   "chassis": [
     {
@@ -259,11 +301,11 @@
       "bolt_pattern": "5x112",
       "center_bore_mm": 66.6,
       "years": "2023–present",
-      "oem_wheels_text": "Staggered 19\"/20\" setup – 19×9.5J front and 20×10.5J rear are standard on the G87 M2 (mirroring the M3/M4 Competition wheel package). Factory tire sizes are 275/35ZR19 front and 285/30ZR20 rear (Michelin Pilot Sport 4S in most markets). Note: Some regions may offer a winter setup (e.g. 275/35R19 square on 19″ wheels).",
+      "oem_wheels_text": "Staggered 19\"/20\" (M2 and M2 CS): 9.5Jx19 ET20 front, 10.5Jx20 ET20 rear; tires 275/35ZR19 100Y front, 285/30ZR20 99Y XL rear. RealOEM G87 930M: 36117883685 9.5Jx19 ET20 / 36117883686 10.5Jx20 ET20 (also 36117882869/870 same sizes; Refined Silver 36107907781/782). Allowable square/winter: 9Jx19 ET20 front + 9.5Jx19 ET20 rear on 275/35R19 all round (wheel-size). M2 CS (2025-26) forged wheels keep 19x9.5 / 20x10.5 ET20 (press/caranddriver; CS part numbers not checked). Sources: wheel-size.com G87, RealOEM 930M diagram, avtoreference, g87.bimmerpost OEM-spec thread (Round-1 spot-check 2026-10-12).",
       "aftermarket_range_text": "Early tests indicate the G87 can accommodate 20×10 ET15 front, 20×11 ET15 rear on stock suspension with performance tires – this is an aggressive fit used by aftermarket wheel companies to sit flush. For 19″ setups, owners have fitted 19×10.5″ ET15 with 295/30R19 rear, and 19×9.5″ ET20 with 275/35R19 front on stock ride height without rubbing (these specs are similar to the G80 M3). The conservative range for direct fitment is roughly ET15–25 front (9.5–10″ width) and ET20–35 rear (10.5–11″ width) based on current G87/G8X data.",
       "clearance_notes_text": "The G87 M2 comes from the factory very close to its clearance limits – front 275 tires may rub the liners at full lock on certain tire models (minor trimming or an increase in ride height may be needed if going wider than OEM). A 5–8 mm spacer up front can be used for a more aggressive flush stance, but pushing the front out may cause slight rubbing on the fender liner or arch trim on big bumps. The G87 uses the big G-series brakes (6-piston front calipers), so wheel barrel clearance is critical – most 18″ wheels designed for the G80 M3 will also fit the M2. Overall, if maintaining stock camber, it’s advised to stay near OEM wheel widths to avoid fender contact. (As of 2024, data on G87 fitments is still evolving – always test fit when approaching the extremes.)",
-      "fitment_notes_text": "",
-      "verification_status": "unverified",
+      "fitment_notes_text": "2026-10-12: OEM ET20 front/rear confirmed (geometry previously ET25/ET27 - corrected). Same OE sizes/ET as G80 M3 / G82 M4 Competition, so G8X Comp OEM wheels are a direct swap (5x112 / 66.6). F87 M2 wheels (5x120 / 72.56) do NOT fit.",
+      "verification_status": "verified-2026-10-12",
       "subheader_descriptors": [],
       "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×112 PCD, 66.5–66.6 mm center bore (BMW switched to the newer hub spec for G-chassis). Lug hardware is M14x1.25 bolts."
     },
@@ -406,18 +448,19 @@
       "bolt_pattern": "5x112",
       "center_bore_mm": 66.6,
       "years": "2021–present",
-      "oem_wheels_text": "The G80/82 came with mixed wheel sizes depending on model: Base M3 (6MT, RWD) – 18″ front / 19″ rear setup (Style 826M might be base offering) – approximately 18×9.5J front and 19×10.5J rear (exact offsets not officially published, but expected ~ET20–25 range front, ~ET40 rear based on wheel supplier info). Tires would be 275/40ZR18 front, 285/35ZR19 rear (the diameters are staggered but within 1%). M3 Competition (RWD and xDrive) – 19″ front / 20″ rear (Style 825M/826M) – likely 19×9.5J ET20± front, 20×10.5J ET20± rear; OEM tires 275/35ZR19 front, 285/30ZR20 rear. (xDrive models use the same sizes but all four tires must stay within rolling diameter limits). M3 CS (2023) – 19″/20″ (Style 827M in gold) – uses same size wheels/tires as Comp, but with track-focused Michelin Cup 2 Connect tires (275/35R19 and 285/30R20). Note: Precise OEM wheel offsets for G80 are not readily published; however aftermarket measurements indicate the stock 19×9.5 front is around ET20 and stock 20×10.5 rear around ET30. The effective stance is similar to the F80 with spacers – G80 fills its arches more from factory.",
+      "oem_wheels_text": "Round-1 VERIFIED 2026-10-22 (supersedes earlier estimates of ~ET30/ET40 rears, which were wrong - every G80 OE wheel is ET20). Base M3 (2021-2024, RWD manual): Style 824M 9.5Jx18 ET20 front / 10.5Jx19 ET20 rear, 275/40ZR18 + 285/35ZR19. M3 Competition (RWD + M xDrive): Style 826M 9.5Jx19 ET20 / 10.5Jx20 ET20, 275/35ZR19 + 285/30ZR20; 825M same size (option pre-LCI, standard on 2025+ LCI). M3 CS (2023): Style 827M Gold Bronze, same 19/20 ET20 sizes, Cup 2 R. BMW accessory: 963M forged 19/20 ET20; 1000M 9.5Jx20 ET20 / 10.5Jx21 ET20 (285/30R20 + 295/25R21). 5x112, CB 66.6, M14x1.25 60deg cone bolts, 140 Nm. Carbon-ceramic cars: 19in minimum. Sources (Round-1 2026-10-22): bmwoemwheelstyles.com Style 824M (36108093830/831), 825M (36108093832-835), 826M (36117882867, 36108093837-839), 827M (36108093840/841, 36107884365/366), 963M (36108746989/990), 1000M (36108746991/992, 36109502044/045) - all 5x112, CB 66.6, M14x1.25 60deg cone, 140 Nm, ET20; wheel-size.com M3 G80/G81 + M4 G82/G83 2021-2024 tables; RealOEM G81 option codes (S1T6A-S1U1A 825M/826M, S1WLA 825M, S2QSA 963M); fmbwheels G82 guide (2025 LCI = 825M std); paddleshifterz 826M fitment list (G80/G81/G82/G83/G87).",
       "aftermarket_range_text": "Early adopters have pushed the G80 platform even further. One proven aggressive setup on a G80 Competition xDrive is 20×10″ ET15 front and 20×11″ ET10 rear with 285/30R20 front, 305/30R20 rear – this was achieved with minimal rubbing by some builders, but it’s extremely aggressive and not recommended without modifications (rear fenders require significant negative camber or slight pull). A more practical setup for stock suspension: 19×10.5″ ET15 front, 19×11″ ET15 rear on 275/35R19 and 295/35R19 – this has been done on the G80 with only minor front liner rub at full lock. Essentially, the G80 has wider stock fenders than F80, allowing lower offsets. Square setups are also popular: 18×10.5″ ET20 with 295/35R18 on all four corners can fit over the big brakes (with camber ~ -2° front, -1.5° rear) – giving neutral handling and rotation capability (this was observed on a G82 running Forgeline 19×10.5 square with 275/35 Cup 2s on xDrive). For a safe range: Front wheels 9.5–10.5″ wide do well with offsets ~ET15–20; Rear wheels 10.5–11.5″ wide with offsets ~ET10–25 depending on tire. The G80’s stock body can accommodate a 305-mm rear tire with proper offset and camber, as evidenced by aftermarket tests. Keep in mind xDrive models need equal diameter front/rear – generally stick to OEM stagger or a square setup for those.",
       "clearance_notes_text": "Fenders: The G80 has very aggressive factory fender flares, especially in front (to cover the wide track). This means you can push wheels outwards more than on prior M3s. However, the front wheel arch liner has a protruding area around the bumper/fender junction – tires wider than 285 mm or very low offsets can catch there during steering input. Mild trimming of the liner or additional negative camber resolves this if running 285+ front tires on stock height. The rear fenders on G80 are less of an issue than F80; BMW effectively “pre-rolled” them by design – but the extreme concave of the rear quarter means low-offset wheels can still poke. We have seen that around ET15–20 is flush on an 11″ rear; going to ET10 with 11″ (as in some show builds) will poke past the fender – requiring either stretched tires or fender modifications to avoid contact. Suspension: G80 uses a control-arm front (no MacPherson strut), so inner clearance to suspension is generally ample – you usually hit the liner or fender before anything else. Coilover conversions for G80 (if using a coil-spring over shock in rear) might reduce inner clearance at the back, but most are running stock or HAS (height-adjustable springs) which maintain OEM clearance. Brakes: The standard steel brakes (G80 Comp) and optional carbon ceramics are both quite large; 18″ wheels can fit but must be designed for big brakes. Many 18″ forgings (e.g., BBS FI-R, Apex forged line) explicitly support the G80 brakes. A known issue is that some 18″ barrels may not clear the massive front caliper without a spacer – always confirm with the wheel manufacturer. 19″ and up have no problems with brake clearance on G80. Finally, xDrive considerations: Staggered tires are fine as long as overall diameters are within ~1%. The OEM 19/20 stagger is engineered so the front 275/35R19 and rear 285/30R20 have virtually identical rolling radii. If upsizing, keep the rolling circumference of front vs rear within a few mm to avoid upsetting the AWD system. In conclusion, the G80 M3 offers the ability to run wider, lower-offset wheels than any previous M3 from the factory, but to truly maximize it (e.g., 305 rear tires, 285+ front), you will need to dial in more aggressive alignment and accept very tight tolerances near the fender edges.",
-      "fitment_notes_text": "",
-      "verification_status": "partial-corrected-2026-04-30",
+      "fitment_notes_text": "2026-10-22: OEM wheel program Round-1 verified via BMW part numbers; Python pilot PILOT-G80-M3.json added. OEM text corrected (old text guessed rear ET30-40). Geometry clearances (front 10 / rear 12 mm outer) still estimated, not measured. 2026-10-22 COO ruling: outer fender-room margin set to 14 mm front / 13 mm rear - ESTIMATED from vendor flush-spacer specs, NOT measured (was 10/12 estimate). Product has not reviewed the vendor source; replace with measured arch data when available.",
+      "verification_status": "verified-2026-10-22",
       "subheader_descriptors": [],
       "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×112, 66.6 mm. (BMW moved to the new 5×112 hub standard; all G8x have 66.6 mm hubs.)",
       "verified_oem_wheels": {
-        "base_rwd_6mt": "18×9.5J ET20 front, 19×10.5J ET20 rear; 275/40ZR18 + 285/35ZR19",
-        "competition": "19×9.5J ET20 front, 20×10.5J ET20 rear; 275/35ZR19 + 285/30ZR20",
-        "cs_2023": "19×9.5J ET20 front, 20×10.5J ET20 rear; Michelin Pilot Sport Cup 2 R Connect",
-        "note": "All G80 M3 OEM offsets are ET20 across the board — verified Wheel-Size.com 2026-04-30"
+        "824M_18_19_base_pre_LCI": "9.5Jx18 ET20 front / 10.5Jx19 ET20 rear; 275/40ZR18 + 285/35ZR19 (base M3/M4 2021-2024; 36108093830/831)",
+        "825M_826M_963M_827M_19_20": "9.5Jx19 ET20 front / 10.5Jx20 ET20 rear; 275/35ZR19 + 285/30ZR20 (Competition std pre-LCI 826M; 825M std on 2025+ LCI; 963M forged accessory; 827M CSL/M3 CS)",
+        "1000M_20_21_accessory": "9.5Jx20 ET20 front / 10.5Jx21 ET20 rear; 285/30R20 + 295/25R21 (BMW M Performance accessory, genuine BMW part nos 36108746991/992; wheel-size lists as G82 row)",
+        "winter_note": "wheel-size also lists 9Jx19 ET20 / 9.5Jx19 ET20 on 275/35R19 (winter/alt row, no part no captured) - NOT treated as OEM-exact",
+        "note": "Round-1 VERIFIED 2026-10-22. Every G8X factory/accessory wheel is ET20, 9.5J front / 10.5J rear. Clearance geometry still estimated."
       }
     },
     {
@@ -429,20 +472,22 @@
       "bolt_pattern": "5x112",
       "center_bore_mm": 66.6,
       "years": "2022–present",
-      "oem_wheels_text": "Shares G80 Comp wheel program: typically 19x9.5J ET20 front + 20x10.5J ET20 rear; tires 275/35ZR19 front, 285/30ZR20 rear (Competition). CS Touring variants use similar diameters with Style 930M notes on RealOEM (rear 20x10.5 ET20 cited). Lug bolts M14x1.25. Sources: G80 verified offsets + Autosport TW G81 guide / RealOEM (researched 2026-09-27).",
+      "oem_wheels_text": "Round-1 VERIFIED 2026-10-22. G81 = M3 Competition Touring M xDrive only (no RWD/manual Touring). Standard Style 826M 9.5Jx19 ET20 front / 10.5Jx20 ET20 rear, 275/35ZR19 + 285/30ZR20 (bmwoemwheelstyles: 826M standard on 'M3 Competition Touring M xDrive', DE 2025 price list, code 1U0); options 825M same size (codes 1T6/1WL), 963M forged 19/20 ET20 (RealOEM S2QSA), accessory 1000M 9.5Jx20 ET20 / 10.5Jx21 ET20 (bmv.parts G81 catalog; Schmiedmann G81 1000M 20x9.5 ET20 / 21x10.5 ET20). M3 CS Touring (2025+) wheel sizes NOT verified this run. 5x112, CB 66.6, M14x1.25, 140 Nm. Sources (Round-1 2026-10-22): bmwoemwheelstyles.com Style 824M (36108093830/831), 825M (36108093832-835), 826M (36117882867, 36108093837-839), 827M (36108093840/841, 36107884365/366), 963M (36108746989/990), 1000M (36108746991/992, 36109502044/045) - all 5x112, CB 66.6, M14x1.25 60deg cone, 140 Nm, ET20; wheel-size.com M3 G80/G81 + M4 G82/G83 2021-2024 tables; RealOEM G81 option codes (S1T6A-S1U1A 825M/826M, S1WLA 825M, S2QSA 963M); fmbwheels G82 guide (2025 LCI = 825M std); paddleshifterz 826M fitment list (G80/G81/G82/G83/G87). bmv.parts G81 M3 Comp M xDrive catalog lists 825M/826M/963M/1000M.",
       "aftermarket_range_text": "Wagon body — rear cargo area / C-pillar clearance can differ from G80 sedan on extreme poke. Hub/PCD/OEM sizes match G80 Comp; prefer G80 mechanical evaluate() then flag Touring rear for reasoned review.",
-      "clearance_notes_text": "xDrive and RWD markets vary by region. Geometry stub extends G80 until Touring-specific outer clearance measured.",
-      "fitment_notes_text": "New card 2026-09-27 (was absent; shared_logic already listed G80/G81).",
+      "clearance_notes_text": "xDrive only - keep front/rear rolling diameters within ~1%. Geometry stub extends G80 sedan; Touring rear arch/quarter not separately measured, so treat aggressive rear poke as reasoned-review.",
+      "fitment_notes_text": "New card 2026-09-27. 2026-10-22: OEM sizes Round-1 verified (same ET20 G8X program); 'RWD markets' claim removed - G81 is M xDrive only; Python pilot PILOT-G81-M3T.json added. 2026-10-22 COO ruling: outer fender-room margin set to 14 mm front / 13 mm rear - ESTIMATED from vendor flush-spacer specs, NOT measured (was 10/12 estimate). Product has not reviewed the vendor source; replace with measured arch data when available.",
       "subheader_descriptors": [
         "M3 Touring",
         "M3 Competition Touring",
         "M3 CS Touring"
       ],
-      "verification_status": "researched-unverified-2026-09-27",
+      "verification_status": "verified-2026-10-22",
       "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x112, 66.6 mm. M14x1.25 conical.",
       "verified_oem_wheels": {
-        "competition": "19x9.5J ET20 front, 20x10.5J ET20 rear; 275/35ZR19 + 285/30ZR20 (inherits G80 Comp verified offsets)",
-        "note": "Offsets inherited from G80 Wheel-Size verification; Touring body clearance NOT separately verified."
+        "825M_826M_963M_827M_19_20": "9.5Jx19 ET20 front / 10.5Jx20 ET20 rear; 275/35ZR19 + 285/30ZR20 (Competition std pre-LCI 826M; 825M std on 2025+ LCI; 963M forged accessory; 827M CSL/M3 CS)",
+        "1000M_20_21_accessory": "9.5Jx20 ET20 front / 10.5Jx21 ET20 rear; 285/30R20 + 295/25R21 (BMW M Performance accessory, genuine BMW part nos 36108746991/992; wheel-size lists as G82 row)",
+        "winter_note": "wheel-size also lists 9Jx19 ET20 / 9.5Jx19 ET20 on 275/35R19 (winter/alt row, no part no captured) - NOT treated as OEM-exact",
+        "note": "Round-1 VERIFIED 2026-10-22 (OEM sizes/part nos). No 18in base wheel on G81 (Competition xDrive only). Touring clearance NOT separately measured."
       }
     },
     {
@@ -454,13 +499,21 @@
       "bolt_pattern": "5x112",
       "center_bore_mm": 66.6,
       "years": "2021–present",
-      "oem_wheels_text": "Identical fitments to G80 M3. Base M4 (RWD, manual) likely had the 18\"/19\" stagger (though in many markets, most M4 are Competition trim). M4 Competition – 19″ front / 20″ rear (same sizes/tires as M3 Comp). M4 xDrive Comp – also 19\"/20\". M4 CSL (2022) – came with exclusive forged wheels in a square 20″ setup (20×9.5J front and 20×10.5J rear, all around in Frozen Gunmetal) with Michelin Cup2 R tires, 275/35ZR20 front and 285/30ZR20 rear – notably, the CSL runs a slightly wider front tire than rear aspect-wise, to bias grip forward. The CSL wheels are ET20 front and ET20 rear offset (with 9.5 and 10.5 widths respectively), effectively very flush with the body.",
+      "oem_wheels_text": "Round-1 VERIFIED 2026-10-22. Same wheel program as G80 M3, all ET20. Base M4 (2021-2024): 824M 9.5Jx18 ET20 / 10.5Jx19 ET20 (275/40ZR18 + 285/35ZR19). M4 Competition / Comp M xDrive / G83 Convertible: 826M 9.5Jx19 ET20 / 10.5Jx20 ET20 (275/35ZR19 + 285/30ZR20); 825M same size, standard on 2025+ LCI. M4 CSL (2023): Style 827M Gold Bronze, STAGGERED 9.5Jx19 ET20 / 10.5Jx20 ET20 on Cup 2 R 275/35R19 + 285/30R20 (old card text said 'square 20in' - wrong, corrected). 2025 M4 CS: own forged wheel, sizes NOT verified this run. Accessory 963M 19/20 ET20; 1000M 9.5Jx20 ET20 / 10.5Jx21 ET20 (wheel-size G82 row 285/30ZR20 + 295/25ZR21). 5x112, CB 66.6, M14x1.25, 140 Nm. Sources (Round-1 2026-10-22): bmwoemwheelstyles.com Style 824M (36108093830/831), 825M (36108093832-835), 826M (36117882867, 36108093837-839), 827M (36108093840/841, 36107884365/366), 963M (36108746989/990), 1000M (36108746991/992, 36109502044/045) - all 5x112, CB 66.6, M14x1.25 60deg cone, 140 Nm, ET20; wheel-size.com M3 G80/G81 + M4 G82/G83 2021-2024 tables; RealOEM G81 option codes (S1T6A-S1U1A 825M/826M, S1WLA 825M, S2QSA 963M); fmbwheels G82 guide (2025 LCI = 825M std); paddleshifterz 826M fitment list (G80/G81/G82/G83/G87). CSL 827M: bmwoemwheelstyles 827M + bmwpartspros 36107884365 + g80.bimmerpost 827M thread.",
       "aftermarket_range_text": "Given the M4 coupe shares everything with G80 aside from body style, it can run the same aggressive setups. Owners often push the M4 a bit more since it’s typically the track choice: for example, an M4 xDrive on 18×10.5 ET15 square with 295/30R18 Hoosier slicks has been used in time attack (requiring -4° camber and fender liner modifications). For street, a popular aggressive fit is 21×10.5 ET15 front, 21×11.5 ET20 rear on 285/30-21 and 305/25-21 – this is seen in show builds and is near the limit of fender clearance (mostly for aesthetics; not recommended for performance, and it may rub over bumps). Practically, the M4 can easily handle 19×10 ET20 & 19×11 ET35 with 275/35 and 305/30 tires – a very stout setup that generally only requires a rear fender lip trim. The M4 CSL’s own wheel spec (20×9.5 ET20, 20×10.5 ET20 square) indicates how far BMW went: those are extremely aggressive offsets from the factory. If you install CSL wheels on a regular M4, they will sit roughly 20 mm further out per side in the rear compared to the usual comp wheels – filling the arches completely. Some aftermarket CSL-style wheels for M4 use slightly higher offset (ET25 rear) to ensure no rub on non-CSL cars. Bottom line: The G82 can run anything the G80 can; the two-door body doesn’t inherently change clearance, except the rear quarter on the coupe might allow a hair more room at the top of the tire due to its shape (no door frame intrusion). That said, any extremely wide/low setup that rubs on G80 will also rub on G82.",
       "clearance_notes_text": "The M4 CSL’s example is telling: BMW gave it -3° front camber and specific spring rates to make 275 fronts work with ET20 wheels. Without those alignments, a standard M4 might rub the front fenders with that setup. So if you emulate CSL spec, consider adding camber plates. The G83 convertible, similar to the F83, is heavier and might compress more on bumps – slight increases in ride height or stiffer springs could be needed if you load it up with passengers and have aggressive wheels. One notable clearance difference: the M4’s longer coupe doors mean the front fender extends a bit further back than on the M3 – in rare cases, wide front tires (like 295 on full lock) might contact the rear of the fender liner near the door hinge on the M4. This is only if running extreme steering angle (drift setups) – not an issue for normal driving or track. Brakes & misc.: All notes from G80 apply; the carbon ceramic brake package is identical. The M4’s slightly different weight distribution doesn’t impact wheel fit. The M4 CSL deleting the rear seats doesn’t affect wheel clearance, but note it comes with no rear tire well liners (for weight) – that actually increases clearance marginally on the inside. Regular M4s have liners; if you track and get rubber marbles behind them, occasionally check for abrasion if running wide slicks. In summary, treat the G82 as the G80 for fitment – they are effectively the same chassis with interchangeable wheels, so the broad fitment envelope (9″–11″+ widths, low offsets) and associated caveats (alignment, fender lips) are shared.",
-      "fitment_notes_text": "",
-      "verification_status": "unverified",
+      "fitment_notes_text": "2026-10-22: OEM sizes Round-1 verified; CSL corrected from 'square 20in' to staggered 19/20 827M; Python pilot PILOT-G82-M4.json added (aliases G82/G83). Clearance geometry estimated (same as G80). 2026-10-22 COO ruling: outer fender-room margin set to 14 mm front / 13 mm rear - ESTIMATED from vendor flush-spacer specs, NOT measured (was 10/12 estimate). Product has not reviewed the vendor source; replace with measured arch data when available.",
+      "verification_status": "verified-2026-10-22",
       "subheader_descriptors": [],
-      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×112, 66.6 mm (shared with G80)."
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×112, 66.6 mm (shared with G80).",
+      "verified_oem_wheels": {
+        "824M_18_19_base_pre_LCI": "9.5Jx18 ET20 front / 10.5Jx19 ET20 rear; 275/40ZR18 + 285/35ZR19 (base M3/M4 2021-2024; 36108093830/831)",
+        "825M_826M_963M_827M_19_20": "9.5Jx19 ET20 front / 10.5Jx20 ET20 rear; 275/35ZR19 + 285/30ZR20 (Competition std pre-LCI 826M; 825M std on 2025+ LCI; 963M forged accessory; 827M CSL/M3 CS)",
+        "1000M_20_21_accessory": "9.5Jx20 ET20 front / 10.5Jx21 ET20 rear; 285/30R20 + 295/25R21 (BMW M Performance accessory, genuine BMW part nos 36108746991/992; wheel-size lists as G82 row)",
+        "winter_note": "wheel-size also lists 9Jx19 ET20 / 9.5Jx19 ET20 on 275/35R19 (winter/alt row, no part no captured) - NOT treated as OEM-exact",
+        "note": "Round-1 VERIFIED 2026-10-22. Every G8X factory/accessory wheel is ET20, 9.5J front / 10.5J rear. Clearance geometry still estimated.",
+        "827M_CSL": "9.5Jx19 ET20 / 10.5Jx20 ET20; 275/35R19 + 285/30R20 Cup 2 R (CSL std, Gold Bronze 36107884365/366; Jet Black 36108093840/841)"
+      }
     },
     {
       "family": "M5",
@@ -531,11 +584,11 @@
       "bolt_pattern": "5x120",
       "center_bore_mm": 72.56,
       "years": "2005–2010",
-      "oem_wheels_text": "19″ Style 166M (forged) – 19×8.5J (front) and 19×9.5J (rear). The offsets on E60 M5 wheels are unusually low: approximately ET12–15 front and ET28–32 rear (BMW did not publish these, but forum sources note 19×8.5 ET12 front, 19×9.5 ET28 rear for style 166). Tires were 255/40ZR19 front, 285/35ZR19 rear from factory. Some late E60 M5 (e.g., 2010) offered optional 20″ Performance wheels (Style 167M, similar to M6 wheels) – 20×8.5 and 20×9.5, likely around ET12/ET17 offsets with 255/35R20 and 285/30R20 tires. (If that option existed, it was rare; many owners retrofit M6 wheels which are similar spec.)",
+      "oem_wheels_text": "19\" Style 166M (standard, all markets; only style in North America): 19x8.5J ET12 front, 19x9.5J ET28 rear. 19\" Style 167M (extra-cost option outside North America): same 19x8.5 ET12 / 19x9.5 ET28 for M5 fitment. Tires 255/40ZR19 front, 285/35ZR19 rear. M5 vs M6 rear offset: E60/E61 M5 rear = ET28 (bmwoemwheelstyles part 36117835148, 9.5x19 ET28); E63/E64 M6 rear = ET17 (36117835147); fronts identical 8.5x19 ET12 (36117835146). 166M/167M rears turn up in BOTH offsets on the used market - read the stamp; M6-offset (ET17) rears sit ~11 mm further out and are the common 'flush without spacers' upgrade on E60s. No factory 20\" E60 M5 option found in 2026-10-12 research (earlier text claiming a 20\" 167M was unsupported and removed). Sources: bimmertips E60 M5 wheel specs, bmwoemwheelstyles Style 167M table, 5series.net offset threads (researched 2026-10-12).",
       "aftermarket_range_text": "The E60 M5 has wide track and flared arches to match – it requires low offset wheels (the stock front ET12 is very aggressive). Aftermarket options often include 20×9 ET12 front, 20×10 ET20 rear (for example, many E60 M5 run 20″ HRE or BBS with those specs) on 255/35R20 and 295/30R20 tires – this fills the arches nicely and is usually rub-free. For 19″ track setups, folks have run 19×10″ ET20 square with 275/35R19 all around – the front will poke a bit compared to stock ET12 (ET20 is 8 mm more inward, but with 10″ width and 275 tire it ends up about flush). A more conservative square is 19×9.5 ET20 with 275/35 – that will sit ~8 mm inboard relative to stock front wheel, so some may add a small spacer to push it out. In rear, 19×10.5 ET25 with 295/35R19 is doable with a rolled fender. On stock suspension, the E60 can accept up to ~10.5″ width rear at ET20–25 without rubbing (the fenders are quite accommodating). Some owners also downsize to 18″ for drag or winter – 18″ clears the brakes if design is right; common winter set is 18×8 ET20 style 124 with 245/45R18. For aggressive stance, a known fitment is 21×9.5 ET0 front, 21×10.5 ET15 rear with stretched tires – but that’s purely show (front sticks way out). The practical limit front is around ET0 for an 8.5″ (which was stock) – any wider and you risk the tire protruding past the fender at the top. In summary, wheels in the ET10–20 range front and ET20–30 range rear work best. The E60 M5’s stock setup is already very aggressive outward, so most aftermarket wheels for it are made in similar offsets (which are notably different from a regular E60 5-series that uses ~ET20+ higher offsets).",
       "clearance_notes_text": "Front fenders: are plastic on the E60, with an integrated flare – they can’t be rolled, only trimmed. Fortunately, the stock design (8.5″ ET12 with 255) nearly maximizes the space. You have room to go to 265 tires if offset is slightly higher (e.g., 19×9.5 ET22 with 265/35 might tuck in). If you push outward (like ET0 with 255), you’ll likely poke beyond the fender plane. Thus, maintain similar poke as OEM (an 8.5″ ET12 and 9.5″ ET20 have about same outer position). Rear fenders: have a decent lip that can be rolled. The stock 9.5 ET28 with 285 is comfy – you can push to ET20 on 10″ with 295 and roll the lip flat to avoid contact on big dips. The E60’s dynamic camber gain means the top of the tire leans in on compression, which helps avoid rub, but if you’re at ET15 with a wide wheel it could still catch. Suspension clearance: The E60’s front strut is positioned such that ET12 on 8.5 is fine; if you run a much higher offset (ET30+), the wheel would hit the strut. Conversely, coilovers with bulky perches might conflict if you try something like 10″ ET20 inside – but since E60 M5 doesn’t usually go high offset, inner clearance is rarely an issue. Brakes: E60 M5 has 374 mm front rotors. Most 18″ wheels do NOT clear these, which is why stock is 19″. A few track-oriented 18″ might clear (with slim barrel and maybe spacers), but generally 19″ is minimum. All 19″ OEM and typical aftermarket clear fine. Center bore: back to 72.56 mm, so standard BMW wheels fit (some people put E60 M5 wheels on E39 with rings, but opposite (E39 wheels on E60) would not center without rings). Summary: The E60 M5’s aggressive OEM stance means you should be careful using wheels from other BMWs – for instance, if you put E39 M5 Style 65s (18×8 ET20, 18×9.5 ET22) on an E60 M5, the front ET20 is 8 mm more inboard than stock ET12, which may rub the strut or at least look sunken; people often add a 10 mm spacer to those, effectively ET10, to sit right. Always compare to the baseline: ~ET12 front, ~ET28 rear on 8.5/9.5. Keep close to that outer position for best results.",
-      "fitment_notes_text": "",
-      "verification_status": "unverified",
+      "fitment_notes_text": "2026-10-12: rear OEM ET28 reconciled (geometry had the M6 ET17 value). E61 M5 Touring (2007–2010, EU) shares these wheels - separate card added 2026-10-08. Known engine gap: no inboard/strut penalty for negative poke (e.g. E39 Style 65 ET20 front).",
+      "verification_status": "researched-unverified-2026-10-12",
       "subheader_descriptors": [],
       "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm (BMW returned to the standard center bore after E39)."
     },
@@ -568,9 +621,11 @@
       "oem_wheels_text": "19″ (standard in some markets) – 19×9.5J front, 19×10.5J rear (approx offsets ET28–ET30 range). Tires 275/40ZR19 front, 285/40ZR19 rear (xDrive requires near-equal rolling diameter, hence tall rear tire). 20″ (Competition and common option) – 20×9.5J ET28 front, 20×10.5J ET28 rear are the known specs for the forged Style 789M and 811M wheels; tires 275/35ZR20 front, 285/35ZR20 rear. (Yes, the F90 runs a very mild stagger in tire width, likely due to xDrive – only 10 mm difference, and same aspect ratio, so diameters are identical.) M5 CS (2021) – used the same wheel size as Comp but in Gold Bronze color, with Pirelli P Zero Corsa tires 275/35R20 and 285/35R20. Notably, some regions got F90 base on 275/35R20 square from factory (with same 20×9.5 wheels all around) – this was done in markets where stagger might conflict with AWD calibration. Generally, though, staggered wheels were delivered.",
       "aftermarket_range_text": "The F90 M5 has ample room and benefits from wider tires. A popular upgrade is 21×10.5J ET20 front, 21×11.5J ET20 rear on 295/30R21 and 305/30R21 tires – this gives the car a very aggressive stance (front pokes ~8 mm past stock, rear ~17 mm past stock) and usually requires a slight negative camber increase front and rear to avoid rub. Many F90 owners report that 305 rear on 11.5″ can rub the inner liner on big dips unless camber is around -1.5°. A more conservative but effective setup: 20×10″ ET22 front, 20×11″ ET30 rear on 285/35R20 and 295/35R20 – this is essentially the M8 Competition fitment applied to M5 (M8 runs 285/35 square on 20×10, but here we do slight stagger). That setup is nearly flush and maintains AWD-friendly diameters. For track use, one could run 19×10.5 ET25 square with 295/40R19 all around – on stock suspension this fits (similar diameter front/rear, within 0.1%), though front may need -2° camber to clear fenders. Very aggressive fitments like 20×11 ET20 front, 20×11 ET20 rear with 305 square have been attempted on lowered F90s – front fenders need significant work for that. In general, a safe upper bound: Front – 10.5″ wide, offset ~ET20–25, tire ~295; Rear – 11.5″ wide, offset ~ET20–28, tire ~305. That should work with minor alignment tweaks and maybe rear fender lip smoothing (the F90 has a small lip). If one wants to run a square tire setup (for xDrive rotation or winter), 275/35R20 or 285/35R20 square on the OEM 20s is fine (some M5 owners do 285 square winter setup on 20×9.5 all around).",
       "clearance_notes_text": "The F90’s front fenders are aluminum with a decent lip that can be rolled flat if necessary. The stock 275 on ET28 is conservative – there’s room to go outward (many add spacers to stock wheels: ~5 mm front, ~3 mm rear for flush look). So adding width and lower offset is feasible. However, the front fender design on F90 has an internal bracket near 12 o’clock that can snag the tire if it’s very close – adding more than ~15 mm poke beyond stock can risk contact on full compression. That’s why even aggressive setups stick around ET20 front (only ~8 mm more poke than stock ET28 on a similar width). The rear fenders can be rolled; from factory they can accept the mild stagger easily. Pushing rear wheels out ~10 mm (to ET18 on a 10.5, for example) will bring the tire near flush – but if the car is heavily loaded or lowered, the outer shoulder could graze the fender. Rolling the rear lip flat cures this. AWD considerations: Because the F90 is AWD (xDrive), maintaining front/rear rolling radius is crucial. Most fitters keep the tire aspect ratios equal (e.g., 285/35 & 295/35, or 295/30 & 295/30 square). A square setup is easiest for AWD, but the car’s staggered power bias can still handle a slight stagger as BMW did stock (1 cm difference). Generally keep diameters within 1%. Suspension clearance: The F90’s double-wishbone front and multi-link rear mean inner clearance is not usually the issue – you’ll hit the fender before the suspension. One thing to note: the M5 CS has slightly more negative camber from factory (-1.5° front) which helps it run the same 275 on wider wheels with absolutely no rub – regular F90 might need camber plates to achieve that if running similarly wide front tires. Brakes: Standard steel rotors are 395 mm front – require ≥20″ wheel. Some 19″ may clear steel brakes (with careful design and maybe spacers), but carbon ceramic rotors (400 mm front) practically mandate 20″. All the OEM wheel options are 20″ in most markets, with 19″ only as base in some. If downsizing for winter, check templates; a few 19″ wheels (like BBS CI-R) claim to clear F90 steel brakes, but it’s tight. For track, most will stick with 20s or get custom 19s that clear. In summary, the F90 M5 can handle a bit more tire than stock – especially up front where BMW played it safe with 275 – but going too wild will necessitate fender modifications or significant camber. A moderate widening yields big traction benefits and a better flush look, all while staying within the constraints of the xDrive system.",
-      "fitment_notes_text": "",
+      "fitment_notes_text": "2026-10-08 Comp/CS split check: Competition and CS share the base 20in OE size - 789M Y-spoke 20x9.5 ET28 front / 20x10.5 ET28 rear (CS = Gold Bronze 789M, RealOEM parts 36119501872/36119501873; optional forged 863M same size). Some markets' base cars carried 19x9.5 ET26 / 19x10.5 ET28. No separate Comp/CS card needed - fit_on_chassis unchanged. researched-unverified-2026-10-08.",
       "verification_status": "unverified",
-      "subheader_descriptors": [],
+      "subheader_descriptors": [
+        "(Note: The upcoming 2025 G90 M5 will introduce new specs – e.g., rumor is 5×112 with larger 5×132 rear bolt pattern for strength – but that is beyond this scope as we focus on existing generations.)"
+      ],
       "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×112, 66.6Â mm. (The F90, despite being called “F”, rides on the G30 chassis platform, so it uses the new 5×112 hubs.)"
     },
     {
@@ -602,7 +657,7 @@
       "oem_wheels_text": "19″ Style 167M (standard) – 19×8.5J front, 19×9.5J rear. Offsets roughly ET12 front, ET17 rear (these are the same design as E60 M5 but slightly different offset due to different hub geometry). Tires 255/40ZR19 front, 285/35ZR19 rear (identical sizes to E60 M5). 20″ Style 166M/individual (optional) – Not commonly seen, but there were some 20″ offered via BMW Individual or later Competition Kit: often 20×8.5 and 20×10, likely ET14 front, ET20 rear, with 255/35R20 and 285/30R20. In general, the E63 M6 had a similar stance to the E60 M5 (wide front track).",
       "aftermarket_range_text": "The E63 M6, being a coupe, has slightly more forgiving rear fenders than the E60 sedan (the coke-bottle shape of the 6-series allows a bit more tuck in the rear). People often ran 21×9.5 ET15 front, 21×11 ET20 rear on M6 with 255/30R21 and 295/25R21 – showy, but fits with maybe a fender lip roll in rear. For performance, a square 19×9.5 ET22 with 275/35R19 all around has been successful – likely needs -2Â° camber up front and maybe slight front fender trim (because stock front ET12 on 8.5 vs ET22 on 9.5 moves the wheel 10 mm inward and 24 mm outward; the outward poke definitely needs camber). A known “safe” aggressive setup: 20×9.5 ET15 front, 20×10.5 ET15 rear on 275/35R20 & 305/30R20 – front will poke ~7 mm more than stock, rear ~12 mm more, which on the E63’s curves looks very flush. Minor negative camber adjustments and rear fender roll are recommended here (especially for the 305 tire). More moderately, 20×9 ET20 front, 20×10 ET20 rear with 265/35R20 & 295/30R20 is a bolt-on fit – that’s essentially the profile of the later F12 M6 wheels which some retrofit onto E63. In summary, E63 M6 can fit similar wheels to E60 M5 because the chassis underpinnings are similar. The stock ET12/ET17 are very low offsets, so most aftermarket will be in that realm. Just be cautious that the E63’s fiberglas front fenders can’t be rolled – you only adjust via camber or trimming.",
       "clearance_notes_text": "The front fenders on E63 are composite and already flared for the M – with stock 255 on ET12, they’re at the limit. Pushing further out (like some do with ET0 deep concaves) will have the tire outside the fender – not acceptable without widebody. If anything, adding width should be accompanied by higher offset to keep the outer position similar. The often used ET15–20 range front is a balance between inner clearance (to strut) and outer (to fender). More than ET20 and you’ll hit suspension; less than ET10 and you’ll poke out. Rear fenders on E63 have a significant lip that can be rolled fairly flat (it’s metal). The rear quarter is wide, so from factory the 285 ET17 sits nicely. You can go to ET10 on same width (9.5) and probably be fine after a roll. On an 11″ rear, ET20 is flush; ET15 might poke a hair – that’s where that 305 on 11″ ET15 could touch the lip on big compression, hence roll needed. Suspension/brakes: E63 M6 shares the E60’s brakes (374 mm front). 19″ required, though some 18″ drift setups have been done with grinding calipers (not recommended normally). Most stick to 19–21″ wheels. Inner clearance is similar to E60 – coilovers might reduce inner room at front requiring a small spacer if running high offset, but since we usually are low offset, inner side is fine. Conclusion: The E63 M6, like the E60 M5, enjoys low offsets. Many aftermarket wheels for it are listed as “E60/E63 fitment” meaning ~ET15 front, ~ET20 rear. As long as you stay close to those and don’t go too wild on width without camber, you’ll be safe. It’s a big coupe with room for some seriously wide wheels once properly setup.",
-      "fitment_notes_text": "",
+      "fitment_notes_text": "2026-10-12: OE rear ET17 confirmed (bmwoemwheelstyles 36117835147 9.5x19 ET17; front 36117835146 8.5x19 ET12). E60 M5 rears of the same style are ET28 - an M5-offset rear on an M6 sits ~11 mm further in. The 20\" option sizes in the OEM text remain unverified.",
       "verification_status": "unverified",
       "subheader_descriptors": [],
       "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5×120, 72.56 mm."
@@ -633,17 +688,21 @@
       "bolt_pattern": "5x132",
       "center_bore_mm": 66.6,
       "years": "2025–present",
-      "oem_wheels_text": "Standard (951M; also 952M): 20x10.5J ET28 front, 21x11J ET28 rear; tires 285/40 ZR20 111Y XL front, 295/35 ZR21 110Y XL rear. BMW winter set (951M Jet Black): 10Jx20 ET28 front, 10.5Jx20 ET28 rear (275/40R20 / 285/40R20). No factory 19\" or square option. Lug bolts M14x1.25 (BMW 36136795153). Sources: BMW PressClub tech data; RealOEM G90 wheel groups; wheel-size.com; IND Distribution.",
-      "aftermarket_range_text": "NEEDS RESEARCH — new 5x132 hub: 5x112 wheels/spacers do NOT fit without adapters. Vendor-tested spacers on OE suspension: 12mm F/R (effective ET16) is IND's flush recommendation; 5–18mm tested.",
-      "clearance_notes_text": "NEEDS RESEARCH — brake/barrel templates for M Compound vs M Carbon ceramic not yet verified.",
-      "fitment_notes_text": "Corrected 2026-10-08: bolt pattern is 5x132 (not 5x112); CB 66.56 mm. Wheels and bolts share part numbers with G99.",
-      "subheader_descriptors": [],
-      "verification_status": "researched-unverified-2026-10-08",
-      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x132, 66.56 mm (66.6). M14x1.25 floating-collar lug bolts.",
+      "oem_wheels_text": "Style 951M OE staggered: 20x10.5J ET28 front + 21x11.0J ET28 rear; tires 285/40ZR20 front, 295/35ZR21 rear. Winter/option 20in row: 10Jx20 ET28 front + 10.5Jx20 ET28 rear (275/40R20 + 285/40R20 class). Lug bolts M14x1.25 conical, 140 Nm. CRITICAL: bolt pattern is 5x132 (NOT 5x112 like F90/G8X) — unique in BMW lineup as of 2026. CB 66.6 mm. Round-1 VERIFIED 2026-10-19: Style 951M OE staggered 20x10.5J ET28 front / 21x11.0J ET28 rear (285/40ZR20 + 295/35ZR21); winter/option 10Jx20 ET28 / 10.5Jx20 ET28. 5x132 / CB 66.6 / M14x1.25 140 Nm. RealOEM G90 951M parts 36107884272 (10.5x20 ET28) / 36107884273 (11x21 ET28); Midnight Gray 36107884268/269; winter 10x20 36107884270. Cross-check: bmwoemwheelstyles 951M, IND Distribution G90/G99 spacer guide (5x132, 66.56 CB), getBMWparts G90/G99 Style 951M listings, ThreePiece G99 Touring 5x132/66.6.",
+      "aftermarket_range_text": "F90 5x112 wheels do NOT bolt on — adapters unsafe / not Product-recommended. Most aftermarket for G90/G99 must be custom-drilled 5x132. Keep near OE offsets (ET28 class); hybrid curb weight is high — prefer load-rated tires. Wagon (G99) rear arch may differ on extreme poke.",
+      "clearance_notes_text": "Big M Comp / hybrid brakes — treat 20\" as practical minimum (same soft-gate family as F90/M8). xDrive + rear-axle steering on many markets. Geometry stub until measured.",
+      "fitment_notes_text": "Deepened 2026-10-01: corrected bolt pattern 5x112→5x132. 2026-10-19: OEM sizes + part numbers Round-1 verified; geometry clearances still estimated.",
+      "subheader_descriptors": [
+        "M5",
+        "M5 Competition"
+      ],
+      "verification_status": "verified-2026-10-19",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x132, 66.6 mm. M14x1.25 conical. UNIQUE vs prior M5 (F90=5x112). Confirm before any wheel hunt.",
       "verified_oem_wheels": {
-        "style_951M_952M_std": "20x10.5J ET28 front, 21x11J ET28 rear; 285/40ZR20 111Y XL + 295/35ZR21 110Y XL",
-        "winter_951M": "20x10J ET28 front, 20x10.5J ET28 rear; 275/40R20 + 285/40R20",
-        "note": "Researched BMW PressClub / RealOEM / wheel-size.com / IND 2026-10-08 — not Round-1 spot-checked."
+        "style_951M_20_21": "20x10.5J ET28 front, 21x11.0J ET28 rear; 285/40ZR20 + 295/35ZR21 (RealOEM 36107884272/273)",
+        "winter_20": "10Jx20 ET28 front, 10.5Jx20 ET28 rear (RealOEM 36107884270 + 36107884272 winter row)",
+        "midnight_gray_951M": "same sizes; RealOEM 36107884268 (10.5x20) / 36107884269 (11x21)",
+        "note": "Round-1 VERIFIED 2026-10-19: Style 951M OE staggered 20x10.5J ET28 front / 21x11.0J ET28 rear (285/40ZR20 + 295/35ZR21); winter/option 10Jx20 ET28 / 10.5Jx20 ET28. 5x132 / CB 66.6 / M14x1.25 140 Nm. RealOEM G90 951M parts 36107884272 (10.5x20 ET28) / 36107884273 (11x21 ET28); Midnight Gray 36107884268/269; winter 10x20 36107884270. Cross-check: bmwoemwheelstyles 951M, IND Distribution G90/G99 spacer guide (5x132, 66.56 CB), getBMWparts G90/G99 Style 951M listings, ThreePiece G99 Touring 5x132/66.6."
       }
     },
     {
@@ -655,17 +714,20 @@
       "bolt_pattern": "5x132",
       "center_bore_mm": 66.6,
       "years": "2025–present",
-      "oem_wheels_text": "Standard (951M; also 952M): 20x10.5J ET28 front, 21x11J ET28 rear; tires 285/40 ZR20 111Y XL front, 295/35 ZR21 110Y XL rear. BMW winter set (951M Jet Black): 10Jx20 ET28 front, 10.5Jx20 ET28 rear (275/40R20 / 285/40R20). No factory 19\" or square option. Lug bolts M14x1.25 (BMW 36136795153). Sources: BMW PressClub M5 Touring tech data; RealOEM G99 wheel groups; wheel-size.com; IND Distribution.",
-      "aftermarket_range_text": "NEEDS RESEARCH — 5x132 hub (same as G90); Touring rear-arch differences vs sedan unmeasured.",
-      "clearance_notes_text": "NEEDS RESEARCH — brake/barrel templates for M Compound vs M Carbon ceramic not yet verified.",
-      "fitment_notes_text": "Corrected 2026-10-08: 5x132 / CB 66.56. Identical OEM wheel part numbers to G90 (951M 36107884268/269/272/273, 952M 36107884274/275), same tire load indexes.",
-      "subheader_descriptors": [],
-      "verification_status": "researched-unverified-2026-10-08",
-      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x132, 66.56 mm (66.6). M14x1.25 floating-collar lug bolts.",
+      "oem_wheels_text": "Shares G90 Style 951M OE program: 20x10.5J ET28 front + 21x11.0J ET28 rear; 285/40ZR20 + 295/35ZR21. Winter/option 10Jx20 ET28 / 10.5Jx20 ET28. 5x132 / CB 66.6 / M14x1.25. Touring body — rear arch clearance not separately measured. Round-1 VERIFIED 2026-10-19: Style 951M OE staggered 20x10.5J ET28 front / 21x11.0J ET28 rear (285/40ZR20 + 295/35ZR21); winter/option 10Jx20 ET28 / 10.5Jx20 ET28. 5x132 / CB 66.6 / M14x1.25 140 Nm. RealOEM G90 951M parts 36107884272 (10.5x20 ET28) / 36107884273 (11x21 ET28); Midnight Gray 36107884268/269; winter 10x20 36107884270. Cross-check: bmwoemwheelstyles 951M, IND Distribution G90/G99 spacer guide (5x132, 66.56 CB), getBMWparts G90/G99 Style 951M listings, ThreePiece G99 Touring 5x132/66.6.",
+      "aftermarket_range_text": "F90 5x112 wheels do NOT bolt on — adapters unsafe / not Product-recommended. Most aftermarket for G90/G99 must be custom-drilled 5x132. Keep near OE offsets (ET28 class); hybrid curb weight is high — prefer load-rated tires. Wagon (G99) rear arch may differ on extreme poke.",
+      "clearance_notes_text": "Touring body — rear cargo / C-pillar clearance can differ from G90 sedan on aggressive poke. Hub/PCD/OEM sizes match G90. Same 5x132 / 66.6 warning as sedan.",
+      "fitment_notes_text": "Deepened 2026-10-01 with G90: BP corrected to 5x132. Chassis code G99 (BMW official). 2026-10-19: OEM sizes Round-1 verified (same RealOEM 951M parts as G90); Touring clearance still estimated.",
+      "subheader_descriptors": [
+        "M5 Touring",
+        "M5 Competition Touring"
+      ],
+      "verification_status": "verified-2026-10-19",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x132, 66.6 mm. M14x1.25 conical. Same unique PCD as G90 sedan.",
       "verified_oem_wheels": {
-        "style_951M_952M_std": "20x10.5J ET28 front, 21x11J ET28 rear; 285/40ZR20 111Y XL + 295/35ZR21 110Y XL",
-        "winter_951M": "20x10J ET28 front, 20x10.5J ET28 rear; 275/40R20 + 285/40R20",
-        "note": "Researched BMW PressClub / RealOEM / wheel-size.com / IND 2026-10-08 — not Round-1 spot-checked."
+        "style_951M_20_21": "20x10.5J ET28 front, 21x11.0J ET28 rear; 285/40ZR20 + 295/35ZR21 (same as G90)",
+        "winter_20": "10Jx20 ET28 front, 10.5Jx20 ET28 rear",
+        "note": "Round-1 VERIFIED 2026-10-19: Style 951M OE staggered 20x10.5J ET28 front / 21x11.0J ET28 rear (285/40ZR20 + 295/35ZR21); winter/option 10Jx20 ET28 / 10.5Jx20 ET28. 5x132 / CB 66.6 / M14x1.25 140 Nm. RealOEM G90 951M parts 36107884272 (10.5x20 ET28) / 36107884273 (11x21 ET28); Midnight Gray 36107884268/269; winter 10x20 36107884270. Cross-check: bmwoemwheelstyles 951M, IND Distribution G90/G99 spacer guide (5x132, 66.56 CB), getBMWparts G90/G99 Style 951M listings, ThreePiece G99 Touring 5x132/66.6. Touring body clearance NOT separately measured."
       }
     },
     {
@@ -679,12 +741,22 @@
       "bolt_pattern": "5x112",
       "center_bore_mm": 66.6,
       "years": "2019–present",
-      "oem_wheels_text": "NEEDS RESEARCH — M8 Comp typically came with 20\" wheels. Suspect ~20×9.5 ET25 front / 20×10.5 ET25 rear baseline.",
-      "aftermarket_range_text": "NEEDS RESEARCH — likely similar envelope to F90 M5 due to shared platform; coupe/convertible/gran-coupe arch differences need separate notes.",
-      "clearance_notes_text": "NEEDS RESEARCH — M8 carbon ceramic option common; brake template verification critical for sub-19\" wheels.",
-      "fitment_notes_text": "",
-      "subheader_descriptors": [],
-      "verification_status": "stub-needs-research"
+      "oem_wheels_text": "Competition OE (BMW NA order guide Style 810M/811M/813M): 20x9.5J ET28 front + 20x10.5J ET28 rear; tires 275/35ZR20 front, 285/35ZR20 rear (performance non-RFT). All three Comp styles share the same size/offset. Alternate winter/option listings on some markets: 19x9.5 ET28 / 19x10.5 ET28 with 265/40R19 + 285/40R19 (brake-package check required). Bolt pattern 5x112, CB 66.6 mm, M14x1.25. Round-1 VERIFIED 2026-10-19: Competition OE Style 810M/811M/813M 20x9.5J ET28 front / 20x10.5J ET28 rear; 275/35ZR20 + 285/35ZR20 (performance non-RFT). 5x112 / CB 66.6 / M14x1.25. Sources: BMW NA MY2023 M8 order guide wheel overview (codes 1P9/1TG/1TH — all same size); bmwoemwheelstyles 811M parts 36118089564 9.5x20 ET28 / 36118089565 10.5x20 ET28; JD Wheels 810M listing 9.5/10.5 ET28; BMW Direct Parts 810M/811M/813M 9.5x20 / 10.5x20.",
+      "aftermarket_range_text": "Shared G-chassis architecture with F90 M5 envelope for many aftermarket catalogs — confirm brake package (steel vs carbon ceramic) before sub-20\". Coupe (F92) / Convertible (F91) / Gran Coupe (F93) arch differences mainly rear; start OE-near staggered before poke.",
+      "clearance_notes_text": "Carbon ceramic option common — brake template verification critical under 20\". Geometry stub estimated from F90 class until measured.",
+      "fitment_notes_text": "Deepened 2026-10-01 from stub. 2026-10-19: Competition OE sizes + part numbers Round-1 verified; geometry clearances still estimated from F90 class. Coupe/Cab/GC share Comp OE size.",
+      "subheader_descriptors": [
+        "M8 Competition Coupe",
+        "M8 Competition Convertible",
+        "M8 Competition Gran Coupe"
+      ],
+      "verification_status": "verified-2026-10-19",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x112, 66.6 mm. M14x1.25 conical.",
+      "verified_oem_wheels": {
+        "competition_20_810M_811M_813M": "20x9.5J ET28 front, 20x10.5J ET28 rear; 275/35ZR20 + 285/35ZR20 (811M parts 36118089564/565)",
+        "optional_19_market": "19x9.5J ET28 / 19x10.5J ET28; 265/40R19 + 285/40R19 (some wheel-size markets — confirm brakes)",
+        "note": "Round-1 VERIFIED 2026-10-19: Competition OE Style 810M/811M/813M 20x9.5J ET28 front / 20x10.5J ET28 rear; 275/35ZR20 + 285/35ZR20 (performance non-RFT). 5x112 / CB 66.6 / M14x1.25. Sources: BMW NA MY2023 M8 order guide wheel overview (codes 1P9/1TG/1TH — all same size); bmwoemwheelstyles 811M parts 36118089564 9.5x20 ET28 / 36118089565 10.5x20 ET28; JD Wheels 810M listing 9.5/10.5 ET28; BMW Direct Parts 810M/811M/813M 9.5x20 / 10.5x20."
+      }
     },
     {
       "family": "M-SUV",
@@ -695,20 +767,21 @@
       "bolt_pattern": "5x112",
       "center_bore_mm": 66.6,
       "years": "2019–present",
-      "oem_wheels_text": "Base/Comp: 20x9.0J ET28 front + 20x10.0J ET39 rear; tires 255/45ZR20 front, 265/45ZR20 rear. Optional/Comp popular: 21x9.5J ET31 front + 21x10.0J ET39 rear; tires 255/40ZR21 + 265/40ZR21. Lug bolts M14x1.25. Sources: wheel-size.com / avtoreference / Apex bolt-pattern guide (researched 2026-09-27).",
+      "oem_wheels_text": "Pre-LCI standard 764M 20x9.0J ET28 front + 20x10.0J ET39 rear (255/45ZR20 + 265/45ZR20); square-ish 20x9.5J ET39 rear with 255/45R20 both. 765M 21x9.5J ET31 front + 21x10.0J ET39 rear (255/40ZR21 + 265/40ZR21) - OE on LCI (2021+). 5x112 / CB 66.6, lug bolts M14x1.25 (140 Nm). Round-1 VERIFIED 2026-10-15: wheel-size.com F97/F98 (pre-LCI + LCI) tables; RealOEM 765M 21in 36118060041 9.5Jx21 ET31 / 36118060042 10Jx21 ET39 (Orbit Grey 36118095559/560); bmwoemwheelstyles 764M 20in 36118059718/723 9Jx20 ET28, 36118059724 9.5Jx20 ET39, 36118059722 10Jx20 ET39 (5x112, CB 66.6, M14x1.25, 140 Nm); Schmiedmann OE list covers F97/F97 LCI/F98/F98 LCI.",
       "aftermarket_range_text": "SAV geometry — taller ride, different fender budget than F8X/G8X sedans. Prefer OEM-near offsets first; aggressive poke needs SUV-specific review (load rating + liner). Square 20s possible with care; confirm Comp brake package.",
       "clearance_notes_text": "xDrive all F97. Outer clearance more generous than sedan M cars at OEM, but tire load index matters for aftermarket. Mark geometry stub unverified until measured.",
-      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27). Mechanical-first; no Claude.",
+      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27). Mechanical-first; no Claude. 2026-10-15: OEM sizes + part numbers Round-1 verified; geometry clearances still estimated.",
       "subheader_descriptors": [
         "X3 M",
         "X3 M Competition"
       ],
-      "verification_status": "researched-unverified-2026-09-27",
+      "verification_status": "verified-2026-10-15",
       "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x112, 66.6 mm. M14x1.25 conical.",
       "verified_oem_wheels": {
-        "style_20_oem": "20x9.0J ET28 front, 20x10.0J ET39 rear; 255/45ZR20 + 265/45ZR20",
-        "style_21_option": "21x9.5J ET31 front, 21x10.0J ET39 rear; 255/40ZR21 + 265/40ZR21",
-        "note": "Researched wheel-size.com / avtoreference 2026-09-27 — NOT Round-1 VERIFIED spot-check. Treat as unverified for under-call."
+        "style_764M_20_oem": "20x9.0J ET28 front, 20x10.0J ET39 rear; 255/45ZR20 + 265/45ZR20 (pre-LCI standard)",
+        "style_764M_20_square_rear": "20x9.0J ET28 front, 20x9.5J ET39 rear; 255/45R20 both (all-season/winter row)",
+        "style_765M_21_option": "21x9.5J ET31 front, 21x10.0J ET39 rear; 255/40ZR21 + 265/40ZR21 (OE on LCI 2021+)",
+        "note": "Round-1 VERIFIED 2026-10-15: wheel-size.com F97/F98 (pre-LCI + LCI) tables; RealOEM 765M 21in 36118060041 9.5Jx21 ET31 / 36118060042 10Jx21 ET39 (Orbit Grey 36118095559/560); bmwoemwheelstyles 764M 20in 36118059718/723 9Jx20 ET28, 36118059724 9.5Jx20 ET39, 36118059722 10Jx20 ET39 (5x112, CB 66.6, M14x1.25, 140 Nm); Schmiedmann OE list covers F97/F97 LCI/F98/F98 LCI."
       }
     },
     {
@@ -720,20 +793,21 @@
       "bolt_pattern": "5x112",
       "center_bore_mm": 66.6,
       "years": "2019–present",
-      "oem_wheels_text": "Shares F97 X3 M wheel program: 20x9.0J ET28 front + 20x10.0J ET39 rear (255/45ZR20 + 265/45ZR20); optional 21x9.5J ET31 / 21x10.0J ET39 (255/40ZR21 + 265/40ZR21). Competition packages commonly on 21s. Lug bolts M14x1.25. Sources: wheel-size.com F98 tables / wheelfitment.eu (researched 2026-09-27).",
+      "oem_wheels_text": "Shares F97 X3 M wheel program. Pre-LCI standard 764M 20x9.0J ET28 front + 20x10.0J ET39 rear (255/45ZR20 + 265/45ZR20); square-ish 20x9.5J ET39 rear with 255/45R20 both. 765M 21x9.5J ET31 front + 21x10.0J ET39 rear (255/40ZR21 + 265/40ZR21) - OE on LCI (2021+). 5x112 / CB 66.6, lug bolts M14x1.25 (140 Nm). Round-1 VERIFIED 2026-10-15: wheel-size.com F97/F98 (pre-LCI + LCI) tables; RealOEM 765M 21in 36118060041 9.5Jx21 ET31 / 36118060042 10Jx21 ET39 (Orbit Grey 36118095559/560); bmwoemwheelstyles 764M 20in 36118059718/723 9Jx20 ET28, 36118059724 9.5Jx20 ET39, 36118059722 10Jx20 ET39 (5x112, CB 66.6, M14x1.25, 140 Nm); Schmiedmann OE list covers F97/F97 LCI/F98/F98 LCI.",
       "aftermarket_range_text": "Coupe-SUV roof; same hub/PCD as F97. Treat fitment near-identical to X3 M for bolt-on OEM-match; confirm rear hatch clearance on extreme poke separately.",
       "clearance_notes_text": "xDrive. Geometry stub mirrors F97 until measured separately.",
-      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27).",
+      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27). 2026-10-15: OEM sizes + part numbers Round-1 verified; geometry clearances still estimated.",
       "subheader_descriptors": [
         "X4 M",
         "X4 M Competition"
       ],
-      "verification_status": "researched-unverified-2026-09-27",
+      "verification_status": "verified-2026-10-15",
       "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x112, 66.6 mm. M14x1.25 conical.",
       "verified_oem_wheels": {
-        "style_20_oem": "20x9.0J ET28 front, 20x10.0J ET39 rear; 255/45ZR20 + 265/45ZR20",
-        "style_21_option": "21x9.5J ET31 front, 21x10.0J ET39 rear; 255/40ZR21 + 265/40ZR21",
-        "note": "Researched 2026-09-27 — unverified spot-check."
+        "style_764M_20_oem": "20x9.0J ET28 front, 20x10.0J ET39 rear; 255/45ZR20 + 265/45ZR20 (pre-LCI standard)",
+        "style_764M_20_square_rear": "20x9.0J ET28 front, 20x9.5J ET39 rear; 255/45R20 both (all-season/winter row)",
+        "style_765M_21_option": "21x9.5J ET31 front, 21x10.0J ET39 rear; 255/40ZR21 + 265/40ZR21 (OE on LCI 2021+)",
+        "note": "Round-1 VERIFIED 2026-10-15: wheel-size.com F97/F98 (pre-LCI + LCI) tables; RealOEM 765M 21in 36118060041 9.5Jx21 ET31 / 36118060042 10Jx21 ET39 (Orbit Grey 36118095559/560); bmwoemwheelstyles 764M 20in 36118059718/723 9Jx20 ET28, 36118059724 9.5Jx20 ET39, 36118059722 10Jx20 ET39 (5x112, CB 66.6, M14x1.25, 140 Nm); Schmiedmann OE list covers F97/F97 LCI/F98/F98 LCI."
       }
     },
     {
@@ -745,20 +819,21 @@
       "bolt_pattern": "5x112",
       "center_bore_mm": 66.6,
       "years": "2019–present",
-      "oem_wheels_text": "Typical OE staggered: 21x10.5J ET31 front + 22x11.5J ET43 rear; tires 295/35ZR21 front, 315/30ZR22 rear. Optional square-ish: 21x10.5J ET31 front + 21x11.0J ET48 rear with 295/35ZR21 both axles. Lug bolts M14x1.25; CB 66.6 both axles (unlike older E70 M). Sources: tiresaddict / wheel-size.com / Bimmerpost G05 hub notes (researched 2026-09-27).",
+      "oem_wheels_text": "OE staggered 809M 21x10.5J ET31 front + 22x11.5J ET43 rear (295/35ZR21 + 315/30ZR22). Options: 21x11.0J ET48 rear with 295/35R21 both; 21x11.5J ET43 rear with 315/35ZR21. 5x112 / CB 66.6 both axles (unlike E70/E71 split hub), M14x1.25 bolts. LCI (2023+) uses same 809M part numbers. Round-1 VERIFIED 2026-10-15: wheel-size.com F95/F96 2022 tables; bmwoemwheelstyles 809M 36118090796 10.5Jx21 ET31 / 36118090717 11.5Jx22 ET43 (matt 36119502648/663; 5x112, CB 66.6); bmwpartspros 36118090717 lists F95, F95 LCI, F96, F96 LCI; g05.bimmerpost 809M takeoff listing (10.5x21 ET31 / 11.5x22 ET43). One EU dealer listing shows front ET43 - outlier, ignored.",
       "aftermarket_range_text": "Full-size SAV — load rating and brake package dominate. Do not reuse F8X sedan poke budgets blindly. Prefer OEM-near ET; heavy under-call on custom.",
       "clearance_notes_text": "xDrive. Big M brakes — 21\" generally practical minimum. Geometry clearance numbers are stubs (unverified).",
-      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27).",
+      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27). 2026-10-15: OEM sizes + part numbers Round-1 verified; geometry clearances still estimated.",
       "subheader_descriptors": [
         "X5 M",
         "X5 M Competition"
       ],
-      "verification_status": "researched-unverified-2026-09-27",
+      "verification_status": "verified-2026-10-15",
       "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x112, 66.6 mm. M14x1.25 conical.",
       "verified_oem_wheels": {
-        "style_21_22_stagger": "21x10.5J ET31 front, 22x11.5J ET43 rear; 295/35ZR21 + 315/30ZR22",
-        "style_21_square_option": "21x10.5J ET31 front, 21x11.0J ET48 rear; 295/35ZR21 both (optional)",
-        "note": "Researched 2026-09-27 — unverified spot-check."
+        "style_809M_21_22_stagger": "21x10.5J ET31 front, 22x11.5J ET43 rear; 295/35ZR21 + 315/30ZR22",
+        "style_21_square_option": "21x10.5J ET31 front, 21x11.0J ET48 rear; 295/35R21 both (all-season/winter row)",
+        "note": "Round-1 VERIFIED 2026-10-15: wheel-size.com F95/F96 2022 tables; bmwoemwheelstyles 809M 36118090796 10.5Jx21 ET31 / 36118090717 11.5Jx22 ET43 (matt 36119502648/663; 5x112, CB 66.6); bmwpartspros 36118090717 lists F95, F95 LCI, F96, F96 LCI; g05.bimmerpost 809M takeoff listing (10.5x21 ET31 / 11.5x22 ET43). One EU dealer listing shows front ET43 - outlier, ignored.",
+        "style_21_315_rear_option": "21x10.5J ET31 front, 21x11.5J ET43 rear; 295/35ZR21 + 315/35ZR21 (wheel-size F95 only)"
       }
     },
     {
@@ -770,19 +845,96 @@
       "bolt_pattern": "5x112",
       "center_bore_mm": 66.6,
       "years": "2020–present",
-      "oem_wheels_text": "Shares F95 X5 M staggered program: OE 21x10.5J ET31 front + 22x11.5J ET43 rear; tires 295/35ZR21 + 315/30ZR22. Lug bolts M14x1.25; CB 66.6. Sources: wheel-size.com F96 / wheelfitment (researched 2026-09-27).",
+      "oem_wheels_text": "Shares F95 X5 M program. OE staggered 809M 21x10.5J ET31 front + 22x11.5J ET43 rear (295/35ZR21 + 315/30ZR22). Options: 21x11.0J ET48 rear with 295/35R21 both. 5x112 / CB 66.6 both axles (unlike E70/E71 split hub), M14x1.25 bolts. LCI (2023+) uses same 809M part numbers. Round-1 VERIFIED 2026-10-15: wheel-size.com F95/F96 2022 tables; bmwoemwheelstyles 809M 36118090796 10.5Jx21 ET31 / 36118090717 11.5Jx22 ET43 (matt 36119502648/663; 5x112, CB 66.6); bmwpartspros 36118090717 lists F95, F95 LCI, F96, F96 LCI; g05.bimmerpost 809M takeoff listing (10.5x21 ET31 / 11.5x22 ET43). One EU dealer listing shows front ET43 - outlier, ignored.",
       "aftermarket_range_text": "Coupe-SAV; same hub/PCD as F95. Treat bolt-on OEM-match like X5 M; confirm rear hatch/fender on aggressive poke.",
       "clearance_notes_text": "xDrive. Geometry stub mirrors F95 until measured.",
-      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27).",
+      "fitment_notes_text": "Split from former bundled M-SUV stub (2026-09-27). 2026-10-15: OEM sizes + part numbers Round-1 verified; geometry clearances still estimated.",
       "subheader_descriptors": [
         "X6 M",
         "X6 M Competition"
       ],
-      "verification_status": "researched-unverified-2026-09-27",
+      "verification_status": "verified-2026-10-15",
       "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x112, 66.6 mm. M14x1.25 conical.",
       "verified_oem_wheels": {
-        "style_21_22_stagger": "21x10.5J ET31 front, 22x11.5J ET43 rear; 295/35ZR21 + 315/30ZR22",
-        "note": "Researched 2026-09-27 — unverified spot-check."
+        "style_809M_21_22_stagger": "21x10.5J ET31 front, 22x11.5J ET43 rear; 295/35ZR21 + 315/30ZR22",
+        "style_21_square_option": "21x10.5J ET31 front, 21x11.0J ET48 rear; 295/35R21 both (all-season/winter row)",
+        "note": "Round-1 VERIFIED 2026-10-15: wheel-size.com F95/F96 2022 tables; bmwoemwheelstyles 809M 36118090796 10.5Jx21 ET31 / 36118090717 11.5Jx22 ET43 (matt 36119502648/663; 5x112, CB 66.6); bmwpartspros 36118090717 lists F95, F95 LCI, F96, F96 LCI; g05.bimmerpost 809M takeoff listing (10.5x21 ET31 / 11.5x22 ET43). One EU dealer listing shows front ET43 - outlier, ignored."
+      }
+    },
+    {
+      "family": "M-SUV",
+      "header": "E70 X5 M (2010–2013)",
+      "chassis_codes": [
+        "E70"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 74.1,
+      "years": "2010–2013 MY (production 2009–2013)",
+      "oem_wheels_text": "OE staggered 20\": 20x10J ET40 front + 20x11J ET35 rear; tires 275/40R20 front, 315/35R20 rear (factory run-flat; E70/E71 were the first M cars on RFT). OE styles 299M (M V-Spoke) and 300M (M Double Spoke); US got 299M only until 4/2012 production. 21x10 ET40 / 21x11.5 ET38 (285/35R21 + 325/30R21) appears in fitment DBs as allowable, not E70 OE. 19x9 ET37 seen as winter/allowable. M14x1.25 lug bolts; Hub bore 74.1 mm front / 72.56 mm rear (corrected 2026-10-08: E70 X5 M and E71 X6/X6 M use a smaller rear hub than non-M E70 and F85/F86; OE 299M/300M rears are bored 72.56). NOT 66.6 like F95/F96. Sources: bmwmregistry E70 X5 M FAQ, tirewheelguide, carclubsusa, auto-tyres.info (researched 2026-10-05).",
+      "aftermarket_range_text": "Heavy SAV - load rating first. Split hub: front 74.1 mm, rear 72.56 mm. 72.56-bore BMW-sedan wheels will NOT center on the FRONT hub (bore too small) unless machined; they can center on the rear. 74.1-bore X5/X6 wheels (non-M E70, F15/F16, F85/F86) need a 74.1->72.56 hub ring on the rear. F95/F96 5x112 wheels do not bolt on. Prefer OEM-near ET; under-call custom.",
+      "clearance_notes_text": "xDrive. OE 20\"; 19\" winter sizes seen - verify caliper template. Geometry clearance numbers are stubs (unverified).",
+      "fitment_notes_text": "Added 2026-10-05 - older M-SUV gen for Growth SUV lane. Distinct from F95 (5x120 vs 5x112/66.6). 2026-10-08: rear hub corrected to 72.56 (sources: tirewheelguide, xbimmers 300M listing, BimmerWorld X5/X6 spec page, f15.bimmerpost). E70 M / E71 / E71 M wheels interchange; E71 X6 M card added 2026-10-08.",
+      "subheader_descriptors": [
+        "X5 M"
+      ],
+      "verification_status": "researched-unverified-2026-10-05",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x120; hub bore 74.1 mm FRONT / 72.56 mm REAR (E70 X5 M + E71 X6/X6 M split hub; corrected 2026-10-08). M14x1.25 lug bolts.",
+      "verified_oem_wheels": {
+        "style_299M_300M_20": "20x10J ET40 front, 20x11J ET35 rear; 275/40R20 + 315/35R20 RFT",
+        "note": "Researched 2026-10-05; split hub 74.1F/72.56R researched 2026-10-08 - unverified spot-check."
+      },
+      "center_bore_rear_mm": 72.56,
+      "center_bore_by_axle": {
+        "front": 74.1,
+        "rear": 72.56
+      }
+    },
+    {
+      "family": "M-SUV",
+      "header": "F85 X5 M (2015–2018)",
+      "chassis_codes": [
+        "F85"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 74.1,
+      "years": "2015–2018",
+      "oem_wheels_text": "OE staggered 20\": 20x10J ET40 front + 20x11.5J ET38 rear; tires 285/40ZR20 front, 325/35ZR20 rear. Optional 21\" Style 612M (M Double Spoke): 10Jx21 ET40 front + 11.5Jx21 ET38 rear; 285/35ZR21 + 325/30ZR21 (RealOEM F85 parts 36118073981 / 36118073983). Square-ish 20x10 ET40 / 20x10.5 ET32 with 285/40R20 all round also listed (likely winter). M14x1.25 lug bolts; CB 74.1 mm (X5/X6 hub - NOT 72.56 like M sedans, NOT 66.6 like F95/F96). Sources: RealOEM, bmwoemwheelstyles 612M, tirewheelguide, avtoreference (researched 2026-10-05).",
+      "aftermarket_range_text": "Heavy SAV - load rating first. 74.1 mm bore: 72.56 mm BMW-sedan wheels will NOT center unless machined; F95/F96 5x112 wheels do not bolt on. 612M 21s are the common OEM swap between F85/F86 (same specs). Under-call custom.",
+      "clearance_notes_text": "xDrive. OE 20\"/21\". Under 19\" treated as brake NO; 19\" verify template. Geometry stubs (unverified).",
+      "fitment_notes_text": "Added 2026-10-05 - older M-SUV gen for Growth SUV lane. Shares OE wheels with F86 X6 M. Distinct from F95/F96 (5x112/66.6). 2026-10-08: confirmed 74.1 mm hub on BOTH axles (unlike E70 X5 M / E71 rear 72.56) - E70M/E71 rear wheels (72.56 bore) will not center on F85/F86 rear without boring to 74.1.",
+      "subheader_descriptors": [
+        "X5 M"
+      ],
+      "verification_status": "researched-unverified-2026-10-05",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x120, 74.1 mm. M14x1.25 lug bolts.",
+      "verified_oem_wheels": {
+        "style_20_stagger": "20x10J ET40 front, 20x11.5J ET38 rear; 285/40ZR20 + 325/35ZR20",
+        "style_612M_21": "10Jx21 ET40 front, 11.5Jx21 ET38 rear; 285/35ZR21 + 325/30ZR21",
+        "note": "Researched 2026-10-05 - unverified spot-check."
+      }
+    },
+    {
+      "family": "M-SUV",
+      "header": "F86 X6 M (2015–2019)",
+      "chassis_codes": [
+        "F86"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 74.1,
+      "years": "2015–2019",
+      "oem_wheels_text": "OE staggered 20\": 20x10J ET40 front + 20x11.5J ET38 rear; tires 285/40ZR20 front, 325/35ZR20 rear. Optional 21\" Style 612M (M Double Spoke): 10Jx21 ET40 front + 11.5Jx21 ET38 rear; 285/35ZR21 + 325/30ZR21 (RealOEM F85 parts 36118073981 / 36118073983). Square-ish 20x10 ET40 / 20x10.5 ET32 with 285/40R20 all round also listed (likely winter). M14x1.25 lug bolts; CB 74.1 mm (X5/X6 hub - NOT 72.56 like M sedans, NOT 66.6 like F95/F96). Sources: RealOEM, bmwoemwheelstyles 612M, tirewheelguide, avtoreference (researched 2026-10-05).",
+      "aftermarket_range_text": "Heavy SAV - load rating first. 74.1 mm bore: 72.56 mm BMW-sedan wheels will NOT center unless machined; F95/F96 5x112 wheels do not bolt on. 612M 21s are the common OEM swap between F85/F86 (same specs). Under-call custom.",
+      "clearance_notes_text": "xDrive. OE 20\"/21\". Under 19\" treated as brake NO; 19\" verify template. Geometry stubs (unverified).",
+      "fitment_notes_text": "Added 2026-10-05 - older M-SUV gen for Growth SUV lane. Shares OE wheels with F85 X5 M. Distinct from F95/F96 (5x112/66.6). 2026-10-08: confirmed 74.1 mm hub on BOTH axles (unlike E70 X5 M / E71 rear 72.56) - E70M/E71 rear wheels (72.56 bore) will not center on F85/F86 rear without boring to 74.1.",
+      "subheader_descriptors": [
+        "X6 M"
+      ],
+      "verification_status": "researched-unverified-2026-10-05",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x120, 74.1 mm. M14x1.25 lug bolts.",
+      "verified_oem_wheels": {
+        "style_20_stagger": "20x10J ET40 front, 20x11.5J ET38 rear; 285/40ZR20 + 325/35ZR20",
+        "style_612M_21": "10Jx21 ET40 front, 11.5Jx21 ET38 rear; 285/35ZR21 + 325/30ZR21",
+        "note": "Researched 2026-10-05 - unverified spot-check."
       }
     },
     {
@@ -816,15 +968,27 @@
       "chassis_codes": [
         "G09"
       ],
-      "bolt_pattern": "5x112",
+      "bolt_pattern": "5x120",
       "center_bore_mm": 66.6,
-      "years": "2023–present",
-      "oem_wheels_text": "Typical OE: oversized staggered SUV wheels on 5x112 / 66.6 mm CB. Community fitment tables list ~front ET19 / rear ET42 class on large diameters (21–23\" range common); exact Style sizes vary by package. Lug bolts M14x1.25. Tire load rating is a hard constraint (heaviest M). Sources: wheelfitment XM front/rear ET notes (researched 2026-09-27) — treat sizes as unverified stubs.",
-      "aftermarket_range_text": "Heaviest M — tire load rating + brake package dominate. Do not reuse sedan poke budgets. Prefer OEM-near; heavy under-call on custom. Geometry still stub.",
-      "clearance_notes_text": "xDrive hybrid SAV. Geometry clearance unverified (pointer stub only).",
-      "fitment_notes_text": "Deepened OEM text 2026-09-27; still not Round-1 verified.",
-      "subheader_descriptors": [],
-      "verification_status": "researched-unverified-2026-09-27"
+      "years": "2023–present (production from 12/2022; XM 644 hp, XM Label / Label Red 738 hp; XM 50e PHEV non-US)",
+      "oem_wheels_text": "Base OE staggered (all trims): 21x9.5J ET19 front + 21x10.5J ET42 rear; 275/45ZR21 110Y front, 315/40ZR21 115Y XL rear. Factory options: 22in 10Jx22 ET21 front + 11Jx22 ET44 rear on 275/40R22 + 315/35R22 (e.g. 922M double-spoke, RealOEM 36111543987 10Jx22 ET21 / 36111543988 11Jx22 ET44; Toronto Red 36111543989/990); 23in 10Jx23 ET22 front + 11Jx23 ET44 rear on 275/35ZR23 + 315/30ZR23. Approved square winter/alt: 9.5Jx21 ET26 with 285/45R21. Bolt pattern is 5x120 (NOT 5x112 like other G-chassis M cars) on a 66.5-66.6 mm hub; M14x1.25 60-degree conical bolts, ~140 Nm. Sources (researched 2026-10-12): wheel-size.com G09 (sizes/ET all trims), tyresaddict + tirewheelguide + avtoreference (5x120 / 66.5), Breyton XM application list (5x120), H&R TRAK+ XM spacers (TUV, 5x120 / 66.5), RealOEM G09 Label 922M diagram. Minority sources (wheelfitment.eu, bbwheelsonline) list 5x112 - treated as wrong; card previously said 5x112 (corrected 2026-10-12).",
+      "aftermarket_range_text": "Heaviest M (~2.7 t) - tire load index (OE 110Y front / 115Y XL rear on 21in) is a hard constraint; HL/XL tires on 22-23in. Aftermarket windows quoted by wheel shops: front 9.5-11J ~ET9-21, rear 10.5-12J ~ET27-42 (aiwheeltech, unverified). H&R certifies 10-20 mm spacers per side. Wheels must be drilled 5x120 AND bored 66.6: 5x112 G-chassis wheels (G80/F90/F95) do not bolt on; older 5x120 BMW wheels (72.56 / 74.1 bore) bolt on only with hub rings and rarely match offset/load. Prefer OEM-near; heavy under-call on custom.",
+      "clearance_notes_text": "xDrive PHEV SAV with big M compound brakes; OE minimum is 21in (20in = verify template, under 20in = NO in engine). Geometry clearance numbers remain estimated stubs.",
+      "fitment_notes_text": "2026-10-12: bolt pattern corrected 5x112 -> 5x120 (66.6 hub kept); OEM 21/22/23in sizes + ET filled from wheel-size. Same wheels across XM / Label / Label Red per wheel-size. Not Round-1 verified.",
+      "subheader_descriptors": [
+        "XM",
+        "XM Label",
+        "XM Label Red"
+      ],
+      "verification_status": "researched-unverified-2026-10-12",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x120, 66.5-66.6 mm (unique combo: old BMW PCD + G-chassis hub). M14x1.25 conical bolts.",
+      "verified_oem_wheels": {
+        "style_21_base": "21x9.5J ET19 front, 21x10.5J ET42 rear; 275/45ZR21 + 315/40ZR21",
+        "style_22_option": "22x10J ET21 front, 22x11J ET44 rear; 275/40R22 + 315/35R22 (922M RealOEM 36111543987/988)",
+        "style_23_option": "23x10J ET22 front, 23x11J ET44 rear; 275/35ZR23 + 315/30ZR23",
+        "alt_square": "21x9.5J ET26; 285/45R21",
+        "note": "Researched 2026-10-12 (wheel-size + RealOEM). Bolt pattern 5x120 per 6+ sources; unverified spot-check."
+      }
     },
     {
       "family": "Z",
@@ -899,6 +1063,57 @@
       "verified_oem_wheels": {
         "note": "Sizes from BMW M Registry + wheel-size OE row 2026-09-28. Rear ET and CB need Round-1 confirmation.",
         "campagnolo_oe": "16x7.0 front ET47, 16x8.0 rear ET UNVERIFIED; 205/55VR16 + 225/50VR16"
+      }
+    },
+    {
+      "family": "M-SUV",
+      "header": "E71 X6 M (2010–2014)",
+      "chassis_codes": [
+        "E71"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 74.1,
+      "center_bore_rear_mm": 72.56,
+      "center_bore_by_axle": {
+        "front": 74.1,
+        "rear": 72.56
+      },
+      "years": "2010–2014 MY (production 2009–2014)",
+      "oem_wheels_text": "OE staggered 20\": M Double Spoke 300M (and 299M where offered) 20x10J ET40 front + 20x11J ET35 rear; tires 275/40ZR20 front, 315/35ZR20 rear (run-flat). Same OE wheels as E70 X5 M. RealOEM E71 X6 M 2014: 10Jx20 ET40 (36116790605) / 11Jx20 ET35 (36116790606), M14x1.25 lug bolts. 21x10 ET40 / 21x11.5 ET38 (285/35ZR21 + 325/30ZR21) listed as allowable, not OE. 19x9 ET37 front / 19x9 ET18 rear (255/50R19) seen as winter/allowable. Hub bore 74.1 mm FRONT / 72.56 mm REAR. Sources: realoem, bmwstylewheels, tirewheelguide, xbimmers 300M listing, BimmerWorld (researched 2026-10-08).",
+      "aftermarket_range_text": "Heavy coupe-SAV - check load rating. Split hub like E70 X5 M: 72.56-bore sedan wheels will not center on the front 74.1 hub; 74.1-bore X5/X6 wheels (non-M E70, F15/F16, F85/F86) need a 74.1->72.56 hub ring on the rear. E70 X5 M / E71 X6 / E71 X6 M wheels interchange directly. F95/F96 5x112 wheels do not bolt on. Prefer OEM-near ET; under-call custom.",
+      "clearance_notes_text": "xDrive. OE 20\"; 19\" winter sizes exist - verify caliper template. M arches are factory-flared; non-M E71 wheels need the M flares for wide fitments. Geometry clearance numbers are stubs (unverified, E70 X5 M class).",
+      "fitment_notes_text": "Added 2026-10-08 - completes older M-SUV gen (E70/E71/F85/F86) for Growth SUV lane. Distinct from F96 X6 M (5x112/66.6).",
+      "subheader_descriptors": [
+        "X6 M"
+      ],
+      "verification_status": "researched-unverified-2026-10-08",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x120; hub bore 74.1 mm front / 72.56 mm rear. M14x1.25 lug bolts.",
+      "verified_oem_wheels": {
+        "style_300M_20": "20x10J ET40 front, 20x11J ET35 rear; 275/40ZR20 + 315/35ZR20 RFT",
+        "note": "Researched 2026-10-08 (RealOEM part numbers) - unverified spot-check."
+      }
+    },
+    {
+      "family": "M5",
+      "header": "E61 M5 Touring (2007–2010, Europe only)",
+      "chassis_codes": [
+        "E61"
+      ],
+      "bolt_pattern": "5x120",
+      "center_bore_mm": 72.56,
+      "years": "2007–2010 (production 03/2007–04/2010 LHD, –02/2010 RHD; ~1,025 built; not sold in North America)",
+      "oem_wheels_text": "Same OE wheels as E60 M5 sedan: 19\" M Radial Spoke Style 166M (cast) 19x8.5J ET12 front, 19x9.5J ET28 rear; tires 255/40ZR19 front, 285/35ZR19 rear (conventional, non run-flat). Optional forged Style 167M (M6-style), also 19x8.5 / 19x9.5. BMW UK March 2007 launch equipment list shows 275/35ZR19 rear on early Tourings; bmwmregistry and wheel-size list 285/35ZR19 rear - treat rear tire width as UNVERIFIED by build date. 18x8 ET14 (245/45R18) appears as winter/allowable. Sources: bmwmregistry E60/E61 FAQ, wheel-size.com, BMW Group UK press kit, supercarnostalgia (researched 2026-10-08).",
+      "aftermarket_range_text": "Follow E60 M5 card: low-offset wheels (OE front ET12 is very aggressive). Typical 20x9 ET12 / 20x10 ET20 on 255/35 + 295/30. Touring adds ~125 kg and thicker anti-roll bars vs sedan; rear load with cargo matters for rear rub - favor the conservative end of E60 rear ranges.",
+      "clearance_notes_text": "Same arches/brakes as E60 M5 (374 mm front rotors): 19\" is the safe minimum, a few 18\" track wheels may clear - verify template. Plastic front fenders (trim only, no roll). Geometry stub inherits E60 M5 (unverified).",
+      "fitment_notes_text": "Added 2026-10-08 - Touring variant checklist (classic M5 Touring). Wheels interchange 1:1 with E60 M5 sedan. Rare car - low hunt volume, but forum sets for E60 M5 fit directly. 2026-10-12: E60 geometry rear ET reconciled to ET28 (matches this card).",
+      "subheader_descriptors": [
+        "M5 Touring"
+      ],
+      "verification_status": "researched-unverified-2026-10-08",
+      "bolt_pattern_raw": "Bolt Pattern / Center Bore: 5x120, 72.56 mm (same as E60 M5).",
+      "verified_oem_wheels": {
+        "style_166M_19": "19x8.5J ET12 front, 19x9.5J ET28 rear; 255/40ZR19 + 285/35ZR19 (early press list: 275/35ZR19 rear)",
+        "note": "Researched 2026-10-08 - unverified spot-check."
       }
     }
   ]
