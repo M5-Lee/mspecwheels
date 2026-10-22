@@ -973,5 +973,27 @@
       "/buffer/FORUM-G80-OEM-825M-prpz/fit-well.jpg"
     ],
     "listed": "2026-10-22"
+  },
+  {
+    "id": "MUSE-F80-OEM-763M-bellevue-wa.pack",
+    "short_title": "BMW OEM Style 763M",
+    "chassis": "F80 M3 and F82/F83 M4 · OEM spec (BMW) · shown on an F80 M3 · confirm on the car",
+    "size": "F 19x9 ET29 / R 20x10 ET40",
+    "price": 3000,
+    "location": "Portland, OR area",
+    "url": "https://www.facebook.com/marketplace/item/28540559088898578",
+    "hero": "/buffer/oem-763m-bellevue-wa/crop45-01.jpg",
+    "images": [
+      "/buffer/oem-763m-bellevue-wa/crop45-01.jpg",
+      "/buffer/oem-763m-bellevue-wa/crop45-02.jpg",
+      "/buffer/oem-763m-bellevue-wa/crop45-03.jpg",
+      "/buffer/oem-763m-bellevue-wa/crop45-04.jpg",
+      "/buffer/oem-763m-bellevue-wa/crop45-05.jpg",
+      "/buffer/oem-763m-bellevue-wa/crop45-06.jpg",
+      "/buffer/oem-763m-bellevue-wa/crop45-07.jpg",
+      "/buffer/oem-763m-bellevue-wa/crop45-08.jpg",
+      "/buffer/oem-763m-bellevue-wa/fit-well.jpg"
+    ],
+    "listed": "2026-10-22"
   }
 ]
