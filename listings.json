@@ -995,5 +995,82 @@
       "/buffer/oem-763m-bellevue-wa/fit-well.jpg"
     ],
     "listed": "2026-10-22"
+  },
+  {
+    "id": "MUSE-G80-OEM-824M-san-francisco-ca.pack",
+    "short_title": "BMW OEM Style 824M",
+    "chassis": "G80 M3 and G82/G83 M4 · OEM spec (BMW), direct fit · not for carbon-ceramic brakes · shown on the seller's car · confirm on the car",
+    "size": "F 18x9.5 ET20 / R 19x10.5 ET20",
+    "price": 1800,
+    "location": "San Francisco, CA",
+    "url": "https://www.facebook.com/marketplace/item/1371081208193227",
+    "hero": "/buffer/oem-824m-san-francisco-ca/crop45-01.jpg",
+    "images": [
+      "/buffer/oem-824m-san-francisco-ca/crop45-01.jpg",
+      "/buffer/oem-824m-san-francisco-ca/crop45-02.jpg",
+      "/buffer/oem-824m-san-francisco-ca/crop45-03.jpg",
+      "/buffer/oem-824m-san-francisco-ca/crop45-04.jpg",
+      "/buffer/oem-824m-san-francisco-ca/crop45-05.jpg",
+      "/buffer/oem-824m-san-francisco-ca/fit-well.jpg"
+    ],
+    "listed": "2026-10-24"
+  },
+  {
+    "id": "FORUM-G80-CUSTOM-FORGEDONE-FF06-jbradley.pack",
+    "short_title": "Forged One FF06",
+    "chassis": "G80 M3, G82/G83 M4 · square setup, front at OEM line, rear sits about 13 mm inboard (seller ran a 13 mm spacer) · shown on a G80 M3 · confirm on the car",
+    "size": "19x9.5 ET20 square",
+    "price": 1600,
+    "location": "St. Louis area · will ship, buyer pays shipping",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2253216",
+    "hero": "/buffer/FORUM-G80-CUSTOM-FORGEDONE-FF06-jbradley/crop45-01.jpg",
+    "images": [
+      "/buffer/FORUM-G80-CUSTOM-FORGEDONE-FF06-jbradley/crop45-01.jpg",
+      "/buffer/FORUM-G80-CUSTOM-FORGEDONE-FF06-jbradley/crop45-02.jpg",
+      "/buffer/FORUM-G80-CUSTOM-FORGEDONE-FF06-jbradley/crop45-03.jpg",
+      "/buffer/FORUM-G80-CUSTOM-FORGEDONE-FF06-jbradley/crop45-04.jpg",
+      "/buffer/FORUM-G80-CUSTOM-FORGEDONE-FF06-jbradley/crop45-05.jpg",
+      "/buffer/FORUM-G80-CUSTOM-FORGEDONE-FF06-jbradley/crop45-06.jpg",
+      "/buffer/FORUM-G80-CUSTOM-FORGEDONE-FF06-jbradley/fit-well.jpg"
+    ],
+    "listed": "2026-10-24"
+  },
+  {
+    "id": "FORUM-G80-CUSTOM-BBS-E88-Kiser.mt.pack",
+    "short_title": "BBS E88 with 2.5-inch lips",
+    "chassis": "G80 M3, G82/G83 M4 · fender check front and rear (front about 19 mm past, rear about 7 mm past, by our estimate) · confirm brake clearance · shown on a G80 M3 · confirm on the car",
+    "size": "F 19x10.5 ET0 / R 19x11 ET6",
+    "price": 9500,
+    "location": "Raleigh, NC area",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2260713",
+    "hero": "/buffer/FORUM-G80-CUSTOM-BBS-E88-Kiser.mt/crop45-01.jpg",
+    "images": [
+      "/buffer/FORUM-G80-CUSTOM-BBS-E88-Kiser.mt/crop45-01.jpg",
+      "/buffer/FORUM-G80-CUSTOM-BBS-E88-Kiser.mt/crop45-02.jpg",
+      "/buffer/FORUM-G80-CUSTOM-BBS-E88-Kiser.mt/crop45-03.jpg",
+      "/buffer/FORUM-G80-CUSTOM-BBS-E88-Kiser.mt/crop45-04.jpg",
+      "/buffer/FORUM-G80-CUSTOM-BBS-E88-Kiser.mt/crop45-05.jpg",
+      "/buffer/FORUM-G80-CUSTOM-BBS-E88-Kiser.mt/crop45-06.jpg",
+      "/buffer/FORUM-G80-CUSTOM-BBS-E88-Kiser.mt/crop45-07.jpg",
+      "/buffer/FORUM-G80-CUSTOM-BBS-E88-Kiser.mt/fit-well.jpg"
+    ],
+    "listed": "2026-10-25"
+  },
+  {
+    "id": "FORUM-G80-CUSTOM-BBS-LMR-eg80sc.pack",
+    "short_title": "BBS LM-R G8X fitment",
+    "chassis": "G80 M3, G82/G83 M4 · fender check front and rear (front right at the fender line, rear under 1 mm inside, by our estimate) · shown on a G82 M4 · confirm on the car",
+    "size": "F 20x10 ET12 / R 20x11 ET14",
+    "price": 9000,
+    "location": "Los Alamitos, CA · local pickup only",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2260858",
+    "hero": "/buffer/FORUM-G80-CUSTOM-BBS-LMR-eg80sc/crop45-01.jpg",
+    "images": [
+      "/buffer/FORUM-G80-CUSTOM-BBS-LMR-eg80sc/crop45-01.jpg",
+      "/buffer/FORUM-G80-CUSTOM-BBS-LMR-eg80sc/crop45-02.jpg",
+      "/buffer/FORUM-G80-CUSTOM-BBS-LMR-eg80sc/crop45-03.jpg",
+      "/buffer/FORUM-G80-CUSTOM-BBS-LMR-eg80sc/fit-well.jpg"
+    ],
+    "listed": "2026-10-25"
   }
 ]
