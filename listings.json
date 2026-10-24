@@ -1072,5 +1072,39 @@
       "/buffer/FORUM-G80-CUSTOM-BBS-LMR-eg80sc/fit-well.jpg"
     ],
     "listed": "2026-10-25"
+  },
+  {
+    "id": "FORUM-APEX-ML10RT-tbg87.pack",
+    "short_title": "Apex ML10RT",
+    "chassis": "G80 M3, G82/G83 M4, G87 M2 · fender check front (front about 0.4 mm past on G80/G82, about 4 mm past on G87, rear about 9 mm inside, by our estimate) · 19-inch rear, not the OEM 20-inch · confirm brake clearance · shown on a G87 M2 · confirm on the car",
+    "size": "F 19x10 ET12 / R 19x11 ET22 · 5x112 · offsets are Apex's listed G8X spec, not seller-stated",
+    "price": 2800,
+    "location": "Will ship",
+    "url": "https://g80.bimmerpost.com/forums/showthread.php?t=2261021",
+    "hero": "/buffer/FORUM-APEX-ML10RT-tbg87/crop45-01.jpg",
+    "images": [
+      "/buffer/FORUM-APEX-ML10RT-tbg87/crop45-01.jpg",
+      "/buffer/FORUM-APEX-ML10RT-tbg87/fit-well.jpg"
+    ],
+    "listed": "2026-10-26"
+  },
+  {
+    "id": "MUSE-APEX-VS5RS-ravensdale-wa.pack",
+    "short_title": "Apex VS-5RS",
+    "chassis": "G80 M3, G82/G83 M4 · fender check front (front about 0.4 mm past, rear about 11 mm inside, by our estimate) · 19-inch rear, not the OEM 20-inch · confirm brake clearance · shown on a G82 M4 · confirm on the car",
+    "size": "19x10 ET12 square",
+    "price": 3500,
+    "location": "Ravensdale, WA",
+    "url": "https://www.facebook.com/marketplace/item/1377611324169029",
+    "hero": "/buffer/MUSE-APEX-VS5RS-ravensdale-wa/crop45-01.jpg",
+    "images": [
+      "/buffer/MUSE-APEX-VS5RS-ravensdale-wa/crop45-01.jpg",
+      "/buffer/MUSE-APEX-VS5RS-ravensdale-wa/crop45-02.jpg",
+      "/buffer/MUSE-APEX-VS5RS-ravensdale-wa/crop45-03.jpg",
+      "/buffer/MUSE-APEX-VS5RS-ravensdale-wa/crop45-04.jpg",
+      "/buffer/MUSE-APEX-VS5RS-ravensdale-wa/crop45-05.jpg",
+      "/buffer/MUSE-APEX-VS5RS-ravensdale-wa/fit-well.jpg"
+    ],
+    "listed": "2026-10-26"
   }
 ]
