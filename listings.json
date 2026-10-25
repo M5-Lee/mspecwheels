@@ -1106,5 +1106,42 @@
       "/buffer/MUSE-APEX-VS5RS-ravensdale-wa/fit-well.jpg"
     ],
     "listed": "2026-10-26"
+  },
+  {
+    "id": "MUSE-TITAN7-TS5-costa-mesa-ca.pack",
+    "short_title": "Titan-7 TS-5",
+    "chassis": "E90/E92/E93 M3 · fender check front (front about 10 mm past, rear about 11 mm inside, by our estimate) · shown on an E90 M3 · confirm on the car",
+    "size": "19x9.5 ET22 square · 5x120",
+    "price": 1500,
+    "location": "Costa Mesa, CA",
+    "url": "https://www.facebook.com/marketplace/item/4486000898323086",
+    "hero": "/buffer/MUSE-TITAN7-TS5-costa-mesa-ca/crop45-01.jpg",
+    "images": [
+      "/buffer/MUSE-TITAN7-TS5-costa-mesa-ca/crop45-01.jpg",
+      "/buffer/MUSE-TITAN7-TS5-costa-mesa-ca/crop45-02.jpg",
+      "/buffer/MUSE-TITAN7-TS5-costa-mesa-ca/crop45-03.jpg",
+      "/buffer/MUSE-TITAN7-TS5-costa-mesa-ca/crop45-04.jpg",
+      "/buffer/MUSE-TITAN7-TS5-costa-mesa-ca/crop45-05.jpg",
+      "/buffer/MUSE-TITAN7-TS5-costa-mesa-ca/crop45-06.jpg",
+      "/buffer/MUSE-TITAN7-TS5-costa-mesa-ca/fit-well.jpg"
+    ],
+    "listed": "2026-10-27"
+  },
+  {
+    "id": "MUSE-APEX-VS5RS-riverside-ca.pack",
+    "short_title": "Apex VS-5RS",
+    "chassis": "G80 M3, G82/G83 M4 · fender check front (front about 0.4 mm past, rear about 5 mm inside, by our estimate) · confirm brake clearance · shown on a G80 M3 · confirm on the car",
+    "size": "F 19x10 ET12 / R 20x11 ET18 · 5x112",
+    "price": 4000,
+    "location": "Riverside, CA",
+    "url": "https://www.facebook.com/marketplace/item/2216564128901535",
+    "hero": "/buffer/MUSE-APEX-VS5RS-riverside-ca/crop45-01.jpg",
+    "images": [
+      "/buffer/MUSE-APEX-VS5RS-riverside-ca/crop45-01.jpg",
+      "/buffer/MUSE-APEX-VS5RS-riverside-ca/crop45-02.jpg",
+      "/buffer/MUSE-APEX-VS5RS-riverside-ca/crop45-03.jpg",
+      "/buffer/MUSE-APEX-VS5RS-riverside-ca/fit-well.jpg"
+    ],
+    "listed": "2026-10-27"
   }
 ]
