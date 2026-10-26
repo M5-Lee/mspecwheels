@@ -1143,5 +1143,46 @@
       "/buffer/MUSE-APEX-VS5RS-riverside-ca/fit-well.jpg"
     ],
     "listed": "2026-10-27"
+  },
+  {
+    "id": "MUSE-BBS-RID-redlands-ca.pack",
+    "short_title": "BBS RI-D",
+    "chassis": "G80 M3, G82/G83 M4 · front about 4 mm inside, rear about 8 mm inside, by our estimate · 20-inch front, not the OEM 19-inch · confirm tire size and brake clearance · shown on a G80 M3 · confirm on the car",
+    "size": "F 20x9.5 ET10 / R 20x10.5 ET15",
+    "price": 9500,
+    "location": "Redlands, CA",
+    "url": "https://www.facebook.com/marketplace/item/1027739736958446",
+    "hero": "/buffer/MUSE-BBS-RID-redlands-ca/crop45-01.jpg",
+    "images": [
+      "/buffer/MUSE-BBS-RID-redlands-ca/crop45-01.jpg",
+      "/buffer/MUSE-BBS-RID-redlands-ca/crop45-02.jpg",
+      "/buffer/MUSE-BBS-RID-redlands-ca/crop45-03.jpg",
+      "/buffer/MUSE-BBS-RID-redlands-ca/crop45-04.jpg",
+      "/buffer/MUSE-BBS-RID-redlands-ca/crop45-05.jpg",
+      "/buffer/MUSE-BBS-RID-redlands-ca/fit-well.jpg"
+    ],
+    "listed": "2026-10-28"
+  },
+  {
+    "id": "MUSE-BC-MLE81-livermore-ca.pack",
+    "short_title": "BC Forged MLE81",
+    "chassis": "F80 M3, F82/F83 M4 · fender check front and rear (about 7 mm past front and 3 mm past rear on F80, about 6 mm and 2 mm past on F82/F83, by our estimate) · confirm brake clearance · shown on an F80 M3 · confirm on the car",
+    "size": "F 19x9.5 ET20 / R 19x11 ET40",
+    "price": 3750,
+    "location": "Livermore, CA",
+    "url": "https://www.facebook.com/marketplace/item/2245158876264955",
+    "hero": "/buffer/MUSE-BC-MLE81-livermore-ca/crop45-01.jpg",
+    "images": [
+      "/buffer/MUSE-BC-MLE81-livermore-ca/crop45-01.jpg",
+      "/buffer/MUSE-BC-MLE81-livermore-ca/crop45-02.jpg",
+      "/buffer/MUSE-BC-MLE81-livermore-ca/crop45-03.jpg",
+      "/buffer/MUSE-BC-MLE81-livermore-ca/crop45-04.jpg",
+      "/buffer/MUSE-BC-MLE81-livermore-ca/crop45-05.jpg",
+      "/buffer/MUSE-BC-MLE81-livermore-ca/crop45-06.jpg",
+      "/buffer/MUSE-BC-MLE81-livermore-ca/crop45-07.jpg",
+      "/buffer/MUSE-BC-MLE81-livermore-ca/crop45-08.jpg",
+      "/buffer/MUSE-BC-MLE81-livermore-ca/fit-well.jpg"
+    ],
+    "listed": "2026-10-28"
   }
 ]
